@@ -1,5 +1,14 @@
 # Journal
 
+## 2026-06-19 - DOCKER-DEV-01
+
+- Ajout d'un environnement Docker Compose de développement avec services `app` et `db`.
+- Ajout d'un volume Docker pour `node_modules` et d'un volume pnpm dédié.
+- Ajout de `Dockerfile.dev`, `Dockerfile`, `.dockerignore` et `Makefile`.
+- Mise à jour de `.env.example` avec les variables PostgreSQL et port applicatif.
+- Documentation des commandes pnpm exclusivement via Docker Compose.
+- Aucun scaffold Next.js ni fonctionnalité métier n'a été ajouté.
+
 ## 2026-06-19 - REPO-INIT-01
 
 - Initialisation du cadre documentaire Rucher360.

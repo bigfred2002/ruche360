@@ -6,9 +6,9 @@ Ce dépôt est préparé pour un développement agentique par micro-lots avec Co
 
 ## Statut du dépôt
 
-Lot courant: `REPO-INIT-01`
+Lot courant: `DOCKER-DEV-01`
 
-Ce lot ne développe pas l'application. Il installe uniquement le cadre documentaire et les conventions de travail.
+Ce lot prépare l'environnement Docker Compose de développement. Il ne développe pas de fonctionnalité métier.
 
 ## Principes de développement
 
@@ -65,10 +65,65 @@ Les modules IA prévus mais désactivés sont: analyse de visite, assistant conn
 
 ## Démarrage développeur
 
-L'application n'est pas encore scaffoldée. Quand elle le sera, le démarrage devra passer par Docker Compose, par exemple:
+L'application Next.js n'est pas encore scaffoldée. L'environnement Docker Compose est néanmoins prêt pour éviter toute dépendance à Node.js, pnpm, Prisma ou Playwright sur le Mac.
+
+Copier l'exemple d'environnement local:
+
+```bash
+cp .env.example .env
+```
+
+Construire l'image de développement:
+
+```bash
+docker compose build app
+```
+
+Démarrer les services:
 
 ```bash
 docker compose up --build
 ```
 
+Tant que `package.json` n'existe pas, le conteneur `app` reste disponible et documente que le scaffold applicatif doit arriver dans un lot dédié.
+
+## Commandes pnpm
+
+Les commandes pnpm doivent toujours passer par Docker Compose:
+
+```bash
+docker compose run --rm app pnpm install
+docker compose run --rm app pnpm lint
+docker compose run --rm app pnpm build
+```
+
+Raccourcis Makefile:
+
+```bash
+make build
+make up
+make pnpm CMD="install"
+make lint
+make build-app
+```
+
 Les commandes locales directes comme `pnpm install`, `npx prisma` ou `npx playwright` ne doivent pas être utilisées comme prérequis sur la machine hôte.
+
+## Services Docker
+
+- `app`: service prévu pour Next.js, basé sur `Dockerfile.dev`.
+- `db`: PostgreSQL 16 Alpine avec volume persistant.
+- `node_modules`: volume Docker dédié pour éviter d'écrire les dépendances Node sur l'hôte.
+- `pnpm_store`: volume Docker pour le store pnpm.
+
+## Validations prévues
+
+Quand l'application Next.js existera, les validations attendues seront:
+
+```bash
+docker compose build app
+docker compose run --rm app pnpm lint
+docker compose run --rm app pnpm build
+```
+
+Pour ce lot, l'application Next.js n'existe pas encore: seules les validations Docker et documentaires sont applicables.

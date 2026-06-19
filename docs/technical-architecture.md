@@ -2,13 +2,15 @@
 
 ## Position actuelle
 
-Le dépôt n'est pas encore scaffoldé. Le lot `REPO-INIT-01` prépare les conventions sans choisir ni installer de dépendances applicatives.
+Le dépôt n'est pas encore scaffoldé en application Next.js. Le lot `DOCKER-DEV-01` ajoute l'environnement Docker Compose de développement sans installer de dépendances applicatives dans le dépôt.
 
 ## Contraintes structurantes
 
 - Développement containerisé avec Docker Compose.
 - Ne pas supposer que Node.js, pnpm, Prisma ou Playwright sont installés sur la machine hôte.
 - Les commandes projet futures doivent être documentées sous forme `docker compose ...`.
+- Les commandes pnpm doivent passer par `docker compose run --rm app pnpm ...`.
+- `node_modules` doit rester dans un volume Docker.
 - Les secrets locaux vivent dans `.env`, jamais dans Git.
 - `.env.example` sert de contrat minimal non secret.
 
@@ -25,14 +27,31 @@ L'architecture cible devra rester modulaire:
 
 ## Docker Compose
 
-Un futur lot devra créer le fichier `docker-compose.yml` avec au minimum:
+Le fichier `docker-compose.yml` définit:
 
-- un service applicatif;
-- un service base de données;
-- des volumes de développement;
-- des variables d'environnement cohérentes avec `.env.example`.
+- `app`: service prévu pour Next.js, construit depuis `Dockerfile.dev`;
+- `db`: PostgreSQL 16 Alpine;
+- `node_modules`: volume Docker pour les dépendances Node;
+- `pnpm_store`: volume Docker pour le store pnpm;
+- `postgres_data`: volume persistant PostgreSQL.
 
-Ce lot ne crée pas encore Docker Compose afin d'éviter de figer une stack applicative avant décision.
+Tant que `package.json` n'existe pas, le service `app` ne force aucune initialisation et reste en attente.
+
+## Images Docker
+
+`Dockerfile.dev` sert au développement. Il active Corepack, expose le port 3000 et lance `pnpm dev` uniquement si `package.json` existe.
+
+`Dockerfile` prépare une image de production future. En l'absence de `package.json`, le build reste un no-op documenté pour ne pas introduire de scaffold hors périmètre.
+
+## Commandes prévues
+
+```bash
+docker compose build app
+docker compose run --rm app pnpm lint
+docker compose run --rm app pnpm build
+```
+
+Les commandes `pnpm lint` et `pnpm build` seront applicables quand l'application Next.js existera.
 
 ## Modules désactivés
 

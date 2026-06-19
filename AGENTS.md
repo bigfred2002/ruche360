@@ -11,6 +11,7 @@ Rucher360 est une application apicole modulaire multi-utilisateurs. Le dépôt d
 - Ne pas créer `app/`, `components/`, `lib/` ou `prisma/` sauf si ces dossiers existent déjà ou si un lot ultérieur le demande explicitement.
 - Ne jamais supposer que Node.js, pnpm, Prisma ou Playwright sont installés sur le Mac.
 - Privilégier Docker Compose pour tout lancement, test, migration ou outil projet lorsque l'application existera.
+- Exécuter les commandes pnpm uniquement via `docker compose run --rm app pnpm ...`.
 - Ne jamais committer directement sur `main`.
 - Créer une branche dédiée par lot, avec le préfixe `codex/` par défaut.
 
@@ -43,3 +44,9 @@ Pour un lot documentaire, vérifier au minimum:
 - un `git diff --check` propre.
 
 Pour un lot applicatif futur, définir les commandes Docker Compose de test dans le lot lui-même avant exécution.
+
+Pour les lots Docker ou outillage:
+
+- ne pas initialiser l'application hors périmètre;
+- vérifier que `docker compose config` reste valide;
+- documenter les commandes prévues si `package.json` n'existe pas encore.
