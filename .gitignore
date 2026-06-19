@@ -1,0 +1,41 @@
+# macOS
+.DS_Store
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+coverage/
+
+# Package managers
+.pnpm-store/
+
+# Test artifacts
+test-results/
+playwright-report/
+
+# Docker and local runtime
+*.pid
+tmp/
+temp/
+
+# Generated files
+*.tsbuildinfo
