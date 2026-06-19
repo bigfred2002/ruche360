@@ -57,3 +57,13 @@ L'interface doit être calme, lisible, efficace en mobilité et utilisable avec 
 - Cartes arrondies réservées aux synthèses, modules visibles et modules optionnels.
 - Badges d'état simples pour distinguer les surfaces statiques des modules à venir.
 - Modules IA et connectés affichés comme prévus mais désactivés, sans action opérationnelle.
+
+## Itération Stitch DESIGN-SHELL-01
+
+- Références analysées: exports Stitch mobile `mobile-v1` et desktop `desktop-v1`.
+- Palette renforcée: ambre primaire, crème anti-éblouissement, vert sauge, vert profond et ardoise.
+- Desktop: sidebar gauche persistante, topbar avec recherche décorative et grille de cockpit plus large.
+- Mobile: navigation basse à cinq entrées, cartes empilées, zones tactiles hautes et badges lisibles.
+- Fond: motif très discret inspiré rayon/miel, sans asset externe ni image importée.
+- Micro-animations: transitions de survol et élévation légère sur desktop, neutralisées via `prefers-reduced-motion`.
+- Non repris: HTML/CSS Stitch généré, boutons d'activation, formulaires, routes métier, images de démonstration et modules actifs IA/IoT.

@@ -16,6 +16,8 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - L'interface initiale est volontairement simple et ne contient aucun module métier.
 - Le shell applicatif utilise une navigation basse mobile, des repères desktop simples et des cartes statiques.
 - Les cartes de cockpit et de modules sont des surfaces de présentation sans formulaire, CRUD, appel API ou logique métier.
+- L'itération Stitch de `DESIGN-SHELL-01` enrichit uniquement le rendu visuel: sidebar desktop, topbar décorative, fond à motif discret, cartes plus colorées et badges de statut.
+- Les exports Stitch restent des références locales non intégrées au code de production et ne doivent pas être commités.
 - Les modules connectés sont prévus mais désactivés: balance, météo, caméra, capteurs, GPS.
 - Les modules IA sont prévus mais désactivés: analyse de visite, assistant connaissance, reconnaissance d'espèce, comptage varroa.
 - Les fonctions étiquetage, marketplace, paiement, comptabilité complète, IoT actif, IA automatique et prescription sanitaire automatique sont hors périmètre initial.

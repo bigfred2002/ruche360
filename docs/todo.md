@@ -50,6 +50,9 @@
 - [x] Ajouter des repères de navigation desktop simples.
 - [x] Créer des cartes de cockpit statiques.
 - [x] Afficher les modules optionnels comme désactivés ou à venir.
+- [x] Analyser les exports Stitch mobile et desktop.
+- [x] Enrichir le shell avec une sidebar desktop et un rendu plus coloré.
+- [x] Respecter `prefers-reduced-motion` pour les micro-animations.
 - [x] Ne pas ajouter de module métier, authentification, Prisma, IA ou IoT actif.
 - [x] Lancer les validations via Docker Compose.
 - [x] Préparer la Pull Request draft.
