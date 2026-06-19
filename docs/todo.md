@@ -15,6 +15,7 @@
 - [x] Créer Docker Compose.
 - [x] Définir les commandes de validation containerisées.
 - [x] Scaffolder l'application dans un lot dédié.
+- [x] Poser un shell applicatif mobile-first statique.
 - [ ] Créer le modèle de données exécutable dans un lot dédié.
 
 ## DOCKER-DEV-01
@@ -41,3 +42,14 @@
 - [x] Lancer lint via Docker Compose.
 - [x] Lancer build via Docker Compose.
 - [x] Préparer la Pull Request.
+
+## DESIGN-SHELL-01
+
+- [x] Créer un shell responsive mobile-first.
+- [x] Ajouter une navigation basse mobile.
+- [x] Ajouter des repères de navigation desktop simples.
+- [x] Créer des cartes de cockpit statiques.
+- [x] Afficher les modules optionnels comme désactivés ou à venir.
+- [x] Ne pas ajouter de module métier, authentification, Prisma, IA ou IoT actif.
+- [x] Lancer les validations via Docker Compose.
+- [x] Préparer la Pull Request draft.

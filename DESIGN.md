@@ -49,3 +49,11 @@ L'interface doit être calme, lisible, efficace en mobilité et utilisable avec 
 - Navigation prévisible.
 - Etats vides utiles, sans discours marketing.
 - Icônes pour les actions courantes quand une bibliothèque d'icônes sera choisie.
+
+## Conventions appliquées dans DESIGN-SHELL-01
+
+- Shell mobile-first avec navigation basse sur mobile et repères de navigation sobres sur desktop.
+- Palette inspirée miel, végétal, ardoise et crème, avec contrastes lisibles en extérieur.
+- Cartes arrondies réservées aux synthèses, modules visibles et modules optionnels.
+- Badges d'état simples pour distinguer les surfaces statiques des modules à venir.
+- Modules IA et connectés affichés comme prévus mais désactivés, sans action opérationnelle.

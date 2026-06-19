@@ -1,5 +1,14 @@
 # Journal
 
+## 2026-06-19 - DESIGN-SHELL-01
+
+- Création d'un shell applicatif mobile-first statique pour Rucher360.
+- Ajout de composants UI simples: `AppShell`, `BottomNavigation`, `DashboardCard`, `ModuleCard` et `StatusBadge`.
+- Ajout d'une page d'accueil type cockpit avec cartes de synthèse et modules optionnels désactivés.
+- Formalisation des conventions visuelles appliquées dans `DESIGN.md`.
+- Validations exécutées via Docker Compose: `lint`, `build`, démarrage `app` et vérification HTTP.
+- Aucun module métier, aucune authentification, aucune configuration Prisma, aucune IA active et aucun IoT actif n'ont été ajoutés.
+
 ## 2026-06-19 - APP-INIT-01
 
 - Initialisation du socle Next.js avec App Router.

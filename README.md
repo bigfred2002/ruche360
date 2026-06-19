@@ -6,9 +6,9 @@ Ce dépôt est préparé pour un développement agentique par micro-lots avec Co
 
 ## Statut du dépôt
 
-Lot courant: `APP-INIT-01`
+Lot courant: `DESIGN-SHELL-01`
 
-Ce lot initialise le socle Next.js, TypeScript et Tailwind CSS. Il ne développe pas de fonctionnalité métier.
+Ce lot pose un premier shell applicatif mobile-first statique. Il ne développe pas de fonctionnalité métier.
 
 ## Principes de développement
 
