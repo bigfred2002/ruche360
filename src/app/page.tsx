@@ -1,61 +1,328 @@
-const readinessItems = [
-  "Next.js App Router",
-  "TypeScript strict",
-  "Tailwind CSS",
-  "Docker Compose"
+import { AppShell } from "@/components/AppShell";
+import { DashboardCard } from "@/components/DashboardCard";
+import { ModuleCard } from "@/components/ModuleCard";
+import { StatusBadge } from "@/components/StatusBadge";
+
+const dashboardCards = [
+  {
+    accent: "amber" as const,
+    icon: "Ru",
+    title: "Ruchers",
+    metric: "12",
+    detail: "Sites apicoles suivis par l'organisation.",
+    status: "Aperçu"
+  },
+  {
+    accent: "sage" as const,
+    icon: "Rc",
+    title: "Ruches",
+    metric: "84",
+    detail: "Parc matériel représenté en lecture seule.",
+    status: "Aperçu"
+  },
+  {
+    accent: "forest" as const,
+    icon: "Vi",
+    title: "Visites",
+    metric: "7",
+    detail: "Repères terrain pour les prochains lots.",
+    status: "Aperçu"
+  },
+  {
+    accent: "red" as const,
+    icon: "Sa",
+    title: "Sanitaire",
+    metric: "1",
+    detail: "Signal visible sans traitement automatique.",
+    status: "Preview",
+    statusTone: "alert" as const
+  },
+  {
+    accent: "amber" as const,
+    icon: "Ta",
+    title: "Tâches",
+    metric: "18",
+    detail: "Priorités affichées comme surface statique.",
+    status: "Aperçu"
+  },
+  {
+    accent: "sage" as const,
+    icon: "Co",
+    title: "Contacts utiles",
+    metric: "9",
+    detail: "Interlocuteurs prévus pour l'organisation.",
+    status: "Aperçu"
+  },
+  {
+    accent: "forest" as const,
+    icon: "Bc",
+    title: "Base de connaissance",
+    metric: "24",
+    detail: "Fiches et procédures visibles comme modules futurs.",
+    status: "Aperçu"
+  }
+];
+
+const watchItems = [
+  {
+    accent: "amber",
+    label: "Priorité",
+    title: "Réserves faibles",
+    detail: "Rucher du Vallon · Ruche #4"
+  },
+  {
+    accent: "forest",
+    label: "48h",
+    title: "Varroa à recompter",
+    detail: "Toutes les ruches · suivi manuel"
+  },
+  {
+    accent: "red",
+    label: "Signal",
+    title: "Frelon observé",
+    detail: "Rucher de la Forêt · observation"
+  }
+];
+
+const activeModules = [
+  {
+    accent: "sage" as const,
+    category: "Expertise & data",
+    icon: "Sa",
+    title: "Sanitaire",
+    description: "Observations simples, varroa et frelon en surface preview.",
+    status: "Preview" as const
+  },
+  {
+    accent: "forest" as const,
+    category: "Savoir",
+    icon: "Bc",
+    title: "Base de connaissance",
+    description: "Accès visuel aux futures fiches internes et procédures.",
+    status: "Preview" as const
+  },
+  {
+    accent: "amber" as const,
+    category: "Organisation",
+    icon: "Co",
+    title: "Contacts utiles",
+    description: "Carnet statique pour les partenaires et interlocuteurs.",
+    status: "Preview" as const
+  }
+];
+
+const futureModules = [
+  {
+    icon: "IA",
+    title: "IA",
+    description: "Analyse et assistant prévus, sans automatisation active."
+  },
+  {
+    icon: "Ba",
+    title: "Balance connectée",
+    description: "Objet connecté visible comme option, sans données capteur."
+  },
+  {
+    icon: "Mé",
+    title: "Météo de rucher",
+    description: "Aucun fournisseur et aucun appel externe dans ce lot."
+  },
+  {
+    icon: "Ca",
+    title: "Caméra",
+    description: "Pas de flux vidéo, pas de stockage image, simple preview."
+  },
+  {
+    icon: "Cp",
+    title: "Capteurs",
+    description: "Préparation visuelle sans protocole matériel actif."
+  },
+  {
+    icon: "Bc",
+    title: "Ruche basse consommation",
+    description: "Configuration prévue, sans paramétrage technique réel."
+  }
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f7f8f4] text-[#1f2a24]">
-      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-between px-6 py-8 sm:px-8 lg:px-10">
-        <header className="flex items-center justify-between border-b border-[#d9dfd2] pb-5">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-[0.12em] text-[#60705f]">
-              Socle applicatif
-            </p>
-            <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
-              Rucher360
-            </h1>
-          </div>
-          <div className="hidden rounded-full border border-[#c7d2bf] px-4 py-2 text-sm font-medium text-[#3f553f] sm:block">
-            Docker-first
-          </div>
-        </header>
+    <AppShell>
+      <div className="mx-auto w-full max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
+        <section className="grid gap-6 xl:grid-cols-[1fr_22rem]">
+          <div className="space-y-6">
+            <div className="rounded-3xl border border-cream-300 bg-white/86 p-5 shadow-field backdrop-blur sm:p-7 lg:p-8">
+              <StatusBadge label="Cockpit apicole modulaire" />
+              <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_18rem] lg:items-end">
+                <div>
+                  <h1 className="text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
+                    Bonjour, Jean
+                  </h1>
+                  <p className="mt-3 max-w-2xl text-lg leading-8 text-slate-700">
+                    Rucher360 rassemble les signaux essentiels dans un cockpit
+                    clair, coloré et utilisable sur le terrain.
+                  </p>
+                </div>
+                <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
+                  <p className="text-sm font-bold uppercase tracking-wide text-amber-100">
+                    Saison en préparation
+                  </p>
+                  <p className="mt-3 text-3xl font-black">Printemps</p>
+                  <p className="mt-2 text-sm leading-6 text-amber-50">
+                    Données fictives pour cadrer l&apos;expérience visuelle.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-        <div className="grid gap-8 py-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-          <div>
-            <p className="max-w-2xl text-xl leading-8 text-[#334033]">
-              Une base Next.js sobre pour construire progressivement une
-              application apicole modulaire, multi-utilisateurs et lisible sur
-              le terrain.
-            </p>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-[#5d685b]">
-              Ce lot pose uniquement le socle technique et visuel. Les modules
-              métier, l&apos;authentification, Prisma, l&apos;IA et l&apos;IoT restent hors
-              périmètre.
-            </p>
-          </div>
-
-          <div className="border-l-4 border-[#d2a23a] bg-white px-5 py-5 shadow-sm">
-            <h2 className="text-base font-semibold text-[#263326]">
-              Prêt pour les prochains lots
-            </h2>
-            <ul className="mt-4 space-y-3 text-sm text-[#536052]">
-              {readinessItems.map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-[#d2a23a]" />
-                  {item}
-                </li>
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {dashboardCards.slice(0, 4).map((card) => (
+                <DashboardCard key={card.title} {...card} />
               ))}
-            </ul>
-          </div>
-        </div>
+            </div>
 
-        <footer className="border-t border-[#d9dfd2] pt-5 text-sm text-[#687466]">
-          Commandes projet via Docker Compose uniquement.
-        </footer>
-      </section>
-    </main>
+            <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              <article className="apiary-visual min-h-72 overflow-hidden rounded-3xl p-6 text-white shadow-field-lg">
+                <div className="flex h-full min-h-60 flex-col justify-end">
+                  <StatusBadge label="Inspirations du jour" tone="amber" />
+                  <h2 className="mt-5 max-w-xl text-3xl font-black leading-tight sm:text-4xl">
+                    Observer vite, décider calmement.
+                  </h2>
+                  <p className="mt-3 max-w-lg text-base leading-7 text-cream-50">
+                    Une présence plus visuelle, inspirée des exports Stitch,
+                    sans contenu dynamique ni activation métier.
+                  </p>
+                </div>
+              </article>
+
+              <section className="rounded-3xl border border-cream-300 bg-white p-5 shadow-field">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+                      À surveiller
+                    </p>
+                    <h2 className="mt-2 text-2xl font-black text-slate-950">
+                      Priorités terrain
+                    </h2>
+                  </div>
+                  <StatusBadge label="Preview" tone="soon" />
+                </div>
+                <div className="mt-5 space-y-3">
+                  {watchItems.map((item) => (
+                    <article
+                      className="rounded-2xl border border-cream-300 bg-cream-50 p-4"
+                      key={item.title}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <p className="text-base font-black text-slate-950">
+                            {item.title}
+                          </p>
+                          <p className="mt-1 text-sm leading-6 text-slate-650">
+                            {item.detail}
+                          </p>
+                        </div>
+                        <StatusBadge
+                          label={item.label}
+                          tone={
+                            item.accent === "red"
+                              ? "alert"
+                              : item.accent === "amber"
+                                ? "amber"
+                                : "active"
+                          }
+                        />
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            </section>
+
+            <section>
+              <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+                    Modules visibles
+                  </p>
+                  <h2 className="mt-2 text-2xl font-black text-slate-950">
+                    Surfaces statiques du cockpit
+                  </h2>
+                </div>
+                <StatusBadge label="Lecture seule" tone="preview" />
+              </div>
+              <div className="grid gap-4 md:grid-cols-3">
+                {activeModules.map((card) => (
+                  <ModuleCard key={card.title} {...card} />
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <div className="mb-4">
+                <p className="text-sm font-black uppercase tracking-wide text-slate-650">
+                  Modules optionnels
+                </p>
+                <h2 className="mt-2 text-2xl font-black text-slate-950">
+                  Prévus, désactivés
+                </h2>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {futureModules.map((card) => (
+                  <ModuleCard
+                    key={card.title}
+                    {...card}
+                    disabled
+                    status="A venir"
+                  />
+                ))}
+              </div>
+            </section>
+          </div>
+
+          <aside className="hidden space-y-5 xl:block">
+            <section className="rounded-3xl border border-cream-300 bg-cream-200 p-5 shadow-field">
+              <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+                Modules à venir
+              </p>
+              <div className="mt-5 space-y-3">
+                {futureModules.slice(0, 4).map((module) => (
+                  <article
+                    className="rounded-2xl border border-cream-300 bg-white p-4 shadow-field"
+                    key={module.title}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-11 w-11 place-items-center rounded-2xl bg-stone-100 text-xs font-black text-stone-600">
+                        {module.icon}
+                      </span>
+                      <div>
+                        <p className="font-black text-slate-950">
+                          {module.title}
+                        </p>
+                        <p className="text-xs font-semibold text-slate-650">
+                          Désactivé
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="overflow-hidden rounded-3xl bg-gradient-amber p-6 text-white shadow-amber">
+              <p className="text-sm font-black uppercase tracking-wide text-amber-100">
+                Preview
+              </p>
+              <h2 className="mt-3 text-2xl font-black leading-tight">
+                Un shell plus proche des maquettes Stitch.
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-amber-50">
+                Couleurs, profondeur et rythme visuel ont été renforcés sans
+                activer de fonctionnalité.
+              </p>
+            </section>
+          </aside>
+        </section>
+      </div>
+    </AppShell>
   );
 }

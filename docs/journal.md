@@ -1,5 +1,22 @@
 # Journal
 
+## 2026-06-19 - DESIGN-SHELL-01
+
+- Création d'un shell applicatif mobile-first statique pour Rucher360.
+- Ajout de composants UI simples: `AppShell`, `BottomNavigation`, `DashboardCard`, `ModuleCard` et `StatusBadge`.
+- Ajout d'une page d'accueil type cockpit avec cartes de synthèse et modules optionnels désactivés.
+- Formalisation des conventions visuelles appliquées dans `DESIGN.md`.
+- Validations exécutées via Docker Compose: `lint`, `build`, démarrage `app` et vérification HTTP.
+- Aucun module métier, aucune authentification, aucune configuration Prisma, aucune IA active et aucun IoT actif n'ont été ajoutés.
+
+### Itération Stitch sur la PR #4
+
+- Exports analysés: `stitch_exports/input/mobile-v1.zip` et `stitch_exports/input/desktop-v1.zip`, extraits localement dans `stitch_exports/reference/`.
+- Écrans mobile identifiés: cockpit, liste des ruchers, fiche rucher, liste des ruches, fiche ruche, nouvelle visite, sanitaire varroa, base de connaissance, contacts utiles, profil organisation, gestion des modules.
+- Écrans desktop identifiés: cockpit, liste des ruchers, fiche rucher, liste des ruches, fiche ruche, nouvelle visite, sanitaire varroa, base de connaissance, contacts utiles, profil organisation, gestion des modules.
+- Éléments visuels retenus: palette ambre/crème/sauge/forêt/ardoise, navigation basse à cinq entrées, sidebar desktop, topbar décorative, cartes tactiles, badges colorés, fond discret à motif et grille cockpit plus confortable.
+- Éléments non repris: HTML/CSS Stitch généré, images de démonstration, formulaires, boutons d'activation, recherche fonctionnelle, routes métier, modules IA/IoT actifs et tout appel API.
+
 ## 2026-06-19 - APP-INIT-01
 
 - Initialisation du socle Next.js avec App Router.
