@@ -2,7 +2,7 @@
 
 ## Etat courant
 
-Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développement agentique. Le lot `DOCKER-DEV-01` ajoute l'environnement Docker Compose de développement sans scaffolder l'application Next.js.
+Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développement agentique. Le lot `APP-INIT-01` ajoute le socle applicatif Next.js avec App Router, TypeScript et Tailwind CSS.
 
 ## Décisions actées
 
@@ -12,13 +12,14 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Les commandes pnpm passent par le service Docker Compose `app`.
 - PostgreSQL est fourni par le service Docker Compose `db`.
 - `node_modules` vit dans un volume Docker dédié.
+- Le socle applicatif utilise Next.js App Router, TypeScript strict et Tailwind CSS.
+- L'interface initiale est volontairement simple et ne contient aucun module métier.
 - Les modules connectés sont prévus mais désactivés: balance, météo, caméra, capteurs, GPS.
 - Les modules IA sont prévus mais désactivés: analyse de visite, assistant connaissance, reconnaissance d'espèce, comptage varroa.
 - Les fonctions étiquetage, marketplace, paiement, comptabilité complète, IoT actif, IA automatique et prescription sanitaire automatique sont hors périmètre initial.
 
 ## Points ouverts
 
-- Scaffold de l'application Next.js.
 - Choix du système d'authentification.
 - Choix du stockage documentaire.
 - Niveau de détail de la localisation des ruchers.
@@ -33,7 +34,7 @@ docker compose config
 docker compose build app
 ```
 
-Quand l'application Next.js existera, les commandes applicatives prévues seront:
+Commandes applicatives:
 
 ```bash
 docker compose run --rm app pnpm lint
