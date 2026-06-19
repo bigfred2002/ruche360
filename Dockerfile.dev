@@ -1,0 +1,13 @@
+FROM node:22-alpine
+
+WORKDIR /app
+
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PNPM_HOME=/pnpm
+ENV PATH="${PNPM_HOME}:${PATH}"
+
+RUN corepack enable
+
+EXPOSE 3000
+
+CMD ["sh", "-lc", "if [ -f package.json ]; then pnpm install && pnpm dev --hostname 0.0.0.0; else echo 'No Next.js app yet. Add package.json in a dedicated app scaffold lot.' && tail -f /dev/null; fi"]

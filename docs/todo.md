@@ -12,8 +12,19 @@
 
 ## Prochains lots
 
-- [ ] Choisir la stack applicative.
-- [ ] Créer Docker Compose.
-- [ ] Définir les commandes de validation containerisées.
+- [x] Créer Docker Compose.
+- [x] Définir les commandes de validation containerisées.
 - [ ] Scaffolder l'application dans un lot dédié.
 - [ ] Créer le modèle de données exécutable dans un lot dédié.
+
+## DOCKER-DEV-01
+
+- [x] Ajouter `Dockerfile.dev`.
+- [x] Ajouter `Dockerfile`.
+- [x] Ajouter `docker-compose.yml`.
+- [x] Ajouter `.dockerignore`.
+- [x] Ajouter `Makefile`.
+- [x] Mettre à jour `.env.example`.
+- [x] Documenter les commandes pnpm via Docker Compose.
+- [x] Documenter le cas où l'application Next.js n'existe pas encore.
+- [x] Préparer la Pull Request.
