@@ -14,7 +14,7 @@
 
 - [x] Créer Docker Compose.
 - [x] Définir les commandes de validation containerisées.
-- [ ] Scaffolder l'application dans un lot dédié.
+- [x] Scaffolder l'application dans un lot dédié.
 - [ ] Créer le modèle de données exécutable dans un lot dédié.
 
 ## DOCKER-DEV-01
@@ -27,4 +27,17 @@
 - [x] Mettre à jour `.env.example`.
 - [x] Documenter les commandes pnpm via Docker Compose.
 - [x] Documenter le cas où l'application Next.js n'existe pas encore.
+- [x] Préparer la Pull Request.
+
+## APP-INIT-01
+
+- [x] Ajouter le socle Next.js App Router.
+- [x] Activer TypeScript.
+- [x] Activer Tailwind CSS.
+- [x] Ajouter une interface d'accueil simple alignée avec `DESIGN.md`.
+- [x] Ne pas ajouter de module métier.
+- [x] Ne pas ajouter d'authentification.
+- [x] Ne pas ajouter Prisma.
+- [x] Lancer lint via Docker Compose.
+- [x] Lancer build via Docker Compose.
 - [x] Préparer la Pull Request.

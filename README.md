@@ -6,9 +6,9 @@ Ce dépôt est préparé pour un développement agentique par micro-lots avec Co
 
 ## Statut du dépôt
 
-Lot courant: `DOCKER-DEV-01`
+Lot courant: `APP-INIT-01`
 
-Ce lot prépare l'environnement Docker Compose de développement. Il ne développe pas de fonctionnalité métier.
+Ce lot initialise le socle Next.js, TypeScript et Tailwind CSS. Il ne développe pas de fonctionnalité métier.
 
 ## Principes de développement
 
@@ -65,7 +65,7 @@ Les modules IA prévus mais désactivés sont: analyse de visite, assistant conn
 
 ## Démarrage développeur
 
-L'application Next.js n'est pas encore scaffoldée. L'environnement Docker Compose est néanmoins prêt pour éviter toute dépendance à Node.js, pnpm, Prisma ou Playwright sur le Mac.
+L'application Next.js est scaffoldée avec App Router, TypeScript et Tailwind CSS. L'environnement Docker Compose évite toute dépendance à Node.js, pnpm, Prisma ou Playwright sur le Mac.
 
 Copier l'exemple d'environnement local:
 
@@ -85,7 +85,7 @@ Démarrer les services:
 docker compose up --build
 ```
 
-Tant que `package.json` n'existe pas, le conteneur `app` reste disponible et documente que le scaffold applicatif doit arriver dans un lot dédié.
+L'application est disponible sur `http://localhost:3000` quand le service `app` est démarré.
 
 ## Commandes pnpm
 
@@ -126,4 +126,4 @@ docker compose run --rm app pnpm lint
 docker compose run --rm app pnpm build
 ```
 
-Pour ce lot, l'application Next.js n'existe pas encore: seules les validations Docker et documentaires sont applicables.
+Pour ce lot, ces validations sont applicables et doivent être lancées depuis Docker Compose.

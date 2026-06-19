@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-19 - APP-INIT-01
+
+- Initialisation du socle Next.js avec App Router.
+- Ajout de TypeScript strict, Tailwind CSS et ESLint.
+- Ajout d'une page d'accueil sobre alignée avec les principes de `DESIGN.md`.
+- Installation des dépendances via Docker Compose uniquement.
+- Aucun module métier, aucune authentification et aucune configuration Prisma n'ont été ajoutés.
+
 ## 2026-06-19 - DOCKER-DEV-01
 
 - Ajout d'un environnement Docker Compose de développement avec services `app` et `db`.
