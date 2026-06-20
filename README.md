@@ -25,6 +25,7 @@ Le projet est développé par micro-lots avec Codex, GitHub et Docker Compose. L
 
 - Utilisateurs, rôles et permissions.
 - Modules activables par organisation et par utilisateur.
+- Catalogue de rôles, permissions et modules posé pour cadrer les futurs accès.
 - Contacts utiles: vétérinaires, techniciens sanitaires, fournisseurs, référents et partenaires.
 - Documents liés aux organisations et futures entités métier.
 - Conventions comptes, organisations et adhésions posées sans authentification active.
