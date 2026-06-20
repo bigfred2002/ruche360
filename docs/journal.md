@@ -1,5 +1,14 @@
 # Journal
 
+## 2026-06-20 - DATA-01
+
+- Ajout de Prisma et `@prisma/client` via Docker Compose uniquement.
+- Création du schéma Prisma minimal pour organisations, utilisateurs, adhésions, rôles, permissions et modules activables.
+- Création d'une migration initiale PostgreSQL.
+- Ajustement du contrôle pre-push pour autoriser uniquement les migrations Prisma générées.
+- Aucun modèle rucher, ruche, colonie, visite, tâche, sanitaire, IA ou IoT actif n'a été ajouté.
+- Aucun écran, CRUD ou appel API applicatif n'a été créé.
+
 ## 2026-06-20 - DATA-00
 
 - Cadrage documentaire de la stratégie data avant initialisation Prisma.

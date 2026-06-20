@@ -2,7 +2,7 @@
 
 ## Etat courant
 
-Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développement agentique. Le lot `DATA-00` cadre la stratégie data avant initialisation Prisma.
+Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développement agentique. Le lot `DATA-01` initialise Prisma sur un schéma minimal non métier.
 
 ## Décisions actées
 
@@ -22,6 +22,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Les modules IA sont prévus mais désactivés: analyse de visite, assistant connaissance, reconnaissance d'espèce, comptage varroa.
 - Les fonctions étiquetage, marketplace, paiement, comptabilité complète, IoT actif, IA automatique et prescription sanitaire automatique sont hors périmètre initial.
 - `DATA-00` limite le futur premier schéma exécutable au socle organisations, utilisateurs, adhésions, rôles, permissions et modules.
+- `DATA-01` crée le schéma Prisma et la migration initiale pour ce socle minimal.
 - Les entités apicoles opérationnelles restent conceptuelles jusqu'aux lots métier dédiés.
 
 ## Points ouverts

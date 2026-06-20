@@ -215,3 +215,19 @@ Champs conceptuels:
 `DATA-00` garde le modèle au niveau documentaire. Aucun dossier `prisma/`, migration ou client de base de données n'est créé dans ce lot.
 
 Le premier lot exécutable `DATA-01` devra se limiter au socle organisation, utilisateur, adhésion, rôles, permissions et activation de modules. Les entités apicoles opérationnelles restent différées.
+
+## Décision DATA-01
+
+`DATA-01` initialise Prisma avec un schéma minimal et une migration initiale. Le schéma exécutable couvre seulement:
+
+- `Organization`;
+- `User`;
+- `Membership`;
+- `Role`;
+- `Permission`;
+- `RolePermission`;
+- `ModuleDefinition`;
+- `OrganizationModule`;
+- `UserModulePreference`.
+
+Les modèles rucher, ruche, colonie, visite, tâche, sanitaire, documents, contacts, récoltes, IA et IoT restent hors schéma exécutable.

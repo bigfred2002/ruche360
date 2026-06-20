@@ -69,11 +69,16 @@ Les données suivantes devront recevoir une attention spécifique avant impléme
 - données de capteurs;
 - informations produites par IA.
 
-## Hors périmètre DATA-00
+## DATA-01
 
-- Aucun dossier `prisma/`.
-- Aucune migration.
-- Aucun client Prisma.
-- Aucune dépendance ajoutée.
+`DATA-01` initialise Prisma uniquement pour le socle minimal défini ci-dessus.
+
+La migration initiale ne doit pas créer les entités opérationnelles apicoles. Elle prépare seulement les organisations, utilisateurs, memberships, rôles, permissions et modules activables.
+
+## Hors périmètre DATA-01
+
 - Aucun CRUD.
-- Aucun appel base de données.
+- Aucun écran métier.
+- Aucun rucher, ruche, colonie, visite, tâche ou sanitaire exécutable.
+- Aucun seed de données réelles.
+- Aucun appel API applicatif.
