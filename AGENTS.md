@@ -16,6 +16,7 @@ Rucher360 est une application apicole modulaire multi-utilisateurs. Le dépôt d
 - Créer une branche dédiée par lot, avec le préfixe `codex/` par défaut.
 - Avant tout push, vérifier que le hook local `pre-push` de confidentialité est installé avec `make install-security-hooks`.
 - Ne jamais pousser d'exports locaux, secrets, fichiers `.env`, clés, dumps ou données personnelles.
+- Les Pull Requests doivent conserver la CI verte avant merge.
 
 ## Workflow agentique
 
@@ -53,3 +54,10 @@ Pour les lots Docker ou outillage:
 - ne pas initialiser l'application hors périmètre;
 - vérifier que `docker compose config` reste valide;
 - documenter les commandes prévues si `package.json` n'existe pas encore.
+
+Pour tout lot applicatif ou outillage, les validations de référence sont:
+
+- `make security-scan`;
+- `docker compose config`;
+- `docker compose run --rm app pnpm lint`;
+- `docker compose run --rm app pnpm build`.

@@ -17,6 +17,7 @@
 - [x] Scaffolder l'application dans un lot dédié.
 - [x] Poser un shell applicatif mobile-first statique.
 - [x] Ajouter un contrôle de confidentialité pre-push pour dépôt public.
+- [x] Ajouter une CI Docker-first pour PR et `main`.
 - [ ] Créer le modèle de données exécutable dans un lot dédié.
 
 ## SECURITY-PRE-PUSH-01
@@ -25,6 +26,14 @@
 - [x] Ajouter un hook `pre-push` versionné pour bloquer secrets, données personnelles et fichiers sensibles.
 - [x] Ajouter une commande d'installation du hook local.
 - [x] Documenter le contrôle de confidentialité.
+
+## CI-BASE-01
+
+- [x] Ajouter un workflow GitHub Actions.
+- [x] Exécuter le scan de confidentialité en CI.
+- [x] Valider Docker Compose en CI.
+- [x] Exécuter lint et build via Docker Compose.
+- [x] Documenter la CI comme contrôle à rendre obligatoire sur `main`.
 
 ## DOCKER-DEV-01
 

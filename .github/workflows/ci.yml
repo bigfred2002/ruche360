@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate Docker app
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run confidentiality scan
+        run: make security-scan
+
+      - name: Validate Docker Compose config
+        run: docker compose config
+
+      - name: Install dependencies through Docker Compose
+        run: docker compose run --rm app pnpm install
+
+      - name: Run lint through Docker Compose
+        run: docker compose run --rm app pnpm lint
+
+      - name: Run build through Docker Compose
+        run: docker compose run --rm app pnpm build
