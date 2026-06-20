@@ -163,6 +163,26 @@ docker compose run --rm app pnpm build
 
 Le workflow doit être rendu obligatoire dans la protection de branche `main` côté GitHub.
 
+## Runner GitHub local
+
+Un runner GitHub Actions local peut être lancé dans Docker pour exécuter une chaîne DevSecOps manuelle sur la machine de développement.
+
+Documentation:
+
+- [Runner GitHub local Docker](docs/devsecops-runner.md)
+
+Commandes:
+
+```bash
+make runner-config
+make runner-build
+make runner-up
+make runner-logs
+make runner-down
+```
+
+Le dépôt étant public, le workflow local est limité à `workflow_dispatch`. Ne pas déclencher ce runner automatiquement sur des Pull Requests externes non relues.
+
 ## Documentation principale
 
 - [Instructions agentiques](AGENTS.md)

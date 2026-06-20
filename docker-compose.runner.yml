@@ -1,0 +1,22 @@
+name: ruche360-runner
+
+services:
+  github-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.github-runner
+      args:
+        RUNNER_VERSION: ${RUNNER_VERSION:-2.335.1}
+    environment:
+      RUNNER_REPOSITORY_URL: ${RUNNER_REPOSITORY_URL:-https://github.com/bigfred2002/ruche360}
+      RUNNER_REGISTRATION: ${RUNNER_REGISTRATION:-}
+      RUNNER_NAME: ${RUNNER_NAME:-rucher360-local-docker}
+      RUNNER_LABELS: ${RUNNER_LABELS:-rucher360,local,docker,devsecops}
+      RUNNER_WORKDIR: ${RUNNER_WORKDIR:-_work}
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - github_runner_work:/actions-runner/_work
+
+volumes:
+  github_runner_work:

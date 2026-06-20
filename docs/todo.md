@@ -20,6 +20,16 @@
 - [x] Ajouter une CI Docker-first pour PR et `main`.
 - [x] Cadrer la stratégie data avant Prisma.
 - [x] Créer le modèle de données exécutable minimal.
+- [x] Préparer un runner GitHub local Docker pour validations DevSecOps manuelles.
+
+## DEVSECOPS-RUNNER-01
+
+- [x] Ajouter un Dockerfile dédié au runner GitHub local.
+- [x] Ajouter un Compose séparé pour le runner.
+- [x] Ajouter un modèle d'environnement sans secret.
+- [x] Ajouter un workflow manuel ciblant le runner local.
+- [x] Documenter les risques liés au dépôt public et au socket Docker.
+- [x] Ne pas déclencher le runner local sur les Pull Requests publiques.
 
 ## DATA-00
 

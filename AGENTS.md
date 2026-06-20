@@ -17,6 +17,8 @@ Rucher360 est une application apicole modulaire multi-utilisateurs. Le dépôt d
 - Avant tout push, vérifier que le hook local `pre-push` de confidentialité est installé avec `make install-security-hooks`.
 - Ne jamais pousser d'exports locaux, secrets, fichiers `.env`, clés, dumps ou données personnelles.
 - Les Pull Requests doivent conserver la CI verte avant merge.
+- Le runner GitHub local Docker est réservé aux validations manuelles de code de confiance.
+- Ne jamais brancher le runner local auto-hébergé sur des Pull Requests publiques non relues.
 
 ## Workflow agentique
 
@@ -61,3 +63,10 @@ Pour tout lot applicatif ou outillage, les validations de référence sont:
 - `docker compose config`;
 - `docker compose run --rm app pnpm lint`;
 - `docker compose run --rm app pnpm build`.
+
+Pour le runner GitHub local:
+
+- conserver le jeton d'enregistrement dans `runner.env` uniquement;
+- ne jamais committer `runner.env`;
+- utiliser `make runner-config`, `make runner-build` et `make runner-up`;
+- garder le workflow local en déclenchement manuel.

@@ -1,0 +1,48 @@
+FROM debian:bookworm-slim
+
+ARG TARGETARCH
+ARG RUNNER_VERSION=2.335.1
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV RUNNER_ALLOW_RUNASROOT=1
+
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+      ca-certificates \
+      curl \
+      git \
+      gnupg \
+      jq \
+      libcurl4 \
+      libicu72 \
+      libkrb5-3 \
+      libssl3 \
+      tar \
+      zlib1g; \
+    install -m 0755 -d /etc/apt/keyrings; \
+    curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc; \
+    chmod a+r /etc/apt/keyrings/docker.asc; \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm stable" > /etc/apt/sources.list.d/docker.list; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends docker-ce-cli docker-compose-plugin; \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /actions-runner
+
+RUN set -eux; \
+    case "${TARGETARCH:-amd64}" in \
+      amd64) runner_arch="x64" ;; \
+      arm64) runner_arch="arm64" ;; \
+      *) echo "Architecture non supportée: ${TARGETARCH}" >&2; exit 1 ;; \
+    esac; \
+    curl -fsSL \
+      "https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-${runner_arch}-${RUNNER_VERSION}.tar.gz" \
+      -o actions-runner.tar.gz; \
+    tar xzf actions-runner.tar.gz; \
+    rm actions-runner.tar.gz
+
+COPY scripts/github-runner-entrypoint.sh /usr/local/bin/github-runner-entrypoint
+RUN chmod +x /usr/local/bin/github-runner-entrypoint
+
+ENTRYPOINT ["/usr/local/bin/github-runner-entrypoint"]
