@@ -2,7 +2,7 @@
 
 ## Etat courant
 
-Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développement agentique. Le lot `DESIGN-SHELL-01` pose un premier shell applicatif mobile-first, statique et non métier.
+Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développement agentique. Le lot `DATA-00` cadre la stratégie data avant initialisation Prisma.
 
 ## Décisions actées
 
@@ -21,6 +21,8 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Les modules connectés sont prévus mais désactivés: balance, météo, caméra, capteurs, GPS.
 - Les modules IA sont prévus mais désactivés: analyse de visite, assistant connaissance, reconnaissance d'espèce, comptage varroa.
 - Les fonctions étiquetage, marketplace, paiement, comptabilité complète, IoT actif, IA automatique et prescription sanitaire automatique sont hors périmètre initial.
+- `DATA-00` limite le futur premier schéma exécutable au socle organisations, utilisateurs, adhésions, rôles, permissions et modules.
+- Les entités apicoles opérationnelles restent conceptuelles jusqu'aux lots métier dédiés.
 
 ## Points ouverts
 
@@ -28,6 +30,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Choix du stockage documentaire.
 - Niveau de détail de la localisation des ruchers.
 - Politique de conservation des données sanitaires.
+- Stratégie d'archivage des entités métier.
 
 ## Commandes utiles actuelles
 

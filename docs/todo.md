@@ -18,7 +18,17 @@
 - [x] Poser un shell applicatif mobile-first statique.
 - [x] Ajouter un contrôle de confidentialité pre-push pour dépôt public.
 - [x] Ajouter une CI Docker-first pour PR et `main`.
+- [x] Cadrer la stratégie data avant Prisma.
 - [ ] Créer le modèle de données exécutable dans un lot dédié.
+
+## DATA-00
+
+- [x] Documenter les principes data multi-organisation.
+- [x] Définir le socle minimal du futur `DATA-01`.
+- [x] Différer les entités apicoles métier vers leurs lots dédiés.
+- [x] Documenter les données sensibles.
+- [x] Ne pas créer de dossier `prisma/`.
+- [x] Ne pas ajouter de dépendance.
 
 ## SECURITY-PRE-PUSH-01
 
