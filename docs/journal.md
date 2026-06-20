@@ -1,5 +1,14 @@
 # Journal
 
+## 2026-06-20 - DEVSECOPS-RUNNER-01
+
+- Ajout d'un runner GitHub Actions local dans Docker pour validations DevSecOps manuelles.
+- Ajout de `Dockerfile.github-runner`, `docker-compose.runner.yml`, `runner.env.example` et du script d'entrée du runner.
+- Ajout du workflow manuel `.github/workflows/local-runner-validation.yml`.
+- Le jeton d'enregistrement GitHub reste dans `runner.env`, fichier local ignoré par Git.
+- Le runner local n'est pas déclenché automatiquement sur les Pull Requests publiques.
+- Le montage du socket Docker est documenté comme point de vigilance de sécurité.
+
 ## 2026-06-20 - README-PRODUCT-OVERVIEW-01
 
 - Restructuration du README pour présenter d'abord l'application Rucher360, ses fonctions prévues et son état réel.

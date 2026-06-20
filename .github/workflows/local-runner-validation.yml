@@ -1,0 +1,39 @@
+name: Local Runner Validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-local:
+    name: Validate on local Docker runner
+    runs-on:
+      - self-hosted
+      - rucher360
+      - local
+      - docker
+      - devsecops
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run confidentiality scan
+        run: make security-scan
+
+      - name: Validate Docker Compose config
+        run: docker compose config
+
+      - name: Install dependencies through Docker Compose
+        run: docker compose run --rm app pnpm install
+
+      - name: Run lint through Docker Compose
+        run: docker compose run --rm app pnpm lint
+
+      - name: Run build through Docker Compose
+        run: docker compose run --rm app pnpm build
