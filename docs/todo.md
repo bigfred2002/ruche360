@@ -21,6 +21,15 @@
 - [x] Cadrer la stratégie data avant Prisma.
 - [x] Créer le modèle de données exécutable minimal.
 - [x] Préparer un runner GitHub local Docker pour validations DevSecOps manuelles.
+- [x] Poser les conventions comptes, organisations et adhésions.
+
+## AUTH-01
+
+- [x] Ajouter les types domaine utilisateur, organisation et adhésion.
+- [x] Ajouter des helpers purs d'accès organisationnel.
+- [x] Documenter le périmètre sans Auth.js, session, API ou mot de passe.
+- [x] Ne pas ajouter de dépendance.
+- [x] Ne pas créer d'authentification réelle.
 
 ## DEVSECOPS-RUNNER-01
 

@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-20 - AUTH-01
+
+- Ajout d'une couche domaine TypeScript pour comptes utilisateurs, organisations et adhésions.
+- Ajout de helpers purs pour normaliser un email et vérifier un accès organisationnel actif.
+- Documentation du périmètre `AUTH-01` dans `docs/auth.md`.
+- Aucun Auth.js, aucune session, aucune page de connexion, aucun mot de passe et aucune API d'authentification n'ont été ajoutés.
+
 ## 2026-06-20 - DEVSECOPS-RUNNER-01
 
 - Ajout d'un runner GitHub Actions local dans Docker pour validations DevSecOps manuelles.

@@ -23,6 +23,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Les fonctions étiquetage, marketplace, paiement, comptabilité complète, IoT actif, IA automatique et prescription sanitaire automatique sont hors périmètre initial.
 - `DATA-00` limite le futur premier schéma exécutable au socle organisations, utilisateurs, adhésions, rôles, permissions et modules.
 - `DATA-01` crée le schéma Prisma et la migration initiale pour ce socle minimal.
+- `AUTH-01` pose les conventions TypeScript comptes, organisations et adhésions sans activer d'authentification réelle.
 - Les entités apicoles opérationnelles restent conceptuelles jusqu'aux lots métier dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
