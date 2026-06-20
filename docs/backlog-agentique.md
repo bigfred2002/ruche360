@@ -11,6 +11,7 @@ Ce backlog propose des micro-lots successifs. Chaque lot doit rester livrable en
 | DATA-01 | `codex/data-model-prisma` | Créer le schéma de données initial et les migrations dans le conteneur. |
 | AUTH-01 | `codex/auth-organizations` | Poser comptes, organisations et adhésions. |
 | RBAC-01 | `codex/rbac-modules` | Implémenter rôles, permissions et activation de modules. |
+| ARCHITECTURE-DOCS-00 | `codex/architecture-docs-00` | Produire la cartographie logique, modules et gouvernance sprints. |
 | MODULES-DYNAMIC-00 | `codex/modules-dynamic-00` | Cadrer profils, modules dynamiques, partage et transhumance. |
 | MODULES-DYNAMIC-01 | `codex/modules-dynamic-01` | Ajouter preferences de modules par adhesion et helpers de calcul. |
 | MODULES-REGISTRY-01 | `codex/modules-registry-01` | Creer la registry applicative des modules. |
@@ -51,3 +52,5 @@ Chaque demande de lot devrait préciser:
 - critères d'acceptation;
 - commandes de validation Docker;
 - consignes de Pull Request.
+
+La gouvernance detaillee des lots et sprints est documentee dans [Gouvernance des Lots et Sprints](sprint-governance.md).

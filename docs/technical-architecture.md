@@ -25,6 +25,8 @@ L'architecture cible devra rester modulaire:
 - activation de modules par organisation et utilisateur;
 - jobs ou traitements asynchrones uniquement quand un lot dédié les introduit.
 
+La logique produit transversale est detaillee dans [Architecture Logique de Rucher360](application-architecture.md). La cartographie des modules est detaillee dans [Cartographie des Modules et Fonctions](module-function-map.md).
+
 ## Docker Compose
 
 Le fichier `docker-compose.yml` définit:

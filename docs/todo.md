@@ -23,6 +23,9 @@
 - [x] Préparer un runner GitHub local Docker pour validations DevSecOps manuelles.
 - [x] Poser les conventions comptes, organisations et adhésions.
 - [x] Poser le catalogue rôles, permissions et modules.
+- [x] Produire une architecture logique transversale de l'application.
+- [x] Produire une cartographie des modules et fonctions.
+- [x] Produire une gouvernance des lots et sprints.
 - [x] Cadrer les modules dynamiques par organisation et adhesion.
 - [x] Ajouter les modèles exécutables ruchers, ruches et colonies.
 - [x] Cadrer le futur module materiel apicole sans code metier.
@@ -54,6 +57,15 @@
 - [x] Cadrer le partage initial d'un rucher par organisation.
 - [x] Cadrer la transhumance comme mouvement de ruches entre sites.
 - [x] Ne pas creer de migration, interface, CRUD, IA ou IoT actif.
+
+## ARCHITECTURE-DOCS-00
+
+- [x] Documenter les moteurs logiques de l'application.
+- [x] Documenter la regle centrale d'acces aux fonctions.
+- [x] Cartographier les modules socle, apicoles, support, connectes et IA.
+- [x] Documenter les regles de classement d'une nouvelle fonction.
+- [x] Documenter le cycle de lot, les validations et la definition of done.
+- [x] Ne pas ajouter de code applicatif, migration ou dependance.
 
 ## APIARY-01
 

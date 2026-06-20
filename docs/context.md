@@ -28,6 +28,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.
 - `EQUIPMENT-00` cadre le futur module materiel comme inventaire leger hybride, sans code metier, migration, CRUD, achats, fournisseurs, comptabilite, IA ou IoT actif.
 - `MODULES-DYNAMIC-00` cadre les modules dynamiques par organisation et adhesion, la conservation des donnees lors d'une desactivation, le partage initial des ruchers par organisation et la transhumance comme mouvement de ruches entre sites.
+- `ARCHITECTURE-DOCS-00` ajoute une lecture transversale de l'architecture logique, de la cartographie fonctionnelle par module et de la gouvernance des lots/sprints.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 

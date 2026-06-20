@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-21 - ARCHITECTURE-DOCS-00
+
+- Ajout d'une architecture logique transversale de Rucher360: moteurs organisation, modules, permissions, metier et gouvernance.
+- Ajout d'une cartographie des modules et fonctions pour clarifier responsabilites, statuts et limites.
+- Ajout d'un guide de gouvernance des lots et sprints avec cycle recommande, definition of done et validations.
+- Raccordement du README, de l'architecture technique, du backlog, du contexte et de la todo.
+- Aucun code applicatif, aucune migration, aucune dependance, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-06-21 - MODULES-DYNAMIC-00
 
 - Cadrage documentaire des modules dynamiques avec quatre couches: catalogue produit, activation organisation, visibilite par adhesion et permissions.
