@@ -2,7 +2,7 @@
 
 ## Position actuelle
 
-Le dépôt n'est pas encore scaffoldé en application Next.js. Le lot `DOCKER-DEV-01` ajoute l'environnement Docker Compose de développement sans installer de dépendances applicatives dans le dépôt.
+Le dépôt contient un socle Next.js App Router, TypeScript, Tailwind CSS, Docker Compose et un shell applicatif statique. `DATA-00` prépare la stratégie data sans créer encore de schéma Prisma exécutable.
 
 ## Contraintes structurantes
 
@@ -67,3 +67,7 @@ Les modules connectés et IA doivent être représentés comme capacités prévu
 ## Validation future
 
 Les tests futurs devront s'exécuter dans Docker Compose. Les commandes de validation seront documentées dans `README.md` ou dans les lots concernés lorsqu'une stack technique sera ajoutée.
+
+## Stratégie data
+
+Le premier schéma exécutable devra démarrer par les organisations, utilisateurs, adhésions, rôles, permissions et modules activables. Les entités rucher, ruche, colonie, visite, tâche et sanitaire restent différées jusqu'aux lots métier dédiés.

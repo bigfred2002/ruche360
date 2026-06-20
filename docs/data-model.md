@@ -1,6 +1,6 @@
-# Modèle de Données Conceptuel
+# Modèle de Données
 
-Ce document décrit les entités métier sans imposer encore de schéma Prisma ou SQL.
+Ce document décrit les entités métier et prépare leur passage progressif vers un schéma exécutable. La stratégie de cadrage est détaillée dans [Stratégie Data](data-strategy.md).
 
 ## Entités principales
 
@@ -212,4 +212,6 @@ Champs conceptuels:
 
 ## Décision initiale
 
-Le modèle reste conceptuel dans ce lot. Aucun dossier `prisma/`, migration ou client de base de données n'est créé.
+`DATA-00` garde le modèle au niveau documentaire. Aucun dossier `prisma/`, migration ou client de base de données n'est créé dans ce lot.
+
+Le premier lot exécutable `DATA-01` devra se limiter au socle organisation, utilisateur, adhésion, rôles, permissions et activation de modules. Les entités apicoles opérationnelles restent différées.

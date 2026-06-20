@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-20 - DATA-00
+
+- Cadrage documentaire de la stratégie data avant initialisation Prisma.
+- Définition du futur socle exécutable minimal: organisation, utilisateur, adhésion, rôles, permissions et modules activables.
+- Confirmation que les entités rucher, ruche, colonie, visite, tâche, sanitaire, documents et connaissances restent conceptuelles jusqu'aux lots dédiés.
+- Aucun dossier `prisma/`, aucune migration, aucun client Prisma et aucune dépendance n'ont été ajoutés.
+
 ## 2026-06-20 - CI-BASE-01
 
 - Ajout du workflow GitHub Actions `.github/workflows/ci.yml`.
