@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-21 - MODULES-REGISTRY-01
+
+- Ajout d'une registry TypeScript des modules applicatifs dans `src/features/rbac`.
+- Chaque entree de registry porte route cible, permissions requises, disponibilite et surfaces de navigation.
+- Ajout de helpers purs pour filtrer les modules visibles selon modules effectifs, permissions et surface.
+- La navigation et le cockpit ne sont pas encore branches sur cette registry.
+- Aucun ecran, aucune route applicative, aucun CRUD, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-06-21 - MODULES-DYNAMIC-01
 
 - Ajout du modele Prisma `MembershipModulePreference` pour porter la visibilite des modules au niveau de l'adhesion utilisateur-organisation.

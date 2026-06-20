@@ -33,7 +33,7 @@
 - [ ] Ajouter un ecran inventaire materiel mobile-first.
 - [ ] Ajouter les actions serveur minimales du materiel.
 - [x] Ajouter les preferences de modules par adhesion.
-- [ ] Creer la registry applicative des modules.
+- [x] Creer la registry applicative des modules.
 - [ ] Ajouter le choix de modules dans les profils membres.
 - [ ] Cadrer le partage fin par rucher si le besoin est confirme.
 - [ ] Cadrer puis implementer les mouvements de ruches.
@@ -65,6 +65,14 @@
 - [x] Ajouter des helpers purs pour calculer les modules effectifs.
 - [x] Garder `UserModulePreference` en place sans suppression risquee.
 - [x] Ne pas creer d'interface de gestion, route ou CRUD.
+
+## MODULES-REGISTRY-01
+
+- [x] Creer une registry TypeScript des modules applicatifs.
+- [x] Documenter pour chaque module route cible, permissions, disponibilite et surfaces de navigation.
+- [x] Ajouter des helpers purs pour filtrer les modules visibles.
+- [x] Exporter la registry depuis `src/features/rbac`.
+- [x] Ne pas brancher encore la navigation ou le cockpit sur cette registry.
 
 ## ARCHITECTURE-DOCS-00
 
