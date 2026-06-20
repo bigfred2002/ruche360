@@ -16,7 +16,15 @@
 - [x] Définir les commandes de validation containerisées.
 - [x] Scaffolder l'application dans un lot dédié.
 - [x] Poser un shell applicatif mobile-first statique.
+- [x] Ajouter un contrôle de confidentialité pre-push pour dépôt public.
 - [ ] Créer le modèle de données exécutable dans un lot dédié.
+
+## SECURITY-PRE-PUSH-01
+
+- [x] Ignorer explicitement les exports Stitch locaux.
+- [x] Ajouter un hook `pre-push` versionné pour bloquer secrets, données personnelles et fichiers sensibles.
+- [x] Ajouter une commande d'installation du hook local.
+- [x] Documenter le contrôle de confidentialité.
 
 ## DOCKER-DEV-01
 

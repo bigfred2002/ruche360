@@ -1,7 +1,7 @@
 COMPOSE := docker compose
 APP := app
 
-.PHONY: help build up down logs shell pnpm lint build-app db psql clean
+.PHONY: help build up down logs shell pnpm lint build-app db psql clean install-security-hooks security-scan
 
 help:
 	@echo "Rucher360 development commands"
@@ -16,6 +16,8 @@ help:
 	@echo "  make db         Start PostgreSQL only"
 	@echo "  make psql       Open psql in the db container"
 	@echo "  make clean      Remove containers and volumes"
+	@echo "  make install-security-hooks  Enable local pre-push confidentiality checks"
+	@echo "  make security-scan           Run the pre-push confidentiality check"
 
 build:
 	$(COMPOSE) build $(APP)
@@ -50,3 +52,11 @@ psql:
 
 clean:
 	$(COMPOSE) down --volumes --remove-orphans
+
+install-security-hooks:
+	chmod +x .githooks/pre-push
+	git config core.hooksPath .githooks
+	.githooks/pre-push
+
+security-scan:
+	.githooks/pre-push

@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-20 - SECURITY-PRE-PUSH-01
+
+- Ajout d'un contrôle de confidentialité avant push pour tenir compte du passage du dépôt en public.
+- Ajout du hook versionné `.githooks/pre-push`, activable via `make install-security-hooks`.
+- Le hook bloque les exports locaux Stitch, les fichiers `.env` non exemple, clés, dumps, motifs de secrets et données personnelles courantes.
+- Ajout de `stitch_exports/` dans `.gitignore` pour éviter l'ajout accidentel des exports locaux.
+- Ce garde-fou ne remplace pas une revue humaine, mais réduit le risque de fuite lors des pushes.
+
 ## 2026-06-19 - DESIGN-SHELL-01
 
 - Création d'un shell applicatif mobile-first statique pour Rucher360.

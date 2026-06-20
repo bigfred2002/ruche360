@@ -18,6 +18,7 @@ Ce lot pose un premier shell applicatif mobile-first statique. Il ne développe 
 - Travailler par micro-lots courts, traçables et revus en Pull Request.
 - Ne jamais committer directement sur `main`.
 - Conserver les modules connectés et IA prévus désactivés tant qu'un lot dédié ne les active pas explicitement.
+- Le dépôt étant public, installer le hook de confidentialité local avant tout push.
 
 ## Documentation principale
 
@@ -108,6 +109,25 @@ make build-app
 ```
 
 Les commandes locales directes comme `pnpm install`, `npx prisma` ou `npx playwright` ne doivent pas être utilisées comme prérequis sur la machine hôte.
+
+## Sécurité avant push
+
+Le dépôt contient un hook `pre-push` versionné dans `.githooks/pre-push`.
+Il bloque les chemins sensibles, les exports locaux Stitch, les fichiers d'environnement non exemple, les clés privées, les dumps et plusieurs motifs de secrets ou données personnelles.
+
+Activer le contrôle local:
+
+```bash
+make install-security-hooks
+```
+
+Lancer le contrôle sans pousser:
+
+```bash
+make security-scan
+```
+
+Ce contrôle réduit le risque de fuite dans le dépôt public, mais ne remplace pas une revue humaine avant publication.
 
 ## Services Docker
 

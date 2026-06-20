@@ -1,0 +1,106 @@
+#!/bin/sh
+set -eu
+
+zero_sha="0000000000000000000000000000000000000000"
+status=0
+scan_ranges="${TMPDIR:-/tmp}/rucher360-pre-push-ranges.$$"
+scan_files="${TMPDIR:-/tmp}/rucher360-pre-push-files.$$"
+secret_hits="${TMPDIR:-/tmp}/rucher360-secret-scan.$$"
+personal_hits="${TMPDIR:-/tmp}/rucher360-personal-scan.$$"
+
+trap 'rm -f "$scan_ranges" "$scan_files" "$secret_hits" "$personal_hits"' EXIT
+: > "$scan_ranges"
+
+add_scan_range() {
+  local_sha="$1"
+  remote_sha="$2"
+
+  if [ "$local_sha" = "$zero_sha" ]; then
+    return
+  fi
+
+  if [ "$remote_sha" = "$zero_sha" ]; then
+    base_ref="$(git merge-base "$local_sha" origin/main 2>/dev/null || git rev-list --max-parents=0 "$local_sha" | tail -n 1)"
+  else
+    base_ref="$remote_sha"
+  fi
+
+  printf "%s %s\n" "$base_ref" "$local_sha" >> "$scan_ranges"
+}
+
+while read local_ref local_sha remote_ref remote_sha
+do
+  add_scan_range "$local_sha" "$remote_sha"
+done
+
+if [ ! -s "$scan_ranges" ]; then
+  current_sha="$(git rev-parse HEAD)"
+  base_ref="$(git merge-base "$current_sha" origin/main 2>/dev/null || git rev-list --max-parents=0 "$current_sha" | tail -n 1)"
+  printf "%s %s\n" "$base_ref" "$current_sha" >> "$scan_ranges"
+fi
+
+secret_pattern="(A[K]IA[0-9A-Z]{16}|A[S]IA[0-9A-Z]{16}|A[I]za[0-9A-Za-z_-]{35}|g[h]p_[0-9A-Za-z_]{30,}|g[i]thub_pat_[0-9A-Za-z_]{20,}|s[k]-[A-Za-z0-9]{20,}|-----BEGIN (RSA |DSA |EC |OPENSSH |PGP )?PRIVATE KEY-----|D[A]TABASE_URL=.*://[^[:space:]]+:[^@[:space:]]+@|PASSWORD[[:space:]]*=|SECRET[[:space:]_A-Z]*=|TOKEN[[:space:]_A-Z]*=|API[_-]?KEY[[:space:]]*=)"
+personal_pattern="([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|(\+33|0)[[:space:].-]?[1-9]([[:space:].-]?[0-9]{2}){4})"
+
+check_path() {
+  path="$1"
+
+  case "$path" in
+    .env|.env.*|*/.env|*/.env.*)
+      if [ "$(basename "$path")" != ".env.example" ]; then
+        echo "SECURITY: fichier d'environnement interdit au push: $path" >&2
+        status=1
+      fi
+      ;;
+    stitch_exports/*)
+      echo "SECURITY: export local Stitch interdit au push: $path" >&2
+      status=1
+      ;;
+    *.pem|*.key|*.p12|*.pfx|*.crt|*.cer|*.kdb|*.jks|*.sqlite|*.db|*.dump|*.sql|*.bak)
+      echo "SECURITY: fichier potentiellement sensible interdit au push: $path" >&2
+      status=1
+      ;;
+  esac
+}
+
+scan_file_content() {
+  commit_sha="$1"
+  path="$2"
+
+  if [ "$(basename "$path")" = ".env.example" ]; then
+    return
+  fi
+
+  if git show "$commit_sha:$path" 2>/dev/null | LC_ALL=C grep -I -n -E "$secret_pattern" > "$secret_hits" 2>/dev/null; then
+    echo "SECURITY: motif de secret détecté dans $path" >&2
+    sed 's/^/  ligne /' "$secret_hits" >&2
+    status=1
+  fi
+
+  if git show "$commit_sha:$path" 2>/dev/null | LC_ALL=C grep -I -n -E "$personal_pattern" > "$personal_hits" 2>/dev/null; then
+    echo "SECURITY: donnée personnelle possible détectée dans $path" >&2
+    sed 's/^/  ligne /' "$personal_hits" >&2
+    status=1
+  fi
+}
+
+while read base_ref local_sha
+do
+  [ -z "${base_ref:-}" ] && continue
+  git diff --name-only --diff-filter=ACMR "$base_ref..$local_sha" > "$scan_files"
+
+  while read path
+  do
+    [ -z "$path" ] && continue
+    check_path "$path"
+    scan_file_content "$local_sha" "$path"
+  done < "$scan_files"
+done < "$scan_ranges"
+
+if [ "$status" -ne 0 ]; then
+  echo "SECURITY: push bloqué pour protéger la confidentialité du dépôt public." >&2
+  echo "Corrige les fichiers signalés, puis relance le push." >&2
+  exit 1
+fi
+
+echo "SECURITY: contrôle confidentialité pre-push OK."

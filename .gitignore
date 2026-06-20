@@ -32,6 +32,9 @@ coverage/
 test-results/
 playwright-report/
 
+# Local design references and private imports
+stitch_exports/
+
 # Docker and local runtime
 *.pid
 tmp/

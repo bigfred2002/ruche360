@@ -14,6 +14,8 @@ Rucher360 est une application apicole modulaire multi-utilisateurs. Le dépôt d
 - Exécuter les commandes pnpm uniquement via `docker compose run --rm app pnpm ...`.
 - Ne jamais committer directement sur `main`.
 - Créer une branche dédiée par lot, avec le préfixe `codex/` par défaut.
+- Avant tout push, vérifier que le hook local `pre-push` de confidentialité est installé avec `make install-security-hooks`.
+- Ne jamais pousser d'exports locaux, secrets, fichiers `.env`, clés, dumps ou données personnelles.
 
 ## Workflow agentique
 
@@ -24,7 +26,8 @@ Rucher360 est une application apicole modulaire multi-utilisateurs. Le dépôt d
 5. Mettre à jour la documentation touchée par la décision.
 6. Exécuter les validations pertinentes dans Docker lorsque disponibles.
 7. Mettre à jour `docs/journal.md`.
-8. Préparer une Pull Request.
+8. Exécuter `make security-scan` avant push.
+9. Préparer une Pull Request.
 
 ## Style de travail
 
