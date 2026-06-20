@@ -19,7 +19,7 @@
 - [x] Ajouter un contrôle de confidentialité pre-push pour dépôt public.
 - [x] Ajouter une CI Docker-first pour PR et `main`.
 - [x] Cadrer la stratégie data avant Prisma.
-- [ ] Créer le modèle de données exécutable dans un lot dédié.
+- [x] Créer le modèle de données exécutable minimal.
 
 ## DATA-00
 
@@ -29,6 +29,14 @@
 - [x] Documenter les données sensibles.
 - [x] Ne pas créer de dossier `prisma/`.
 - [x] Ne pas ajouter de dépendance.
+
+## DATA-01
+
+- [x] Ajouter Prisma via Docker Compose.
+- [x] Créer le schéma Prisma minimal.
+- [x] Créer la migration initiale.
+- [x] Limiter le schéma aux organisations, utilisateurs, rôles, permissions et modules.
+- [x] Ne pas créer de modèle rucher, ruche, visite, sanitaire, IA ou IoT actif.
 
 ## SECURITY-PRE-PUSH-01
 
