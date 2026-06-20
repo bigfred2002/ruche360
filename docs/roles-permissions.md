@@ -6,6 +6,8 @@ Les permissions doivent être explicites, auditables et liées à une organisati
 
 Les modules activés déterminent les surfaces disponibles. Les permissions déterminent les actions autorisées.
 
+L'acces cible combine quatre conditions: module existant, module active pour l'organisation, module visible pour l'adhesion utilisateur-organisation et permission suffisante.
+
 ## Rôles de départ
 
 | Rôle | Description |
@@ -46,9 +48,18 @@ Les modules activés déterminent les surfaces disponibles. Les permissions dét
 | `harvests.read` | Consulter les récoltes. |
 | `harvests.write` | Créer et modifier les récoltes. |
 
+## Permissions futures à cadrer
+
+| Permission | Description |
+| --- | --- |
+| `transhumance.read` | Consulter les mouvements de ruches. |
+| `transhumance.write` | Créer et modifier les mouvements de ruches. |
+
 ## Garde-fous
 
 - Les permissions liées à un module désactivé ne donnent aucun accès visible.
+- Les modules masques pour une adhesion ne doivent pas etre visibles pour ce membre.
+- La desactivation d'un module ne supprime pas ses donnees.
 - Les actions sanitaires ne valent pas prescription automatique.
 - Les données connectées ou IA restent inactives tant que les modules correspondants sont désactivés.
 

@@ -11,11 +11,22 @@ Les flux doivent être courts, lisibles sur mobile et adaptés au terrain. Une a
 3. Il rejoint l'organisation avec un rôle.
 4. Il voit uniquement les modules activés pour son organisation et son compte.
 
+## Flux futur: choisir les modules d'un membre
+
+1. Un administrateur choisit une organisation.
+2. Il invite ou modifie un membre.
+3. Il selectionne un role.
+4. Il choisit les modules visibles parmi les modules actives pour l'organisation.
+5. L'application masque les modules non visibles pour cette adhesion.
+6. Les donnees des modules masques restent conservees.
+
 ## Flux initial: consulter un rucher
 
 1. L'utilisateur ouvre la liste des ruchers.
 2. Il sélectionne un rucher.
 3. Il consulte les ruches, tâches ouvertes, dernières visites et alertes sanitaires.
+
+Le partage initial d'un rucher passe par l'organisation, les roles et les permissions. Un partage fin par rucher sera etudie separement si le besoin est confirme.
 
 ## Flux initial: saisir une visite
 
@@ -24,6 +35,15 @@ Les flux doivent être courts, lisibles sur mobile et adaptés au terrain. Une a
 3. Il saisit observations, actions et suites à prévoir.
 4. Il crée des tâches depuis la visite si besoin.
 5. La visite est datée et attribuée.
+
+## Flux futur: transhumance
+
+1. L'utilisateur ouvre le module transhumance ou une liste de ruches.
+2. Il choisit les ruches a deplacer.
+3. Il choisit le rucher destination.
+4. Il renseigne date, motif et note.
+5. Il confirme le mouvement.
+6. L'historique conserve les anciennes localisations.
 
 ## Flux initial: suivre varroa
 
@@ -77,3 +97,5 @@ Les flux suivants ne doivent pas être actifs au lancement:
 - prescription sanitaire automatique;
 - paiement ou marketplace.
 - achats, fournisseurs, comptabilite ou destruction reglementaire complexe du materiel.
+- partage public de localisation de rucher;
+- geolocalisation temps reel de transhumance.

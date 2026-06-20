@@ -42,6 +42,19 @@ Champs conceptuels:
 - modules utilisateur activés;
 - statut d'invitation.
 
+### MembershipModulePreference
+
+Preference de visibilite d'un module pour une adhesion utilisateur-organisation.
+
+Champs conceptuels:
+
+- adhesion;
+- module;
+- statut d'activation;
+- dates de creation et mise a jour.
+
+Ce modele cible doit remplacer l'usage de preferences utilisateur globales pour piloter les acces metier, car un meme utilisateur peut avoir des modules differents selon l'organisation.
+
 ### Role et Permission
 
 Définissent les droits applicables dans une organisation.
@@ -57,6 +70,8 @@ Champs conceptuels:
 - catégorie;
 - état par défaut;
 - niveau d'activation.
+
+Une desactivation de module masque les surfaces et bloque les actions, mais ne supprime jamais les donnees du module.
 
 ### Apiary
 
@@ -85,6 +100,8 @@ Champs conceptuels:
 - configuration basse consommation;
 - statut matériel;
 - notes.
+
+Une ruche est un contenant mobile. Elle peut changer de rucher et devra conserver un historique de mouvement dans un lot ulterieur.
 
 ### Colony
 
@@ -259,11 +276,29 @@ Champs conceptuels:
 - date;
 - note.
 
+### HiveMovement
+
+Mouvement de ruche ou lot de ruches entre sites.
+
+Champs conceptuels:
+
+- organisation;
+- ruche ou groupe de ruches;
+- rucher source;
+- rucher destination;
+- date de depart;
+- date d'arrivee optionnelle;
+- motif;
+- statut;
+- auteur optionnel;
+- notes.
+
 ## Relations clés
 
 - Une organisation possède ses ruchers, ruches, colonies, visites, tâches, documents, contacts et articles.
 - Un utilisateur accède à une organisation via une adhésion.
 - Une ruche peut changer de rucher.
+- La transhumance doit etre representee comme un historique de mouvements de ruches entre ruchers, pas comme un deplacement du rucher.
 - Une colonie peut changer de ruche.
 - Une visite peut concerner un rucher entier, une ruche ou une colonie.
 - Une tâche peut cibler plusieurs types d'entités métier.
@@ -313,3 +348,13 @@ Le suivi cible est hybride:
 - evenements legers pour deplacement, nettoyage, maintenance, ajustement ou retrait du service.
 
 Les achats, fournisseurs, prix, amortissements, comptabilite, destruction reglementaire complexe, IA et IoT restent hors perimetre.
+
+## Decision MODULES-DYNAMIC-00
+
+Les modules dynamiques doivent etre pilotes par organisation puis par adhesion. Le modele cible ajoute `MembershipModulePreference` pour eviter de rendre les modules visibles globalement pour un utilisateur dans toutes ses organisations.
+
+Les donnees d'un module doivent etre conservees lorsqu'il est desactive. La desactivation limite l'interface et les actions, sans suppression automatique.
+
+Le partage initial d'un rucher reste organisationnel. Un partage fin par rucher pourra etre cadre dans un module `apiary_access` si le besoin est confirme.
+
+La transhumance est cadre comme mouvement de ruches ou lots de ruches entre sites. `Apiary` reste un site; `Hive` reste l'element mobile.

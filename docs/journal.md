@@ -1,5 +1,16 @@
 # Journal
 
+## 2026-06-21 - MODULES-DYNAMIC-00
+
+- Cadrage documentaire des modules dynamiques avec quatre couches: catalogue produit, activation organisation, visibilite par adhesion et permissions.
+- Decision de conserver les donnees quand un module est desactive: seules les surfaces et actions sont masquees ou bloquees.
+- Cadrage de `MembershipModulePreference` comme modele cible pour eviter des preferences de modules globales a l'utilisateur.
+- Cadrage d'une future registry applicative des modules pour alimenter navigation, cockpit et routes.
+- Confirmation que le partage initial d'un rucher passe par l'organisation, les roles et les permissions.
+- Cadrage du partage fin par rucher comme module optionnel futur, non implemente tant que le besoin n'est pas confirme.
+- Cadrage de la transhumance comme mouvement de ruches ou lots de ruches entre sites, sans deplacer le concept de rucher.
+- Aucun code metier, aucune migration, aucune interface de gestion, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-06-20 - EQUIPMENT-00
 
 - Cadrage documentaire du futur module `Materiel`.

@@ -11,6 +11,19 @@ Rucher360 est modulaire. Un module peut être:
 
 Un module désactivé ne doit pas exécuter de traitement métier, exposer d'action opérationnelle ou suggérer une automatisation.
 
+## Activation dynamique
+
+L'activation cible d'une fonction repose sur quatre niveaux:
+
+- le module existe dans le catalogue produit;
+- l'organisation active ou desactive le module;
+- l'adhesion utilisateur-organisation rend le module visible ou non pour un membre;
+- les permissions du role autorisent les actions.
+
+Desactiver un module masque ses surfaces et bloque ses actions, mais ne supprime jamais ses donnees.
+
+Le cadrage detaille est documente dans [Modules Dynamiques](dynamic-modules.md).
+
 ## Modules initiaux actifs
 
 | Module | Niveau | Description |
@@ -30,6 +43,13 @@ Un module désactivé ne doit pas exécuter de traitement métier, exposer d'act
 | Documents | Organisation | Fichiers et documents liés au métier. |
 | Récoltes simples | Organisation | Suivi minimal des récoltes. |
 | Configuration basse consommation | Organisation | Paramètres préparatoires pour ruches sobres. |
+
+## Modules apicoles a cadrer
+
+| Module | Etat initial | Raison |
+| --- | --- | --- |
+| Transhumance | A cadrer | Doit etre modelisee comme mouvement de ruches entre sites sans deplacer le rucher. |
+| Partage fin par rucher | A confirmer | Le partage initial passe deja par l'organisation, les roles et les permissions. |
 
 ## Modules connectés prévus mais désactivés
 
@@ -68,3 +88,11 @@ Les modules suivants ne doivent pas être préparés comme fonctionnalités init
 Le module `Materiel` est cadre pour un lot dedie, mais il n'est pas encore ajoute au catalogue executable. Il est prevu comme module apicole activable sans alourdir la navigation. Il couvrira l'inventaire terrain, les emplacements et les statuts simples du materiel. Il ne couvrira pas les achats, prix, amortissements, fournisseurs, destruction reglementaire complexe, IA, IoT ou prescription sanitaire automatique.
 
 Le cadrage detaille est documente dans [Module Materiel](equipment.md).
+
+## Partage et transhumance
+
+Le partage initial d'un rucher se fait par l'organisation, les roles et les permissions. Un partage fin par rucher pourra devenir un module optionnel si le besoin est confirme.
+
+La transhumance ne doit pas deplacer le rucher lui-meme. Elle doit etre modelisee comme un mouvement de ruches ou de lots de ruches entre sites.
+
+Le cadrage detaille est documente dans [Partage de Rucher et Transhumance](apiary-sharing-transhumance.md).
