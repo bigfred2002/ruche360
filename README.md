@@ -10,6 +10,7 @@ Le projet est développé par micro-lots avec Codex, GitHub et Docker Compose. L
 
 - Organisations apicoles multi-utilisateurs.
 - Ruchers, ruches et colonies.
+- Modèle exécutable séparant les sites apicoles, le matériel ruche et le vivant.
 - Visites et observations terrain.
 - Tâches à planifier, réaliser ou suivre.
 - Récoltes simples.

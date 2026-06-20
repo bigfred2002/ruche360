@@ -38,6 +38,26 @@ enum ModuleActivationStatus {
   DISABLED
 }
 
+enum ApiaryStatus {
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+enum HiveStatus {
+  ACTIVE
+  STORED
+  MAINTENANCE
+  ARCHIVED
+}
+
+enum ColonyStatus {
+  ACTIVE
+  WEAK
+  LOST
+  ARCHIVED
+}
+
 model Organization {
   id         String             @id @default(cuid())
   name       String
@@ -51,6 +71,9 @@ model Organization {
   memberships         Membership[]
   roles               Role[]
   organizationModules OrganizationModule[]
+  apiaries            Apiary[]
+  hives               Hive[]
+  colonies            Colony[]
 
   @@index([status])
 }
@@ -176,5 +199,70 @@ model UserModulePreference {
 
   @@unique([userId, moduleId])
   @@index([moduleId])
+  @@index([status])
+}
+
+model Apiary {
+  id                  String       @id @default(cuid())
+  organizationId      String
+  name                String
+  description         String?
+  locationDescription String?
+  latitude            Decimal?     @db.Decimal(9, 6)
+  longitude           Decimal?     @db.Decimal(9, 6)
+  accessNotes         String?
+  status              ApiaryStatus @default(ACTIVE)
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  archivedAt          DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  hives        Hive[]
+
+  @@index([organizationId])
+  @@index([status])
+}
+
+model Hive {
+  id                    String     @id @default(cuid())
+  organizationId        String
+  apiaryId              String?
+  fieldIdentifier       String
+  hiveType              String?
+  lowPowerConfiguration Json?
+  status                HiveStatus @default(ACTIVE)
+  notes                 String?
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+  archivedAt            DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  apiary       Apiary?      @relation(fields: [apiaryId], references: [id], onDelete: SetNull)
+  colonies     Colony[]
+
+  @@unique([organizationId, fieldIdentifier])
+  @@index([apiaryId])
+  @@index([status])
+}
+
+model Colony {
+  id             String       @id @default(cuid())
+  organizationId String
+  hiveId         String?
+  origin         String?
+  queenKnown     Boolean      @default(false)
+  queenYear      Int?
+  status         ColonyStatus @default(ACTIVE)
+  estimatedForce Int?
+  notes          String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  archivedAt     DateTime?
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  hive         Hive?        @relation(fields: [hiveId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([hiveId])
   @@index([status])
 }

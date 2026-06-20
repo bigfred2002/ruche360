@@ -231,3 +231,13 @@ Le premier lot exécutable `DATA-01` devra se limiter au socle organisation, uti
 - `UserModulePreference`.
 
 Les modèles rucher, ruche, colonie, visite, tâche, sanitaire, documents, contacts, récoltes, IA et IoT restent hors schéma exécutable.
+
+## Décision APIARY-01
+
+`APIARY-01` ajoute les premiers modèles apicoles exécutables:
+
+- `Apiary`: rucher ou site apicole rattaché à une organisation;
+- `Hive`: matériel ruche identifié, éventuellement rattaché à un rucher;
+- `Colony`: colonie vivante, éventuellement rattachée à une ruche.
+
+Le modèle conserve la séparation entre le contenant (`Hive`) et le vivant (`Colony`). Les visites, tâches, sanitaire, documents, contacts, récoltes, IA et IoT restent hors schéma exécutable.

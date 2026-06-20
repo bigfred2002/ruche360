@@ -23,6 +23,16 @@
 - [x] Préparer un runner GitHub local Docker pour validations DevSecOps manuelles.
 - [x] Poser les conventions comptes, organisations et adhésions.
 - [x] Poser le catalogue rôles, permissions et modules.
+- [x] Ajouter les modèles exécutables ruchers, ruches et colonies.
+
+## APIARY-01
+
+- [x] Ajouter `Apiary` dans Prisma.
+- [x] Ajouter `Hive` dans Prisma.
+- [x] Ajouter `Colony` dans Prisma.
+- [x] Générer la migration PostgreSQL.
+- [x] Ajouter des types domaine simples.
+- [x] Ne pas créer de CRUD, d'API ou d'écran métier.
 
 ## RBAC-01
 
