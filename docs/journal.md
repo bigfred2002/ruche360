@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-06-20 - README-PRODUCT-OVERVIEW-01
+
+- Restructuration du README pour présenter d'abord l'application Rucher360, ses fonctions prévues et son état réel.
+- Clarification des modules actifs attendus, des modules IA/IoT prévus mais désactivés et des hors périmètres initiaux.
+- Conservation des commandes Docker Compose, de la sécurité pre-push et de la documentation agentique.
+
 ## 2026-06-20 - DATA-01
 
 - Ajout de Prisma et `@prisma/client` via Docker Compose uniquement.

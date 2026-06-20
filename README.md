@@ -1,58 +1,55 @@
 # Rucher360
 
-Rucher360 est une application apicole modulaire multi-utilisateurs, pensée pour des organisations apicoles qui souhaitent suivre leurs ruchers, ruches, colonies, visites, tâches, documents et connaissances métier dans un cadre simple, extensible et sobre.
+Rucher360 est une application apicole modulaire multi-utilisateurs. Elle vise à aider un apiculteur, une association, une exploitation ou un collectif à piloter ses organisations, ruchers, ruches, colonies, visites, tâches, documents et connaissances dans une interface simple, mobile-first et extensible.
 
-Ce dépôt est préparé pour un développement agentique par micro-lots avec Codex, GitHub et Docker Compose.
+Le projet est développé par micro-lots avec Codex, GitHub et Docker Compose. Le dépôt est public: les secrets, données personnelles, exports locaux et fichiers d'environnement ne doivent jamais être commités.
 
-## Statut du dépôt
+## Fonctionnalités prévues
 
-Lot courant: `DESIGN-SHELL-01`
+### Pilotage apicole
 
-Ce lot pose un premier shell applicatif mobile-first statique. Il ne développe pas de fonctionnalité métier.
+- Organisations apicoles multi-utilisateurs.
+- Ruchers, ruches et colonies.
+- Visites et observations terrain.
+- Tâches à planifier, réaliser ou suivre.
+- Récoltes simples.
 
-## Principes de développement
+### Suivi sanitaire
 
-- Développement containerisé avec Docker Compose.
-- Ne jamais supposer que Node.js, pnpm, Prisma ou Playwright sont installés sur le Mac.
-- Exécuter les commandes projet dans les conteneurs lorsque l'application existera.
-- Travailler par micro-lots courts, traçables et revus en Pull Request.
-- Ne jamais committer directement sur `main`.
-- Conserver les modules connectés et IA prévus désactivés tant qu'un lot dédié ne les active pas explicitement.
-- Le dépôt étant public, installer le hook de confidentialité local avant tout push.
+- Observations sanitaires.
+- Suivi varroa.
+- Suivi frelon.
+- Historique des actions et notes métier.
 
-## Documentation principale
+### Travail collectif
 
-- [Instructions agentiques](AGENTS.md)
-- [Design produit](DESIGN.md)
-- [Périmètre produit](docs/product-scope.md)
-- [Modules](docs/modules.md)
-- [Rôles et permissions](docs/roles-permissions.md)
-- [Modèle de données](docs/data-model.md)
-- [Architecture technique](docs/technical-architecture.md)
-- [Flux UX](docs/ux-flows.md)
-- [Backlog agentique](docs/backlog-agentique.md)
-- [Contexte courant](docs/context.md)
-- [Todo](docs/todo.md)
-- [Journal](docs/journal.md)
+- Utilisateurs, rôles et permissions.
+- Modules activables par organisation et par utilisateur.
+- Contacts utiles: vétérinaires, techniciens sanitaires, fournisseurs, référents et partenaires.
+- Documents liés aux organisations et futures entités métier.
 
-## Périmètre initial
+### Connaissance
 
-Le périmètre initial couvre:
+- Base de connaissance interne.
+- Fiches pratiques, procédures et notes.
+- Assistant connaissance prévu mais désactivé tant qu'un lot IA dédié ne l'active pas.
 
-- organisations apicoles;
-- utilisateurs, rôles et permissions;
-- modules activables par organisation et par utilisateur;
-- ruchers, ruches, colonies, visites et tâches;
-- suivi sanitaire, varroa et frelon;
-- base de connaissance;
-- contacts utiles;
-- documents;
-- récoltes simples;
-- configuration de ruche basse consommation.
+### Modules optionnels prévus
 
-Les modules connectés prévus mais désactivés sont: balance, météo, caméra, capteurs et GPS.
+Les modules connectés sont prévus mais désactivés:
 
-Les modules IA prévus mais désactivés sont: analyse de visite, assistant connaissance, reconnaissance d'espèce et comptage varroa.
+- balance connectée;
+- météo de rucher;
+- caméra;
+- capteurs;
+- GPS.
+
+Les modules IA sont prévus mais désactivés:
+
+- analyse de visite;
+- assistant connaissance;
+- reconnaissance d'espèce;
+- comptage varroa.
 
 ## Hors périmètre initial
 
@@ -64,11 +61,34 @@ Les modules IA prévus mais désactivés sont: analyse de visite, assistant conn
 - IA automatique.
 - Prescription sanitaire automatique.
 
-## Démarrage développeur
+## Etat du dépôt
 
-L'application Next.js est scaffoldée avec App Router, TypeScript et Tailwind CSS. L'environnement Docker Compose évite toute dépendance à Node.js, pnpm, Prisma ou Playwright sur le Mac.
+Les lots déjà intégrés posent:
 
-Copier l'exemple d'environnement local:
+- le cadre documentaire produit et agentique;
+- l'environnement Docker Compose de développement;
+- le socle Next.js App Router, TypeScript et Tailwind CSS;
+- un shell applicatif mobile-first statique;
+- le contrôle de confidentialité pre-push;
+- la CI Docker-first;
+- la stratégie data préalable au schéma exécutable.
+
+Le shell actuel est une interface statique de cockpit apicole. Il ne contient pas encore de CRUD métier, d'authentification, d'appel API applicatif, d'IA active ou d'IoT actif.
+
+## Architecture de développement
+
+- Application: Next.js App Router, TypeScript, Tailwind CSS.
+- Conteneur applicatif: service Docker Compose `app`.
+- Base de données locale: PostgreSQL via service Docker Compose `db`.
+- Dépendances Node: volume Docker `node_modules`.
+- Store pnpm: volume Docker `pnpm_store`.
+- Commandes projet: uniquement via Docker Compose.
+
+Ne jamais supposer que Node.js, pnpm, Prisma ou Playwright sont installés sur la machine hôte.
+
+## Démarrage local
+
+Copier l'exemple d'environnement:
 
 ```bash
 cp .env.example .env
@@ -88,7 +108,7 @@ docker compose up --build
 
 L'application est disponible sur `http://localhost:3000` quand le service `app` est démarré.
 
-## Commandes pnpm
+## Commandes utiles
 
 Les commandes pnpm doivent toujours passer par Docker Compose:
 
@@ -106,16 +126,16 @@ make up
 make pnpm CMD="install"
 make lint
 make build-app
+make security-scan
 ```
 
-Les commandes locales directes comme `pnpm install`, `npx prisma` ou `npx playwright` ne doivent pas être utilisées comme prérequis sur la machine hôte.
+Les commandes locales directes comme `pnpm install`, `node`, `npx prisma` ou `npx playwright` ne doivent pas être utilisées comme prérequis sur la machine hôte.
 
-## Sécurité avant push
+## Sécurité du dépôt public
 
-Le dépôt contient un hook `pre-push` versionné dans `.githooks/pre-push`.
-Il bloque les chemins sensibles, les exports locaux Stitch, les fichiers d'environnement non exemple, les clés privées, les dumps et plusieurs motifs de secrets ou données personnelles.
+Le dépôt contient un hook `pre-push` versionné dans `.githooks/pre-push`. Il bloque les chemins sensibles, les exports locaux Stitch, les fichiers d'environnement non exemple, les clés privées, les dumps et plusieurs motifs de secrets ou données personnelles.
 
-Activer le contrôle local:
+Installer le hook local:
 
 ```bash
 make install-security-hooks
@@ -128,25 +148,6 @@ make security-scan
 ```
 
 Ce contrôle réduit le risque de fuite dans le dépôt public, mais ne remplace pas une revue humaine avant publication.
-
-## Services Docker
-
-- `app`: service prévu pour Next.js, basé sur `Dockerfile.dev`.
-- `db`: PostgreSQL 16 Alpine avec volume persistant.
-- `node_modules`: volume Docker dédié pour éviter d'écrire les dépendances Node sur l'hôte.
-- `pnpm_store`: volume Docker pour le store pnpm.
-
-## Validations prévues
-
-Quand l'application Next.js existera, les validations attendues seront:
-
-```bash
-docker compose build app
-docker compose run --rm app pnpm lint
-docker compose run --rm app pnpm build
-```
-
-Pour ce lot, ces validations sont applicables et doivent être lancées depuis Docker Compose.
 
 ## Intégration continue
 
@@ -161,3 +162,18 @@ docker compose run --rm app pnpm build
 ```
 
 Le workflow doit être rendu obligatoire dans la protection de branche `main` côté GitHub.
+
+## Documentation principale
+
+- [Instructions agentiques](AGENTS.md)
+- [Design produit](DESIGN.md)
+- [Périmètre produit](docs/product-scope.md)
+- [Modules](docs/modules.md)
+- [Rôles et permissions](docs/roles-permissions.md)
+- [Modèle de données](docs/data-model.md)
+- [Architecture technique](docs/technical-architecture.md)
+- [Flux UX](docs/ux-flows.md)
+- [Backlog agentique](docs/backlog-agentique.md)
+- [Contexte courant](docs/context.md)
+- [Todo](docs/todo.md)
+- [Journal](docs/journal.md)
