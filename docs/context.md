@@ -25,7 +25,8 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `DATA-01` crée le schéma Prisma et la migration initiale pour ce socle minimal.
 - `AUTH-01` pose les conventions TypeScript comptes, organisations et adhésions sans activer d'authentification réelle.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.
-- Les entités apicoles opérationnelles restent conceptuelles jusqu'aux lots métier dédiés.
+- `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.
+- Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
 ## Points ouverts

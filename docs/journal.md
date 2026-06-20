@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-20 - APIARY-01
+
+- Ajout des modèles Prisma `Apiary`, `Hive` et `Colony`.
+- Ajout d'une migration PostgreSQL pour les ruchers, ruches et colonies.
+- Ajout de types domaine simples et helpers de statut pour le périmètre apicole de base.
+- Aucun CRUD, aucune API, aucun écran métier, aucune visite, tâche, sanitaire, IA ou IoT actif n'ont été ajoutés.
+
 ## 2026-06-20 - RBAC-01
 
 - Ajout d'un catalogue TypeScript des permissions, rôles initiaux et modules activables.
