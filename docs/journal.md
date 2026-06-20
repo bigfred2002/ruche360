@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-21 - MODULES-DYNAMIC-01
+
+- Ajout du modele Prisma `MembershipModulePreference` pour porter la visibilite des modules au niveau de l'adhesion utilisateur-organisation.
+- Generation d'une migration PostgreSQL dediee via Docker Compose.
+- Ajout de helpers purs pour calculer les modules effectifs a partir des modules d'organisation et des preferences d'adhesion.
+- Conservation de `UserModulePreference` pour eviter une suppression de schema dans ce lot.
+- Aucune interface de gestion, aucune route, aucun CRUD, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-06-21 - ARCHITECTURE-DOCS-00
 
 - Ajout d'une architecture logique transversale de Rucher360: moteurs organisation, modules, permissions, metier et gouvernance.

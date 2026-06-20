@@ -32,7 +32,7 @@
 - [ ] Ajouter le module, les permissions et le modele minimal du materiel.
 - [ ] Ajouter un ecran inventaire materiel mobile-first.
 - [ ] Ajouter les actions serveur minimales du materiel.
-- [ ] Ajouter les preferences de modules par adhesion.
+- [x] Ajouter les preferences de modules par adhesion.
 - [ ] Creer la registry applicative des modules.
 - [ ] Ajouter le choix de modules dans les profils membres.
 - [ ] Cadrer le partage fin par rucher si le besoin est confirme.
@@ -57,6 +57,14 @@
 - [x] Cadrer le partage initial d'un rucher par organisation.
 - [x] Cadrer la transhumance comme mouvement de ruches entre sites.
 - [x] Ne pas creer de migration, interface, CRUD, IA ou IoT actif.
+
+## MODULES-DYNAMIC-01
+
+- [x] Ajouter `MembershipModulePreference` dans Prisma.
+- [x] Generer la migration PostgreSQL correspondante.
+- [x] Ajouter des helpers purs pour calculer les modules effectifs.
+- [x] Garder `UserModulePreference` en place sans suppression risquee.
+- [x] Ne pas creer d'interface de gestion, route ou CRUD.
 
 ## ARCHITECTURE-DOCS-00
 
