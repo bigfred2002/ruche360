@@ -147,3 +147,17 @@ docker compose run --rm app pnpm build
 ```
 
 Pour ce lot, ces validations sont applicables et doivent être lancées depuis Docker Compose.
+
+## Intégration continue
+
+La CI GitHub Actions exécute les contrôles suivants sur les Pull Requests et les pushes vers `main`:
+
+```bash
+make security-scan
+docker compose config
+docker compose run --rm app pnpm install
+docker compose run --rm app pnpm lint
+docker compose run --rm app pnpm build
+```
+
+Le workflow doit être rendu obligatoire dans la protection de branche `main` côté GitHub.

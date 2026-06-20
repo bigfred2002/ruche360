@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-20 - CI-BASE-01
+
+- Ajout du workflow GitHub Actions `.github/workflows/ci.yml`.
+- La CI exécute `make security-scan`, `docker compose config`, `pnpm install`, `pnpm lint` et `pnpm build` via Docker Compose.
+- Les permissions du workflow sont limitées à `contents: read`.
+- La CI doit être rendue obligatoire dans la protection de branche `main`.
+
 ## 2026-06-20 - SECURITY-PRE-PUSH-01
 
 - Ajout d'un contrôle de confidentialité avant push pour tenir compte du passage du dépôt en public.
