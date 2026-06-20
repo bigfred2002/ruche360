@@ -27,6 +27,7 @@ Le projet est développé par micro-lots avec Codex, GitHub et Docker Compose. L
 - Modules activables par organisation et par utilisateur.
 - Contacts utiles: vétérinaires, techniciens sanitaires, fournisseurs, référents et partenaires.
 - Documents liés aux organisations et futures entités métier.
+- Conventions comptes, organisations et adhésions posées sans authentification active.
 
 ### Connaissance
 
@@ -190,6 +191,7 @@ Le dépôt étant public, le workflow local est limité à `workflow_dispatch`. 
 - [Périmètre produit](docs/product-scope.md)
 - [Modules](docs/modules.md)
 - [Rôles et permissions](docs/roles-permissions.md)
+- [Authentification et organisations](docs/auth.md)
 - [Modèle de données](docs/data-model.md)
 - [Architecture technique](docs/technical-architecture.md)
 - [Flux UX](docs/ux-flows.md)
