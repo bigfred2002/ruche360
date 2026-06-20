@@ -12,6 +12,10 @@ Ce backlog propose des micro-lots successifs. Chaque lot doit rester livrable en
 | AUTH-01 | `codex/auth-organizations` | Poser comptes, organisations et adhésions. |
 | RBAC-01 | `codex/rbac-modules` | Implémenter rôles, permissions et activation de modules. |
 | APIARY-01 | `codex/apiaries-hives-colonies` | Implémenter ruchers, ruches et colonies. |
+| EQUIPMENT-00 | `codex/equipment-00` | Cadrer le module materiel apicole sans code metier. |
+| EQUIPMENT-01 | `codex/equipment-01` | Ajouter module, permissions et modele minimal du materiel. |
+| EQUIPMENT-SHELL-01 | `codex/equipment-shell-01` | Ajouter un ecran inventaire mobile-first sans CRUD complet. |
+| EQUIPMENT-CRUD-01 | `codex/equipment-crud-01` | Ajouter les actions serveur minimales du materiel. |
 | VISITS-01 | `codex/visits-tasks` | Implémenter visites et tâches. |
 | HEALTH-01 | `codex/health-varroa-hornet` | Implémenter sanitaire, varroa et frelon. |
 | CONTENT-01 | `codex/knowledge-contacts-documents` | Implémenter connaissance, contacts et documents. |
@@ -27,6 +31,7 @@ Ces lots ne doivent pas être lancés avant validation produit et technique:
 - `BILLING-01`: paiement;
 - `MARKET-01`: marketplace;
 - `ACCOUNTING-01`: comptabilité complète.
+- `EQUIPMENT-PURCHASES-01`: achats, fournisseurs et couts du materiel, a cadrer seulement si le besoin devient prioritaire.
 
 ## Format de lot recommandé
 

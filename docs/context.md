@@ -26,6 +26,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `AUTH-01` pose les conventions TypeScript comptes, organisations et adhésions sans activer d'authentification réelle.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.
 - `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.
+- `EQUIPMENT-00` cadre le futur module materiel comme inventaire leger hybride, sans code metier, migration, CRUD, achats, fournisseurs, comptabilite, IA ou IoT actif.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
@@ -36,6 +37,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Niveau de détail de la localisation des ruchers.
 - Politique de conservation des données sanitaires.
 - Stratégie d'archivage des entités métier.
+- Niveau exact de personnalisation du futur catalogue materiel par organisation.
 
 ## Commandes utiles actuelles
 

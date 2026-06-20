@@ -24,6 +24,20 @@
 - [x] Poser les conventions comptes, organisations et adhésions.
 - [x] Poser le catalogue rôles, permissions et modules.
 - [x] Ajouter les modèles exécutables ruchers, ruches et colonies.
+- [x] Cadrer le futur module materiel apicole sans code metier.
+- [ ] Ajouter le module, les permissions et le modele minimal du materiel.
+- [ ] Ajouter un ecran inventaire materiel mobile-first.
+- [ ] Ajouter les actions serveur minimales du materiel.
+
+## EQUIPMENT-00
+
+- [x] Documenter les categories de materiel apicole ciblees.
+- [x] Retenir un suivi hybride: quantites pour consommables, items individuels pour equipements durables.
+- [x] Documenter les statuts simples du materiel.
+- [x] Definir l'approche UX sans surcharge de navigation mobile.
+- [x] Identifier les lots `EQUIPMENT-01`, `EQUIPMENT-SHELL-01` et `EQUIPMENT-CRUD-01`.
+- [x] Exclure achats, fournisseurs, couts, comptabilite, destruction complexe, IA, IoT et prescription automatique.
+- [x] Ne pas creer de code metier, migration, route ou CRUD.
 
 ## APIARY-01
 

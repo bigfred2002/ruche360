@@ -11,6 +11,7 @@ Le projet est développé par micro-lots avec Codex, GitHub et Docker Compose. L
 - Organisations apicoles multi-utilisateurs.
 - Ruchers, ruches et colonies.
 - Modèle exécutable séparant les sites apicoles, le matériel ruche et le vivant.
+- Module matériel apicole prévu pour suivre consommables, équipements durables, emplacements et statuts simples sans gestion commerciale lourde.
 - Visites et observations terrain.
 - Tâches à planifier, réaliser ou suivre.
 - Récoltes simples.
@@ -192,6 +193,7 @@ Le dépôt étant public, le workflow local est limité à `workflow_dispatch`. 
 - [Design produit](DESIGN.md)
 - [Périmètre produit](docs/product-scope.md)
 - [Modules](docs/modules.md)
+- [Module matériel](docs/equipment.md)
 - [Rôles et permissions](docs/roles-permissions.md)
 - [Authentification et organisations](docs/auth.md)
 - [Modèle de données](docs/data-model.md)
