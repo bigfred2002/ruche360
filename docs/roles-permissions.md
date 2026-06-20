@@ -51,3 +51,16 @@ Les modules activés déterminent les surfaces disponibles. Les permissions dét
 - Les permissions liées à un module désactivé ne donnent aucun accès visible.
 - Les actions sanitaires ne valent pas prescription automatique.
 - Les données connectées ou IA restent inactives tant que les modules correspondants sont désactivés.
+
+## Décision RBAC-01
+
+`RBAC-01` ajoute un catalogue TypeScript des rôles, permissions et modules. Ce catalogue est statique et ne crée pas encore de gestion applicative des rôles.
+
+Fichiers principaux:
+
+- `src/features/rbac/permissions.ts`;
+- `src/features/rbac/roles.ts`;
+- `src/features/rbac/modules.ts`;
+- `src/features/rbac/access.ts`.
+
+Les modules connectés et IA sont présents dans le catalogue avec `defaultEnabled: false`. Ils ne déclenchent aucun traitement actif.

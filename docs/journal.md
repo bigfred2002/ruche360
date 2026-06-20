@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-20 - RBAC-01
+
+- Ajout d'un catalogue TypeScript des permissions, rôles initiaux et modules activables.
+- Ajout de helpers purs pour vérifier permissions et modules activés.
+- Les modules connectés et IA restent présents uniquement comme références désactivées par défaut.
+- Aucune interface de gestion, aucune API et aucune activation IA/IoT n'ont été ajoutées.
+
 ## 2026-06-20 - AUTH-01
 
 - Ajout d'une couche domaine TypeScript pour comptes utilisateurs, organisations et adhésions.

@@ -22,6 +22,16 @@
 - [x] Créer le modèle de données exécutable minimal.
 - [x] Préparer un runner GitHub local Docker pour validations DevSecOps manuelles.
 - [x] Poser les conventions comptes, organisations et adhésions.
+- [x] Poser le catalogue rôles, permissions et modules.
+
+## RBAC-01
+
+- [x] Ajouter le catalogue TypeScript des permissions.
+- [x] Ajouter les rôles initiaux.
+- [x] Ajouter le catalogue des modules activables.
+- [x] Ajouter des helpers purs de vérification permission/module.
+- [x] Garder les modules IA et connectés désactivés par défaut.
+- [x] Ne pas créer d'interface de gestion des rôles.
 
 ## AUTH-01
 

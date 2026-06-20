@@ -1,0 +1,30 @@
+import type { ModuleCode } from "./modules";
+import type { PermissionCode } from "./permissions";
+
+export type PermissionSet = ReadonlySet<PermissionCode>;
+export type EnabledModuleSet = ReadonlySet<ModuleCode>;
+
+export function createPermissionSet(permissions: PermissionCode[]): PermissionSet {
+  return new Set(permissions);
+}
+
+export function createEnabledModuleSet(modules: ModuleCode[]): EnabledModuleSet {
+  return new Set(modules);
+}
+
+export function hasPermission(permissions: PermissionSet, permission: PermissionCode): boolean {
+  return permissions.has(permission);
+}
+
+export function isModuleEnabled(modules: EnabledModuleSet, module: ModuleCode): boolean {
+  return modules.has(module);
+}
+
+export function canUseModulePermission(
+  permissions: PermissionSet,
+  enabledModules: EnabledModuleSet,
+  module: ModuleCode,
+  permission: PermissionCode,
+): boolean {
+  return isModuleEnabled(enabledModules, module) && hasPermission(permissions, permission);
+}
