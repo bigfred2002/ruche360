@@ -28,6 +28,7 @@ Le projet est développé par micro-lots avec Codex, GitHub et Docker Compose. L
 - Utilisateurs, rôles et permissions.
 - Modules activables par organisation et par utilisateur.
 - Catalogue de rôles, permissions et modules posé pour cadrer les futurs accès.
+- Stratégie de modules dynamiques prévue: activation par organisation, visibilité par adhésion et permissions par rôle.
 - Contacts utiles: vétérinaires, techniciens sanitaires, fournisseurs, référents et partenaires.
 - Documents liés aux organisations et futures entités métier.
 - Conventions comptes, organisations et adhésions posées sans authentification active.
@@ -192,8 +193,13 @@ Le dépôt étant public, le workflow local est limité à `workflow_dispatch`. 
 - [Instructions agentiques](AGENTS.md)
 - [Design produit](DESIGN.md)
 - [Périmètre produit](docs/product-scope.md)
+- [Architecture logique](docs/application-architecture.md)
+- [Cartographie modules et fonctions](docs/module-function-map.md)
+- [Gouvernance lots et sprints](docs/sprint-governance.md)
 - [Modules](docs/modules.md)
 - [Module matériel](docs/equipment.md)
+- [Modules dynamiques](docs/dynamic-modules.md)
+- [Partage de rucher et transhumance](docs/apiary-sharing-transhumance.md)
 - [Rôles et permissions](docs/roles-permissions.md)
 - [Authentification et organisations](docs/auth.md)
 - [Modèle de données](docs/data-model.md)
