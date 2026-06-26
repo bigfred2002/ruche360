@@ -168,6 +168,14 @@ docker compose run --rm app pnpm build
 
 Le workflow doit être rendu obligatoire dans la protection de branche `main` côté GitHub.
 
+## Sécurité et dépendances
+
+Dependabot est configuré pour surveiller les dépendances npm, GitHub Actions et Docker. Les alertes doivent être traitées par petits lots, avec validations Docker Compose et revue humaine avant merge.
+
+Documentation:
+
+- [Sécurité et dépendances](docs/security-dependencies.md)
+
 ## Runner GitHub local
 
 Un runner GitHub Actions local peut être lancé dans Docker pour exécuter une chaîne DevSecOps manuelle sur la machine de développement.
@@ -204,6 +212,7 @@ Le dépôt étant public, le workflow local est limité à `workflow_dispatch`. 
 - [Authentification et organisations](docs/auth.md)
 - [Modèle de données](docs/data-model.md)
 - [Architecture technique](docs/technical-architecture.md)
+- [Sécurité et dépendances](docs/security-dependencies.md)
 - [Flux UX](docs/ux-flows.md)
 - [Backlog agentique](docs/backlog-agentique.md)
 - [Contexte courant](docs/context.md)

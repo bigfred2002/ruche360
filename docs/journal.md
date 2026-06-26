@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-26 - SECURITY-DEPENDENCIES-00
+
+- Preparation d'un lot securite dedie aux dependances et alertes.
+- Ajout d'une configuration Dependabot hebdomadaire pour npm, GitHub Actions et Docker.
+- Ajout de `docs/security-dependencies.md` pour cadrer le traitement des alertes, les validations obligatoires et les limites de merge.
+- Les corrections de versions sont volontairement differees vers `SECURITY-DEPENDENCIES-01` afin de garder ce lot preparatoire lisible.
+- Aucune dependance, fonctionnalite metier, authentification, IA, IoT ou modification Docker runtime n'a ete ajoutee.
+
 ## 2026-06-26 - DYNAMIC-UI-ANALYSIS
 
 - Ajout d'une analyse des lots dynamiques UI/applicatifs dans `docs/todo.md`.
