@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-06-26 - DYNAMIC-UI-ANALYSIS
+
+- Ajout d'une analyse des lots dynamiques UI/applicatifs dans `docs/todo.md`.
+- Proposition d'une sequence sans Figma: shell dynamique, navigation depuis registry, profils simules, etats reutilisables, workflows responsive, motion accessible, design tokens, catalogue modules et onboarding amateur.
+- Confirmation que ces lots doivent rester sans Prisma supplementaire, CRUD metier, auth reelle, IA active, IoT actif ou appel API externe tant qu'ils ne sont pas explicitement dedies.
+
 ## 2026-06-21 - MODULES-REGISTRY-01
 
 - Ajout d'une registry TypeScript des modules applicatifs dans `src/features/rbac`.
