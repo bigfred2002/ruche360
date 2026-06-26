@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-26 - USER-CONTEXT-SHELL-01
+
+- Ajout de profils de démonstration statiques pour apiculteur amateur, association, exploitation professionnelle, lecture seule et intervenant sanitaire.
+- Le cockpit utilise un profil actif de démonstration et varie ses modules, priorités, badges et cartes selon des modules et permissions simulés.
+- Ajout d'une comparaison statique des profils pour vérifier les différences de navigation sans créer de sélecteur fonctionnel.
+- Aucune authentification, session, API, persistance, route métier, CRUD, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-26 - MODULES-NAVIGATION-01
 
 - Branchement de la navigation mobile et desktop sur la registry TypeScript des modules.

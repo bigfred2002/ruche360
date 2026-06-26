@@ -5,94 +5,58 @@ import {
   createDashboardCard,
   createModuleCard,
   createNavigationItems,
+  getModulePresentation,
 } from "@/components/modulePresentation";
 import { StatusBadge } from "@/components/StatusBadge";
+import {
+  activeUserContextScenario,
+  userContextScenarios,
+} from "@/components/userContextScenarios";
 import {
   createEnabledModuleSet,
   createPermissionSet,
   getVisibleModuleEntries,
-  moduleRegistry,
-  type ModuleCode,
-  type PermissionCode,
 } from "@/features/rbac";
 
-const watchItems = [
-  {
-    accent: "amber",
-    label: "Priorité",
-    title: "Réserves faibles",
-    detail: "Rucher du Vallon · Ruche #4"
-  },
-  {
-    accent: "forest",
-    label: "48h",
-    title: "Varroa à recompter",
-    detail: "Toutes les ruches · suivi manuel"
-  },
-  {
-    accent: "red",
-    label: "Signal",
-    title: "Frelon observé",
-    detail: "Rucher de la Forêt · observation"
-  }
-];
+const activeScenario = activeUserContextScenario;
 
-const demoEnabledModules = createEnabledModuleSet(
-  moduleRegistry
-    .filter((module) => module.defaultEnabled)
-    .map((module) => module.code),
-);
-
-const demoPermissions = createPermissionSet([
-  "apiaries.read",
-  "hives.read",
-  "colonies.read",
-  "visits.read",
-  "tasks.read",
-  "health.read",
-  "knowledge.read",
-  "contacts.read",
-  "documents.read",
-  "harvests.read",
-] satisfies PermissionCode[]);
-
-const dashboardModuleOrder = [
-  "apiaries",
-  "hives",
-  "visits",
-  "tasks",
-  "health",
-  "contacts",
-  "knowledge",
-] satisfies ModuleCode[];
-
-const featuredModuleOrder = ["health", "knowledge", "contacts"] satisfies ModuleCode[];
+const activeEnabledModules = createEnabledModuleSet(activeScenario.enabledModules);
+const activePermissions = createPermissionSet(activeScenario.permissions);
 
 const activeCatalogEntries = getVisibleModuleEntries(
-  demoEnabledModules,
-  demoPermissions,
+  activeEnabledModules,
+  activePermissions,
   "catalog",
 );
 
-const dashboardCards = dashboardModuleOrder
+const dashboardCards = activeScenario.dashboardModules
   .map((code) => activeCatalogEntries.find((entry) => entry.code === code))
   .filter((entry) => entry !== undefined)
   .map(createDashboardCard);
 
-const activeModules = featuredModuleOrder
+const activeModules = activeScenario.featuredModules
   .map((code) => activeCatalogEntries.find((entry) => entry.code === code))
   .filter((entry) => entry !== undefined)
   .map(createModuleCard);
 
 const mobileNavigationItems = createNavigationItems(
-  getVisibleModuleEntries(demoEnabledModules, demoPermissions, "mobile"),
+  getVisibleModuleEntries(activeEnabledModules, activePermissions, "mobile"),
   "mobile",
 );
 
 const desktopNavigationItems = createNavigationItems(
-  getVisibleModuleEntries(demoEnabledModules, demoPermissions, "desktop"),
+  getVisibleModuleEntries(activeEnabledModules, activePermissions, "desktop"),
   "desktop",
 );
+
+const scenarioSummaries = userContextScenarios.map((scenario) => ({
+  ...scenario,
+  modulePreview: scenario.dashboardModules.slice(0, 4).map((code) => ({
+    code,
+    label: getModulePresentation(code).shortLabel ?? code,
+    icon: getModulePresentation(code).icon,
+  })),
+}));
 
 export default function Home() {
   return (
@@ -108,20 +72,28 @@ export default function Home() {
               <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_18rem] lg:items-end">
                 <div>
                   <h1 className="text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
-                    Bonjour, Jean
+                    Bonjour, {activeScenario.userName}
                   </h1>
                   <p className="mt-3 max-w-2xl text-lg leading-8 text-slate-700">
-                    Rucher360 rassemble les signaux essentiels dans un cockpit
-                    clair, coloré et utilisable sur le terrain.
+                    {activeScenario.description}
                   </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <StatusBadge
+                      label={activeScenario.organizationType}
+                      tone="preview"
+                    />
+                    <StatusBadge label={activeScenario.role} tone="amber" />
+                  </div>
                 </div>
                 <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
                   <p className="text-sm font-bold uppercase tracking-wide text-amber-100">
-                    Saison en préparation
+                    {activeScenario.seasonLabel}
                   </p>
-                  <p className="mt-3 text-3xl font-black">Printemps</p>
+                  <p className="mt-3 text-3xl font-black">
+                    {activeScenario.seasonMetric}
+                  </p>
                   <p className="mt-2 text-sm leading-6 text-amber-50">
-                    Données fictives pour cadrer l&apos;expérience visuelle.
+                    {activeScenario.seasonDetail}
                   </p>
                 </div>
               </div>
@@ -160,7 +132,7 @@ export default function Home() {
                   <StatusBadge label="Preview" tone="soon" />
                 </div>
                 <div className="mt-5 space-y-3">
-                  {watchItems.map((item) => (
+                  {activeScenario.watchItems.map((item) => (
                     <article
                       className="rounded-2xl border border-cream-300 bg-cream-50 p-4"
                       key={item.title}
@@ -189,6 +161,67 @@ export default function Home() {
                   ))}
                 </div>
               </section>
+            </section>
+
+            <section>
+              <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+                    Contextes simulés
+                  </p>
+                  <h2 className="mt-2 text-2xl font-black text-slate-950">
+                    Variations de cockpit prévues
+                  </h2>
+                </div>
+                <StatusBadge label="Statique" tone="preview" />
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {scenarioSummaries.map((scenario) => (
+                  <article
+                    className={`rounded-2xl border p-4 shadow-field ${
+                      scenario.id === activeScenario.id
+                        ? "border-amber-300 bg-amber-50"
+                        : "border-cream-300 bg-white"
+                    }`}
+                    key={scenario.id}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-base font-black text-slate-950">
+                          {scenario.label}
+                        </h3>
+                        <p className="mt-1 text-sm leading-6 text-slate-650">
+                          {scenario.organization}
+                        </p>
+                      </div>
+                      <StatusBadge
+                        label={
+                          scenario.id === activeScenario.id ? "Actif" : "Exemple"
+                        }
+                        tone={
+                          scenario.id === activeScenario.id ? "amber" : "preview"
+                        }
+                      />
+                    </div>
+                    <p className="mt-3 text-sm leading-6 text-slate-650">
+                      {scenario.description}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {scenario.modulePreview.map((module) => (
+                        <span
+                          className="inline-flex min-h-8 items-center gap-2 rounded-full border border-cream-300 bg-white px-3 text-xs font-bold text-slate-700"
+                          key={module.code}
+                        >
+                          <span className="text-[10px] font-black text-amber-800">
+                            {module.icon}
+                          </span>
+                          {module.label}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
             </section>
 
             <section>

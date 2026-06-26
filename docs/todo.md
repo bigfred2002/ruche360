@@ -22,7 +22,7 @@
 
 - [ ] `DESIGN-DYNAMIC-SHELL-01`: rendre le shell plus vivant sans Figma, avec cockpit modernise, micro-interactions sobres, etats visuels et meilleure hierarchie mobile/desktop.
 - [x] `MODULES-NAVIGATION-01`: brancher la navigation mobile/desktop et le cockpit sur la registry de modules, sans CRUD metier.
-- [ ] `USER-CONTEXT-SHELL-01`: simuler les profils amateur, association, exploitation professionnelle, lecteur et intervenant sanitaire pour tester les variations de cockpit.
+- [x] `USER-CONTEXT-SHELL-01`: simuler les profils amateur, association, exploitation professionnelle, lecteur et intervenant sanitaire pour tester les variations de cockpit.
 - [ ] `DYNAMIC-STATES-01`: ajouter les composants d'etats reutilisables: vide, chargement, sans permission, module desactive, module a venir, alerte.
 - [ ] `RESPONSIVE-WORKFLOWS-01`: affiner les parcours mobile-first pour ruchers, visites, modules et profil organisation, sans formulaire fonctionnel.
 - [ ] `ACCESSIBLE-MOTION-01`: ajouter transitions et animations sobres compatibles `prefers-reduced-motion`.
@@ -106,6 +106,14 @@
 - [x] Garder un profil de démonstration statique, sans session réelle ni API.
 - [x] Garder les modules IA et connectés dans la registry sans les afficher directement dans le cockpit.
 - [x] Ne pas créer de route métier, CRUD, auth, Prisma supplémentaire, IA active ou IoT actif.
+
+## USER-CONTEXT-SHELL-01
+
+- [x] Créer des profils de démonstration statiques: amateur, association, exploitation, lecture seule et intervenant sanitaire.
+- [x] Varier les modules visibles, permissions, priorités et cartes de cockpit selon le profil actif.
+- [x] Afficher une comparaison statique des profils sans sélecteur fonctionnel.
+- [x] Garder les variations en mémoire locale de présentation, sans session, API ou persistance.
+- [x] Ne pas créer d'auth, CRUD, route métier, Prisma supplémentaire, IA active ou IoT actif.
 
 ## SECURITY-DEPENDENCIES-00
 
