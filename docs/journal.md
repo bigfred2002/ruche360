@@ -1,5 +1,27 @@
 # Journal
 
+## 2026-06-26 - DYNAMIC-UI-ANALYSIS
+
+- Ajout d'une analyse des lots dynamiques UI/applicatifs dans `docs/todo.md`.
+- Proposition d'une sequence sans Figma: shell dynamique, navigation depuis registry, profils simules, etats reutilisables, workflows responsive, motion accessible, design tokens, catalogue modules et onboarding amateur.
+- Confirmation que ces lots doivent rester sans Prisma supplementaire, CRUD metier, auth reelle, IA active, IoT actif ou appel API externe tant qu'ils ne sont pas explicitement dedies.
+
+## 2026-06-21 - MODULES-REGISTRY-01
+
+- Ajout d'une registry TypeScript des modules applicatifs dans `src/features/rbac`.
+- Chaque entree de registry porte route cible, permissions requises, disponibilite et surfaces de navigation.
+- Ajout de helpers purs pour filtrer les modules visibles selon modules effectifs, permissions et surface.
+- La navigation et le cockpit ne sont pas encore branches sur cette registry.
+- Aucun ecran, aucune route applicative, aucun CRUD, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
+## 2026-06-21 - MODULES-DYNAMIC-01
+
+- Ajout du modele Prisma `MembershipModulePreference` pour porter la visibilite des modules au niveau de l'adhesion utilisateur-organisation.
+- Generation d'une migration PostgreSQL dediee via Docker Compose.
+- Ajout de helpers purs pour calculer les modules effectifs a partir des modules d'organisation et des preferences d'adhesion.
+- Conservation de `UserModulePreference` pour eviter une suppression de schema dans ce lot.
+- Aucune interface de gestion, aucune route, aucun CRUD, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-06-21 - ARCHITECTURE-DOCS-00
 
 - Ajout d'une architecture logique transversale de Rucher360: moteurs organisation, modules, permissions, metier et gouvernance.

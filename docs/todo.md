@@ -12,6 +12,25 @@
 
 ## Prochains lots
 
+### Point lots en cours
+
+- [ ] Finaliser et merger `EQUIPMENT-00` pour cadrer le module materiel.
+- [ ] Finaliser et merger `MODULES-DYNAMIC-00` / `ARCHITECTURE-DOCS-00` pour stabiliser la documentation d'architecture.
+- [ ] Finaliser `MODULES-DYNAMIC-01` et `MODULES-REGISTRY-01` sur la branche `codex/modules-dynamic-registry-01`.
+
+### Analyse lots dynamiques UI/applicatifs
+
+- [ ] `DESIGN-DYNAMIC-SHELL-01`: rendre le shell plus vivant sans Figma, avec cockpit modernise, micro-interactions sobres, etats visuels et meilleure hierarchie mobile/desktop.
+- [ ] `MODULES-NAVIGATION-01`: brancher la navigation mobile/desktop et le cockpit sur la registry de modules, sans CRUD metier.
+- [ ] `USER-CONTEXT-SHELL-01`: simuler les profils amateur, association, exploitation professionnelle, lecteur et intervenant sanitaire pour tester les variations de cockpit.
+- [ ] `DYNAMIC-STATES-01`: ajouter les composants d'etats reutilisables: vide, chargement, sans permission, module desactive, module a venir, alerte.
+- [ ] `RESPONSIVE-WORKFLOWS-01`: affiner les parcours mobile-first pour ruchers, visites, modules et profil organisation, sans formulaire fonctionnel.
+- [ ] `ACCESSIBLE-MOTION-01`: ajouter transitions et animations sobres compatibles `prefers-reduced-motion`.
+- [ ] `DESIGN-TOKENS-01`: consolider les tokens UI Tailwind: couleurs, espacements, surfaces, badges, focus et contrastes exterieur.
+- [ ] `MODULES-CATALOG-SHELL-01`: creer une page catalogue modules qui distingue actif, desactive, a venir et sans permission.
+- [ ] `PROFILE-ONBOARDING-SHELL-01`: preparer le parcours d'accueil d'un apiculteur amateur avec creation d'espace personnel simulee, sans auth reelle.
+- [ ] Garder hors perimetre de ces lots: Prisma supplementaire, CRUD metier, auth reelle, IA active, IoT actif, appel API externe et suppression de donnees.
+
 - [x] Créer Docker Compose.
 - [x] Définir les commandes de validation containerisées.
 - [x] Scaffolder l'application dans un lot dédié.
@@ -32,8 +51,8 @@
 - [ ] Ajouter le module, les permissions et le modele minimal du materiel.
 - [ ] Ajouter un ecran inventaire materiel mobile-first.
 - [ ] Ajouter les actions serveur minimales du materiel.
-- [ ] Ajouter les preferences de modules par adhesion.
-- [ ] Creer la registry applicative des modules.
+- [x] Ajouter les preferences de modules par adhesion.
+- [x] Creer la registry applicative des modules.
 - [ ] Ajouter le choix de modules dans les profils membres.
 - [ ] Cadrer le partage fin par rucher si le besoin est confirme.
 - [ ] Cadrer puis implementer les mouvements de ruches.
@@ -57,6 +76,22 @@
 - [x] Cadrer le partage initial d'un rucher par organisation.
 - [x] Cadrer la transhumance comme mouvement de ruches entre sites.
 - [x] Ne pas creer de migration, interface, CRUD, IA ou IoT actif.
+
+## MODULES-DYNAMIC-01
+
+- [x] Ajouter `MembershipModulePreference` dans Prisma.
+- [x] Generer la migration PostgreSQL correspondante.
+- [x] Ajouter des helpers purs pour calculer les modules effectifs.
+- [x] Garder `UserModulePreference` en place sans suppression risquee.
+- [x] Ne pas creer d'interface de gestion, route ou CRUD.
+
+## MODULES-REGISTRY-01
+
+- [x] Creer une registry TypeScript des modules applicatifs.
+- [x] Documenter pour chaque module route cible, permissions, disponibilite et surfaces de navigation.
+- [x] Ajouter des helpers purs pour filtrer les modules visibles.
+- [x] Exporter la registry depuis `src/features/rbac`.
+- [x] Ne pas brancher encore la navigation ou le cockpit sur cette registry.
 
 ## ARCHITECTURE-DOCS-00
 

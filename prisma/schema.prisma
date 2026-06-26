@@ -105,9 +105,10 @@ model Membership {
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
 
-  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  role         Role?        @relation(fields: [roleId], references: [id], onDelete: SetNull)
+  organization      Organization                 @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user              User                         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role              Role?                        @relation(fields: [roleId], references: [id], onDelete: SetNull)
+  modulePreferences MembershipModulePreference[]
 
   @@unique([organizationId, userId])
   @@index([userId])
@@ -164,8 +165,9 @@ model ModuleDefinition {
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
 
-  organizationModules   OrganizationModule[]
-  userModulePreferences UserModulePreference[]
+  organizationModules         OrganizationModule[]
+  userModulePreferences       UserModulePreference[]
+  membershipModulePreferences MembershipModulePreference[]
 
   @@index([category])
 }
@@ -198,6 +200,22 @@ model UserModulePreference {
   module ModuleDefinition @relation(fields: [moduleId], references: [id], onDelete: Cascade)
 
   @@unique([userId, moduleId])
+  @@index([moduleId])
+  @@index([status])
+}
+
+model MembershipModulePreference {
+  id           String                 @id @default(cuid())
+  membershipId String
+  moduleId     String
+  status       ModuleActivationStatus @default(DISABLED)
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+
+  membership Membership       @relation(fields: [membershipId], references: [id], onDelete: Cascade)
+  module     ModuleDefinition @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@unique([membershipId, moduleId])
   @@index([moduleId])
   @@index([status])
 }
