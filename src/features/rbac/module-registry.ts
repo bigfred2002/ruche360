@@ -210,6 +210,10 @@ export function canDisplayModuleEntry(
     return false;
   }
 
+  if (entry.requiredPermissions.length === 0) {
+    return true;
+  }
+
   return entry.requiredPermissions.some((permission) => hasPermission(permissions, permission));
 }
 

@@ -21,7 +21,7 @@
 ### Analyse lots dynamiques UI/applicatifs
 
 - [ ] `DESIGN-DYNAMIC-SHELL-01`: rendre le shell plus vivant sans Figma, avec cockpit modernise, micro-interactions sobres, etats visuels et meilleure hierarchie mobile/desktop.
-- [ ] `MODULES-NAVIGATION-01`: brancher la navigation mobile/desktop et le cockpit sur la registry de modules, sans CRUD metier.
+- [x] `MODULES-NAVIGATION-01`: brancher la navigation mobile/desktop et le cockpit sur la registry de modules, sans CRUD metier.
 - [ ] `USER-CONTEXT-SHELL-01`: simuler les profils amateur, association, exploitation professionnelle, lecteur et intervenant sanitaire pour tester les variations de cockpit.
 - [ ] `DYNAMIC-STATES-01`: ajouter les composants d'etats reutilisables: vide, chargement, sans permission, module desactive, module a venir, alerte.
 - [ ] `RESPONSIVE-WORKFLOWS-01`: affiner les parcours mobile-first pour ruchers, visites, modules et profil organisation, sans formulaire fonctionnel.
@@ -97,6 +97,15 @@
 - [x] Ajouter des helpers purs pour filtrer les modules visibles.
 - [x] Exporter la registry depuis `src/features/rbac`.
 - [x] Ne pas brancher encore la navigation ou le cockpit sur cette registry.
+
+## MODULES-NAVIGATION-01
+
+- [x] Alimenter la navigation mobile depuis la registry de modules.
+- [x] Alimenter la sidebar desktop depuis la registry de modules.
+- [x] Alimenter les cartes du cockpit depuis la registry de modules.
+- [x] Garder un profil de démonstration statique, sans session réelle ni API.
+- [x] Garder les modules IA et connectés dans la registry sans les afficher directement dans le cockpit.
+- [x] Ne pas créer de route métier, CRUD, auth, Prisma supplémentaire, IA active ou IoT actif.
 
 ## SECURITY-DEPENDENCIES-00
 
