@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-26 - USER-PROFILE-MODULES-01
+
+- Ajout d'une prévisualisation statique des modules visibles pour un profil membre.
+- Le panneau distingue module actif dans l'organisation, visibilité par adhésion et permissions disponibles.
+- Les modules masqués sont présentés comme non visibles sans suppression de données.
+- Les modules IA, IoT et connectés restent hors du choix membre tant qu'ils ne sont pas activés par un lot dédié.
+- Aucun formulaire fonctionnel, session, API, persistance, CRUD métier, authentification ou Prisma supplémentaire n'a été ajouté.
+
 ## 2026-06-26 - USER-CONTEXT-SHELL-01
 
 - Ajout de profils de démonstration statiques pour apiculteur amateur, association, exploitation professionnelle, lecture seule et intervenant sanitaire.

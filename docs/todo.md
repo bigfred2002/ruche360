@@ -23,6 +23,7 @@
 - [ ] `DESIGN-DYNAMIC-SHELL-01`: rendre le shell plus vivant sans Figma, avec cockpit modernise, micro-interactions sobres, etats visuels et meilleure hierarchie mobile/desktop.
 - [x] `MODULES-NAVIGATION-01`: brancher la navigation mobile/desktop et le cockpit sur la registry de modules, sans CRUD metier.
 - [x] `USER-CONTEXT-SHELL-01`: simuler les profils amateur, association, exploitation professionnelle, lecteur et intervenant sanitaire pour tester les variations de cockpit.
+- [x] `USER-PROFILE-MODULES-01`: prévisualiser le choix de modules par adhésion membre, sans formulaire fonctionnel ni persistance.
 - [ ] `DYNAMIC-STATES-01`: ajouter les composants d'etats reutilisables: vide, chargement, sans permission, module desactive, module a venir, alerte.
 - [ ] `RESPONSIVE-WORKFLOWS-01`: affiner les parcours mobile-first pour ruchers, visites, modules et profil organisation, sans formulaire fonctionnel.
 - [ ] `ACCESSIBLE-MOTION-01`: ajouter transitions et animations sobres compatibles `prefers-reduced-motion`.
@@ -58,7 +59,7 @@
 - [ ] Ajouter les actions serveur minimales du materiel.
 - [x] Ajouter les preferences de modules par adhesion.
 - [x] Creer la registry applicative des modules.
-- [ ] Ajouter le choix de modules dans les profils membres.
+- [x] Ajouter le choix de modules dans les profils membres.
 - [ ] Cadrer le partage fin par rucher si le besoin est confirme.
 - [ ] Cadrer puis implementer les mouvements de ruches.
 
@@ -114,6 +115,14 @@
 - [x] Afficher une comparaison statique des profils sans sélecteur fonctionnel.
 - [x] Garder les variations en mémoire locale de présentation, sans session, API ou persistance.
 - [x] Ne pas créer d'auth, CRUD, route métier, Prisma supplémentaire, IA active ou IoT actif.
+
+## USER-PROFILE-MODULES-01
+
+- [x] Ajouter une prévisualisation statique du futur réglage de modules par adhésion membre.
+- [x] Afficher les trois contraintes: module actif dans l'organisation, module visible pour le membre et permission disponible.
+- [x] Rappeler que masquer un module ne supprime aucune donnée.
+- [x] Garder IA, IoT et modules connectés hors du choix tant qu'ils ne sont pas activés par lot dédié.
+- [x] Ne pas créer de formulaire fonctionnel, session, API, persistance, CRUD, auth ou Prisma supplémentaire.
 
 ## SECURITY-DEPENDENCIES-00
 
