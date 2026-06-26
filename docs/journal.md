@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-26 - RESPONSIVE-WORKFLOWS-01
+
+- Ajout d'une prévisualisation statique des parcours mobile-first futurs pour rucher, visite, modules et organisation.
+- Les étapes affichées cadrent les futurs écrans sans créer de route, navigation réelle, formulaire fonctionnel ou action métier.
+- Confirmation que la bottom nav doit rester centrée sur les usages terrain, tandis que modules, réglages et options restent secondaires.
+- Aucun CRUD métier, API, session, persistance, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-26 - DYNAMIC-STATES-01
 
 - Ajout d'un composant `StatePanel` pour standardiser les états d'interface futurs.

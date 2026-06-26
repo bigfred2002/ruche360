@@ -34,6 +34,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `USER-CONTEXT-SHELL-01` ajoute des profils de démonstration statiques pour tester les variations de cockpit selon type d'organisation, rôle, modules et permissions, sans auth, session, API ni persistance.
 - `USER-PROFILE-MODULES-01` ajoute une prévisualisation statique du futur choix de modules par adhésion membre: organisation active, visibilité membre et permissions sont affichées sans formulaire fonctionnel, API, session ou persistance.
 - `DYNAMIC-STATES-01` ajoute une bibliothèque UI statique d'états réutilisables: vide, chargement, sans permission, module désactivé, fonction à venir et alerte, sans API, session, CRUD ou logique métier active.
+- `RESPONSIVE-WORKFLOWS-01` ajoute une prévisualisation statique des parcours mobile-first futurs pour rucher, visite, modules et organisation, sans route active, formulaire, API, session ou persistance.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 

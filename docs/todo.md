@@ -25,7 +25,7 @@
 - [x] `USER-CONTEXT-SHELL-01`: simuler les profils amateur, association, exploitation professionnelle, lecteur et intervenant sanitaire pour tester les variations de cockpit.
 - [x] `USER-PROFILE-MODULES-01`: prévisualiser le choix de modules par adhésion membre, sans formulaire fonctionnel ni persistance.
 - [x] `DYNAMIC-STATES-01`: ajouter les composants d'etats reutilisables: vide, chargement, sans permission, module desactive, module a venir, alerte.
-- [ ] `RESPONSIVE-WORKFLOWS-01`: affiner les parcours mobile-first pour ruchers, visites, modules et profil organisation, sans formulaire fonctionnel.
+- [x] `RESPONSIVE-WORKFLOWS-01`: affiner les parcours mobile-first pour ruchers, visites, modules et profil organisation, sans formulaire fonctionnel.
 - [ ] `ACCESSIBLE-MOTION-01`: ajouter transitions et animations sobres compatibles `prefers-reduced-motion`.
 - [ ] `DESIGN-TOKENS-01`: consolider les tokens UI Tailwind: couleurs, espacements, surfaces, badges, focus et contrastes exterieur.
 - [ ] `MODULES-CATALOG-SHELL-01`: creer une page catalogue modules qui distingue actif, desactive, a venir et sans permission.
@@ -131,6 +131,14 @@
 - [x] Afficher une galerie statique dans le cockpit pour cadrer les futurs écrans.
 - [x] Garder les états comme surfaces de présentation sans action fonctionnelle.
 - [x] Ne pas créer de route, API, session, CRUD métier, auth, Prisma supplémentaire, IA active ou IoT actif.
+
+## RESPONSIVE-WORKFLOWS-01
+
+- [x] Ajouter une prévisualisation statique des parcours mobile-first.
+- [x] Cadrer les parcours rucher, visite, modules et profil organisation.
+- [x] Afficher les étapes prévues sans créer de navigation réelle.
+- [x] Rappeler que la bottom nav doit rester centrée sur les actions terrain.
+- [x] Ne pas créer de route, formulaire fonctionnel, API, session, persistance, CRUD métier, auth, Prisma supplémentaire, IA active ou IoT actif.
 
 ## SECURITY-DEPENDENCIES-00
 

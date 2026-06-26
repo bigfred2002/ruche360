@@ -9,6 +9,7 @@ import {
   createNavigationItems,
   getModulePresentation,
 } from "@/components/modulePresentation";
+import { ResponsiveWorkflowsPreview } from "@/components/ResponsiveWorkflowsPreview";
 import { StatusBadge } from "@/components/StatusBadge";
 import {
   activeUserContextScenario,
@@ -229,6 +230,8 @@ export default function Home() {
             <MemberModulePreferencesPreview scenario={activeScenario} />
 
             <DynamicStatesPreview />
+
+            <ResponsiveWorkflowsPreview />
 
             <section>
               <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
