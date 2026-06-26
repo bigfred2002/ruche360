@@ -32,7 +32,7 @@
 - [ ] Garder hors perimetre de ces lots: Prisma supplementaire, CRUD metier, auth reelle, IA active, IoT actif, appel API externe et suppression de donnees.
 
 - [x] Préparer le lot sécurité dépendances et alertes.
-- [ ] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
+- [x] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
 - [ ] Durcir la CI dans `SECURITY-CI-01` si un contrôle fiable peut être ajouté sans ralentir les micro-lots.
 - [ ] Évaluer un scanner de secrets dédié dans `SECURITY-SECRETS-01`.
 - [ ] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
@@ -106,6 +106,15 @@
 - [x] Documenter les règles de confidentialité avant push.
 - [x] Préparer les lots `SECURITY-DEPENDENCIES-01`, `SECURITY-CI-01`, `SECURITY-SECRETS-01` et `SECURITY-RUNNER-01`.
 - [x] Ne pas modifier les versions de dépendances dans ce lot.
+
+## SECURITY-DEPENDENCIES-01
+
+- [x] Identifier les vulnérabilités via `docker compose run --rm app pnpm audit --prod`.
+- [x] Corriger `@hono/node-server` transitif via override pnpm vers `1.19.13`.
+- [x] Corriger `postcss` transitif via override pnpm vers `8.5.15`.
+- [x] Régénérer `pnpm-lock.yaml` via Docker Compose.
+- [x] Vérifier que `pnpm audit --prod` ne signale plus de vulnérabilité connue.
+- [x] Ne pas ajouter de dépendance directe, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
 
 ## ARCHITECTURE-DOCS-00
 
