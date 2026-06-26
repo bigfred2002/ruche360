@@ -1,5 +1,14 @@
 # Journal
 
+## 2026-06-26 - MODULES-NAVIGATION-01
+
+- Branchement de la navigation mobile et desktop sur la registry TypeScript des modules.
+- Ajout d'une couche de présentation statique pour projeter les modules en items de navigation, cartes de cockpit et cartes de modules.
+- Le cockpit utilise désormais un profil de démonstration local avec modules et permissions simulés.
+- Correction du helper `canDisplayModuleEntry` pour autoriser les modules actifs qui ne demandent aucune permission explicite.
+- Les modules IA, IoT et connectés restent disponibles dans la registry mais ne sont pas affichés directement dans le cockpit pour préserver une navigation légère.
+- Les liens restent des ancres internes et les routes indiquées restent des routes prévues: aucun écran métier, CRUD, auth, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-26 - SECURITY-DEPENDENCIES-01
 
 - Traitement des deux vulnerabilites moderees detectees par `pnpm audit --prod`.

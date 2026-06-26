@@ -1,67 +1,20 @@
 import { AppShell } from "@/components/AppShell";
 import { DashboardCard } from "@/components/DashboardCard";
 import { ModuleCard } from "@/components/ModuleCard";
+import {
+  createDashboardCard,
+  createModuleCard,
+  createNavigationItems,
+} from "@/components/modulePresentation";
 import { StatusBadge } from "@/components/StatusBadge";
-
-const dashboardCards = [
-  {
-    accent: "amber" as const,
-    icon: "Ru",
-    title: "Ruchers",
-    metric: "12",
-    detail: "Sites apicoles suivis par l'organisation.",
-    status: "Aperçu"
-  },
-  {
-    accent: "sage" as const,
-    icon: "Rc",
-    title: "Ruches",
-    metric: "84",
-    detail: "Parc matériel représenté en lecture seule.",
-    status: "Aperçu"
-  },
-  {
-    accent: "forest" as const,
-    icon: "Vi",
-    title: "Visites",
-    metric: "7",
-    detail: "Repères terrain pour les prochains lots.",
-    status: "Aperçu"
-  },
-  {
-    accent: "red" as const,
-    icon: "Sa",
-    title: "Sanitaire",
-    metric: "1",
-    detail: "Signal visible sans traitement automatique.",
-    status: "Preview",
-    statusTone: "alert" as const
-  },
-  {
-    accent: "amber" as const,
-    icon: "Ta",
-    title: "Tâches",
-    metric: "18",
-    detail: "Priorités affichées comme surface statique.",
-    status: "Aperçu"
-  },
-  {
-    accent: "sage" as const,
-    icon: "Co",
-    title: "Contacts utiles",
-    metric: "9",
-    detail: "Interlocuteurs prévus pour l'organisation.",
-    status: "Aperçu"
-  },
-  {
-    accent: "forest" as const,
-    icon: "Bc",
-    title: "Base de connaissance",
-    metric: "24",
-    detail: "Fiches et procédures visibles comme modules futurs.",
-    status: "Aperçu"
-  }
-];
+import {
+  createEnabledModuleSet,
+  createPermissionSet,
+  getVisibleModuleEntries,
+  moduleRegistry,
+  type ModuleCode,
+  type PermissionCode,
+} from "@/features/rbac";
 
 const watchItems = [
   {
@@ -84,69 +37,69 @@ const watchItems = [
   }
 ];
 
-const activeModules = [
-  {
-    accent: "sage" as const,
-    category: "Expertise & data",
-    icon: "Sa",
-    title: "Sanitaire",
-    description: "Observations simples, varroa et frelon en surface preview.",
-    status: "Preview" as const
-  },
-  {
-    accent: "forest" as const,
-    category: "Savoir",
-    icon: "Bc",
-    title: "Base de connaissance",
-    description: "Accès visuel aux futures fiches internes et procédures.",
-    status: "Preview" as const
-  },
-  {
-    accent: "amber" as const,
-    category: "Organisation",
-    icon: "Co",
-    title: "Contacts utiles",
-    description: "Carnet statique pour les partenaires et interlocuteurs.",
-    status: "Preview" as const
-  }
-];
+const demoEnabledModules = createEnabledModuleSet(
+  moduleRegistry
+    .filter((module) => module.defaultEnabled)
+    .map((module) => module.code),
+);
 
-const futureModules = [
-  {
-    icon: "IA",
-    title: "IA",
-    description: "Analyse et assistant prévus, sans automatisation active."
-  },
-  {
-    icon: "Ba",
-    title: "Balance connectée",
-    description: "Objet connecté visible comme option, sans données capteur."
-  },
-  {
-    icon: "Mé",
-    title: "Météo de rucher",
-    description: "Aucun fournisseur et aucun appel externe dans ce lot."
-  },
-  {
-    icon: "Ca",
-    title: "Caméra",
-    description: "Pas de flux vidéo, pas de stockage image, simple preview."
-  },
-  {
-    icon: "Cp",
-    title: "Capteurs",
-    description: "Préparation visuelle sans protocole matériel actif."
-  },
-  {
-    icon: "Bc",
-    title: "Ruche basse consommation",
-    description: "Configuration prévue, sans paramétrage technique réel."
-  }
-];
+const demoPermissions = createPermissionSet([
+  "apiaries.read",
+  "hives.read",
+  "colonies.read",
+  "visits.read",
+  "tasks.read",
+  "health.read",
+  "knowledge.read",
+  "contacts.read",
+  "documents.read",
+  "harvests.read",
+] satisfies PermissionCode[]);
+
+const dashboardModuleOrder = [
+  "apiaries",
+  "hives",
+  "visits",
+  "tasks",
+  "health",
+  "contacts",
+  "knowledge",
+] satisfies ModuleCode[];
+
+const featuredModuleOrder = ["health", "knowledge", "contacts"] satisfies ModuleCode[];
+
+const activeCatalogEntries = getVisibleModuleEntries(
+  demoEnabledModules,
+  demoPermissions,
+  "catalog",
+);
+
+const dashboardCards = dashboardModuleOrder
+  .map((code) => activeCatalogEntries.find((entry) => entry.code === code))
+  .filter((entry) => entry !== undefined)
+  .map(createDashboardCard);
+
+const activeModules = featuredModuleOrder
+  .map((code) => activeCatalogEntries.find((entry) => entry.code === code))
+  .filter((entry) => entry !== undefined)
+  .map(createModuleCard);
+
+const mobileNavigationItems = createNavigationItems(
+  getVisibleModuleEntries(demoEnabledModules, demoPermissions, "mobile"),
+  "mobile",
+);
+
+const desktopNavigationItems = createNavigationItems(
+  getVisibleModuleEntries(demoEnabledModules, demoPermissions, "desktop"),
+  "desktop",
+);
 
 export default function Home() {
   return (
-    <AppShell>
+    <AppShell
+      desktopNavigationItems={desktopNavigationItems}
+      mobileNavigationItems={mobileNavigationItems}
+    >
       <div className="mx-auto w-full max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
         <section className="grid gap-6 xl:grid-cols-[1fr_22rem]">
           <div className="space-y-6">
@@ -256,55 +209,28 @@ export default function Home() {
                 ))}
               </div>
             </section>
-
-            <section>
-              <div className="mb-4">
-                <p className="text-sm font-black uppercase tracking-wide text-slate-650">
-                  Modules optionnels
-                </p>
-                <h2 className="mt-2 text-2xl font-black text-slate-950">
-                  Prévus, désactivés
-                </h2>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {futureModules.map((card) => (
-                  <ModuleCard
-                    key={card.title}
-                    {...card}
-                    disabled
-                    status="A venir"
-                  />
-                ))}
-              </div>
-            </section>
           </div>
 
           <aside className="hidden space-y-5 xl:block">
             <section className="rounded-3xl border border-cream-300 bg-cream-200 p-5 shadow-field">
               <p className="text-sm font-black uppercase tracking-wide text-amber-800">
-                Modules à venir
+                Catalogue modules
               </p>
-              <div className="mt-5 space-y-3">
-                {futureModules.slice(0, 4).map((module) => (
-                  <article
-                    className="rounded-2xl border border-cream-300 bg-white p-4 shadow-field"
-                    key={module.title}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="grid h-11 w-11 place-items-center rounded-2xl bg-stone-100 text-xs font-black text-stone-600">
-                        {module.icon}
-                      </span>
-                      <div>
-                        <p className="font-black text-slate-950">
-                          {module.title}
-                        </p>
-                        <p className="text-xs font-semibold text-slate-650">
-                          Désactivé
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                ))}
+              <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">
+                Les options restent rangées hors du cockpit.
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-slate-650">
+                IA, capteurs, balance, météo et autres modules prévus sont
+                conservés dans la registry. Ils seront exposés dans un futur
+                catalogue dédié, sans encombrer l&apos;accueil terrain.
+              </p>
+              <div className="mt-5 rounded-2xl border border-dashed border-amber-300 bg-white/70 p-4">
+                <p className="text-sm font-black text-slate-950">
+                  Futur écran prévu
+                </p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
+                  Actif · désactivé · à venir · sans permission
+                </p>
               </div>
             </section>
 

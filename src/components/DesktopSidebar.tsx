@@ -1,12 +1,10 @@
-const sidebarItems = [
-  { label: "Cockpit", marker: "Co" },
-  { label: "Ruchers", marker: "Ru" },
-  { label: "Visites", marker: "Vi" },
-  { label: "Connaissance", marker: "Cn" },
-  { label: "Modules", marker: "Mo" }
-];
+import type { NavigationItem } from "./modulePresentation";
 
-export function DesktopSidebar() {
+type DesktopSidebarProps = {
+  items: NavigationItem[];
+};
+
+export function DesktopSidebar({ items }: DesktopSidebarProps) {
   return (
     <aside className="fixed inset-y-0 left-0 z-20 hidden w-72 border-r border-cream-300 bg-cream-200/95 px-5 py-8 shadow-sidebar backdrop-blur lg:flex lg:flex-col">
       <a className="flex items-center gap-3" href="#cockpit">
@@ -25,15 +23,16 @@ export function DesktopSidebar() {
 
       <nav aria-label="Navigation desktop" className="mt-14">
         <ul className="space-y-3">
-          {sidebarItems.map((item, index) => (
+          {items.map((item) => (
             <li key={item.label}>
               <a
                 className={`flex min-h-14 items-center gap-4 rounded-2xl px-4 text-sm font-black tracking-wide transition-smooth ${
-                  index === 0
+                  item.active
                     ? "bg-amber-400 text-slate-950 shadow-amber"
                     : "text-slate-750 hover:bg-white hover:text-slate-950 hover:shadow-field"
                 }`}
-                href="#cockpit"
+                href={item.href}
+                title={item.route ? `Route prévue: ${item.route}` : item.label}
               >
                 <span className="grid h-8 w-8 place-items-center rounded-xl border border-current text-[10px]">
                   {item.marker}
