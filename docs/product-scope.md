@@ -59,6 +59,12 @@ Le dépôt de documents doit couvrir pièces jointes et références liées aux 
 
 Le suivi des récoltes initial reste volontairement simple: date, rucher ou ruche concernée, quantité, type éventuel et notes.
 
+### Materiel apicole
+
+Le produit doit prevoir un module d'inventaire leger du materiel apicole: consommables, equipements durables, protections, outils terrain, materiel de recolte, transport et nettoyage. Le suivi initial vise les quantites, emplacements, statuts et notes utiles sur le terrain.
+
+Ce module ne doit pas devenir une gestion d'achats, fournisseurs, prix, amortissements, comptabilite ou destruction reglementaire complexe dans le perimetre initial.
+
 ### Configuration ruche basse consommation
 
 Le produit doit prévoir une configuration de ruche orientée faible consommation, notamment pour préparer de futurs modules connectés sans les activer.
@@ -83,6 +89,7 @@ Modules IA:
 ## Hors périmètre initial
 
 - Etiquetage.
+- Achats et gestion fournisseurs.
 - Marketplace.
 - Paiement.
 - Comptabilité complète.

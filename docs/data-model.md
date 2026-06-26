@@ -201,6 +201,64 @@ Champs conceptuels:
 - type;
 - notes.
 
+### EquipmentType
+
+Type de materiel apicole.
+
+Champs conceptuels:
+
+- organisation optionnelle pour les types personnalises;
+- code ou nom;
+- categorie;
+- mode de suivi: quantite, individuel ou hybride;
+- unite par defaut;
+- etat actif ou archive.
+
+### EquipmentStock
+
+Quantite disponible pour un type de materiel.
+
+Champs conceptuels:
+
+- organisation;
+- type de materiel;
+- quantite;
+- unite;
+- emplacement;
+- rucher optionnel;
+- notes.
+
+### EquipmentItem
+
+Materiel durable ou couteux suivi individuellement.
+
+Champs conceptuels:
+
+- organisation;
+- type de materiel;
+- nom ou identifiant terrain;
+- statut;
+- emplacement;
+- rucher optionnel;
+- notes.
+
+### EquipmentEvent
+
+Evenement leger de suivi du materiel.
+
+Champs conceptuels:
+
+- organisation;
+- type de materiel;
+- item optionnel;
+- quantite optionnelle;
+- type d'evenement;
+- emplacement source optionnel;
+- emplacement cible optionnel;
+- auteur optionnel;
+- date;
+- note.
+
 ## Relations clés
 
 - Une organisation possède ses ruchers, ruches, colonies, visites, tâches, documents, contacts et articles.
@@ -209,6 +267,8 @@ Champs conceptuels:
 - Une colonie peut changer de ruche.
 - Une visite peut concerner un rucher entier, une ruche ou une colonie.
 - Une tâche peut cibler plusieurs types d'entités métier.
+- Le materiel appartient a une organisation et peut etre localise librement ou rattache optionnellement a un rucher.
+- Le materiel ne doit pas etre rattache obligatoirement a une ruche ou une colonie au premier lot executable.
 
 ## Décision initiale
 
@@ -241,3 +301,15 @@ Les modèles rucher, ruche, colonie, visite, tâche, sanitaire, documents, conta
 - `Colony`: colonie vivante, éventuellement rattachée à une ruche.
 
 Le modèle conserve la séparation entre le contenant (`Hive`) et le vivant (`Colony`). Les visites, tâches, sanitaire, documents, contacts, récoltes, IA et IoT restent hors schéma exécutable.
+
+## Decision EQUIPMENT-00
+
+`EQUIPMENT-00` cadre le futur module materiel sans modifier le schema executable. Le futur modele devra rester separe des ruches et des colonies pour eviter de transformer chaque element materiel en entite lourde.
+
+Le suivi cible est hybride:
+
+- quantites pour les consommables et elements nombreux;
+- items individuels pour le materiel durable, couteux ou partage;
+- evenements legers pour deplacement, nettoyage, maintenance, ajustement ou retrait du service.
+
+Les achats, fournisseurs, prix, amortissements, comptabilite, destruction reglementaire complexe, IA et IoT restent hors perimetre.

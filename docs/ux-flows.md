@@ -51,6 +51,21 @@ Les flux doivent être courts, lisibles sur mobile et adaptés au terrain. Une a
 2. Il le rattache à une organisation ou une entité métier.
 3. Les utilisateurs autorisés le consultent.
 
+## Flux futur: consulter le materiel
+
+1. L'utilisateur ouvre le cockpit ou la zone modules.
+2. Il accede au module `Materiel` sans surcharge de la navigation basse mobile.
+3. Il consulte l'inventaire par categorie, statut ou emplacement.
+4. Il distingue les consommables suivis en quantite du materiel durable suivi individuellement.
+5. Il repere rapidement le materiel disponible, a nettoyer, en maintenance ou retire du service.
+
+## Flux futur: preparer une intervention
+
+1. L'utilisateur ouvre une visite ou une tache.
+2. Il consulte une checklist materiel proposee par le module, si celui-ci est active.
+3. Il confirme ou ajuste manuellement le materiel a emporter.
+4. Aucune reservation automatique ou obligation de stock n'est appliquee au premier niveau.
+
 ## Flux désactivés
 
 Les flux suivants ne doivent pas être actifs au lancement:
@@ -61,3 +76,4 @@ Les flux suivants ne doivent pas être actifs au lancement:
 - comptage varroa par image;
 - prescription sanitaire automatique;
 - paiement ou marketplace.
+- achats, fournisseurs, comptabilite ou destruction reglementaire complexe du materiel.

@@ -55,9 +55,16 @@ Un module désactivé ne doit pas exécuter de traitement métier, exposer d'act
 Les modules suivants ne doivent pas être préparés comme fonctionnalités initiales:
 
 - étiquetage;
+- achats et gestion fournisseurs;
 - marketplace;
 - paiement;
 - comptabilité complète;
 - IoT actif;
 - IA automatique;
 - prescription sanitaire automatique.
+
+## Module materiel cadre
+
+Le module `Materiel` est cadre pour un lot dedie, mais il n'est pas encore ajoute au catalogue executable. Il est prevu comme module apicole activable sans alourdir la navigation. Il couvrira l'inventaire terrain, les emplacements et les statuts simples du materiel. Il ne couvrira pas les achats, prix, amortissements, fournisseurs, destruction reglementaire complexe, IA, IoT ou prescription sanitaire automatique.
+
+Le cadrage detaille est documente dans [Module Materiel](equipment.md).

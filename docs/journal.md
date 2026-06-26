@@ -1,5 +1,15 @@
 # Journal
 
+## 2026-06-20 - EQUIPMENT-00
+
+- Cadrage documentaire du futur module `Materiel`.
+- Retenue d'une approche hybride: quantites pour consommables, items individuels pour equipements durables ou partages.
+- Identification des categories: materiel de ruche, outils terrain, protections, nourrissement et sanitaire, recolte, transport, stockage et nettoyage.
+- Definition d'une navigation cible sans ajout direct dans la bottom nav mobile initiale.
+- Ajout de la sequence de lots `EQUIPMENT-01`, `EQUIPMENT-SHELL-01` et `EQUIPMENT-CRUD-01`.
+- Achats, fournisseurs, prix, amortissements, comptabilite, destruction reglementaire complexe, IA, IoT et prescription sanitaire automatique restent hors perimetre.
+- Aucun code metier, aucune migration, aucune route et aucun CRUD n'ont ete ajoutes.
+
 ## 2026-06-20 - APIARY-01
 
 - Ajout des modèles Prisma `Apiary`, `Hive` et `Colony`.
