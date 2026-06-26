@@ -24,7 +24,7 @@
 - [x] `MODULES-NAVIGATION-01`: brancher la navigation mobile/desktop et le cockpit sur la registry de modules, sans CRUD metier.
 - [x] `USER-CONTEXT-SHELL-01`: simuler les profils amateur, association, exploitation professionnelle, lecteur et intervenant sanitaire pour tester les variations de cockpit.
 - [x] `USER-PROFILE-MODULES-01`: prévisualiser le choix de modules par adhésion membre, sans formulaire fonctionnel ni persistance.
-- [ ] `DYNAMIC-STATES-01`: ajouter les composants d'etats reutilisables: vide, chargement, sans permission, module desactive, module a venir, alerte.
+- [x] `DYNAMIC-STATES-01`: ajouter les composants d'etats reutilisables: vide, chargement, sans permission, module desactive, module a venir, alerte.
 - [ ] `RESPONSIVE-WORKFLOWS-01`: affiner les parcours mobile-first pour ruchers, visites, modules et profil organisation, sans formulaire fonctionnel.
 - [ ] `ACCESSIBLE-MOTION-01`: ajouter transitions et animations sobres compatibles `prefers-reduced-motion`.
 - [ ] `DESIGN-TOKENS-01`: consolider les tokens UI Tailwind: couleurs, espacements, surfaces, badges, focus et contrastes exterieur.
@@ -123,6 +123,14 @@
 - [x] Rappeler que masquer un module ne supprime aucune donnée.
 - [x] Garder IA, IoT et modules connectés hors du choix tant qu'ils ne sont pas activés par lot dédié.
 - [x] Ne pas créer de formulaire fonctionnel, session, API, persistance, CRUD, auth ou Prisma supplémentaire.
+
+## DYNAMIC-STATES-01
+
+- [x] Ajouter un composant `StatePanel` réutilisable.
+- [x] Ajouter les états vide, chargement, sans permission, module désactivé, fonction à venir et alerte.
+- [x] Afficher une galerie statique dans le cockpit pour cadrer les futurs écrans.
+- [x] Garder les états comme surfaces de présentation sans action fonctionnelle.
+- [x] Ne pas créer de route, API, session, CRUD métier, auth, Prisma supplémentaire, IA active ou IoT actif.
 
 ## SECURITY-DEPENDENCIES-00
 

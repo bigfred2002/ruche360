@@ -1,5 +1,6 @@
 import { AppShell } from "@/components/AppShell";
 import { DashboardCard } from "@/components/DashboardCard";
+import { DynamicStatesPreview } from "@/components/DynamicStatesPreview";
 import { MemberModulePreferencesPreview } from "@/components/MemberModulePreferencesPreview";
 import { ModuleCard } from "@/components/ModuleCard";
 import {
@@ -226,6 +227,8 @@ export default function Home() {
             </section>
 
             <MemberModulePreferencesPreview scenario={activeScenario} />
+
+            <DynamicStatesPreview />
 
             <section>
               <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
