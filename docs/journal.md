@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-26 - SECURITY-DEPENDENCIES-01
+
+- Traitement des deux vulnerabilites moderees detectees par `pnpm audit --prod`.
+- Ajout d'overrides pnpm workspace pour forcer `@hono/node-server` en `1.19.13` et `postcss` en `8.5.15`.
+- Regeneration du lockfile via Docker Compose uniquement.
+- `pnpm audit --prod` ne signale plus de vulnerabilite connue apres correction.
+- Aucune dependance directe, fonctionnalite metier, authentification, Prisma supplementaire, IA ou IoT actif n'a ete ajoute.
+
 ## 2026-06-26 - SECURITY-DEPENDENCIES-00
 
 - Preparation d'un lot securite dedie aux dependances et alertes.
