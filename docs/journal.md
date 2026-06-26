@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-26 - DYNAMIC-STATES-01
+
+- Ajout d'un composant `StatePanel` pour standardiser les états d'interface futurs.
+- Ajout d'une galerie statique dans le cockpit couvrant: vide, chargement, sans permission, module désactivé, fonction à venir et alerte.
+- Les états préparent les futurs écrans sans créer d'action fonctionnelle, route, API, session ou persistance.
+- Aucun CRUD métier, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-26 - USER-PROFILE-MODULES-01
 
 - Ajout d'une prévisualisation statique des modules visibles pour un profil membre.
