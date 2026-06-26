@@ -31,6 +31,11 @@
 - [ ] `PROFILE-ONBOARDING-SHELL-01`: preparer le parcours d'accueil d'un apiculteur amateur avec creation d'espace personnel simulee, sans auth reelle.
 - [ ] Garder hors perimetre de ces lots: Prisma supplementaire, CRUD metier, auth reelle, IA active, IoT actif, appel API externe et suppression de donnees.
 
+- [x] Préparer le lot sécurité dépendances et alertes.
+- [ ] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
+- [ ] Durcir la CI dans `SECURITY-CI-01` si un contrôle fiable peut être ajouté sans ralentir les micro-lots.
+- [ ] Évaluer un scanner de secrets dédié dans `SECURITY-SECRETS-01`.
+- [ ] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
 - [x] Créer Docker Compose.
 - [x] Définir les commandes de validation containerisées.
 - [x] Scaffolder l'application dans un lot dédié.
@@ -92,6 +97,15 @@
 - [x] Ajouter des helpers purs pour filtrer les modules visibles.
 - [x] Exporter la registry depuis `src/features/rbac`.
 - [x] Ne pas brancher encore la navigation ou le cockpit sur cette registry.
+
+## SECURITY-DEPENDENCIES-00
+
+- [x] Ajouter une configuration Dependabot pour npm, GitHub Actions et Docker.
+- [x] Documenter le workflow de traitement des alertes.
+- [x] Documenter les validations obligatoires.
+- [x] Documenter les règles de confidentialité avant push.
+- [x] Préparer les lots `SECURITY-DEPENDENCIES-01`, `SECURITY-CI-01`, `SECURITY-SECRETS-01` et `SECURITY-RUNNER-01`.
+- [x] Ne pas modifier les versions de dépendances dans ce lot.
 
 ## ARCHITECTURE-DOCS-00
 
