@@ -31,6 +31,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `ARCHITECTURE-DOCS-00` ajoute une lecture transversale de l'architecture logique, de la cartographie fonctionnelle par module et de la gouvernance des lots/sprints.
 - `SECURITY-DEPENDENCIES-00` prepare le traitement des alertes de securite et dependances avec Dependabot, sans changer les versions applicatives.
 - `MODULES-NAVIGATION-01` branche la navigation mobile/desktop et les cartes du cockpit sur la registry de modules, avec un profil de démonstration statique et sans route métier active. Les modules futurs restent dans la registry mais ne sont pas listés directement dans le cockpit.
+- `USER-CONTEXT-SHELL-01` ajoute des profils de démonstration statiques pour tester les variations de cockpit selon type d'organisation, rôle, modules et permissions, sans auth, session, API ni persistance.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
