@@ -28,11 +28,11 @@ export function ShellRoutePage({
     >
       <div className="mx-auto w-full max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
         <div className="space-y-6">
-          <section className="rounded-3xl border border-cream-300 bg-white/90 p-5 shadow-field backdrop-blur sm:p-7 lg:p-8">
+          <section className="surface-panel rounded-3xl p-5 backdrop-blur sm:p-7 lg:p-8">
             <StatusBadge label="Écran shell" tone="preview" />
             <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_18rem] lg:items-end">
               <div>
-                <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+                <p className="section-kicker">
                   {eyebrow}
                 </p>
                 <h1 className="mt-2 text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
@@ -59,14 +59,14 @@ export function ShellRoutePage({
           <section className="grid gap-4 md:grid-cols-3">
             {highlights.map((highlight) => (
               <article
-                className="rounded-2xl border border-cream-300 bg-white p-4 shadow-field"
+                className="surface-panel rounded-2xl p-4"
                 key={highlight}
               >
                 <StatusBadge label="Prévu" tone="soon" />
                 <p className="mt-3 text-base font-black text-slate-950">
                   {highlight}
                 </p>
-                <p className="mt-2 text-sm leading-6 text-slate-650">
+                <p className="mt-2 text-sm leading-6 text-field-muted">
                   Élément de parcours affiché pour cadrer le futur écran.
                 </p>
               </article>

@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-06-27 - DESIGN-TOKENS-01
+
+- Ajout de classes sémantiques `surface-panel`, `surface-muted`, `surface-soft`, `text-field-muted` et `section-kicker`.
+- Application des tokens à quelques surfaces structurantes pour préparer une cohérence UI plus durable.
+- Le lot reste visuel: aucun comportement, route, API, session, persistance, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-27 - ACCESSIBLE-MOTION-01
 
 - Ajout de classes CSS réutilisables pour micro-transitions de cartes et navigation.

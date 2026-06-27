@@ -74,16 +74,16 @@ const accentClasses: Record<WorkflowPreview["accent"], string> = {
 
 export function ResponsiveWorkflowsPreview() {
   return (
-    <section className="rounded-3xl border border-cream-300 bg-white p-5 shadow-field sm:p-6">
+    <section className="surface-panel rounded-3xl p-5 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+          <p className="section-kicker">
             Parcours responsive
           </p>
           <h2 className="mt-2 text-2xl font-black text-slate-950">
             Chemins mobile-first prévus
           </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-650">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-field-muted">
             Ces parcours cadrent l&apos;enchaînement des futurs écrans sans
             créer de route, de formulaire ou d&apos;action métier.
           </p>
