@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-27 - ERROR-PAGES-01
+
+- Ajout d'un composant commun `ErrorPageShell` pour les pages d'erreur.
+- Activation d'une page 404 personnalisée via `not-found.tsx` et d'une page d'erreur runtime via `error.tsx`.
+- Ajout de routes statiques `/errors/403`, `/errors/500` et `/errors/503` pour prévisualiser les principaux états d'erreur.
+- Chaque page contient une touche d'humour légère et des liens de retour vers le cockpit et le catalogue modules.
+- Aucun CRUD métier, API, session, persistance, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-27 - PROFILE-ONBOARDING-SHELL-01
 
 - Ajout d'une route `/onboarding` pour préparer le parcours d'accueil d'un apiculteur amateur.
