@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-27 - APP-NAVIGATION-ROUTES-01
+
+- Activation des liens de navigation vers les routes prévues par la registry.
+- Ajout de pages shell statiques pour ruchers, ruches, colonies, visites, tâches, sanitaire, varroa, frelon, connaissance, contacts, documents, récoltes, organisation, membres et modules.
+- Les pages shell évitent les 404 et affichent clairement leur statut de préparation.
+- Aucun formulaire fonctionnel, CRUD métier, API, session, persistance, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-26 - RESPONSIVE-WORKFLOWS-01
 
 - Ajout d'une prévisualisation statique des parcours mobile-first futurs pour rucher, visite, modules et organisation.

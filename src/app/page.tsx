@@ -1,4 +1,5 @@
 import { AppShell } from "@/components/AppShell";
+import { createAppNavigation } from "@/components/appNavigation";
 import { DashboardCard } from "@/components/DashboardCard";
 import { DynamicStatesPreview } from "@/components/DynamicStatesPreview";
 import { MemberModulePreferencesPreview } from "@/components/MemberModulePreferencesPreview";
@@ -6,7 +7,6 @@ import { ModuleCard } from "@/components/ModuleCard";
 import {
   createDashboardCard,
   createModuleCard,
-  createNavigationItems,
   getModulePresentation,
 } from "@/components/modulePresentation";
 import { ResponsiveWorkflowsPreview } from "@/components/ResponsiveWorkflowsPreview";
@@ -42,15 +42,7 @@ const activeModules = activeScenario.featuredModules
   .filter((entry) => entry !== undefined)
   .map(createModuleCard);
 
-const mobileNavigationItems = createNavigationItems(
-  getVisibleModuleEntries(activeEnabledModules, activePermissions, "mobile"),
-  "mobile",
-);
-
-const desktopNavigationItems = createNavigationItems(
-  getVisibleModuleEntries(activeEnabledModules, activePermissions, "desktop"),
-  "desktop",
-);
+const { desktopNavigationItems, mobileNavigationItems } = createAppNavigation("/");
 
 const scenarioSummaries = userContextScenarios.map((scenario) => ({
   ...scenario,

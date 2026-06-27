@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { NavigationItem } from "./modulePresentation";
 
 type BottomNavigationProps = {
@@ -13,7 +15,7 @@ export function BottomNavigation({ items }: BottomNavigationProps) {
       <ul className="mx-auto grid max-w-md grid-cols-5 gap-1">
         {items.slice(0, 5).map((item) => (
           <li key={item.label}>
-            <a
+            <Link
               className={`flex min-h-16 flex-col items-center justify-center gap-1 rounded-2xl text-[10px] font-black uppercase tracking-wide transition-smooth ${
                 item.active
                   ? "bg-amber-400 text-slate-950 shadow-amber"
@@ -26,7 +28,7 @@ export function BottomNavigation({ items }: BottomNavigationProps) {
                 {item.marker}
               </span>
               {item.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { NavigationItem } from "./modulePresentation";
 
 type DesktopSidebarProps = {
@@ -7,7 +9,7 @@ type DesktopSidebarProps = {
 export function DesktopSidebar({ items }: DesktopSidebarProps) {
   return (
     <aside className="fixed inset-y-0 left-0 z-20 hidden w-72 border-r border-cream-300 bg-cream-200/95 px-5 py-8 shadow-sidebar backdrop-blur lg:flex lg:flex-col">
-      <a className="flex items-center gap-3" href="#cockpit">
+      <Link className="flex items-center gap-3" href="/">
         <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-amber text-sm font-black text-white shadow-amber">
           R360
         </span>
@@ -19,13 +21,13 @@ export function DesktopSidebar({ items }: DesktopSidebarProps) {
             Gestion apicole
           </span>
         </span>
-      </a>
+      </Link>
 
       <nav aria-label="Navigation desktop" className="mt-14">
         <ul className="space-y-3">
           {items.map((item) => (
             <li key={item.label}>
-              <a
+              <Link
                 className={`flex min-h-14 items-center gap-4 rounded-2xl px-4 text-sm font-black tracking-wide transition-smooth ${
                   item.active
                     ? "bg-amber-400 text-slate-950 shadow-amber"
@@ -38,7 +40,7 @@ export function DesktopSidebar({ items }: DesktopSidebarProps) {
                   {item.marker}
                 </span>
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

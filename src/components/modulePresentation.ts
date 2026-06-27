@@ -215,15 +215,18 @@ export function getModulePresentation(module: ModuleCode): ModulePresentation {
 export function createNavigationItems(
   entries: ModuleRegistryEntry[],
   surface: ModuleNavigationSurface,
+  currentPath = "/",
 ): NavigationItem[] {
   const moduleItems = entries
     .filter((entry) => entry.navigation.has(surface))
     .map((entry) => {
       const presentation = getModulePresentation(entry.code);
+      const href = entry.route ?? "#modules";
 
       return {
+        active: entry.route === currentPath,
         availability: entry.availability,
-        href: "#modules",
+        href,
         label: presentation.shortLabel ?? entry.label,
         marker: presentation.icon,
         route: entry.route,
@@ -231,9 +234,9 @@ export function createNavigationItems(
     });
 
   return [
-    { active: true, href: "#cockpit", label: "Cockpit", marker: "Co", route: "/" },
+    { active: currentPath === "/", href: "/", label: "Cockpit", marker: "Co", route: "/" },
     ...moduleItems,
-    { href: "#modules", label: "Modules", marker: "Mo", route: null },
+    { active: currentPath === "/modules", href: "/modules", label: "Modules", marker: "Mo", route: "/modules" },
   ];
 }
 
