@@ -28,7 +28,7 @@ export function DashboardCard({
   statusTone = "preview"
 }: DashboardCardProps) {
   return (
-    <article className="group rounded-2xl border border-cream-300 bg-white p-5 shadow-field transition-smooth hover:-translate-y-0.5 hover:shadow-field-lg">
+    <article className="motion-card group rounded-2xl border border-cream-300 bg-white p-5 shadow-field hover:shadow-field-lg">
       <div className="flex items-start justify-between gap-3">
         <span
           className={`grid h-12 w-12 place-items-center rounded-2xl text-sm font-black ring-1 ${accentClasses[accent]}`}

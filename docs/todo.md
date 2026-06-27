@@ -27,7 +27,7 @@
 - [x] `USER-PROFILE-MODULES-01`: prévisualiser le choix de modules par adhésion membre, sans formulaire fonctionnel ni persistance.
 - [x] `DYNAMIC-STATES-01`: ajouter les composants d'etats reutilisables: vide, chargement, sans permission, module desactive, module a venir, alerte.
 - [x] `RESPONSIVE-WORKFLOWS-01`: affiner les parcours mobile-first pour ruchers, visites, modules et profil organisation, sans formulaire fonctionnel.
-- [ ] `ACCESSIBLE-MOTION-01`: ajouter transitions et animations sobres compatibles `prefers-reduced-motion`.
+- [x] `ACCESSIBLE-MOTION-01`: ajouter transitions et animations sobres compatibles `prefers-reduced-motion`.
 - [ ] `DESIGN-TOKENS-01`: consolider les tokens UI Tailwind: couleurs, espacements, surfaces, badges, focus et contrastes exterieur.
 - [ ] `MODULES-CATALOG-SHELL-01`: creer une page catalogue modules qui distingue actif, desactive, a venir et sans permission.
 - [ ] `PROFILE-ONBOARDING-SHELL-01`: preparer le parcours d'accueil d'un apiculteur amateur avec creation d'espace personnel simulee, sans auth reelle.
@@ -140,6 +140,14 @@
 - [x] Ajouter une route `/modules` pour la navigation secondaire.
 - [x] Garder les pages comme surfaces de préparation sans données dynamiques.
 - [x] Ne pas créer de formulaire fonctionnel, CRUD métier, API, session, auth, Prisma supplémentaire, IA active ou IoT actif.
+
+## ACCESSIBLE-MOTION-01
+
+- [x] Centraliser les transitions sobres dans des classes CSS réutilisables.
+- [x] Appliquer les transitions aux cartes et aux entrées de navigation.
+- [x] Ajouter un focus visible cohérent pour les liens principaux.
+- [x] Respecter `prefers-reduced-motion` en supprimant les déplacements au survol.
+- [x] Ne pas ajouter de dépendance, logique métier, API, session, auth, Prisma supplémentaire, IA active ou IoT actif.
 
 ## RESPONSIVE-WORKFLOWS-01
 
