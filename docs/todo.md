@@ -30,7 +30,7 @@
 - [x] `ACCESSIBLE-MOTION-01`: ajouter transitions et animations sobres compatibles `prefers-reduced-motion`.
 - [x] `DESIGN-TOKENS-01`: consolider les tokens UI Tailwind: couleurs, espacements, surfaces, badges, focus et contrastes exterieur.
 - [x] `MODULES-CATALOG-SHELL-01`: creer une page catalogue modules qui distingue actif, desactive, a venir et sans permission.
-- [ ] `PROFILE-ONBOARDING-SHELL-01`: preparer le parcours d'accueil d'un apiculteur amateur avec creation d'espace personnel simulee, sans auth reelle.
+- [x] `PROFILE-ONBOARDING-SHELL-01`: preparer le parcours d'accueil d'un apiculteur amateur avec creation d'espace personnel simulee, sans auth reelle.
 - [ ] Garder hors perimetre de ces lots: Prisma supplementaire, CRUD metier, auth reelle, IA active, IoT actif, appel API externe et suppression de donnees.
 
 - [x] Préparer le lot sécurité dépendances et alertes.
@@ -164,6 +164,14 @@
 - [x] Utiliser la registry existante comme source de présentation.
 - [x] Garder le catalogue sans bouton d'activation fonctionnel.
 - [x] Ne pas créer d'API, session, persistance, CRUD métier, auth, Prisma supplémentaire, IA active ou IoT actif.
+
+## PROFILE-ONBOARDING-SHELL-01
+
+- [x] Ajouter une route `/onboarding` statique.
+- [x] Préparer le parcours d'accueil d'un apiculteur amateur.
+- [x] Présenter l'espace personnel simulé et les modules essentiels.
+- [x] Relier le raccourci profil de la topbar vers ce parcours.
+- [x] Ne pas créer de compte réel, auth, API, session, persistance, CRUD métier, Prisma supplémentaire, IA active ou IoT actif.
 
 ## RESPONSIVE-WORKFLOWS-01
 
