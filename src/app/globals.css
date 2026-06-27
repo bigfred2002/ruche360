@@ -84,6 +84,35 @@ a {
     linear-gradient(135deg, #90baa4 0%, #45645e 42%, #855300 100%);
 }
 
+.surface-panel {
+  border: 1px solid #d8c3ad;
+  background: rgb(255 255 255 / 0.9);
+  box-shadow: var(--shadow-field);
+}
+
+.surface-muted {
+  border: 1px solid #d8c3ad;
+  background: #efeeea;
+  box-shadow: var(--shadow-field);
+}
+
+.surface-soft {
+  border: 1px solid #d8c3ad;
+  background: #fffdf7;
+}
+
+.text-field-muted {
+  color: #4e5964;
+}
+
+.section-kicker {
+  color: #855300;
+  font-size: 0.875rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 .transition-smooth {
   transition:
     transform 180ms ease,

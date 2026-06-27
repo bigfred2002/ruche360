@@ -37,6 +37,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `RESPONSIVE-WORKFLOWS-01` ajoute une prévisualisation statique des parcours mobile-first futurs pour rucher, visite, modules et organisation, sans route active, formulaire, API, session ou persistance.
 - `APP-NAVIGATION-ROUTES-01` active les liens de navigation vers des pages shell statiques pour les modules principaux. Ces pages évitent les 404 mais ne contiennent aucun CRUD, formulaire fonctionnel, API, session ou donnée dynamique.
 - `ACCESSIBLE-MOTION-01` centralise des micro-transitions sobres pour cartes et navigation, avec respect de `prefers-reduced-motion` et focus visible, sans logique applicative.
+- `DESIGN-TOKENS-01` ajoute des classes sémantiques de surfaces, texte secondaire et titres de section pour stabiliser le langage visuel sans changer le comportement applicatif.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 

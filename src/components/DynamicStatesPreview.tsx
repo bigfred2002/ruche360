@@ -49,16 +49,16 @@ const statePreviews: StatePreview[] = [
 
 export function DynamicStatesPreview() {
   return (
-    <section className="rounded-3xl border border-cream-300 bg-cream-200 p-5 shadow-field sm:p-6">
+    <section className="surface-muted rounded-3xl p-5 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+          <p className="section-kicker">
             États dynamiques
           </p>
           <h2 className="mt-2 text-2xl font-black text-slate-950">
             Vocabulaire visuel des futurs écrans
           </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-650">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-field-muted">
             Ces états préparent les prochains parcours sans appeler d&apos;API,
             sans session et sans logique métier active.
           </p>
