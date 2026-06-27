@@ -40,6 +40,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `DESIGN-TOKENS-01` ajoute des classes sémantiques de surfaces, texte secondaire et titres de section pour stabiliser le langage visuel sans changer le comportement applicatif.
 - `MODULES-CATALOG-SHELL-01` remplace la page `/modules` générique par un catalogue statique distinguant modules actifs, sans permission, désactivés et à venir, sans activation fonctionnelle.
 - `PROFILE-ONBOARDING-SHELL-01` ajoute une route `/onboarding` statique pour préparer le parcours d'accueil d'un apiculteur amateur, sans compte réel, auth, API, session ou persistance.
+- `ERROR-PAGES-01` ajoute des pages d'erreur personnalisées pour 404, erreur runtime, 403, 500 et 503, avec une touche d'humour légère et sans logique métier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
