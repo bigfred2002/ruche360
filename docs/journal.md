@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-27 - PROFILE-ONBOARDING-SHELL-01
+
+- Ajout d'une route `/onboarding` pour préparer le parcours d'accueil d'un apiculteur amateur.
+- Le parcours présente un espace personnel simulé, les modules essentiels et une évolution progressive.
+- Le raccourci profil de la topbar pointe vers cette surface de préparation.
+- Aucun compte réel, authentification, API, session, persistance, CRUD métier, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-27 - MODULES-CATALOG-SHELL-01
 
 - Remplacement de la page `/modules` générique par un catalogue statique alimenté par la registry.

@@ -26,9 +26,13 @@ export function TopBar() {
           <span className="grid h-11 min-w-11 place-items-center rounded-2xl border border-cream-300 bg-white text-xs font-black text-slate-800 shadow-field">
             Al
           </span>
-          <span className="grid h-11 min-w-11 place-items-center rounded-2xl border border-cream-300 bg-white text-xs font-black text-slate-800 shadow-field">
+          <Link
+            className="focus-ring motion-nav grid h-11 min-w-11 place-items-center rounded-2xl border border-cream-300 bg-white text-xs font-black text-slate-800 shadow-field"
+            href="/onboarding"
+            title="Parcours d'accueil prévu"
+          >
             Pr
-          </span>
+          </Link>
         </div>
       </div>
     </header>
