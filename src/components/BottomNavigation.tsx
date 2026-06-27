@@ -16,7 +16,7 @@ export function BottomNavigation({ items }: BottomNavigationProps) {
         {items.slice(0, 5).map((item) => (
           <li key={item.label}>
             <Link
-              className={`flex min-h-16 flex-col items-center justify-center gap-1 rounded-2xl text-[10px] font-black uppercase tracking-wide transition-smooth ${
+              className={`focus-ring motion-nav flex min-h-16 flex-col items-center justify-center gap-1 rounded-2xl text-[10px] font-black uppercase tracking-wide ${
                 item.active
                   ? "bg-amber-400 text-slate-950 shadow-amber"
                   : "text-slate-700"

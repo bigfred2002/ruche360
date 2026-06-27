@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-27 - ACCESSIBLE-MOTION-01
+
+- Ajout de classes CSS réutilisables pour micro-transitions de cartes et navigation.
+- Ajout d'un focus visible cohérent sur les liens principaux.
+- Conservation et extension du respect de `prefers-reduced-motion` pour éviter les déplacements au survol.
+- Aucun comportement métier, API, session, persistance, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-27 - APP-NAVIGATION-ROUTES-01
 
 - Activation des liens de navigation vers les routes prévues par la registry.

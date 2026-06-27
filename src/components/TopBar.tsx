@@ -4,7 +4,7 @@ export function TopBar() {
   return (
     <header className="sticky top-0 z-10 border-b border-cream-300 bg-cream-100/90 backdrop-blur">
       <div className="mx-auto flex min-h-20 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
-        <Link className="flex items-center gap-3 lg:hidden" href="/">
+        <Link className="focus-ring flex items-center gap-3 rounded-2xl lg:hidden" href="/">
           <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-amber text-xs font-black text-white shadow-amber">
             R360
           </span>

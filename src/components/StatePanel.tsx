@@ -66,7 +66,7 @@ export function StatePanel({ detail, kind, label, title }: StatePanelProps) {
   const styles = stateStyles[kind];
 
   return (
-    <article className={`rounded-2xl border p-4 shadow-field ${styles.frame}`}>
+    <article className={`motion-card rounded-2xl border p-4 shadow-field ${styles.frame}`}>
       <div className="flex items-start justify-between gap-3">
         <span
           aria-hidden="true"

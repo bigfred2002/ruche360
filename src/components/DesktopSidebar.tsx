@@ -9,7 +9,7 @@ type DesktopSidebarProps = {
 export function DesktopSidebar({ items }: DesktopSidebarProps) {
   return (
     <aside className="fixed inset-y-0 left-0 z-20 hidden w-72 border-r border-cream-300 bg-cream-200/95 px-5 py-8 shadow-sidebar backdrop-blur lg:flex lg:flex-col">
-      <Link className="flex items-center gap-3" href="/">
+      <Link className="focus-ring flex items-center gap-3 rounded-2xl" href="/">
         <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-amber text-sm font-black text-white shadow-amber">
           R360
         </span>
@@ -28,7 +28,7 @@ export function DesktopSidebar({ items }: DesktopSidebarProps) {
           {items.map((item) => (
             <li key={item.label}>
               <Link
-                className={`flex min-h-14 items-center gap-4 rounded-2xl px-4 text-sm font-black tracking-wide transition-smooth ${
+                className={`focus-ring motion-nav flex min-h-14 items-center gap-4 rounded-2xl px-4 text-sm font-black tracking-wide ${
                   item.active
                     ? "bg-amber-400 text-slate-950 shadow-amber"
                     : "text-slate-750 hover:bg-white hover:text-slate-950 hover:shadow-field"

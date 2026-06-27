@@ -29,10 +29,10 @@ export function ModuleCard({
 }: ModuleCardProps) {
   return (
     <article
-      className={`relative overflow-hidden rounded-2xl border p-5 shadow-field transition-smooth ${
+      className={`motion-card relative overflow-hidden rounded-2xl border p-5 shadow-field ${
         disabled
           ? "border-dashed border-stone-300 bg-stone-50 text-stone-600"
-          : "border-cream-300 bg-white text-slate-950 hover:-translate-y-0.5 hover:shadow-field-lg"
+          : "border-cream-300 bg-white text-slate-950 hover:shadow-field-lg"
       }`}
     >
       {!disabled ? (
