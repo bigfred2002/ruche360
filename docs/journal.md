@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-27 - MODULES-CATALOG-SHELL-01
+
+- Remplacement de la page `/modules` générique par un catalogue statique alimenté par la registry.
+- Les modules sont distingués entre actifs, sans permission, désactivés et à venir.
+- Le catalogue clarifie les options sans créer d'activation fonctionnelle, d'API, de session ou de persistance.
+- Aucun CRUD métier, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-27 - DESIGN-TOKENS-01
 
 - Ajout de classes sémantiques `surface-panel`, `surface-muted`, `surface-soft`, `text-field-muted` et `section-kicker`.
