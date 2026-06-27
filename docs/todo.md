@@ -29,7 +29,7 @@
 - [x] `RESPONSIVE-WORKFLOWS-01`: affiner les parcours mobile-first pour ruchers, visites, modules et profil organisation, sans formulaire fonctionnel.
 - [x] `ACCESSIBLE-MOTION-01`: ajouter transitions et animations sobres compatibles `prefers-reduced-motion`.
 - [x] `DESIGN-TOKENS-01`: consolider les tokens UI Tailwind: couleurs, espacements, surfaces, badges, focus et contrastes exterieur.
-- [ ] `MODULES-CATALOG-SHELL-01`: creer une page catalogue modules qui distingue actif, desactive, a venir et sans permission.
+- [x] `MODULES-CATALOG-SHELL-01`: creer une page catalogue modules qui distingue actif, desactive, a venir et sans permission.
 - [ ] `PROFILE-ONBOARDING-SHELL-01`: preparer le parcours d'accueil d'un apiculteur amateur avec creation d'espace personnel simulee, sans auth reelle.
 - [ ] Garder hors perimetre de ces lots: Prisma supplementaire, CRUD metier, auth reelle, IA active, IoT actif, appel API externe et suppression de donnees.
 
@@ -156,6 +156,14 @@
 - [x] Ajouter une classe commune pour les accroches de section.
 - [x] Appliquer ces tokens à des composants existants sans refonte globale.
 - [x] Ne pas modifier la logique, les routes, l'API, la session, Prisma, IA ou IoT.
+
+## MODULES-CATALOG-SHELL-01
+
+- [x] Remplacer `/modules` par un catalogue statique dédié.
+- [x] Distinguer les statuts actif, sans permission, désactivé et à venir.
+- [x] Utiliser la registry existante comme source de présentation.
+- [x] Garder le catalogue sans bouton d'activation fonctionnel.
+- [x] Ne pas créer d'API, session, persistance, CRUD métier, auth, Prisma supplémentaire, IA active ou IoT actif.
 
 ## RESPONSIVE-WORKFLOWS-01
 

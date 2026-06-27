@@ -1,12 +1,5 @@
-import { ShellRoutePage } from "@/components/ShellRoutePage";
+import { ModulesCatalogPreview } from "@/components/ModulesCatalogPreview";
 
 export default function ModulesPage() {
-  return (
-    <ShellRoutePage
-      currentPath="/modules"
-      eyebrow="Catalogue modules"
-      highlights={["Actifs", "Désactivés", "À venir"]}
-      title="Modules"
-    />
-  );
+  return <ModulesCatalogPreview />;
 }
