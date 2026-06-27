@@ -20,6 +20,7 @@
 
 ### Analyse lots dynamiques UI/applicatifs
 
+- [x] `APP-NAVIGATION-ROUTES-01`: activer la navigation vers des routes shell statiques, sans logique métier.
 - [ ] `DESIGN-DYNAMIC-SHELL-01`: rendre le shell plus vivant sans Figma, avec cockpit modernise, micro-interactions sobres, etats visuels et meilleure hierarchie mobile/desktop.
 - [x] `MODULES-NAVIGATION-01`: brancher la navigation mobile/desktop et le cockpit sur la registry de modules, sans CRUD metier.
 - [x] `USER-CONTEXT-SHELL-01`: simuler les profils amateur, association, exploitation professionnelle, lecteur et intervenant sanitaire pour tester les variations de cockpit.
@@ -131,6 +132,14 @@
 - [x] Afficher une galerie statique dans le cockpit pour cadrer les futurs écrans.
 - [x] Garder les états comme surfaces de présentation sans action fonctionnelle.
 - [x] Ne pas créer de route, API, session, CRUD métier, auth, Prisma supplémentaire, IA active ou IoT actif.
+
+## APP-NAVIGATION-ROUTES-01
+
+- [x] Transformer les entrées de navigation en liens vers les routes prévues quand elles existent.
+- [x] Ajouter des pages shell statiques pour les modules actifs principaux.
+- [x] Ajouter une route `/modules` pour la navigation secondaire.
+- [x] Garder les pages comme surfaces de préparation sans données dynamiques.
+- [x] Ne pas créer de formulaire fonctionnel, CRUD métier, API, session, auth, Prisma supplémentaire, IA active ou IoT actif.
 
 ## RESPONSIVE-WORKFLOWS-01
 
