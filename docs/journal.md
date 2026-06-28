@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-28 - EQUIPMENT-01
+
+- Ajout du module `equipment` au catalogue RBAC avec les permissions `equipment.read`, `equipment.write` et `equipment.manage`.
+- Ajout du schema Prisma minimal: `EquipmentType`, `EquipmentStock`, `EquipmentItem` et `EquipmentEvent`.
+- Ajout de types domaine purs dans `src/features/equipment`.
+- Le materiel reste rattache a une organisation, avec un lien optionnel vers un rucher et aucun lien obligatoire vers ruche ou colonie.
+- Aucun ecran, formulaire, CRUD, action serveur, authentification, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-06-28 - TRANSHUMANCE-00
 
 - Ajout d'un cadrage dedie `docs/transhumance.md` pour le futur module optionnel `transhumance`.

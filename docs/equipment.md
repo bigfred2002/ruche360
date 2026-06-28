@@ -130,6 +130,8 @@ Un futur QR code interne peut etre etudie separement, sans le confondre avec un 
 - Ajouter le modele de donnees minimal.
 - Ne pas creer d'interface CRUD complete.
 
+Decision: `EQUIPMENT-01` ajoute uniquement le socle executable. Le module reste planifie dans l'interface tant que `EQUIPMENT-SHELL-01` n'a pas cree l'ecran d'inventaire.
+
 ### EQUIPMENT-SHELL-01
 
 - Ajouter un ecran inventaire mobile-first.

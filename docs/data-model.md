@@ -397,6 +397,19 @@ Le suivi cible est hybride:
 
 Les achats, fournisseurs, prix, amortissements, comptabilite, destruction reglementaire complexe, IA et IoT restent hors perimetre.
 
+## Decision EQUIPMENT-01
+
+`EQUIPMENT-01` ajoute le socle executable minimal du materiel:
+
+- `EquipmentType`: catalogue de types de materiel, global ou personnalise par organisation;
+- `EquipmentStock`: quantites disponibles par type, emplacement libre et rucher optionnel;
+- `EquipmentItem`: materiel durable suivi individuellement;
+- `EquipmentEvent`: historique leger d'ajustement, deplacement, nettoyage, maintenance ou note.
+
+Le modele reste rattache a l'organisation. Le lien vers un rucher est optionnel. Aucun lien obligatoire vers ruche, colonie, visite, tache, recolte ou sanitaire n'est cree dans ce lot.
+
+Le module `equipment` et les permissions `equipment.read`, `equipment.write` et `equipment.manage` sont ajoutes au catalogue, mais aucun ecran d'inventaire, formulaire, action serveur ou CRUD complet n'est cree.
+
 ## Decision MODULES-DYNAMIC-00
 
 Les modules dynamiques doivent etre pilotes par organisation puis par adhesion. Le modele cible ajoute `MembershipModulePreference` pour eviter de rendre les modules visibles globalement pour un utilisateur dans toutes ses organisations.

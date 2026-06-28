@@ -112,6 +112,12 @@ const moduleRegistryConfig = {
     availability: "ACTIVE",
     navigation: ["catalog"],
   },
+  equipment: {
+    route: "/equipment",
+    requiredPermissions: ["equipment.read"],
+    availability: "PLANNED",
+    navigation: ["catalog"],
+  },
   low_power_config: {
     route: "/low-power",
     requiredPermissions: [],

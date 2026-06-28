@@ -137,6 +137,12 @@ const modulePresentation = {
     icon: "Ré",
     shortLabel: "Récoltes",
   },
+  equipment: {
+    accent: "sage",
+    description: "Inventaire matériel prévu, sans gestion opérationnelle dans ce lot.",
+    icon: "Ma",
+    shortLabel: "Matériel",
+  },
   low_power_config: {
     accent: "sage",
     description: "Configuration basse consommation prévue, sans paramétrage réel.",
