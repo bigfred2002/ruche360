@@ -60,7 +60,7 @@
 - [x] Ajouter les modèles exécutables ruchers, ruches et colonies.
 - [x] Cadrer le futur module materiel apicole sans code metier.
 - [x] Ajouter le module, les permissions et le modele minimal du materiel.
-- [ ] Ajouter un ecran inventaire materiel mobile-first.
+- [x] Ajouter un ecran inventaire materiel mobile-first.
 - [ ] Ajouter les actions serveur minimales du materiel.
 - [x] Ajouter les preferences de modules par adhesion.
 - [x] Creer la registry applicative des modules.
@@ -270,6 +270,14 @@
 - [x] Ajouter des types domaine purs dans `src/features/equipment`.
 - [x] Garder le lien au rucher optionnel et ne pas rattacher le materiel aux ruches ou colonies dans ce lot.
 - [x] Ne pas creer d'ecran, formulaire, CRUD, action serveur, auth, IA ou IoT actif.
+
+## EQUIPMENT-SHELL-01
+
+- [x] Ajouter la route `/equipment`.
+- [x] Ajouter une interface inventaire mobile-first statique.
+- [x] Afficher cartes de synthese, filtres visuels, categories, statuts et maintenance.
+- [x] Rendre le module visible dans la navigation desktop et le catalogue, sans bottom nav mobile.
+- [x] Ne pas creer de formulaire, CRUD, action serveur, API, persistance, auth, IA ou IoT actif.
 
 ## TODO-CLEANUP-01
 

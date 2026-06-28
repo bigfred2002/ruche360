@@ -42,7 +42,7 @@ Le cadrage detaille est documente dans [Modules Dynamiques](dynamic-modules.md).
 | Contacts | Organisation | Contacts utiles et partenaires. |
 | Documents | Organisation | Fichiers et documents liés au métier. |
 | Récoltes simples | Organisation | Suivi minimal des récoltes. |
-| Matériel | Organisation | Socle executable d'inventaire materiel, sans ecran ni CRUD complet. |
+| Matériel | Organisation | Socle executable et ecran shell d'inventaire materiel, sans CRUD complet. |
 | Configuration basse consommation | Organisation | Paramètres préparatoires pour ruches sobres. |
 
 ## Modules apicoles a cadrer
@@ -88,7 +88,7 @@ Les modules suivants ne doivent pas être préparés comme fonctionnalités init
 
 Le module `Materiel` est ajoute au catalogue executable dans `EQUIPMENT-01`. Il est prevu comme module apicole activable sans alourdir la navigation. Il couvre le socle de donnees pour l'inventaire terrain, les emplacements et les statuts simples du materiel. Il ne couvre pas les achats, prix, amortissements, fournisseurs, destruction reglementaire complexe, IA, IoT ou prescription sanitaire automatique.
 
-Son ecran d'inventaire reste prevu dans `EQUIPMENT-SHELL-01`; aucune action CRUD complete n'est active dans `EQUIPMENT-01`.
+Son ecran d'inventaire est pose dans `EQUIPMENT-SHELL-01` comme surface statique. Aucune action CRUD complete n'est active.
 
 Le cadrage detaille est documente dans [Module Materiel](equipment.md).
 
