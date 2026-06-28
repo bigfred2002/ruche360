@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-28 - SECURITY-RUNNER-01
+
+- Confirmation que le runner GitHub local Docker reste manuel via `workflow_dispatch`.
+- Alignement du workflow local sur les contrôles actuels: confidentialité, Gitleaks, audit production, lint et build.
+- Documentation renforcée sur le socket Docker, la rotation du jeton d'enregistrement, l'arrêt du runner et l'interdiction des PR publiques non relues.
+- Aucun secret, dépendance, code métier, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-28 - TODO-CLEANUP-01
 
 - Nettoyage du bloc `Point lots en cours` dans `docs/todo.md`.

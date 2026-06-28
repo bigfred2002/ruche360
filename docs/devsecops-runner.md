@@ -10,6 +10,8 @@ Le workflow local fourni est donc volontairement manuel avec `workflow_dispatch`
 
 Le runner monte le socket Docker de la machine hôte. Cela permet d'exécuter `docker compose`, mais donne aussi aux jobs un contrôle élevé sur Docker local. Il doit être utilisé uniquement sur du code de confiance.
 
+Le runner local doit rester un outil de validation manuelle, pas une capacité CI générale. Avant de le déclencher, vérifier que la branche ou la Pull Request a déjà été relue et qu'elle ne contient pas de script inconnu, secret, binaire, export local ou modification suspecte de workflow.
+
 Références:
 
 - GitHub documente l'ajout de runners auto-hébergés et précise que le jeton d'enregistrement est temporaire.
@@ -81,10 +83,36 @@ Le workflow `Local Runner Validation` s'exécute uniquement à la demande depuis
 Il lance:
 
 - `make security-scan`;
+- `make secrets-scan`;
 - `docker compose config`;
 - `docker compose run --rm app pnpm install`;
+- `docker compose run --rm app pnpm audit --prod`;
 - `docker compose run --rm app pnpm lint`;
 - `docker compose run --rm app pnpm build`.
+
+## Rotation Et Retrait
+
+Le jeton d'enregistrement GitHub est temporaire et doit rester dans `runner.env` uniquement.
+
+Regles pratiques:
+
+- générer un nouveau jeton GitHub à chaque configuration ou réinstallation du runner;
+- ne jamais réutiliser un jeton affiché dans un terminal partagé ou une capture;
+- supprimer le runner dans GitHub `Settings > Actions > Runners` si le poste local n'est plus utilisé;
+- arrêter le conteneur avec `make runner-down` après une session de validation;
+- regénérer le jeton si un démarrage échoue ou si un doute existe sur son exposition.
+
+## Limites Assumées
+
+Ce runner n'est pas isolé comme un runner GitHub hébergé.
+
+Il peut accéder au socket Docker local, donc un workflow malveillant pourrait contrôler Docker sur la machine. Pour cette raison:
+
+- ne jamais ajouter de déclencheur `pull_request` ou `pull_request_target`;
+- ne jamais l'utiliser sur du code externe non relu;
+- ne pas stocker de secret applicatif dans `runner.env`;
+- ne pas ajouter de credentials persistants dans l'image du runner;
+- garder les validations publiques et reproductibles avec Docker Compose.
 
 ## Règles d'usage
 
@@ -92,3 +120,4 @@ Il lance:
 - Ne pas stocker le jeton GitHub dans le dépôt, dans le README ou dans les logs.
 - Régénérer le jeton si une erreur d'enregistrement apparaît.
 - Supprimer le runner côté GitHub si la machine locale n'est plus utilisée.
+- Arrêter le runner après les validations ponctuelles.
