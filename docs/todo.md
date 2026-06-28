@@ -37,7 +37,7 @@
 - [x] Préparer le lot sécurité dépendances et alertes.
 - [x] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
 - [x] Durcir la CI dans `SECURITY-CI-01` si un contrôle fiable peut être ajouté sans ralentir les micro-lots.
-- [ ] Évaluer un scanner de secrets dédié dans `SECURITY-SECRETS-01`.
+- [x] Évaluer un scanner de secrets dédié dans `SECURITY-SECRETS-01`.
 - [ ] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
 - [x] Créer Docker Compose.
 - [x] Définir les commandes de validation containerisées.
@@ -223,6 +223,14 @@
 - [x] Garder l'audit après l'installation des dépendances et avant lint/build.
 - [x] Documenter le contrôle dans `docs/security-dependencies.md`.
 - [x] Ne pas ajouter de dépendance, secret, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
+
+## SECURITY-SECRETS-01
+
+- [x] Ajouter une configuration Gitleaks dédiée au dépôt.
+- [x] Ajouter `make secrets-scan` pour exécuter Gitleaks via Docker.
+- [x] Ajouter le scan Gitleaks dans la CI.
+- [x] Exclure les dossiers générés, caches de dépendances, exports locaux et `runner.env`.
+- [x] Ne pas ajouter de secret, dépendance npm, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
 
 ## ARCHITECTURE-DOCS-00
 

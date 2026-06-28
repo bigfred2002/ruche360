@@ -1,0 +1,15 @@
+title = "Rucher360 Gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Ignore generated, dependency and local-only files."
+paths = [
+  '''(^|/)\.git/''',
+  '''(^|/)\.next/''',
+  '''(^|/)node_modules/''',
+  '''(^|/)\.pnpm-store/''',
+  '''(^|/)stitch_exports/''',
+  '''(^|/)runner\.env$''',
+]

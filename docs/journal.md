@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-28 - SECURITY-SECRETS-01
+
+- Ajout d'une configuration `.gitleaks.toml` pour scanner les fichiers utiles du dépôt en excluant les artefacts générés et caches locaux.
+- Ajout de `make secrets-scan`, exécuté via Docker avec une image Gitleaks pinnee par digest.
+- Ajout du scan Gitleaks dans la CI après le contrôle de confidentialité maison.
+- Le scan local ne détecte aucun secret sur l'arbre courant.
+- Aucun secret, dépendance npm, fonctionnalité métier, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-28 - SECURITY-CI-01
 
 - Ajout d'une étape CI `pnpm audit --prod` exécutée via Docker Compose après l'installation des dépendances.
