@@ -10,6 +10,7 @@ import {
   getModulePresentation,
 } from "@/components/modulePresentation";
 import { ResponsiveWorkflowsPreview } from "@/components/ResponsiveWorkflowsPreview";
+import { SeasonRhythmPreview } from "@/components/SeasonRhythmPreview";
 import { StatusBadge } from "@/components/StatusBadge";
 import {
   activeUserContextScenario,
@@ -99,6 +100,8 @@ export default function Home() {
                 <DashboardCard key={card.title} {...card} />
               ))}
             </div>
+
+            <SeasonRhythmPreview />
 
             <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
               <article className="apiary-visual min-h-72 overflow-hidden rounded-3xl p-6 text-white shadow-field-lg">

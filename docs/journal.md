@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-28 - DESIGN-DYNAMIC-SHELL-01
+
+- Ajout d'un composant `SeasonRhythmPreview` pour donner plus de rythme au cockpit sans Figma ni dépendance.
+- Le cockpit présente désormais un tempo statique: observer, prioriser, noter et préparer.
+- Ajout de signaux visuels pour cadrer une interface plus vivante, sans bouton fonctionnel ni action métier.
+- Aucun formulaire, CRUD, API, session, persistance, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-27 - ERROR-PAGES-01
 
 - Ajout d'un composant commun `ErrorPageShell` pour les pages d'erreur.
