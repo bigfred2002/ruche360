@@ -43,6 +43,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `ERROR-PAGES-01` ajoute des pages d'erreur personnalisées pour 404, erreur runtime, 403, 500 et 503, avec une touche d'humour légère et sans logique métier.
 - `DESIGN-DYNAMIC-SHELL-01` enrichit le cockpit avec une surface statique de rythme de saison et des signaux visuels de lecture terrain, sans Figma, sans dépendance, sans route active et sans logique métier.
 - `SECURITY-CI-01` ajoute un audit des dépendances de production dans la CI via Docker Compose et expose la même validation avec `make audit-prod`.
+- `SECURITY-SECRETS-01` ajoute un scan Gitleaks containerisé et pinne l'image par digest pour renforcer la détection de secrets sans installation locale.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
@@ -66,6 +67,7 @@ docker compose config
 docker compose build app
 make runner-config
 make security-scan
+make secrets-scan
 make audit-prod
 ```
 

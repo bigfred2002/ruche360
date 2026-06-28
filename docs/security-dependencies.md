@@ -37,6 +37,7 @@ Les alertes à surveiller sont:
 - GitHub Dependabot alerts;
 - Pull Requests Dependabot;
 - résultat de `make security-scan`;
+- résultat de `make secrets-scan`;
 - résultat de `make audit-prod`;
 - CI GitHub Actions `Validate Docker app`;
 - revue humaine des fichiers publics avant merge.
@@ -94,6 +95,7 @@ Pour une PR de sécurité ou dépendances:
 ```bash
 git diff --check
 make security-scan
+make secrets-scan
 docker compose config
 docker compose run --rm app pnpm install
 docker compose run --rm app pnpm audit --prod
@@ -123,6 +125,15 @@ Le hook local bloque notamment:
 - emails ou numéros de téléphone détectés dans les changements poussés.
 
 Ce contrôle est un garde-fou. Il ne remplace pas une revue humaine.
+
+Le scan Gitleaks complète ce contrôle:
+
+```bash
+make secrets-scan
+```
+
+Il s'exécute dans Docker avec une image pinnee par digest et utilise `.gitleaks.toml`.
+Les dossiers générés ou locaux (`.next`, `node_modules`, `.pnpm-store`, `stitch_exports`) sont exclus pour éviter les faux positifs et garder la CI rapide.
 
 ## Backlog Sécurité Proposé
 
@@ -155,10 +166,15 @@ Pistes restantes:
 
 Renforcer la détection de secrets.
 
-Pistes:
+Décision retenue:
 
-- évaluer un outil dédié type Gitleaks ou TruffleHog;
-- décider s'il doit tourner en local, en CI, ou les deux;
+- utiliser Gitleaks en Docker, sans installation locale et sans dépendance npm;
+- ajouter `make secrets-scan`;
+- ajouter le scan à la CI après le contrôle de confidentialité maison;
+- exclure uniquement les dossiers générés, caches de dépendances et exports locaux non versionnés.
+
+Pistes restantes:
+
 - éviter les faux positifs qui bloqueraient les lots normaux.
 
 ### `SECURITY-RUNNER-01`

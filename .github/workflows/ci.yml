@@ -26,6 +26,9 @@ jobs:
       - name: Run confidentiality scan
         run: make security-scan
 
+      - name: Run Gitleaks secret scan
+        run: make secrets-scan
+
       - name: Validate Docker Compose config
         run: docker compose config
 
