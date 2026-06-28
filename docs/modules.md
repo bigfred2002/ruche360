@@ -49,7 +49,7 @@ Le cadrage detaille est documente dans [Modules Dynamiques](dynamic-modules.md).
 | Module | Etat initial | Raison |
 | --- | --- | --- |
 | Transhumance | A cadrer | Doit etre modelisee comme mouvement de ruches entre sites sans deplacer le rucher. |
-| Partage fin par rucher | A confirmer | Le partage initial passe deja par l'organisation, les roles et les permissions. |
+| Partage fin par rucher | Cadre, optionnel | Le partage initial passe deja par l'organisation; le module `apiary_access` ne sera utile que pour limiter certains sites a certains membres. |
 
 ## Modules connectés prévus mais désactivés
 
@@ -96,3 +96,4 @@ Le partage initial d'un rucher se fait par l'organisation, les roles et les perm
 La transhumance ne doit pas deplacer le rucher lui-meme. Elle doit etre modelisee comme un mouvement de ruches ou de lots de ruches entre sites.
 
 Le cadrage detaille est documente dans [Partage de Rucher et Transhumance](apiary-sharing-transhumance.md).
+Le cadrage specialise du partage fin est documente dans [Partage Fin Par Rucher](apiary-access.md).

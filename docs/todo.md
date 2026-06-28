@@ -17,7 +17,7 @@
 - [x] Reconciler la todo avec les lots deja termines dans `TODO-CLEANUP-01`.
 - [x] Confirmer que `EQUIPMENT-00`, `MODULES-DYNAMIC-00`, `ARCHITECTURE-DOCS-00`, `MODULES-DYNAMIC-01` et `MODULES-REGISTRY-01` sont termines.
 - [x] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
-- [ ] Cadrer le partage fin par rucher dans `APIARY-ACCESS-00` si le besoin est confirme.
+- [x] Cadrer le partage fin par rucher dans `APIARY-ACCESS-00` si le besoin est confirme.
 - [ ] Cadrer la transhumance dans `TRANSHUMANCE-00` avant d'implementer les mouvements de ruches.
 - [ ] Ajouter le module, les permissions et le modele minimal du materiel dans `EQUIPMENT-01`.
 
@@ -65,7 +65,7 @@
 - [x] Ajouter les preferences de modules par adhesion.
 - [x] Creer la registry applicative des modules.
 - [x] Ajouter le choix de modules dans les profils membres.
-- [ ] Cadrer le partage fin par rucher si le besoin est confirme.
+- [x] Cadrer le partage fin par rucher si le besoin est confirme.
 - [ ] Cadrer puis implementer les mouvements de ruches.
 
 ## EQUIPMENT-00
@@ -242,6 +242,15 @@
 - [x] Documenter la rotation, le retrait et la non-publication du jeton d'enregistrement.
 - [x] Aligner le workflow local avec `make security-scan`, `make secrets-scan`, `pnpm audit --prod`, lint et build.
 - [x] Ne pas ajouter de secret, dépendance, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
+
+## APIARY-ACCESS-00
+
+- [x] Documenter le module optionnel `apiary_access`.
+- [x] Confirmer que le partage organisationnel reste le comportement par defaut.
+- [x] Definir les cas d'usage justifiant un partage fin par rucher.
+- [x] Cadrer les permissions, le modele conceptuel et l'UX cible.
+- [x] Exclure partage public, acces anonyme, geolocalisation publique et duplication de ruchers.
+- [x] Ne pas creer de schema Prisma, route, ecran, CRUD, auth, IA ou IoT actif.
 
 ## TODO-CLEANUP-01
 

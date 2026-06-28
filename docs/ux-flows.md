@@ -28,6 +28,16 @@ Les flux doivent être courts, lisibles sur mobile et adaptés au terrain. Une a
 
 Le partage initial d'un rucher passe par l'organisation, les roles et les permissions. Un partage fin par rucher sera etudie separement si le besoin est confirme.
 
+## Flux futur: partager finement un rucher
+
+1. Un administrateur ouvre le detail d'un rucher.
+2. Il accede a un panneau secondaire `Acces`.
+3. Il choisit un membre deja present dans l'organisation.
+4. Il attribue un niveau local simple: lecture, intervention ou gestion locale.
+5. L'application filtre ensuite la liste des ruchers selon les acces effectifs.
+
+Ce flux reste optionnel et ne doit pas apparaitre dans la navigation basse mobile.
+
 ## Flux initial: saisir une visite
 
 1. L'utilisateur choisit un rucher.

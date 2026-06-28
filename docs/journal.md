@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-28 - APIARY-ACCESS-00
+
+- Ajout d'un cadrage dedie `docs/apiary-access.md` pour le futur module optionnel `apiary_access`.
+- Confirmation que le partage par organisation, roles et permissions reste le comportement par defaut.
+- Cadrage des cas d'usage, permissions futures, modele conceptuel, UX cible et risques a eviter.
+- Aucun schema Prisma, route, ecran, CRUD, authentification, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-06-28 - SECURITY-RUNNER-01
 
 - Confirmation que le runner GitHub local Docker reste manuel via `workflow_dispatch`.
