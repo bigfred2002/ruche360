@@ -36,6 +36,8 @@ Un futur module `apiary_access` pourra etre cadre pour:
 
 Ce module devra rester optionnel.
 
+Le cadrage detaille est documente dans [Partage Fin Par Rucher](apiary-access.md).
+
 ## Principe de transhumance
 
 Un rucher represente un site ou emplacement apicole. Il ne doit pas etre traite comme un objet qui se deplace.

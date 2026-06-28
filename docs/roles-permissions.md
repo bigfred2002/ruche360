@@ -52,6 +52,9 @@ L'acces cible combine quatre conditions: module existant, module active pour l'o
 
 | Permission | Description |
 | --- | --- |
+| `apiary_access.read` | Consulter les futures règles d'accès par rucher. |
+| `apiary_access.write` | Donner ou retirer l'accès d'un membre à un rucher précis. |
+| `apiary_access.manage` | Administrer le futur module de partage fin par rucher. |
 | `transhumance.read` | Consulter les mouvements de ruches. |
 | `transhumance.write` | Créer et modifier les mouvements de ruches. |
 
@@ -60,6 +63,7 @@ L'acces cible combine quatre conditions: module existant, module active pour l'o
 - Les permissions liées à un module désactivé ne donnent aucun accès visible.
 - Les modules masques pour une adhesion ne doivent pas etre visibles pour ce membre.
 - La desactivation d'un module ne supprime pas ses donnees.
+- Le partage fin par rucher doit rester optionnel et ne remplace pas les roles d'organisation.
 - Les actions sanitaires ne valent pas prescription automatique.
 - Les données connectées ou IA restent inactives tant que les modules correspondants sont désactivés.
 

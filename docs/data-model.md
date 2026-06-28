@@ -87,6 +87,24 @@ Champs conceptuels:
 - notes d'accès;
 - statut.
 
+### ApiaryAccess
+
+Restriction optionnelle d'acces a un rucher pour une adhesion membre.
+
+Ce modele ne doit exister que si le module `apiary_access` est active. Sans ce module, l'acces reste pilote par l'organisation, les roles et les permissions.
+
+Champs conceptuels:
+
+- organisation;
+- rucher;
+- adhesion membre;
+- niveau local: lecture, intervention ou gestion locale;
+- statut: actif ou suspendu;
+- auteur de la regle;
+- dates de creation et mise a jour.
+
+Desactiver le module `apiary_access` ne supprime pas ces donnees. Cela revient simplement au partage organisationnel.
+
 ### Hive
 
 Matériel ruche identifié.
