@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-28 - TRANSHUMANCE-00
+
+- Ajout d'un cadrage dedie `docs/transhumance.md` pour le futur module optionnel `transhumance`.
+- Confirmation que la transhumance deplace des ruches ou lots de ruches entre ruchers, sans deplacer le rucher comme site.
+- Cadrage des statuts, motifs, modeles conceptuels `HiveMovement` et `HiveMovementItem`, UX cible et limites.
+- Aucun schema Prisma, route, ecran, CRUD, authentification, GPS actif, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-06-28 - APIARY-ACCESS-00
 
 - Ajout d'un cadrage dedie `docs/apiary-access.md` pour le futur module optionnel `apiary_access`.

@@ -18,7 +18,7 @@
 - [x] Confirmer que `EQUIPMENT-00`, `MODULES-DYNAMIC-00`, `ARCHITECTURE-DOCS-00`, `MODULES-DYNAMIC-01` et `MODULES-REGISTRY-01` sont termines.
 - [x] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
 - [x] Cadrer le partage fin par rucher dans `APIARY-ACCESS-00` si le besoin est confirme.
-- [ ] Cadrer la transhumance dans `TRANSHUMANCE-00` avant d'implementer les mouvements de ruches.
+- [x] Cadrer la transhumance dans `TRANSHUMANCE-00` avant d'implementer les mouvements de ruches.
 - [ ] Ajouter le module, les permissions et le modele minimal du materiel dans `EQUIPMENT-01`.
 
 ### Analyse lots dynamiques UI/applicatifs
@@ -66,7 +66,8 @@
 - [x] Creer la registry applicative des modules.
 - [x] Ajouter le choix de modules dans les profils membres.
 - [x] Cadrer le partage fin par rucher si le besoin est confirme.
-- [ ] Cadrer puis implementer les mouvements de ruches.
+- [x] Cadrer les mouvements de ruches dans `TRANSHUMANCE-00`.
+- [ ] Implementer les mouvements de ruches dans `HIVE-MOVEMENTS-01`.
 
 ## EQUIPMENT-00
 
@@ -250,6 +251,15 @@
 - [x] Definir les cas d'usage justifiant un partage fin par rucher.
 - [x] Cadrer les permissions, le modele conceptuel et l'UX cible.
 - [x] Exclure partage public, acces anonyme, geolocalisation publique et duplication de ruchers.
+- [x] Ne pas creer de schema Prisma, route, ecran, CRUD, auth, IA ou IoT actif.
+
+## TRANSHUMANCE-00
+
+- [x] Documenter la transhumance comme mouvement de ruches entre ruchers.
+- [x] Confirmer qu'un rucher reste un site fixe et ne se deplace pas.
+- [x] Cadrer statuts, motifs, modele conceptuel et effets sur l'emplacement courant.
+- [x] Definir l'UX mobile-first cible sans logistique lourde.
+- [x] Exclure GPS actif, IoT, itineraire automatique, vehicules, couts et cartographie publique.
 - [x] Ne pas creer de schema Prisma, route, ecran, CRUD, auth, IA ou IoT actif.
 
 ## TODO-CLEANUP-01

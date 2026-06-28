@@ -47,6 +47,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `TODO-CLEANUP-01` reconcilie la todo avec les lots deja termines et remet en avant les prochains lots reels sans changer le code.
 - `SECURITY-RUNNER-01` confirme que le runner GitHub local Docker reste manuel, documente les risques du socket Docker et l'aligne avec les contrôles sécurité actuels.
 - `APIARY-ACCESS-00` cadre le partage fin par rucher comme module optionnel `apiary_access`, sans remplacer le partage organisationnel par defaut.
+- `TRANSHUMANCE-00` cadre la transhumance comme module optionnel de mouvements de ruches entre ruchers, sans deplacer le rucher lui-meme.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
