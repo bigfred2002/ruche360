@@ -14,9 +14,12 @@
 
 ### Point lots en cours
 
-- [ ] Finaliser et merger `EQUIPMENT-00` pour cadrer le module materiel.
-- [ ] Finaliser et merger `MODULES-DYNAMIC-00` / `ARCHITECTURE-DOCS-00` pour stabiliser la documentation d'architecture.
-- [ ] Finaliser `MODULES-DYNAMIC-01` et `MODULES-REGISTRY-01` sur la branche `codex/modules-dynamic-registry-01`.
+- [x] Reconciler la todo avec les lots deja termines dans `TODO-CLEANUP-01`.
+- [x] Confirmer que `EQUIPMENT-00`, `MODULES-DYNAMIC-00`, `ARCHITECTURE-DOCS-00`, `MODULES-DYNAMIC-01` et `MODULES-REGISTRY-01` sont termines.
+- [ ] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
+- [ ] Cadrer le partage fin par rucher dans `APIARY-ACCESS-00` si le besoin est confirme.
+- [ ] Cadrer la transhumance dans `TRANSHUMANCE-00` avant d'implementer les mouvements de ruches.
+- [ ] Ajouter le module, les permissions et le modele minimal du materiel dans `EQUIPMENT-01`.
 
 ### Analyse lots dynamiques UI/applicatifs
 
@@ -32,7 +35,7 @@
 - [x] `MODULES-CATALOG-SHELL-01`: creer une page catalogue modules qui distingue actif, desactive, a venir et sans permission.
 - [x] `PROFILE-ONBOARDING-SHELL-01`: preparer le parcours d'accueil d'un apiculteur amateur avec creation d'espace personnel simulee, sans auth reelle.
 - [x] `ERROR-PAGES-01`: ajouter des pages d'erreur personnalisées pour les principaux codes d'erreur.
-- [ ] Garder hors perimetre de ces lots: Prisma supplementaire, CRUD metier, auth reelle, IA active, IoT actif, appel API externe et suppression de donnees.
+- [x] Garder hors perimetre de ces lots: Prisma supplementaire, CRUD metier, auth reelle, IA active, IoT actif, appel API externe et suppression de donnees.
 
 - [x] Préparer le lot sécurité dépendances et alertes.
 - [x] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
@@ -231,6 +234,14 @@
 - [x] Ajouter le scan Gitleaks dans la CI.
 - [x] Exclure les dossiers générés, caches de dépendances, exports locaux et `runner.env`.
 - [x] Ne pas ajouter de secret, dépendance npm, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
+
+## TODO-CLEANUP-01
+
+- [x] Nettoyer les contradictions du bloc `Point lots en cours`.
+- [x] Aligner les statuts des lots conceptuels deja termines avec leurs sections detaillees.
+- [x] Remettre en avant les prochains lots reels: `SECURITY-RUNNER-01`, `APIARY-ACCESS-00`, `TRANSHUMANCE-00` et `EQUIPMENT-01`.
+- [x] Conserver ce lot comme nettoyage documentaire uniquement.
+- [x] Ne pas modifier le code applicatif, Prisma, Docker runtime, dependances, auth, IA ou IoT.
 
 ## ARCHITECTURE-DOCS-00
 

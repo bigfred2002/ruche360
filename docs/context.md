@@ -44,6 +44,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `DESIGN-DYNAMIC-SHELL-01` enrichit le cockpit avec une surface statique de rythme de saison et des signaux visuels de lecture terrain, sans Figma, sans dépendance, sans route active et sans logique métier.
 - `SECURITY-CI-01` ajoute un audit des dépendances de production dans la CI via Docker Compose et expose la même validation avec `make audit-prod`.
 - `SECURITY-SECRETS-01` ajoute un scan Gitleaks containerisé et pinne l'image par digest pour renforcer la détection de secrets sans installation locale.
+- `TODO-CLEANUP-01` reconcilie la todo avec les lots deja termines et remet en avant les prochains lots reels sans changer le code.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 

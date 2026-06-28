@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-28 - TODO-CLEANUP-01
+
+- Nettoyage du bloc `Point lots en cours` dans `docs/todo.md`.
+- Reconciliation des lots conceptuels deja termines avec leurs sections detaillees.
+- Remise en avant des prochains lots reels: `SECURITY-RUNNER-01`, `APIARY-ACCESS-00`, `TRANSHUMANCE-00` et `EQUIPMENT-01`.
+- Aucun code applicatif, Prisma, Docker runtime, dependance, authentification, IA active ou IoT actif n'a ete modifie.
+
 ## 2026-06-28 - SECURITY-SECRETS-01
 
 - Ajout d'une configuration `.gitleaks.toml` pour scanner les fichiers utiles du dépôt en excluant les artefacts générés et caches locaux.
