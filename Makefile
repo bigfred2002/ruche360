@@ -2,7 +2,7 @@ COMPOSE := docker compose
 APP := app
 RUNNER_COMPOSE := docker compose -f docker-compose.runner.yml
 
-.PHONY: help build up down logs shell pnpm lint build-app db psql clean install-security-hooks security-scan runner-config runner-build runner-up runner-down runner-logs
+.PHONY: help build up down logs shell pnpm lint build-app audit-prod db psql clean install-security-hooks security-scan runner-config runner-build runner-up runner-down runner-logs
 
 help:
 	@echo "Rucher360 development commands"
@@ -14,6 +14,7 @@ help:
 	@echo "  make pnpm CMD='...'  Run pnpm through Docker Compose"
 	@echo "  make lint       Run pnpm lint through Docker Compose"
 	@echo "  make build-app  Run pnpm build through Docker Compose"
+	@echo "  make audit-prod Run pnpm audit --prod through Docker Compose"
 	@echo "  make db         Start PostgreSQL only"
 	@echo "  make psql       Open psql in the db container"
 	@echo "  make clean      Remove containers and volumes"
@@ -49,6 +50,9 @@ lint:
 
 build-app:
 	$(COMPOSE) run --rm $(APP) pnpm build
+
+audit-prod:
+	$(COMPOSE) run --rm $(APP) pnpm audit --prod
 
 db:
 	$(COMPOSE) up -d db

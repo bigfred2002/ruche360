@@ -37,6 +37,7 @@ Les alertes à surveiller sont:
 - GitHub Dependabot alerts;
 - Pull Requests Dependabot;
 - résultat de `make security-scan`;
+- résultat de `make audit-prod`;
 - CI GitHub Actions `Validate Docker app`;
 - revue humaine des fichiers publics avant merge.
 
@@ -95,6 +96,7 @@ git diff --check
 make security-scan
 docker compose config
 docker compose run --rm app pnpm install
+docker compose run --rm app pnpm audit --prod
 docker compose run --rm app pnpm prisma validate
 docker compose run --rm app pnpm lint
 docker compose run --rm app pnpm build
@@ -138,11 +140,16 @@ Objectif:
 
 Durcir la CI sans alourdir le développement.
 
-Pistes:
+Décision retenue:
+
+- ajouter `pnpm audit --prod` dans la CI après l'installation des dépendances;
+- exposer la même validation via `make audit-prod`;
+- conserver le contrôle via Docker Compose pour ne pas dépendre de Node.js ou pnpm sur le Mac.
+
+Pistes restantes:
 
 - rendre `Validate Docker app` obligatoire sur `main`;
 - ajouter un contrôle de lockfile si nécessaire;
-- ajouter une étape d'audit uniquement si elle fonctionne de manière fiable via Docker Compose.
 
 ### `SECURITY-SECRETS-01`
 

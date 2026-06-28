@@ -36,7 +36,7 @@
 
 - [x] Préparer le lot sécurité dépendances et alertes.
 - [x] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
-- [ ] Durcir la CI dans `SECURITY-CI-01` si un contrôle fiable peut être ajouté sans ralentir les micro-lots.
+- [x] Durcir la CI dans `SECURITY-CI-01` si un contrôle fiable peut être ajouté sans ralentir les micro-lots.
 - [ ] Évaluer un scanner de secrets dédié dans `SECURITY-SECRETS-01`.
 - [ ] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
 - [x] Créer Docker Compose.
@@ -215,6 +215,14 @@
 - [x] Régénérer `pnpm-lock.yaml` via Docker Compose.
 - [x] Vérifier que `pnpm audit --prod` ne signale plus de vulnérabilité connue.
 - [x] Ne pas ajouter de dépendance directe, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
+
+## SECURITY-CI-01
+
+- [x] Ajouter une étape CI `pnpm audit --prod` via Docker Compose.
+- [x] Ajouter la cible `make audit-prod` pour lancer le même contrôle localement.
+- [x] Garder l'audit après l'installation des dépendances et avant lint/build.
+- [x] Documenter le contrôle dans `docs/security-dependencies.md`.
+- [x] Ne pas ajouter de dépendance, secret, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
 
 ## ARCHITECTURE-DOCS-00
 
