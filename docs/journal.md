@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-28 - SECURITY-CI-01
+
+- Ajout d'une étape CI `pnpm audit --prod` exécutée via Docker Compose après l'installation des dépendances.
+- Ajout d'une cible `make audit-prod` pour lancer localement le même contrôle sans utiliser Node.js ou pnpm sur le Mac.
+- Mise à jour de la documentation sécurité et de la todo pour intégrer ce contrôle dans la chaîne DevSecOps.
+- Aucun secret, dépendance, fonctionnalité métier, authentification, Prisma supplémentaire, IA active ou IoT actif n'a été ajouté.
+
 ## 2026-06-28 - DESIGN-DYNAMIC-SHELL-01
 
 - Ajout d'un composant `SeasonRhythmPreview` pour donner plus de rythme au cockpit sans Figma ni dépendance.

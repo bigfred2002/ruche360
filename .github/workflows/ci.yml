@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies through Docker Compose
         run: docker compose run --rm app pnpm install
 
+      - name: Audit production dependencies through Docker Compose
+        run: docker compose run --rm app pnpm audit --prod
+
       - name: Run lint through Docker Compose
         run: docker compose run --rm app pnpm lint
 
