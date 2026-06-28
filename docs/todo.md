@@ -16,7 +16,7 @@
 
 - [x] Reconciler la todo avec les lots deja termines dans `TODO-CLEANUP-01`.
 - [x] Confirmer que `EQUIPMENT-00`, `MODULES-DYNAMIC-00`, `ARCHITECTURE-DOCS-00`, `MODULES-DYNAMIC-01` et `MODULES-REGISTRY-01` sont termines.
-- [ ] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
+- [x] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
 - [ ] Cadrer le partage fin par rucher dans `APIARY-ACCESS-00` si le besoin est confirme.
 - [ ] Cadrer la transhumance dans `TRANSHUMANCE-00` avant d'implementer les mouvements de ruches.
 - [ ] Ajouter le module, les permissions et le modele minimal du materiel dans `EQUIPMENT-01`.
@@ -41,7 +41,7 @@
 - [x] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
 - [x] Durcir la CI dans `SECURITY-CI-01` si un contrôle fiable peut être ajouté sans ralentir les micro-lots.
 - [x] Évaluer un scanner de secrets dédié dans `SECURITY-SECRETS-01`.
-- [ ] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
+- [x] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
 - [x] Créer Docker Compose.
 - [x] Définir les commandes de validation containerisées.
 - [x] Scaffolder l'application dans un lot dédié.
@@ -234,6 +234,14 @@
 - [x] Ajouter le scan Gitleaks dans la CI.
 - [x] Exclure les dossiers générés, caches de dépendances, exports locaux et `runner.env`.
 - [x] Ne pas ajouter de secret, dépendance npm, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
+
+## SECURITY-RUNNER-01
+
+- [x] Confirmer que le runner local reste déclenché manuellement par `workflow_dispatch`.
+- [x] Documenter les risques liés au socket Docker local.
+- [x] Documenter la rotation, le retrait et la non-publication du jeton d'enregistrement.
+- [x] Aligner le workflow local avec `make security-scan`, `make secrets-scan`, `pnpm audit --prod`, lint et build.
+- [x] Ne pas ajouter de secret, dépendance, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
 
 ## TODO-CLEANUP-01
 

@@ -45,6 +45,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `SECURITY-CI-01` ajoute un audit des dépendances de production dans la CI via Docker Compose et expose la même validation avec `make audit-prod`.
 - `SECURITY-SECRETS-01` ajoute un scan Gitleaks containerisé et pinne l'image par digest pour renforcer la détection de secrets sans installation locale.
 - `TODO-CLEANUP-01` reconcilie la todo avec les lots deja termines et remet en avant les prochains lots reels sans changer le code.
+- `SECURITY-RUNNER-01` confirme que le runner GitHub local Docker reste manuel, documente les risques du socket Docker et l'aligne avec les contrôles sécurité actuels.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 

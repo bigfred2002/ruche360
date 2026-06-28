@@ -26,11 +26,17 @@ jobs:
       - name: Run confidentiality scan
         run: make security-scan
 
+      - name: Run Gitleaks secret scan
+        run: make secrets-scan
+
       - name: Validate Docker Compose config
         run: docker compose config
 
       - name: Install dependencies through Docker Compose
         run: docker compose run --rm app pnpm install
+
+      - name: Audit production dependencies through Docker Compose
+        run: docker compose run --rm app pnpm audit --prod
 
       - name: Run lint through Docker Compose
         run: docker compose run --rm app pnpm lint

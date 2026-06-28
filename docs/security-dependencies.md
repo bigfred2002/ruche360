@@ -181,12 +181,13 @@ Pistes restantes:
 
 Revoir le runner GitHub local.
 
-Pistes:
+Décision retenue:
 
 - confirmer qu'il reste manuel;
 - documenter la rotation du token d'enregistrement;
 - vérifier les risques liés au socket Docker;
 - éviter toute exécution automatique sur PR publique non relue.
+- aligner le workflow local manuel avec les contrôles CI actuels: confidentialité, Gitleaks, audit production, lint et build.
 
 ## Définition De Done
 
