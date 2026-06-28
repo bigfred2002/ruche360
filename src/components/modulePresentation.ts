@@ -143,6 +143,12 @@ const modulePresentation = {
     icon: "Ma",
     shortLabel: "Matériel",
   },
+  transhumance: {
+    accent: "amber",
+    description: "Mouvements de ruches entre ruchers, sans GPS actif ni logistique lourde.",
+    icon: "Tr",
+    shortLabel: "Transhumance",
+  },
   low_power_config: {
     accent: "sage",
     description: "Configuration basse consommation prévue, sans paramétrage réel.",

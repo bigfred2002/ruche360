@@ -89,6 +89,23 @@ enum EquipmentEventType {
   NOTE
 }
 
+enum HiveMovementStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum HiveMovementReason {
+  HONEY_FLOW
+  POLLINATION
+  WINTERING
+  EMERGENCY
+  HEALTH
+  GROUPING
+  OTHER
+}
+
 model Organization {
   id         String             @id @default(cuid())
   name       String
@@ -109,6 +126,7 @@ model Organization {
   equipmentStocks     EquipmentStock[]
   equipmentItems      EquipmentItem[]
   equipmentEvents     EquipmentEvent[]
+  hiveMovements       HiveMovement[]
 
   @@index([status])
 }
@@ -144,6 +162,7 @@ model Membership {
   user              User                         @relation(fields: [userId], references: [id], onDelete: Cascade)
   role              Role?                        @relation(fields: [roleId], references: [id], onDelete: SetNull)
   modulePreferences MembershipModulePreference[]
+  authoredHiveMovements HiveMovement[]
 
   @@unique([organizationId, userId])
   @@index([userId])
@@ -274,6 +293,8 @@ model Apiary {
   equipmentStocks EquipmentStock[]
   equipmentItems  EquipmentItem[]
   equipmentEvents EquipmentEvent[]
+  sourceHiveMovements      HiveMovement[] @relation("HiveMovementSourceApiary")
+  destinationHiveMovements HiveMovement[] @relation("HiveMovementDestinationApiary")
 
   @@index([organizationId])
   @@index([status])
@@ -295,6 +316,7 @@ model Hive {
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   apiary       Apiary?      @relation(fields: [apiaryId], references: [id], onDelete: SetNull)
   colonies     Colony[]
+  movementItems HiveMovementItem[]
 
   @@unique([organizationId, fieldIdentifier])
   @@index([apiaryId])
@@ -420,4 +442,45 @@ model EquipmentEvent {
   @@index([apiaryId])
   @@index([eventType])
   @@index([occurredAt])
+}
+
+model HiveMovement {
+  id                  String             @id @default(cuid())
+  organizationId      String
+  sourceApiaryId      String?
+  destinationApiaryId String
+  authorMembershipId  String?
+  departureDate       DateTime
+  arrivalDate         DateTime?
+  status              HiveMovementStatus @default(PLANNED)
+  reason              HiveMovementReason @default(OTHER)
+  notes               String?
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+
+  organization      Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  sourceApiary      Apiary?            @relation("HiveMovementSourceApiary", fields: [sourceApiaryId], references: [id], onDelete: SetNull)
+  destinationApiary Apiary             @relation("HiveMovementDestinationApiary", fields: [destinationApiaryId], references: [id], onDelete: Restrict)
+  authorMembership  Membership?        @relation(fields: [authorMembershipId], references: [id], onDelete: SetNull)
+  items             HiveMovementItem[]
+
+  @@index([organizationId])
+  @@index([sourceApiaryId])
+  @@index([destinationApiaryId])
+  @@index([authorMembershipId])
+  @@index([status])
+  @@index([departureDate])
+}
+
+model HiveMovementItem {
+  movementId String
+  hiveId     String
+  notes      String?
+  createdAt  DateTime @default(now())
+
+  movement HiveMovement @relation(fields: [movementId], references: [id], onDelete: Cascade)
+  hive     Hive         @relation(fields: [hiveId], references: [id], onDelete: Cascade)
+
+  @@id([movementId, hiveId])
+  @@index([hiveId])
 }

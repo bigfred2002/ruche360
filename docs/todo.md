@@ -67,7 +67,7 @@
 - [x] Ajouter le choix de modules dans les profils membres.
 - [x] Cadrer le partage fin par rucher si le besoin est confirme.
 - [x] Cadrer les mouvements de ruches dans `TRANSHUMANCE-00`.
-- [ ] Implementer les mouvements de ruches dans `HIVE-MOVEMENTS-01`.
+- [x] Implementer les mouvements de ruches dans `HIVE-MOVEMENTS-01`.
 
 ## EQUIPMENT-00
 
@@ -259,8 +259,18 @@
 - [x] Confirmer qu'un rucher reste un site fixe et ne se deplace pas.
 - [x] Cadrer statuts, motifs, modele conceptuel et effets sur l'emplacement courant.
 - [x] Definir l'UX mobile-first cible sans logistique lourde.
+- [x] Exclure GPS actif, logistique lourde, contrats, couts, IA active et IoT actif.
 - [x] Exclure GPS actif, IoT, itineraire automatique, vehicules, couts et cartographie publique.
 - [x] Ne pas creer de schema Prisma, route, ecran, CRUD, auth, IA ou IoT actif.
+
+## HIVE-MOVEMENTS-01
+
+- [x] Ajouter le module `transhumance` au catalogue RBAC, desactive par defaut.
+- [x] Ajouter les permissions `transhumance.read`, `transhumance.write` et `transhumance.manage`.
+- [x] Ajouter les modeles Prisma `HiveMovement` et `HiveMovementItem`.
+- [x] Ajouter les statuts et motifs de mouvements de ruches.
+- [x] Ajouter des helpers purs pour deduire l'emplacement courant depuis les mouvements termines.
+- [x] Ne pas ajouter d'ecran, CRUD, action serveur, API, GPS actif, IA active ou IoT actif.
 
 ## EQUIPMENT-01
 

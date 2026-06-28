@@ -50,6 +50,8 @@ export const roles: RoleDefinition[] = [
       "tasks.write",
       "equipment.read",
       "equipment.write",
+      "transhumance.read",
+      "transhumance.write",
     ],
   },
   {
@@ -64,6 +66,7 @@ export const roles: RoleDefinition[] = [
       "tasks.read",
       "tasks.write",
       "equipment.read",
+      "transhumance.read",
     ],
   },
   {

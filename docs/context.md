@@ -50,6 +50,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `TRANSHUMANCE-00` cadre la transhumance comme module optionnel de mouvements de ruches entre ruchers, sans deplacer le rucher lui-meme.
 - `EQUIPMENT-01` ajoute le module, les permissions, les types domaine et le schema minimal du materiel, sans ecran d'inventaire ni CRUD complet.
 - `EQUIPMENT-SHELL-01` ajoute la route `/equipment` et une interface statique d'inventaire materiel mobile-first, sans formulaire ni action métier.
+- `HIVE-MOVEMENTS-01` ajoute le module `transhumance`, ses permissions, les modeles executables de mouvements de ruches et des helpers purs d'emplacement courant, sans ecran, CRUD, GPS, IA ou IoT actif.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
@@ -62,7 +63,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Stratégie d'archivage des entités métier.
 - Niveau exact de personnalisation du futur catalogue materiel par organisation.
 - Moment opportun pour introduire un partage fin par rucher.
-- Niveau de detail du futur historique de transhumance.
+- UX et niveau de detail du futur ecran de transhumance.
 
 ## Commandes utiles actuelles
 

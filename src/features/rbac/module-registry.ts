@@ -118,6 +118,12 @@ const moduleRegistryConfig = {
     availability: "ACTIVE",
     navigation: ["desktop", "catalog"],
   },
+  transhumance: {
+    route: null,
+    requiredPermissions: ["transhumance.read"],
+    availability: "PLANNED",
+    navigation: ["catalog"],
+  },
   low_power_config: {
     route: "/low-power",
     requiredPermissions: [],
