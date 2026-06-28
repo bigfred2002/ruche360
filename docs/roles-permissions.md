@@ -47,6 +47,9 @@ L'acces cible combine quatre conditions: module existant, module active pour l'o
 | `contacts.write` | Créer et modifier les contacts. |
 | `harvests.read` | Consulter les récoltes. |
 | `harvests.write` | Créer et modifier les récoltes. |
+| `equipment.read` | Consulter le matériel apicole. |
+| `equipment.write` | Créer et modifier le matériel apicole. |
+| `equipment.manage` | Administrer le catalogue et les règles du module matériel. |
 
 ## Permissions futures à cadrer
 

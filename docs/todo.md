@@ -19,7 +19,7 @@
 - [x] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
 - [x] Cadrer le partage fin par rucher dans `APIARY-ACCESS-00` si le besoin est confirme.
 - [x] Cadrer la transhumance dans `TRANSHUMANCE-00` avant d'implementer les mouvements de ruches.
-- [ ] Ajouter le module, les permissions et le modele minimal du materiel dans `EQUIPMENT-01`.
+- [x] Ajouter le module, les permissions et le modele minimal du materiel dans `EQUIPMENT-01`.
 
 ### Analyse lots dynamiques UI/applicatifs
 
@@ -59,7 +59,7 @@
 - [x] Cadrer les modules dynamiques par organisation et adhesion.
 - [x] Ajouter les modèles exécutables ruchers, ruches et colonies.
 - [x] Cadrer le futur module materiel apicole sans code metier.
-- [ ] Ajouter le module, les permissions et le modele minimal du materiel.
+- [x] Ajouter le module, les permissions et le modele minimal du materiel.
 - [ ] Ajouter un ecran inventaire materiel mobile-first.
 - [ ] Ajouter les actions serveur minimales du materiel.
 - [x] Ajouter les preferences de modules par adhesion.
@@ -261,6 +261,15 @@
 - [x] Definir l'UX mobile-first cible sans logistique lourde.
 - [x] Exclure GPS actif, IoT, itineraire automatique, vehicules, couts et cartographie publique.
 - [x] Ne pas creer de schema Prisma, route, ecran, CRUD, auth, IA ou IoT actif.
+
+## EQUIPMENT-01
+
+- [x] Ajouter le module `equipment` au catalogue RBAC.
+- [x] Ajouter les permissions `equipment.read`, `equipment.write` et `equipment.manage`.
+- [x] Ajouter les modeles Prisma `EquipmentType`, `EquipmentStock`, `EquipmentItem` et `EquipmentEvent`.
+- [x] Ajouter des types domaine purs dans `src/features/equipment`.
+- [x] Garder le lien au rucher optionnel et ne pas rattacher le materiel aux ruches ou colonies dans ce lot.
+- [x] Ne pas creer d'ecran, formulaire, CRUD, action serveur, auth, IA ou IoT actif.
 
 ## TODO-CLEANUP-01
 

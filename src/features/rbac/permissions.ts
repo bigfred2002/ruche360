@@ -23,6 +23,9 @@ export const permissionCodes = [
   "contacts.write",
   "harvests.read",
   "harvests.write",
+  "equipment.read",
+  "equipment.write",
+  "equipment.manage",
 ] as const;
 
 export type PermissionCode = (typeof permissionCodes)[number];
@@ -62,4 +65,7 @@ export const permissions: PermissionDefinition[] = [
   { code: "contacts.write", label: "Modifier les contacts", description: "Créer et modifier les contacts." },
   { code: "harvests.read", label: "Lire les récoltes", description: "Consulter les récoltes." },
   { code: "harvests.write", label: "Modifier les récoltes", description: "Créer et modifier les récoltes." },
+  { code: "equipment.read", label: "Lire le matériel", description: "Consulter le matériel apicole." },
+  { code: "equipment.write", label: "Modifier le matériel", description: "Créer et modifier le matériel apicole." },
+  { code: "equipment.manage", label: "Administrer le matériel", description: "Gérer le catalogue et les règles du module matériel." },
 ];
