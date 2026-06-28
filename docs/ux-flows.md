@@ -52,8 +52,11 @@ Ce flux reste optionnel et ne doit pas apparaitre dans la navigation basse mobil
 2. Il choisit les ruches a deplacer.
 3. Il choisit le rucher destination.
 4. Il renseigne date, motif et note.
-5. Il confirme le mouvement.
-6. L'historique conserve les anciennes localisations.
+5. Il enregistre le mouvement comme prevu ou le termine directement.
+6. L'emplacement courant est mis a jour seulement quand le mouvement est termine.
+7. L'historique conserve les anciennes localisations.
+
+Ce flux deplace des ruches, pas le rucher comme site. Il ne doit pas introduire GPS actif, itineraire automatique ou logistique de transport complete.
 
 ## Flux initial: suivre varroa
 

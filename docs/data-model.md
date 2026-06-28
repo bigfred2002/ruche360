@@ -121,6 +121,36 @@ Champs conceptuels:
 
 Une ruche est un contenant mobile. Elle peut changer de rucher et devra conserver un historique de mouvement dans un lot ulterieur.
 
+### HiveMovement
+
+Mouvement de ruches entre deux ruchers.
+
+Champs conceptuels:
+
+- organisation;
+- rucher source;
+- rucher destination;
+- date de depart;
+- date d'arrivee optionnelle;
+- statut: prevu, en cours, termine ou annule;
+- motif: miellee, pollinisation, hivernage, urgence, sanitaire ou autre;
+- notes;
+- auteur;
+- dates de creation et mise a jour.
+
+Un mouvement termine pourra mettre a jour l'emplacement courant des ruches concernees sans supprimer l'historique.
+
+### HiveMovementItem
+
+Ruche incluse dans un mouvement.
+
+Champs conceptuels:
+
+- mouvement;
+- ruche;
+- commentaire optionnel;
+- statut optionnel si une ruche ne suit pas le mouvement global.
+
 ### Colony
 
 Colonie vivante suivie dans le temps.

@@ -50,6 +50,8 @@ La transhumance doit etre modelisee comme un mouvement de ruches ou de lots de r
 
 Cette approche permet de connaitre l'emplacement courant d'une ruche tout en conservant son historique.
 
+Le cadrage detaille est documente dans [Transhumance](transhumance.md).
+
 ## Donnees cible d'un mouvement
 
 Un futur mouvement de ruche devra pouvoir porter:

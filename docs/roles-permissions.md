@@ -57,6 +57,7 @@ L'acces cible combine quatre conditions: module existant, module active pour l'o
 | `apiary_access.manage` | Administrer le futur module de partage fin par rucher. |
 | `transhumance.read` | Consulter les mouvements de ruches. |
 | `transhumance.write` | Créer et modifier les mouvements de ruches. |
+| `transhumance.manage` | Administrer les annulations, corrections et finalisations de mouvements. |
 
 ## Garde-fous
 
@@ -64,6 +65,7 @@ L'acces cible combine quatre conditions: module existant, module active pour l'o
 - Les modules masques pour une adhesion ne doivent pas etre visibles pour ce membre.
 - La desactivation d'un module ne supprime pas ses donnees.
 - Le partage fin par rucher doit rester optionnel et ne remplace pas les roles d'organisation.
+- La transhumance ne doit pas contourner les droits de lecture et d'ecriture sur ruchers et ruches.
 - Les actions sanitaires ne valent pas prescription automatique.
 - Les données connectées ou IA restent inactives tant que les modules correspondants sont désactivés.
 
