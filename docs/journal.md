@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-28 - HIVE-MOVEMENTS-01
+
+- Ajout du module `transhumance` au catalogue RBAC avec les permissions `transhumance.read`, `transhumance.write` et `transhumance.manage`.
+- Ajout du schema Prisma minimal `HiveMovement` et `HiveMovementItem` pour historiser les mouvements de ruches entre ruchers.
+- Ajout de types et helpers purs dans `src/features/hive-movements` pour deduire un emplacement courant depuis les mouvements termines.
+- Le rucher reste un site fixe; seules les ruches sont mobiles.
+- Aucun ecran, formulaire, CRUD, action serveur, API, GPS actif, authentification, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-06-28 - EQUIPMENT-SHELL-01
 
 - Ajout de la route `/equipment` avec une interface statique d'inventaire materiel mobile-first.

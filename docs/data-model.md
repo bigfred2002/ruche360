@@ -352,6 +352,7 @@ Champs conceptuels:
 - Une tâche peut cibler plusieurs types d'entités métier.
 - Le materiel appartient a une organisation et peut etre localise librement ou rattache optionnellement a un rucher.
 - Le materiel ne doit pas etre rattache obligatoirement a une ruche ou une colonie au premier lot executable.
+- Les mouvements de ruches termines peuvent servir a deduire l'emplacement courant d'une ruche sans effacer les anciennes localisations.
 
 ## Décision initiale
 
@@ -409,6 +410,19 @@ Les achats, fournisseurs, prix, amortissements, comptabilite, destruction reglem
 Le modele reste rattache a l'organisation. Le lien vers un rucher est optionnel. Aucun lien obligatoire vers ruche, colonie, visite, tache, recolte ou sanitaire n'est cree dans ce lot.
 
 Le module `equipment` et les permissions `equipment.read`, `equipment.write` et `equipment.manage` sont ajoutes au catalogue, mais aucun ecran d'inventaire, formulaire, action serveur ou CRUD complet n'est cree.
+
+## Decision HIVE-MOVEMENTS-01
+
+`HIVE-MOVEMENTS-01` ajoute le socle executable minimal des mouvements de ruches:
+
+- `HiveMovement`: mouvement entre un rucher source optionnel et un rucher destination obligatoire;
+- `HiveMovementItem`: ruches incluses dans le mouvement;
+- statuts `PLANNED`, `IN_PROGRESS`, `COMPLETED` et `CANCELLED`;
+- motifs `HONEY_FLOW`, `POLLINATION`, `WINTERING`, `EMERGENCY`, `HEALTH`, `GROUPING` et `OTHER`.
+
+Le modele conserve l'historique. L'emplacement courant d'une ruche peut etre deduit du dernier mouvement termine, sans supprimer les anciennes localisations. Les mouvements prevus, en cours ou annules ne changent pas l'emplacement courant.
+
+Le module `transhumance` et les permissions `transhumance.read`, `transhumance.write` et `transhumance.manage` sont ajoutes au catalogue. Le module reste desactive par defaut et sans ecran actif, action serveur, CRUD, GPS, IA ou IoT.
 
 ## Decision MODULES-DYNAMIC-00
 

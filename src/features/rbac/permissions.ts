@@ -26,6 +26,9 @@ export const permissionCodes = [
   "equipment.read",
   "equipment.write",
   "equipment.manage",
+  "transhumance.read",
+  "transhumance.write",
+  "transhumance.manage",
 ] as const;
 
 export type PermissionCode = (typeof permissionCodes)[number];
@@ -68,4 +71,7 @@ export const permissions: PermissionDefinition[] = [
   { code: "equipment.read", label: "Lire le matériel", description: "Consulter le matériel apicole." },
   { code: "equipment.write", label: "Modifier le matériel", description: "Créer et modifier le matériel apicole." },
   { code: "equipment.manage", label: "Administrer le matériel", description: "Gérer le catalogue et les règles du module matériel." },
+  { code: "transhumance.read", label: "Lire la transhumance", description: "Consulter les mouvements de ruches." },
+  { code: "transhumance.write", label: "Modifier la transhumance", description: "Créer et modifier les mouvements de ruches." },
+  { code: "transhumance.manage", label: "Administrer la transhumance", description: "Gérer les annulations et corrections de mouvements." },
 ];

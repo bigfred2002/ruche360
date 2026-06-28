@@ -50,6 +50,9 @@ L'acces cible combine quatre conditions: module existant, module active pour l'o
 | `equipment.read` | Consulter le matériel apicole. |
 | `equipment.write` | Créer et modifier le matériel apicole. |
 | `equipment.manage` | Administrer le catalogue et les règles du module matériel. |
+| `transhumance.read` | Consulter les mouvements de ruches. |
+| `transhumance.write` | Créer et modifier les mouvements de ruches. |
+| `transhumance.manage` | Administrer les annulations, corrections et finalisations de mouvements. |
 
 ## Permissions futures à cadrer
 
@@ -58,9 +61,6 @@ L'acces cible combine quatre conditions: module existant, module active pour l'o
 | `apiary_access.read` | Consulter les futures règles d'accès par rucher. |
 | `apiary_access.write` | Donner ou retirer l'accès d'un membre à un rucher précis. |
 | `apiary_access.manage` | Administrer le futur module de partage fin par rucher. |
-| `transhumance.read` | Consulter les mouvements de ruches. |
-| `transhumance.write` | Créer et modifier les mouvements de ruches. |
-| `transhumance.manage` | Administrer les annulations, corrections et finalisations de mouvements. |
 
 ## Garde-fous
 

@@ -172,6 +172,20 @@ Les coordonnees de ruchers restent sensibles et doivent etre affichees avec prud
    - creation, modification, annulation et finalisation des mouvements;
    - mise a jour controlee de l'emplacement courant.
 
+## Decision `HIVE-MOVEMENTS-01`
+
+`HIVE-MOVEMENTS-01` ajoute le socle executable de la transhumance:
+
+- module `transhumance` dans le catalogue RBAC, desactive par defaut;
+- permissions `transhumance.read`, `transhumance.write` et `transhumance.manage`;
+- modeles Prisma `HiveMovement` et `HiveMovementItem`;
+- enums de statuts et motifs;
+- helpers purs pour determiner l'emplacement courant d'une ruche a partir des mouvements termines.
+
+Le module reste volontairement sans route active, ecran, formulaire, action serveur, API, GPS actif, IA active ou IoT actif.
+
+Un mouvement `COMPLETED` peut servir de source pour deduire l'emplacement courant. Les mouvements `PLANNED`, `IN_PROGRESS` et `CANCELLED` ne changent pas l'emplacement courant.
+
 ## Decision
 
 La transhumance est un module apicole autonome et optionnel. Elle trace les mouvements de ruches entre sites sans transformer Rucher360 en outil de transport.
