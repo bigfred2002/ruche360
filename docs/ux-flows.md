@@ -88,9 +88,11 @@ Ce flux deplace des ruches, pas le rucher comme site. Il ne doit pas introduire 
 
 1. L'utilisateur ouvre le cockpit ou la zone modules.
 2. Il accede au module `Materiel` sans surcharge de la navigation basse mobile.
-3. Il consulte l'inventaire par categorie, statut ou emplacement.
+3. Il consulte l'inventaire par categorie, statut ou emplacement sur `/equipment`.
 4. Il distingue les consommables suivis en quantite du materiel durable suivi individuellement.
 5. Il repere rapidement le materiel disponible, a nettoyer, en maintenance ou retire du service.
+
+Dans `EQUIPMENT-SHELL-01`, ce flux reste statique: les filtres et cartes cadrent l'interface mais ne modifient aucune donnee.
 
 ## Flux futur: preparer une intervention
 

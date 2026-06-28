@@ -35,6 +35,7 @@ const baseModules = [
   "hornet",
   "knowledge",
   "contacts",
+  "equipment",
 ] satisfies ModuleCode[];
 
 const baseReadPermissions = [
@@ -46,6 +47,7 @@ const baseReadPermissions = [
   "health.read",
   "knowledge.read",
   "contacts.read",
+  "equipment.read",
 ] satisfies PermissionCode[];
 
 export const userContextScenarios: UserContextScenario[] = [
@@ -63,7 +65,7 @@ export const userContextScenarios: UserContextScenario[] = [
     enabledModules: baseModules,
     permissions: baseReadPermissions,
     dashboardModules: ["apiaries", "hives", "visits", "tasks"],
-    featuredModules: ["health", "knowledge", "contacts"],
+    featuredModules: ["health", "equipment", "knowledge", "contacts"],
     watchItems: [
       {
         accent: "amber",
@@ -105,7 +107,7 @@ export const userContextScenarios: UserContextScenario[] = [
       "organization.manage",
     ],
     dashboardModules: ["apiaries", "visits", "tasks", "contacts"],
-    featuredModules: ["documents", "knowledge", "contacts"],
+    featuredModules: ["documents", "equipment", "knowledge", "contacts"],
     watchItems: [
       {
         accent: "forest",
@@ -141,7 +143,7 @@ export const userContextScenarios: UserContextScenario[] = [
     enabledModules: [...baseModules, "documents", "harvests"],
     permissions: [...baseReadPermissions, "documents.read", "harvests.read"],
     dashboardModules: ["apiaries", "hives", "visits", "harvests"],
-    featuredModules: ["tasks", "health", "harvests"],
+    featuredModules: ["tasks", "equipment", "health", "harvests"],
     watchItems: [
       {
         accent: "amber",

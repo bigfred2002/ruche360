@@ -138,6 +138,8 @@ Decision: `EQUIPMENT-01` ajoute uniquement le socle executable. Le module reste 
 - Ajouter des cartes et filtres statiques ou semi-statiques.
 - Garder les actions non operationnelles tant que le CRUD n'existe pas.
 
+Decision: `EQUIPMENT-SHELL-01` active la route `/equipment` comme surface de lecture statique. Les filtres, compteurs et cartes ne modifient aucune donnee.
+
 ### EQUIPMENT-CRUD-01
 
 - Ajouter les actions serveur securisees par organisation et permissions.

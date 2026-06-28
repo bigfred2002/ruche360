@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-28 - EQUIPMENT-SHELL-01
+
+- Ajout de la route `/equipment` avec une interface statique d'inventaire materiel mobile-first.
+- Affichage de cartes de synthese, filtres visuels, categories, emplacements indicatifs et points de maintenance.
+- Activation du module materiel dans la registry pour le catalogue et la navigation desktop, sans bottom nav mobile.
+- Aucun formulaire, CRUD, action serveur, API, persistance, authentification, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-06-28 - EQUIPMENT-01
 
 - Ajout du module `equipment` au catalogue RBAC avec les permissions `equipment.read`, `equipment.write` et `equipment.manage`.
