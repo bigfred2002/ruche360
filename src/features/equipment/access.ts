@@ -9,7 +9,7 @@ import type { PermissionCode } from "@/features/rbac";
 export type EquipmentActionContext = {
   organizationId: string;
   membershipId?: string | null;
-  enabledModules: string[];
+  enabledModules: ModuleCode[];
   permissions: PermissionCode[];
 };
 
@@ -37,7 +37,7 @@ function assertCanUseEquipmentPermission(
   permission: PermissionCode,
 ): void {
   const enabledModules = createEnabledModuleSet(
-    context.enabledModules.filter((module): module is ModuleCode => module === "equipment"),
+    context.enabledModules.filter((module) => module === "equipment"),
   );
   const permissions = createPermissionSet(context.permissions);
 

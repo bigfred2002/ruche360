@@ -150,6 +150,15 @@ Decision: `EQUIPMENT-CRUD-01` ajoute les commandes serveur minimales du module m
 
 Le lot n'ajoute pas d'achat, fournisseur, prix, amortissement, comptabilite, suppression dure, IA, IoT ou etiquette commerciale.
 
+### EQUIPMENT-ACTION-CONTEXT-01
+
+- Raccorder les commandes serveur materiel au contrat de session applicative.
+- Transformer le scope actif en contexte d'action materiel.
+- Garder les commandes explicitement bloquees si aucune organisation active n'existe.
+- Ne pas creer de formulaire public ou de session navigateur.
+
+Decision: `EQUIPMENT-ACTION-CONTEXT-01` ajoute un pont entre `ApplicationSession` et `EquipmentActionContext`. Les wrappers serveur peuvent maintenant recevoir une session applicative typée, en deduire l'organisation active, l'adhesion, les modules effectifs et les permissions, puis appeler les commandes materiel existantes. Le lot ne cree toujours pas de page de connexion, cookie, JWT, formulaire CRUD ou API publique.
+
 ## Critere de reussite produit
 
 Le module est reussi s'il aide l'apiculteur a preparer et suivre son materiel sans creer une charge de saisie disproportionnee. Le produit doit privilegier statut, quantite, emplacement, note et historique leger plutot qu'une gestion commerciale complete.
