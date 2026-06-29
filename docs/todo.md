@@ -61,7 +61,7 @@
 - [x] Cadrer le futur module materiel apicole sans code metier.
 - [x] Ajouter le module, les permissions et le modele minimal du materiel.
 - [x] Ajouter un ecran inventaire materiel mobile-first.
-- [ ] Ajouter les actions serveur minimales du materiel.
+- [x] Ajouter les actions serveur minimales du materiel.
 - [x] Ajouter les preferences de modules par adhesion.
 - [x] Creer la registry applicative des modules.
 - [x] Ajouter le choix de modules dans les profils membres.
@@ -287,6 +287,18 @@
 - [x] Ajouter une interface inventaire mobile-first statique.
 - [x] Afficher cartes de synthese, filtres visuels, categories, statuts et maintenance.
 - [x] Rendre le module visible dans la navigation desktop et le catalogue, sans bottom nav mobile.
+- [x] Garder l'ecran sans formulaire operationnel dans ce lot.
+
+## EQUIPMENT-CRUD-01
+
+- [x] Ajouter des commandes serveur minimales pour le module materiel.
+- [x] Exiger un contexte explicite d'organisation, de module active et de permissions.
+- [x] Permettre creation de type materiel reservee a `equipment.manage`.
+- [x] Permettre creation et ajustement de stock avec historique leger.
+- [x] Permettre creation d'item individuel, changement de statut et deplacement simple.
+- [x] Verifier que les types, stocks, items et ruchers manipules appartiennent a l'organisation cible.
+- [x] Garder l'ecran `/equipment` sans formulaire operationnel tant que l'authentification reelle n'existe pas.
+- [x] Ne pas ajouter achats, fournisseurs, prix, comptabilite, suppression dure, IA active ou IoT actif.
 - [x] Ne pas creer de formulaire, CRUD, action serveur, API, persistance, auth, IA ou IoT actif.
 
 ## TODO-CLEANUP-01

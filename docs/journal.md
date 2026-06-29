@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-06-29 - EQUIPMENT-CRUD-01
+
+- Ajout de commandes serveur minimales pour le module materiel: lecture d'inventaire, creation de types, creation et ajustement de stocks, creation d'items, changement de statut et deplacement simple.
+- Ajout d'un controle d'acces explicite par contexte d'organisation, module `equipment` active et permissions `equipment.read`, `equipment.write` ou `equipment.manage`.
+- Chaque creation ou modification operationnelle du materiel cree un evenement leger `EquipmentEvent`.
+- L'ecran `/equipment` reste une preview non branchee a des formulaires reels tant que l'authentification et la session utilisateur ne sont pas disponibles.
+- Aucun achat, fournisseur, prix, comptabilite, suppression dure, authentification, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-06-28 - HIVE-MOVEMENTS-01
 
 - Ajout du module `transhumance` au catalogue RBAC avec les permissions `transhumance.read`, `transhumance.write` et `transhumance.manage`.

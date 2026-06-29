@@ -75,7 +75,7 @@ export function EquipmentInventoryPreview() {
       <div className="mx-auto w-full max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
         <div className="space-y-6">
           <section className="surface-panel rounded-3xl p-5 sm:p-7 lg:p-8">
-            <StatusBadge label="Inventaire statique" tone="preview" />
+            <StatusBadge label="Actions serveur préparées" tone="preview" />
             <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_20rem] lg:items-end">
               <div>
                 <p className="section-kicker">Module matériel</p>
@@ -83,9 +83,10 @@ export function EquipmentInventoryPreview() {
                   Matériel
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Vue d&apos;inventaire mobile-first pour cadrer le futur suivi du
-                  matériel apicole. Les cartes sont statiques: aucune création,
-                  modification, réservation ou décrément de stock n&apos;est actif.
+                  Vue d&apos;inventaire mobile-first pour cadrer le suivi du
+                  matériel apicole. Les cartes restent statiques: les actions
+                  serveur minimales existent côté domaine, mais aucun formulaire
+                  opérationnel n&apos;est encore branché à cet écran.
                 </p>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
@@ -198,10 +199,10 @@ export function EquipmentInventoryPreview() {
           </section>
 
           <StatePanel
-            detail="Le futur CRUD ajoutera création, ajustement de quantité, changement de statut et déplacement simple. Rien de cela n'est actif dans cette page."
+            detail="Le lot serveur prépare création, ajustement de quantité, changement de statut et déplacement simple. L'interface reste volontairement sans formulaire tant que l'authentification réelle n'est pas posée."
             kind="coming-soon"
-            label="Shell seulement"
-            title="Inventaire prêt pour le prochain lot"
+            label="Interface non branchée"
+            title="Inventaire prêt pour un branchement authentifié"
           />
         </div>
       </div>
