@@ -53,6 +53,7 @@
 - [x] Préparer un runner GitHub local Docker pour validations DevSecOps manuelles.
 - [x] Poser les conventions comptes, organisations et adhésions.
 - [x] Poser le contrat de session applicative sans auth réelle.
+- [x] Ajouter une session de développement fictive sans secret.
 - [x] Poser le catalogue rôles, permissions et modules.
 - [x] Produire une architecture logique transversale de l'application.
 - [x] Produire une cartographie des modules et fonctions.
@@ -358,6 +359,15 @@
 - [x] Déduire l'organisation active à partir d'un utilisateur actif et d'une adhésion active.
 - [x] Calculer le scope actif: utilisateur, organisation, adhésion, modules effectifs et permissions.
 - [x] Ajouter un helper de vérification module + permission depuis la session.
+- [x] Ne pas ajouter Auth.js, cookie, JWT, page de connexion, API d'authentification, secret ou stockage de mot de passe.
+
+## AUTH-DEV-SESSION-01
+
+- [x] Ajouter une session de développement déterministe.
+- [x] Utiliser uniquement des identifiants fictifs et un email réservé `example.invalid`.
+- [x] Activer les modules utiles au cockpit et au matériel.
+- [x] Donner les permissions nécessaires aux lots UI de développement.
+- [x] Ne pas ajouter secret, token, mot de passe, cookie, Auth.js, page de connexion ou utilisateur réel.
 - [x] Ne pas ajouter Auth.js, cookie, JWT, page de connexion, API d'authentification, secret ou stockage de mot de passe.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
