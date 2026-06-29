@@ -122,6 +122,7 @@ Les commandes pnpm doivent toujours passer par Docker Compose:
 docker compose run --rm app pnpm install
 docker compose run --rm app pnpm lint
 docker compose run --rm app pnpm build
+docker compose run --rm app pnpm seed:dev
 ```
 
 Raccourcis Makefile:
@@ -132,6 +133,7 @@ make up
 make pnpm CMD="install"
 make lint
 make build-app
+make seed-dev
 make security-scan
 ```
 

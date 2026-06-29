@@ -50,6 +50,7 @@
 - [x] Ajouter une CI Docker-first pour PR et `main`.
 - [x] Cadrer la stratégie data avant Prisma.
 - [x] Créer le modèle de données exécutable minimal.
+- [x] Ajouter un seed de développement fictif et idempotent.
 - [x] Préparer un runner GitHub local Docker pour validations DevSecOps manuelles.
 - [x] Poser les conventions comptes, organisations et adhésions.
 - [x] Poser le contrat de session applicative sans auth réelle.
@@ -373,11 +374,20 @@
 ## AUTH-DEV-SESSION-01
 
 - [x] Ajouter une session de développement déterministe.
-- [x] Utiliser uniquement des identifiants fictifs et un email réservé `example.invalid`.
+- [x] Utiliser uniquement des identifiants fictifs et non personnels.
 - [x] Activer les modules utiles au cockpit et au matériel.
 - [x] Donner les permissions nécessaires aux lots UI de développement.
 - [x] Ne pas ajouter secret, token, mot de passe, cookie, Auth.js, page de connexion ou utilisateur réel.
 - [x] Ne pas ajouter Auth.js, cookie, JWT, page de connexion, API d'authentification, secret ou stockage de mot de passe.
+
+## DATA-SEED-DEV-01
+
+- [x] Ajouter un script de seed de développement idempotent.
+- [x] Créer uniquement des données fictives et non personnelles.
+- [x] Aligner les identifiants avec la session de développement.
+- [x] Initialiser organisation, utilisateur fictif, adhésion, modules, permissions, ruchers, ruches, colonies et matériel.
+- [x] Ajouter une commande Docker-first `make seed-dev`.
+- [x] Ne pas ajouter de secret, dump, vraie donnée personnelle, IA active ou IoT actif.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.

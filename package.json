@@ -6,20 +6,24 @@
   "scripts": {
     "postinstall": "prisma generate",
     "prebuild": "prisma generate",
+    "seed:dev": "prisma generate && prisma migrate deploy && node prisma/seed-dev.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "7.8.0",
     "next": "16.2.9",
+    "pg": "^8.22.0",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.1",
     "@types/node": "20.19.43",
+    "@types/pg": "^8.20.0",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.4",

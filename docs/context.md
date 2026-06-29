@@ -23,6 +23,8 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Les fonctions étiquetage, marketplace, paiement, comptabilité complète, IoT actif, IA automatique et prescription sanitaire automatique sont hors périmètre initial.
 - `DATA-00` limite le futur premier schéma exécutable au socle organisations, utilisateurs, adhésions, rôles, permissions et modules.
 - `DATA-01` crée le schéma Prisma et la migration initiale pour ce socle minimal.
+- `DATA-SEED-DEV-01` ajoute un seed local idempotent et fictif pour l'organisation de développement, les modules, permissions, ruchers, ruches, colonies et le matériel.
+- `DATA-SEED-DEV-01` ajoute aussi l'adapter PostgreSQL Prisma necessaire au runtime Prisma 7, sans introduire de service externe.
 - `AUTH-01` pose les conventions TypeScript comptes, organisations et adhésions sans activer d'authentification réelle.
 - `AUTH-SESSION-01` ajoute un contrat TypeScript de session applicative et de scope actif, sans Auth.js, cookie, page de connexion, API d'authentification ou secret.
 - `AUTH-DEV-SESSION-01` ajoute une session de développement déterministe et fictive pour brancher les prochains écrans sans secret, cookie, Auth.js ou utilisateur réel.
@@ -81,6 +83,7 @@ make runner-config
 make security-scan
 make secrets-scan
 make audit-prod
+make seed-dev
 ```
 
 Commandes applicatives:

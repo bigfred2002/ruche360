@@ -3,7 +3,7 @@ APP := app
 RUNNER_COMPOSE := docker compose -f docker-compose.runner.yml
 GITLEAKS_IMAGE := ghcr.io/gitleaks/gitleaks@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f
 
-.PHONY: help build up down logs shell pnpm lint build-app audit-prod db psql clean install-security-hooks security-scan secrets-scan runner-config runner-build runner-up runner-down runner-logs
+.PHONY: help build up down logs shell pnpm lint build-app audit-prod seed-dev db psql clean install-security-hooks security-scan secrets-scan runner-config runner-build runner-up runner-down runner-logs
 
 help:
 	@echo "Rucher360 development commands"
@@ -16,6 +16,7 @@ help:
 	@echo "  make lint       Run pnpm lint through Docker Compose"
 	@echo "  make build-app  Run pnpm build through Docker Compose"
 	@echo "  make audit-prod Run pnpm audit --prod through Docker Compose"
+	@echo "  make seed-dev   Seed local development data through Docker Compose"
 	@echo "  make db         Start PostgreSQL only"
 	@echo "  make psql       Open psql in the db container"
 	@echo "  make clean      Remove containers and volumes"
@@ -55,6 +56,9 @@ build-app:
 
 audit-prod:
 	$(COMPOSE) run --rm $(APP) pnpm audit --prod
+
+seed-dev:
+	$(COMPOSE) run --rm $(APP) pnpm seed:dev
 
 db:
 	$(COMPOSE) up -d db

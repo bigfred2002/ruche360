@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-29 - DATA-SEED-DEV-01
+
+- Ajout d'un seed de développement idempotent dans `prisma/seed-dev.mjs`.
+- Le seed initialise des données fictives: organisation, utilisateur technique, adhésion, modules, permissions, ruchers, ruches, colonies et matériel.
+- Ajout du script `pnpm seed:dev` et du raccourci Docker-first `make seed-dev`.
+- Les identifiants sont alignés avec la session de développement et ne contiennent aucun secret, token, dump ou donnée personnelle réelle.
+
 ## 2026-06-29 - EQUIPMENT-FORMS-SHELL-01
 
 - Ajout d'une preview de formulaires materiel dans `/equipment`.
