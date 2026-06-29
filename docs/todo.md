@@ -65,6 +65,7 @@
 - [x] Ajouter un ecran inventaire materiel mobile-first.
 - [x] Ajouter les actions serveur minimales du materiel.
 - [x] Raccorder les actions serveur materiel au scope de session applicative.
+- [x] Ajouter une preview de formulaires materiel non operationnels.
 - [x] Ajouter les preferences de modules par adhesion.
 - [x] Creer la registry applicative des modules.
 - [x] Ajouter le choix de modules dans les profils membres.
@@ -311,6 +312,14 @@
 - [x] Bloquer les actions si aucune organisation active n'est disponible.
 - [x] Conserver les verifications module `equipment` et permissions existantes.
 - [x] Ne pas ajouter de session navigateur, Auth.js, cookie, JWT, page de connexion, formulaire CRUD public ou secret.
+
+## EQUIPMENT-FORMS-SHELL-01
+
+- [x] Ajouter une zone de formulaires materiel dans `/equipment`.
+- [x] Afficher les futurs formulaires: type, stock et item individuel.
+- [x] Lire les droits depuis la session de developpement.
+- [x] Garder champs et actions desactives.
+- [x] Ne pas ecrire en base, ne pas ajouter d'API, ne pas ajouter Auth.js, cookie, JWT ou secret.
 
 ## TODO-CLEANUP-01
 

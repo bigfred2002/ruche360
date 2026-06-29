@@ -1,5 +1,6 @@
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { EquipmentFormsPreview } from "./EquipmentFormsPreview";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 
@@ -198,8 +199,10 @@ export function EquipmentInventoryPreview() {
             </aside>
           </section>
 
+          <EquipmentFormsPreview />
+
           <StatePanel
-            detail="Le lot serveur prépare création, ajustement de quantité, changement de statut et déplacement simple. L'interface reste volontairement sans formulaire tant que l'authentification réelle n'est pas posée."
+            detail="Les formulaires affichent désormais les futurs branchements et les droits de la session de développement, mais aucune mutation n'est envoyée tant qu'une vraie session navigateur n'est pas posée."
             kind="coming-soon"
             label="Interface non branchée"
             title="Inventaire prêt pour un branchement authentifié"
