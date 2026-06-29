@@ -146,6 +146,10 @@ Decision: `EQUIPMENT-SHELL-01` active la route `/equipment` comme surface de lec
 - Permettre creation et modification minimale.
 - Permettre ajustement de quantite, changement de statut et deplacement simple.
 
+Decision: `EQUIPMENT-CRUD-01` ajoute les commandes serveur minimales du module materiel. Les commandes exigent un contexte explicite d'organisation, de module active et de permissions. Elles couvrent creation de type, creation de stock, ajustement de quantite, creation d'item individuel, changement de statut et deplacement simple. Chaque changement operationnel cree un evenement leger. L'ecran `/equipment` reste une preview non branchee tant que l'authentification et les formulaires reels ne sont pas disponibles.
+
+Le lot n'ajoute pas d'achat, fournisseur, prix, amortissement, comptabilite, suppression dure, IA, IoT ou etiquette commerciale.
+
 ## Critere de reussite produit
 
 Le module est reussi s'il aide l'apiculteur a preparer et suivre son materiel sans creer une charge de saisie disproportionnee. Le produit doit privilegier statut, quantite, emplacement, note et historique leger plutot qu'une gestion commerciale complete.

@@ -12,6 +12,7 @@ Le projet est développé par micro-lots avec Codex, GitHub et Docker Compose. L
 - Ruchers, ruches et colonies.
 - Modèle exécutable séparant les sites apicoles, le matériel ruche et le vivant.
 - Module matériel apicole prévu pour suivre consommables, équipements durables, emplacements et statuts simples sans gestion commerciale lourde.
+- Commandes serveur minimales du module matériel préparées avec contrôle organisation/permissions, sans formulaire public tant que l'authentification réelle n'est pas disponible.
 - Visites et observations terrain.
 - Tâches à planifier, réaliser ou suivre.
 - Récoltes simples.
