@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-29 - AUTH-DEV-SESSION-01
+
+- Ajout d'une session de développement déterministe dans `src/features/auth/dev-session.ts`.
+- La fixture utilise des identifiants fictifs et l'identifiant réservé `dev-user.example.invalid`.
+- Les modules et permissions nécessaires au cockpit et au matériel sont activés pour les prochains lots UI.
+- Aucun secret, token, mot de passe, cookie, Auth.js, page de connexion, API d'authentification ou utilisateur réel n'a ete ajoute.
+
 ## 2026-06-29 - EQUIPMENT-ACTION-CONTEXT-01
 
 - Ajout d'un pont entre `ApplicationSession` et `EquipmentActionContext`.
