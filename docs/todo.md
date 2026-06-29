@@ -52,6 +52,7 @@
 - [x] Créer le modèle de données exécutable minimal.
 - [x] Préparer un runner GitHub local Docker pour validations DevSecOps manuelles.
 - [x] Poser les conventions comptes, organisations et adhésions.
+- [x] Poser le contrat de session applicative sans auth réelle.
 - [x] Poser le catalogue rôles, permissions et modules.
 - [x] Produire une architecture logique transversale de l'application.
 - [x] Produire une cartographie des modules et fonctions.
@@ -337,6 +338,18 @@
 - [x] Ne pas créer d'interface de gestion des rôles.
 
 ## AUTH-01
+
+- [x] Poser les types utilisateur, organisation et adhésion.
+- [x] Ajouter des helpers purs de normalisation et d'accès organisationnel.
+- [x] Ne pas ajouter Auth.js, session, page de connexion, API d'authentification, email ou mot de passe.
+
+## AUTH-SESSION-01
+
+- [x] Ajouter un type de session applicative interne.
+- [x] Déduire l'organisation active à partir d'un utilisateur actif et d'une adhésion active.
+- [x] Calculer le scope actif: utilisateur, organisation, adhésion, modules effectifs et permissions.
+- [x] Ajouter un helper de vérification module + permission depuis la session.
+- [x] Ne pas ajouter Auth.js, cookie, JWT, page de connexion, API d'authentification, secret ou stockage de mot de passe.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.

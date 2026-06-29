@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-29 - AUTH-SESSION-01
+
+- Ajout d'un contrat TypeScript de session applicative dans `src/features/auth/session.ts`.
+- Ajout de helpers purs pour calculer l'organisation active, le scope actif, les modules effectifs et les permissions effectives.
+- Le scope de session expose `userId`, `organizationId`, `membershipId`, modules et permissions pour les futurs services métier.
+- Aucun Auth.js, cookie, JWT, page de connexion, API d'authentification, secret ou stockage de mot de passe n'a ete ajoute.
+
 ## 2026-06-29 - EQUIPMENT-CRUD-01
 
 - Ajout de commandes serveur minimales pour le module materiel: lecture d'inventaire, creation de types, creation et ajustement de stocks, creation d'items, changement de statut et deplacement simple.
