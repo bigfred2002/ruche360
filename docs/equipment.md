@@ -159,6 +159,15 @@ Le lot n'ajoute pas d'achat, fournisseur, prix, amortissement, comptabilite, sup
 
 Decision: `EQUIPMENT-ACTION-CONTEXT-01` ajoute un pont entre `ApplicationSession` et `EquipmentActionContext`. Les wrappers serveur peuvent maintenant recevoir une session applicative typée, en deduire l'organisation active, l'adhesion, les modules effectifs et les permissions, puis appeler les commandes materiel existantes. Le lot ne cree toujours pas de page de connexion, cookie, JWT, formulaire CRUD ou API publique.
 
+### EQUIPMENT-FORMS-SHELL-01
+
+- Afficher les futurs formulaires materiel dans `/equipment`.
+- Montrer les droits issus de la session de developpement.
+- Garder les champs et actions desactives tant que la vraie session navigateur et les donnees de demonstration ne sont pas cadrees.
+- Ne pas ecrire en base depuis l'interface.
+
+Decision: `EQUIPMENT-FORMS-SHELL-01` ajoute une preview des formulaires type materiel, stock et item individuel. La preview consomme la session de developpement pour indiquer les permissions disponibles, mais elle ne soumet aucune mutation et ne cree aucune donnee.
+
 ## Critere de reussite produit
 
 Le module est reussi s'il aide l'apiculteur a preparer et suivre son materiel sans creer une charge de saisie disproportionnee. Le produit doit privilegier statut, quantite, emplacement, note et historique leger plutot qu'une gestion commerciale complete.

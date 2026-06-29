@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-29 - EQUIPMENT-FORMS-SHELL-01
+
+- Ajout d'une preview de formulaires materiel dans `/equipment`.
+- Les formulaires affichent les futurs branchements type, stock et item individuel.
+- La preview lit les permissions de la session de developpement, mais les champs et actions restent desactives.
+- Aucune mutation, ecriture en base, API, session navigateur, Auth.js, cookie, JWT, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-06-29 - AUTH-DEV-SESSION-01
 
 - Ajout d'une session de développement déterministe dans `src/features/auth/dev-session.ts`.

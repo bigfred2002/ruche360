@@ -54,6 +54,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `EQUIPMENT-SHELL-01` ajoute la route `/equipment` et une interface statique d'inventaire materiel mobile-first, sans formulaire ni action métier.
 - `EQUIPMENT-CRUD-01` ajoute les commandes serveur minimales du materiel avec contexte organisation/permissions explicite: types, stocks, items, ajustements, statuts, deplacements et evenements legers. L'ecran reste non branche a des formulaires reels tant que l'authentification n'existe pas.
 - `EQUIPMENT-ACTION-CONTEXT-01` raccorde les commandes serveur materiel au contrat `ApplicationSession` via un scope actif, sans session navigateur, formulaire public, cookie, JWT ou API d'authentification.
+- `EQUIPMENT-FORMS-SHELL-01` ajoute dans `/equipment` une preview de formulaires materiel basee sur la session de developpement, avec champs et actions desactives et aucune ecriture en base.
 - `HIVE-MOVEMENTS-01` ajoute le module `transhumance`, ses permissions, les modeles executables de mouvements de ruches et des helpers purs d'emplacement courant, sans ecran, CRUD, GPS, IA ou IoT actif.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
