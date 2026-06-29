@@ -63,6 +63,7 @@
 - [x] Ajouter le module, les permissions et le modele minimal du materiel.
 - [x] Ajouter un ecran inventaire materiel mobile-first.
 - [x] Ajouter les actions serveur minimales du materiel.
+- [x] Raccorder les actions serveur materiel au scope de session applicative.
 - [x] Ajouter les preferences de modules par adhesion.
 - [x] Creer la registry applicative des modules.
 - [x] Ajouter le choix de modules dans les profils membres.
@@ -301,6 +302,14 @@
 - [x] Garder l'ecran `/equipment` sans formulaire operationnel tant que l'authentification reelle n'existe pas.
 - [x] Ne pas ajouter achats, fournisseurs, prix, comptabilite, suppression dure, IA active ou IoT actif.
 - [x] Ne pas creer de formulaire, CRUD, action serveur, API, persistance, auth, IA ou IoT actif.
+
+## EQUIPMENT-ACTION-CONTEXT-01
+
+- [x] Ajouter un helper de conversion `ApplicationSession` vers `EquipmentActionContext`.
+- [x] Ajouter des wrappers serveur materiel acceptant une session applicative typée.
+- [x] Bloquer les actions si aucune organisation active n'est disponible.
+- [x] Conserver les verifications module `equipment` et permissions existantes.
+- [x] Ne pas ajouter de session navigateur, Auth.js, cookie, JWT, page de connexion, formulaire CRUD public ou secret.
 
 ## TODO-CLEANUP-01
 

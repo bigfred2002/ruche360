@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-06-29 - EQUIPMENT-ACTION-CONTEXT-01
+
+- Ajout d'un pont entre `ApplicationSession` et `EquipmentActionContext`.
+- Ajout de wrappers serveur materiel acceptant une session applicative typée et reutilisant les commandes existantes.
+- Les actions restent bloquees sans organisation active et conservent les controles module `equipment` + permissions.
+- Aucun Auth.js, cookie, JWT, page de connexion, formulaire CRUD public, API d'authentification, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-06-29 - AUTH-SESSION-01
 
 - Ajout d'un contrat TypeScript de session applicative dans `src/features/auth/session.ts`.
