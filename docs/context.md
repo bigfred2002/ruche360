@@ -59,6 +59,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `EQUIPMENT-FORMS-SHELL-01` ajoute dans `/equipment` une preview de formulaires materiel basee sur la session de developpement, avec champs et actions desactives et aucune ecriture en base.
 - `HIVE-MOVEMENTS-01` ajoute le module `transhumance`, ses permissions, les modeles executables de mouvements de ruches et des helpers purs d'emplacement courant, sans ecran, CRUD, GPS, IA ou IoT actif.
 - `EQUIPMENT-LIVE-INVENTORY-01` branche `/equipment` en lecture seule sur le seed de developpement via Prisma et la session de developpement, sans mutation ni formulaire actif.
+- `EQUIPMENT-FORMS-ACTIVE-01` active des formulaires serveur de developpement pour creer des types, stocks et items materiel via la session de developpement, sans API publique ni authentification reelle.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 

@@ -305,13 +305,13 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
             </aside>
           </section>
 
-          <EquipmentFormsPreview />
+          <EquipmentFormsPreview inventory={inventory} />
 
           <StatePanel
-            detail="Les données affichées peuvent venir du seed local, mais les mutations restent indisponibles dans ce lot. La prochaine étape sera d'activer des formulaires serveur limités et explicites."
+            detail="Les données affichées viennent du seed local et les formulaires peuvent créer des entrées de développement. Les usages restent limités: pas de suppression, achat, fournisseur, prix ou authentification réelle."
             kind="coming-soon"
-            label="Lecture seule"
-            title="Inventaire vivant, actions encore protégées"
+            label="Développement contrôlé"
+            title="Inventaire vivant, actions limitées"
           />
         </div>
       </div>

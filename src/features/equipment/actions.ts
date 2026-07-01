@@ -1,6 +1,9 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import type { ApplicationSession } from "@/features/auth";
+import { createDevelopmentApplicationSession } from "@/features/auth";
 
 import type { EquipmentActionContext } from "./access";
 import { createEquipmentActionContextFromSession } from "./session-context";
@@ -110,4 +113,71 @@ export async function moveEquipmentItemForSessionAction(
   input: MoveEquipmentItemInput,
 ) {
   return moveEquipmentItem(createEquipmentActionContextFromSession(session), input);
+}
+
+export async function createDevelopmentEquipmentTypeFormAction(formData: FormData) {
+  const session = createDevelopmentApplicationSession();
+
+  await createEquipmentTypeForSessionAction(session, {
+    name: readFormText(formData, "name"),
+    category: readFormText(formData, "category"),
+    trackingMode: readFormText(formData, "trackingMode"),
+    code: readOptionalFormText(formData, "code"),
+    defaultUnit: readOptionalFormText(formData, "defaultUnit"),
+    notes: readOptionalFormText(formData, "notes"),
+  });
+
+  revalidatePath("/equipment");
+}
+
+export async function createDevelopmentEquipmentStockFormAction(formData: FormData) {
+  const session = createDevelopmentApplicationSession();
+
+  await createEquipmentStockForSessionAction(session, {
+    equipmentTypeId: readFormText(formData, "equipmentTypeId"),
+    quantity: readFormNumber(formData, "quantity"),
+    unit: readFormText(formData, "unit"),
+    apiaryId: readOptionalFormText(formData, "apiaryId"),
+    locationLabel: readOptionalFormText(formData, "locationLabel"),
+    notes: readOptionalFormText(formData, "notes"),
+  });
+
+  revalidatePath("/equipment");
+}
+
+export async function createDevelopmentEquipmentItemFormAction(formData: FormData) {
+  const session = createDevelopmentApplicationSession();
+
+  await createEquipmentItemForSessionAction(session, {
+    equipmentTypeId: readFormText(formData, "equipmentTypeId"),
+    fieldIdentifier: readFormText(formData, "fieldIdentifier"),
+    status: readOptionalFormText(formData, "status"),
+    apiaryId: readOptionalFormText(formData, "apiaryId"),
+    locationLabel: readOptionalFormText(formData, "locationLabel"),
+    notes: readOptionalFormText(formData, "notes"),
+  });
+
+  revalidatePath("/equipment");
+}
+
+function readFormText(formData: FormData, key: string) {
+  const value = formData.get(key);
+
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value;
+}
+
+function readOptionalFormText(formData: FormData, key: string) {
+  const value = readFormText(formData, key).trim();
+
+  return value.length > 0 ? value : null;
+}
+
+function readFormNumber(formData: FormData, key: string) {
+  const value = Number(readFormText(formData, key));
+
+  return Number.isFinite(value) ? value : Number.NaN;
 }
