@@ -63,6 +63,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `TRANSHUMANCE-SHELL-01` ajoute la route `/transhumance` et un shell statique pour lire le workflow de mouvements de ruches, sans CRUD, GPS actif, API ou logistique lourde.
 - `ADMIN-BACKLOG-01` prepare le backlog d'un centre d'administration d'organisation, distinct d'un futur back-office plateforme et sans implementation.
 - `TRANSHUMANCE-ACTIONS-01` ajoute les actions serveur minimales de transhumance: lecture, creation, ajout de ruches et changement de statut. La finalisation d'un mouvement met a jour l'emplacement courant des ruches sans effacer l'historique.
+- `TRANSHUMANCE-FORMS-SHELL-01` branche `/transhumance` sur la lecture Prisma et ajoute des formulaires serveur de developpement bases sur les donnees fictives du seed, sans API publique ni authentification reelle.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
@@ -78,7 +79,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Cadrage du futur journal d'activite metier, distinct de l'audit securite/dependances.
 - Branchement futur des formulaires materiel sur une session authentifiee.
 - Moment opportun pour introduire un partage fin par rucher.
-- Branchement futur des formulaires transhumance sur la session de developpement puis sur une session authentifiee.
+- Branchement futur des formulaires transhumance sur une session authentifiee.
 
 ## Commandes utiles actuelles
 

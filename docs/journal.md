@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-01 - TRANSHUMANCE-FORMS-SHELL-01
+
+- Branchement de `/transhumance` en lecture sur les mouvements Prisma via la session de developpement.
+- Ajout de formulaires serveur de developpement pour creer un mouvement, ajouter des ruches et changer le statut.
+- Les formulaires utilisent uniquement les ruchers et ruches fictifs du seed local.
+- La finalisation d'un mouvement passe par les actions serveur existantes et met a jour l'emplacement courant des ruches.
+- Aucun formulaire public, API externe, authentification reelle, GPS actif, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-01 - TRANSHUMANCE-ACTIONS-01
 
 - Ajout d'un contexte d'action transhumance avec controle module `transhumance` et permissions `transhumance.read`, `transhumance.write` et `transhumance.manage`.

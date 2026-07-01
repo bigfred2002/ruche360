@@ -12,8 +12,11 @@ import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
+import { TranshumanceFormsPreview } from "./TranshumanceFormsPreview";
 
 const apiariesById = {
+  "dev-apiary-home": "Rucher école",
+  "dev-apiary-hill": "Rucher des coteaux",
   "apiary-vallon": "Rucher du Vallon",
   "apiary-acacias": "Rucher des Acacias",
   "apiary-foret": "Rucher de la Forêt",
@@ -52,14 +55,25 @@ const checklistItems = [
   "Confirmer l'arrivée sans activer de suivi GPS",
 ];
 
-export function TranshumanceShellPreview() {
+export function TranshumanceShellPreview({
+  movements,
+}: {
+  movements?: HiveMovementSummary[] | null;
+}) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/transhumance");
+  const displayMovements = movements && movements.length > 0 ? movements : previewMovements;
+  const hasLiveMovements = Boolean(movements);
   const currentApiaryId = getCurrentApiaryIdFromMovements(
-    "apiary-vallon",
-    previewMovements,
+    "dev-apiary-home",
+    displayMovements,
   );
-  const sortedMovements = sortHiveMovementsByDeparture(previewMovements);
+  const sortedMovements = sortHiveMovementsByDeparture(displayMovements);
+  const plannedCount = displayMovements.filter((movement) => movement.status === "PLANNED").length;
+  const completedCount = displayMovements.filter((movement) => movement.status === "COMPLETED").length;
+  const hiveCount = new Set(
+    displayMovements.flatMap((movement) => movement.items.map((item) => item.hiveId)),
+  ).size;
 
   return (
     <AppShell
@@ -69,7 +83,10 @@ export function TranshumanceShellPreview() {
       <div className="mx-auto w-full max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
         <div className="space-y-6">
           <section className="surface-panel rounded-3xl p-5 sm:p-7 lg:p-8">
-            <StatusBadge label="Shell actif" tone="preview" />
+            <StatusBadge
+              label={hasLiveMovements ? "Lecture Prisma active" : "Preview"}
+              tone={hasLiveMovements ? "active" : "preview"}
+            />
             <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_20rem] lg:items-end">
               <div>
                 <p className="section-kicker">Module transhumance</p>
@@ -99,9 +116,9 @@ export function TranshumanceShellPreview() {
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">
-            <SummaryCard detail="Déplacements en préparation ou à réaliser" label="Prévu" value="1" />
-            <SummaryCard detail="Déplacement fictif déjà terminé" label="Terminé" value="1" />
-            <SummaryCard detail="Ruches fictives incluses dans les mouvements" label="Ruches" value="3" />
+            <SummaryCard detail="Déplacements en préparation ou à réaliser" label="Prévu" value={String(plannedCount)} />
+            <SummaryCard detail="Déplacements déjà finalisés" label="Terminé" value={String(completedCount)} />
+            <SummaryCard detail="Ruches incluses dans les mouvements affichés" label="Ruches" value={String(hiveCount)} />
           </section>
 
           <section className="grid gap-4 lg:grid-cols-[1fr_20rem]">
@@ -174,11 +191,13 @@ export function TranshumanceShellPreview() {
             </aside>
           </section>
 
+          <TranshumanceFormsPreview movements={movements ?? null} />
+
           <StatePanel
-            detail="Cet écran présente le workflow cible et le moteur pur d'emplacement courant. Les créations, modifications, finalisations et annulations de mouvements arriveront dans un lot dédié."
-            kind="coming-soon"
-            label="Pas de CRUD"
-            title="Mouvements cadrés, actions non actives"
+            detail="Les formulaires ci-dessus restent limites a la session de developpement et aux donnees fictives. Le branchement a de vrais comptes arrivera avec l'authentification."
+            kind="empty"
+            label="Dev uniquement"
+            title="Actions actives sans exposition publique"
           />
         </div>
       </div>
