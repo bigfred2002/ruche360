@@ -177,6 +177,11 @@ Les coordonnees de ruchers restent sensibles et doivent etre affichees avec prud
    - finalisation d'un mouvement avec mise a jour de l'emplacement courant;
    - aucun formulaire public, API externe, GPS actif, IA ou IoT actif.
 
+6. `TRANSHUMANCE-FORMS-SHELL-01`
+   - formulaires serveur de developpement sur `/transhumance`;
+   - creation, ajout de ruches et changement de statut avec donnees fictives seed;
+   - aucun compte reel, API publique, GPS actif, IA ou IoT actif.
+
 ## Decision `HIVE-MOVEMENTS-01`
 
 `HIVE-MOVEMENTS-01` ajoute le socle executable de la transhumance:
@@ -204,6 +209,17 @@ Un mouvement `COMPLETED` peut servir de source pour deduire l'emplacement couran
 Le mouvement reste l'historique de reference. La mise a jour de `Hive.apiaryId` sert uniquement a exposer l'emplacement courant sans effacer les traces precedentes.
 
 Ce lot n'ajoute pas de formulaire public, API externe, authentification reelle, GPS actif, IA active, IoT actif ou logistique transport avancee.
+
+## Decision `TRANSHUMANCE-FORMS-SHELL-01`
+
+`TRANSHUMANCE-FORMS-SHELL-01` rend le shell `/transhumance` utilisable en developpement local:
+
+- la page lit les mouvements via Prisma et la session de developpement;
+- si la base n'est pas disponible ou vide, la preview statique reste visible;
+- les formulaires manipulent uniquement les identifiants fictifs du seed local;
+- les actions restent des server actions Next.js, sans API publique.
+
+Ces formulaires servent a valider le workflow technique avant l'authentification reelle. Ils ne creent pas de partage public, de GPS actif, d'IA, d'IoT ou de logistique transport avancee.
 
 ## Decision
 
