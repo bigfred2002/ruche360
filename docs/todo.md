@@ -76,6 +76,16 @@
 - [x] Cadrer les mouvements de ruches dans `TRANSHUMANCE-00`.
 - [x] Implementer les mouvements de ruches dans `HIVE-MOVEMENTS-01`.
 - [x] Ajouter un shell transhumance dans `TRANSHUMANCE-SHELL-01`.
+- [x] Preparer le backlog admin sans implementation dans `ADMIN-BACKLOG-01`.
+
+### Backlog administration et gouvernance
+
+- [ ] `ADMIN-00`: cadrer le centre d'administration d'organisation, sans code.
+- [ ] `ADMIN-SHELL-01`: ajouter un shell `/admin` desktop/catalogue uniquement, sans CRUD.
+- [ ] `ADMIN-DATA-OVERVIEW-01`: afficher les volumes de donnees par organisation en lecture seule.
+- [ ] `AUDIT-LOG-00`: cadrer le journal d'activite metier, distinct de l'audit dependances.
+- [ ] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
+- [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
 
 ## EQUIPMENT-00
 
@@ -415,6 +425,61 @@
 - [x] Afficher le workflow cible: mouvements planifies, termines, ruches concernees et checklist terrain.
 - [x] Reutiliser les helpers purs d'emplacement courant sans lecture base ni GPS actif.
 - [x] Ne pas ajouter de CRUD, formulaire actif, API, auth reelle, secret, IA active ou IoT actif.
+
+## ADMIN-BACKLOG-01
+
+- [x] Ajouter le backlog des futurs lots d'administration.
+- [x] Confirmer que le centre d'administration cible l'organisation avant la plateforme.
+- [x] Eviter la redondance avec `MODULE-ADMIN-01`, qui reste limite a l'administration des modules d'une organisation.
+- [x] Distinguer l'audit dependances existant du futur journal d'activite metier.
+- [x] Ne pas modifier le code applicatif, Prisma, Docker, les dependances, l'auth, l'IA ou l'IoT.
+
+## ADMIN-00
+
+- [ ] Cadrer administration organisationnelle et administration plateforme.
+- [ ] Definir donnees sensibles, archivage, journal d'activite metier, exports et limites.
+- [ ] Confirmer que l'administration complete les modules `organizations`, `users_roles` et `modules` sans les dupliquer.
+- [ ] Clarifier que l'archivage et les statuts priment sur la suppression dure.
+- [ ] Ne pas creer de code applicatif, route, migration, CRUD, API, auth, IA ou IoT actif.
+
+## ADMIN-SHELL-01
+
+- [ ] Ajouter une route shell `/admin`.
+- [ ] Afficher des cartes statiques: Organisation, Membres, Modules, Donnees, Securite et Journal.
+- [ ] Rendre l'entree visible en desktop/catalogue uniquement, pas dans la bottom nav mobile.
+- [ ] Conditionner la surface aux permissions admin deja existantes.
+- [ ] Ne pas creer de CRUD, API, persistance, auth reelle, secret, IA ou IoT actif.
+
+## ADMIN-DATA-OVERVIEW-01
+
+- [ ] Afficher des compteurs par organisation en lecture seule.
+- [ ] Couvrir au minimum ruchers, ruches, colonies, materiel et transhumance.
+- [ ] Signaler les modules desactives sans supprimer leurs donnees.
+- [ ] Ne pas ajouter d'export, suppression, correction automatique, API publique, IA ou IoT actif.
+
+## AUDIT-LOG-00
+
+- [ ] Cadrer le futur journal d'activite metier.
+- [ ] Distinguer ce journal de l'audit securite/dependances `pnpm audit --prod`.
+- [ ] Definir les actions candidates: creation, modification, archivage, changement de role et activation module.
+- [ ] Definir les donnees a ne jamais journaliser: secrets, tokens, dumps et contenus sensibles inutiles.
+- [ ] Ne pas creer de schema Prisma, route, API, CRUD, auth reelle, IA ou IoT actif.
+
+## DATA-LIFECYCLE-00
+
+- [ ] Cadrer archivage, conservation et suppression controlee.
+- [ ] Privilegier `archivedAt` et les statuts metier plutot que la suppression dure.
+- [ ] Definir les regles pour donnees sanitaires, contacts, documents et localisation de ruchers.
+- [ ] Cadrer la restauration ou consultation d'archives sans exposer de donnees sensibles.
+- [ ] Ne pas creer de migration, job automatique, purge, export, API, IA ou IoT actif.
+
+## PLATFORM-ADMIN-00
+
+- [ ] Cadrer l'administration plateforme comme futur lointain.
+- [ ] La reserver a l'exploitation technique de Rucher360, separee des organisations apicoles.
+- [ ] La conditionner a une authentification reelle et a des roles plateforme dedies.
+- [ ] Exclure toute exposition aux utilisateurs apiculteurs ordinaires.
+- [ ] Ne pas creer de route `/platform-admin`, schema, API, secret, IA ou IoT actif.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.
