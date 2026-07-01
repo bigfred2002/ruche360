@@ -25,6 +25,7 @@ export const developmentEnabledModules = [
   "documents",
   "harvests",
   "equipment",
+  "transhumance",
 ] satisfies ModuleCode[];
 
 export const developmentPermissions = [
@@ -55,6 +56,7 @@ export const developmentPermissions = [
   "equipment.read",
   "equipment.write",
   "equipment.manage",
+  "transhumance.read",
 ] satisfies PermissionCode[];
 
 export function createDevelopmentApplicationSession(): ApplicationSession {

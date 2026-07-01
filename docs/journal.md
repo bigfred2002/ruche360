@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-01 - TRANSHUMANCE-SHELL-01
+
+- Ajout de la route `/transhumance` avec un shell mobile-first pour visualiser les mouvements de ruches entre ruchers.
+- Activation de la transhumance dans la registry pour la navigation desktop et le catalogue, sans ajout dans la bottom nav mobile.
+- Le shell reutilise les helpers purs d'emplacement courant sur des donnees fictives et rappelle que le rucher reste un site fixe.
+- Aucun CRUD, formulaire actif, API, GPS actif, authentification reelle, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-01 - EQUIPMENT-FORMS-ACTIVE-01
 
 - Activation de formulaires serveur de developpement dans `/equipment` pour creer un type, un stock et un item materiel.

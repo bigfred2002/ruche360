@@ -36,6 +36,7 @@ const baseModules = [
   "knowledge",
   "contacts",
   "equipment",
+  "transhumance",
 ] satisfies ModuleCode[];
 
 const baseReadPermissions = [
@@ -48,6 +49,7 @@ const baseReadPermissions = [
   "knowledge.read",
   "contacts.read",
   "equipment.read",
+  "transhumance.read",
 ] satisfies PermissionCode[];
 
 export const userContextScenarios: UserContextScenario[] = [
