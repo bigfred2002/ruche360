@@ -172,6 +172,11 @@ Les coordonnees de ruchers restent sensibles et doivent etre affichees avec prud
    - creation, modification, annulation et finalisation des mouvements;
    - mise a jour controlee de l'emplacement courant.
 
+5. `TRANSHUMANCE-ACTIONS-01`
+   - actions serveur minimales pour lecture, creation, ajout de ruches et changement de statut;
+   - finalisation d'un mouvement avec mise a jour de l'emplacement courant;
+   - aucun formulaire public, API externe, GPS actif, IA ou IoT actif.
+
 ## Decision `HIVE-MOVEMENTS-01`
 
 `HIVE-MOVEMENTS-01` ajoute le socle executable de la transhumance:
@@ -185,6 +190,20 @@ Les coordonnees de ruchers restent sensibles et doivent etre affichees avec prud
 `TRANSHUMANCE-SHELL-01` ajoute ensuite une route shell `/transhumance` pour presenter le workflow cible. Le module reste volontairement sans formulaire actif, action serveur, API, GPS actif, IA active ou IoT actif.
 
 Un mouvement `COMPLETED` peut servir de source pour deduire l'emplacement courant. Les mouvements `PLANNED`, `IN_PROGRESS` et `CANCELLED` ne changent pas l'emplacement courant.
+
+## Decision `TRANSHUMANCE-ACTIONS-01`
+
+`TRANSHUMANCE-ACTIONS-01` raccorde le module a des actions serveur minimales, en restant dans le cadre de la session applicative:
+
+- lecture des mouvements d'une organisation;
+- creation d'un mouvement avec destination, source optionnelle, motif, dates et ruches;
+- ajout de ruches a un mouvement encore modifiable;
+- changement de statut avec annulation reservee a `transhumance.manage`;
+- passage a `COMPLETED` qui met a jour `Hive.apiaryId` pour les ruches du mouvement.
+
+Le mouvement reste l'historique de reference. La mise a jour de `Hive.apiaryId` sert uniquement a exposer l'emplacement courant sans effacer les traces precedentes.
+
+Ce lot n'ajoute pas de formulaire public, API externe, authentification reelle, GPS actif, IA active, IoT actif ou logistique transport avancee.
 
 ## Decision
 

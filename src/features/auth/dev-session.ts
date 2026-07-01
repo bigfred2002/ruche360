@@ -57,6 +57,8 @@ export const developmentPermissions = [
   "equipment.write",
   "equipment.manage",
   "transhumance.read",
+  "transhumance.write",
+  "transhumance.manage",
 ] satisfies PermissionCode[];
 
 export function createDevelopmentApplicationSession(): ApplicationSession {

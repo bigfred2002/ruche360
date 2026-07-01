@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-01 - TRANSHUMANCE-ACTIONS-01
+
+- Ajout d'un contexte d'action transhumance avec controle module `transhumance` et permissions `transhumance.read`, `transhumance.write` et `transhumance.manage`.
+- Ajout de validations serveur pour statut, motif, dates, textes optionnels et liste de ruches.
+- Ajout des commandes serveur pour lister les mouvements, creer un mouvement, ajouter des ruches et changer le statut.
+- Quand un mouvement passe a `COMPLETED`, l'emplacement courant des ruches concernees est mis a jour vers le rucher destination sans supprimer l'historique.
+- Aucun formulaire public, API externe, authentification reelle, GPS actif, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-01 - ADMIN-BACKLOG-01
 
 - Preparation documentaire du backlog d'administration sans implementation applicative.
