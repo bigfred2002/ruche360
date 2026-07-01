@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-01 - EQUIPMENT-LIVE-INVENTORY-01
+
+- Branchement de `/equipment` en lecture seule sur l'inventaire Prisma via la session de developpement.
+- L'ecran affiche les stocks, items, statuts et groupes issus du seed local quand PostgreSQL est pret.
+- Un fallback visuel reste disponible si la base locale n'est pas encore seedee.
+- Aucun formulaire actif, API publique, authentification reelle, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-06-29 - DATA-SEED-DEV-01
 
 - Ajout d'un seed de développement idempotent dans `prisma/seed-dev.mjs`.

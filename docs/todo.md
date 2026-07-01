@@ -67,6 +67,7 @@
 - [x] Ajouter les actions serveur minimales du materiel.
 - [x] Raccorder les actions serveur materiel au scope de session applicative.
 - [x] Ajouter une preview de formulaires materiel non operationnels.
+- [x] Brancher l'inventaire materiel en lecture seule sur le seed de developpement.
 - [x] Ajouter les preferences de modules par adhesion.
 - [x] Creer la registry applicative des modules.
 - [x] Ajouter le choix de modules dans les profils membres.
@@ -388,6 +389,14 @@
 - [x] Initialiser organisation, utilisateur fictif, adhésion, modules, permissions, ruchers, ruches, colonies et matériel.
 - [x] Ajouter une commande Docker-first `make seed-dev`.
 - [x] Ne pas ajouter de secret, dump, vraie donnée personnelle, IA active ou IoT actif.
+
+## EQUIPMENT-LIVE-INVENTORY-01
+
+- [x] Charger l'inventaire materiel depuis Prisma avec la session de developpement.
+- [x] Afficher les stocks, items, statuts et groupes issus du seed local.
+- [x] Garder un fallback visuel si la base n'est pas encore seedee.
+- [x] Conserver les formulaires en lecture seule et sans mutation.
+- [x] Ne pas ajouter d'API publique, auth reelle, secret, IA active ou IoT actif.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.
