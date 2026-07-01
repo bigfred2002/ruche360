@@ -68,6 +68,7 @@
 - [x] Raccorder les actions serveur materiel au scope de session applicative.
 - [x] Ajouter une preview de formulaires materiel non operationnels.
 - [x] Brancher l'inventaire materiel en lecture seule sur le seed de developpement.
+- [x] Activer des formulaires serveur de developpement pour le materiel.
 - [x] Ajouter les preferences de modules par adhesion.
 - [x] Creer la registry applicative des modules.
 - [x] Ajouter le choix de modules dans les profils membres.
@@ -396,6 +397,14 @@
 - [x] Afficher les stocks, items, statuts et groupes issus du seed local.
 - [x] Garder un fallback visuel si la base n'est pas encore seedee.
 - [x] Conserver les formulaires en lecture seule et sans mutation.
+- [x] Ne pas ajouter d'API publique, auth reelle, secret, IA active ou IoT actif.
+
+## EQUIPMENT-FORMS-ACTIVE-01
+
+- [x] Ajouter des server actions de developpement pour creer un type, un stock et un item materiel.
+- [x] Brancher les formulaires `/equipment` sur les actions existantes et les permissions de la session de developpement.
+- [x] Revalider `/equipment` apres mutation pour afficher l'inventaire mis a jour.
+- [x] Garder les formulaires simples: pas d'achat, fournisseur, prix, suppression ou comptabilite.
 - [x] Ne pas ajouter d'API publique, auth reelle, secret, IA active ou IoT actif.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.

@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-01 - EQUIPMENT-FORMS-ACTIVE-01
+
+- Activation de formulaires serveur de developpement dans `/equipment` pour creer un type, un stock et un item materiel.
+- Les formulaires reutilisent la session de developpement, les permissions `equipment.write`/`equipment.manage` et les commandes serveur existantes.
+- La page `/equipment` est revalidee apres mutation pour afficher l'inventaire mis a jour.
+- Aucun achat, fournisseur, prix, suppression, API publique, authentification reelle, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-01 - EQUIPMENT-LIVE-INVENTORY-01
 
 - Branchement de `/equipment` en lecture seule sur l'inventaire Prisma via la session de developpement.
