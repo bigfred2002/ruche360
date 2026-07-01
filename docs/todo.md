@@ -75,6 +75,7 @@
 - [x] Cadrer le partage fin par rucher si le besoin est confirme.
 - [x] Cadrer les mouvements de ruches dans `TRANSHUMANCE-00`.
 - [x] Implementer les mouvements de ruches dans `HIVE-MOVEMENTS-01`.
+- [x] Ajouter un shell transhumance dans `TRANSHUMANCE-SHELL-01`.
 
 ## EQUIPMENT-00
 
@@ -406,6 +407,14 @@
 - [x] Revalider `/equipment` apres mutation pour afficher l'inventaire mis a jour.
 - [x] Garder les formulaires simples: pas d'achat, fournisseur, prix, suppression ou comptabilite.
 - [x] Ne pas ajouter d'API publique, auth reelle, secret, IA active ou IoT actif.
+
+## TRANSHUMANCE-SHELL-01
+
+- [x] Ajouter la route `/transhumance`.
+- [x] Activer le module transhumance dans la registry pour desktop et catalogue, sans bottom nav mobile.
+- [x] Afficher le workflow cible: mouvements planifies, termines, ruches concernees et checklist terrain.
+- [x] Reutiliser les helpers purs d'emplacement courant sans lecture base ni GPS actif.
+- [x] Ne pas ajouter de CRUD, formulaire actif, API, auth reelle, secret, IA active ou IoT actif.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.

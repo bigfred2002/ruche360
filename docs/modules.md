@@ -98,7 +98,7 @@ Le partage initial d'un rucher se fait par l'organisation, les roles et les perm
 
 La transhumance ne doit pas deplacer le rucher lui-meme. Elle doit etre modelisee comme un mouvement de ruches ou de lots de ruches entre sites.
 
-`HIVE-MOVEMENTS-01` ajoute le module `transhumance`, ses permissions et le modele executable des mouvements. Le module reste desactive par defaut, sans ecran actif, CRUD, GPS, IA ou IoT.
+`HIVE-MOVEMENTS-01` ajoute le module `transhumance`, ses permissions et le modele executable des mouvements. `TRANSHUMANCE-SHELL-01` ajoute une route shell `/transhumance` pour presenter le workflow sans CRUD, GPS actif, IA ou IoT.
 
 Le cadrage detaille est documente dans [Partage de Rucher et Transhumance](apiary-sharing-transhumance.md).
 Le cadrage specialise du partage fin est documente dans [Partage Fin Par Rucher](apiary-access.md).

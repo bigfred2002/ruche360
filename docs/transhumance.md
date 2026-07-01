@@ -182,7 +182,7 @@ Les coordonnees de ruchers restent sensibles et doivent etre affichees avec prud
 - enums de statuts et motifs;
 - helpers purs pour determiner l'emplacement courant d'une ruche a partir des mouvements termines.
 
-Le module reste volontairement sans route active, ecran, formulaire, action serveur, API, GPS actif, IA active ou IoT actif.
+`TRANSHUMANCE-SHELL-01` ajoute ensuite une route shell `/transhumance` pour presenter le workflow cible. Le module reste volontairement sans formulaire actif, action serveur, API, GPS actif, IA active ou IoT actif.
 
 Un mouvement `COMPLETED` peut servir de source pour deduire l'emplacement courant. Les mouvements `PLANNED`, `IN_PROGRESS` et `CANCELLED` ne changent pas l'emplacement courant.
 
