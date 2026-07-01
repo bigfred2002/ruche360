@@ -77,6 +77,7 @@
 - [x] Implementer les mouvements de ruches dans `HIVE-MOVEMENTS-01`.
 - [x] Ajouter un shell transhumance dans `TRANSHUMANCE-SHELL-01`.
 - [x] Preparer le backlog admin sans implementation dans `ADMIN-BACKLOG-01`.
+- [x] Ajouter les actions serveur minimales de transhumance dans `TRANSHUMANCE-ACTIONS-01`.
 
 ### Backlog administration et gouvernance
 
@@ -433,6 +434,15 @@
 - [x] Eviter la redondance avec `MODULE-ADMIN-01`, qui reste limite a l'administration des modules d'une organisation.
 - [x] Distinguer l'audit dependances existant du futur journal d'activite metier.
 - [x] Ne pas modifier le code applicatif, Prisma, Docker, les dependances, l'auth, l'IA ou l'IoT.
+
+## TRANSHUMANCE-ACTIONS-01
+
+- [x] Ajouter un contexte d'action transhumance base sur organisation, modules et permissions.
+- [x] Ajouter les validations serveur pour statut, motif, dates et ruches concernees.
+- [x] Ajouter les commandes serveur minimales: lister, creer, ajouter des ruches et changer de statut.
+- [x] Mettre a jour l'emplacement courant des ruches uniquement quand un mouvement passe a `COMPLETED`.
+- [x] Raccorder les actions au contrat `ApplicationSession` et a la session de developpement fictive.
+- [x] Ne pas ajouter d'API publique, auth reelle, GPS actif, IA, IoT, route nouvelle ou dependance.
 
 ## ADMIN-00
 
