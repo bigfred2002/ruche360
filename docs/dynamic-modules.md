@@ -110,4 +110,5 @@ Ce lot ne cree pas:
 - `MODULES-DYNAMIC-01`: ajouter `MembershipModulePreference` et les helpers purs de calcul des modules effectifs.
 - `MODULES-REGISTRY-01`: creer la registry TypeScript des modules et preparer navigation/cockpit dynamiques.
 - `USER-PROFILE-MODULES-01`: ajouter le choix de modules dans la creation ou modification d'un membre.
-- `MODULE-ADMIN-01`: administrer les modules d'une organisation.
+- `ADMIN-00`: cadrer le centre d'administration d'organisation avant toute interface.
+- `MODULE-ADMIN-01`: administrer uniquement les modules d'une organisation, comme sous-ensemble du futur centre d'administration.

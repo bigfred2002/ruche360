@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-01 - ADMIN-BACKLOG-01
+
+- Preparation documentaire du backlog d'administration sans implementation applicative.
+- Decision: commencer par un centre d'administration d'organisation, pas par un back-office plateforme global.
+- Clarification de la non-redondance: `MODULE-ADMIN-01` reste limite a l'administration des modules d'une organisation.
+- Distinction entre l'audit securite/dependances existant et le futur journal d'activite metier.
+- Aucun code applicatif, Prisma, Docker, dependance, authentification, IA active ou IoT actif n'a ete modifie.
+
 ## 2026-07-01 - TRANSHUMANCE-SHELL-01
 
 - Ajout de la route `/transhumance` avec un shell mobile-first pour visualiser les mouvements de ruches entre ruchers.

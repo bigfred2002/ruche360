@@ -21,6 +21,17 @@ Ce document aide a comprendre les fonctions de Rucher360 par module. Il sert aus
 | Roles et permissions | Socle | Actions autorisees | `Role`, `Permission`, `RolePermission` | Une permission ne contourne jamais un module desactive. |
 | Modules | Socle | Activation des fonctions | `ModuleDefinition`, `OrganizationModule`, futur `MembershipModulePreference` | Desactiver masque et bloque, sans supprimer. |
 
+## Administration et gouvernance
+
+L'administration doit rester une surface transverse d'organisation, pas un module metier apicole concurrent.
+
+| Surface | Statut | Responsabilite | Donnees principales | Points de vigilance |
+| --- | --- | --- | --- | --- |
+| Centre d'administration organisation | A cadrer | Superviser membres, roles, modules, volumes de donnees, securite et archivage | Donnees existantes par organisation | Completer `organizations`, `users_roles` et `modules` sans les dupliquer. |
+| Journal d'activite metier | A cadrer | Tracer les actions importantes de l'organisation | Modele cible a definir | Distinct de l'audit dependances et sans stockage de secrets. |
+| Cycle de vie des donnees | A cadrer | Archiver, conserver et restaurer selon les modules | `archivedAt`, statuts et historiques | Eviter la suppression dure et proteger localisation, sanitaire, contacts et documents. |
+| Administration plateforme | A cadrer | Exploitation technique globale future | Roles plateforme cibles | Separee des organisations apicoles et dependante d'une authentification reelle. |
+
 ## Modules apicoles initiaux
 
 | Module | Statut | Responsabilite | Donnees principales | Liens optionnels |

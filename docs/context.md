@@ -61,6 +61,9 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `EQUIPMENT-LIVE-INVENTORY-01` branche `/equipment` en lecture seule sur le seed de developpement via Prisma et la session de developpement, sans mutation ni formulaire actif.
 - `EQUIPMENT-FORMS-ACTIVE-01` active des formulaires serveur de developpement pour creer des types, stocks et items materiel via la session de developpement, sans API publique ni authentification reelle.
 - `TRANSHUMANCE-SHELL-01` ajoute la route `/transhumance` et un shell statique pour lire le workflow de mouvements de ruches, sans CRUD, GPS actif, API ou logistique lourde.
+- `ADMIN-BACKLOG-01` prepare le backlog d'un centre d'administration d'organisation, distinct d'un futur back-office plateforme et sans implementation.
+- L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
+- L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
@@ -71,6 +74,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Niveau de détail de la localisation des ruchers.
 - Politique de conservation des données sanitaires.
 - Stratégie d'archivage des entités métier.
+- Cadrage du futur journal d'activite metier, distinct de l'audit securite/dependances.
 - Branchement futur des formulaires materiel sur une session authentifiee.
 - Moment opportun pour introduire un partage fin par rucher.
 - Moment opportun pour brancher les actions serveur de transhumance.
