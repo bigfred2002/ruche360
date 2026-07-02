@@ -6,6 +6,10 @@ Ce document presente l'architecture logique de Rucher360: les grands moteurs app
 
 Il complete l'architecture technique. L'architecture technique explique comment l'application est executee. L'architecture logique explique comment le produit raisonne.
 
+Diagramme complementaire:
+
+- [Architecture logique Rucher360](diagrams/svg/architecture-logique.svg)
+
 ## Vue d'ensemble
 
 Rucher360 est organise autour de cinq moteurs logiques:

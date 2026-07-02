@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-02 - ARCHIFY-DIAGRAMS-01
+
+- Ajout des premiers SVG stables de documentation visuelle dans `docs/diagrams/svg/`.
+- Diagrammes couverts: architecture logique, architecture technique Docker-first, workflow agentique, flux de donnees sensibles et cycle de vie transhumance.
+- Les exports sont relies depuis les documents Markdown concernes et restent complementaires a la documentation textuelle.
+- Aucun export HTML, PNG temporaire, code applicatif, Docker, Prisma, dependance, authentification, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-02 - ARCHIFY-DOCS-00
 
 - Cadrage d'Archify comme documentation visuelle complementaire, sans dependance applicative.

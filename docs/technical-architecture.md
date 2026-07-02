@@ -27,6 +27,11 @@ L'architecture cible devra rester modulaire:
 
 La logique produit transversale est detaillee dans [Architecture Logique de Rucher360](application-architecture.md). La cartographie des modules est detaillee dans [Cartographie des Modules et Fonctions](module-function-map.md).
 
+Diagrammes complementaires:
+
+- [Architecture technique Docker-first](diagrams/svg/architecture-technique.svg)
+- [Workflow agentique de micro-lot](diagrams/svg/workflow-agentique.svg)
+
 ## Docker Compose
 
 Le fichier `docker-compose.yml` définit:
