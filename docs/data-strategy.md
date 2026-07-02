@@ -7,6 +7,7 @@ Diagramme complementaire:
 Sujet lie:
 
 - [Journal d'activite metier](audit-log.md)
+- [Cycle de vie des donnees](data-lifecycle.md)
 
 ## Objectif
 
@@ -22,6 +23,8 @@ La donnée doit rester multi-organisation, lisible par les agents de développem
 - Les informations sensibles de localisation, documents, contacts et sanitaire doivent être minimisées.
 - Les modules connectés et IA restent représentés comme capacités désactivées, sans données automatiques.
 - Les suppressions métier futures devront privilégier l'archivage ou les statuts plutôt que la suppression dure.
+- La restauration et la suppression controlee sont cadrees dans
+  `DATA-LIFECYCLE-00` avant toute action destructive.
 
 ## Conventions futures
 
