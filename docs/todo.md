@@ -89,7 +89,7 @@
 
 ### Backlog administration et gouvernance
 
-- [ ] `ADMIN-00`: cadrer le centre d'administration d'organisation, sans code.
+- [x] `ADMIN-00`: cadrer le centre d'administration d'organisation, sans code.
 - [ ] `ADMIN-SHELL-01`: ajouter un shell `/admin` desktop/catalogue uniquement, sans CRUD.
 - [ ] `ADMIN-DATA-OVERVIEW-01`: afficher les volumes de donnees par organisation en lecture seule.
 - [ ] `AUDIT-LOG-00`: cadrer le journal d'activite metier, distinct de l'audit dependances.
@@ -486,11 +486,11 @@
 
 ## ADMIN-00
 
-- [ ] Cadrer administration organisationnelle et administration plateforme.
-- [ ] Definir donnees sensibles, archivage, journal d'activite metier, exports et limites.
-- [ ] Confirmer que l'administration complete les modules `organizations`, `users_roles` et `modules` sans les dupliquer.
-- [ ] Clarifier que l'archivage et les statuts priment sur la suppression dure.
-- [ ] Ne pas creer de code applicatif, route, migration, CRUD, API, auth, IA ou IoT actif.
+- [x] Cadrer administration organisationnelle et administration plateforme.
+- [x] Definir donnees sensibles, archivage, journal d'activite metier, exports et limites.
+- [x] Confirmer que l'administration complete les modules `organizations`, `users_roles` et `modules` sans les dupliquer.
+- [x] Clarifier que l'archivage et les statuts priment sur la suppression dure.
+- [x] Ne pas creer de code applicatif, route, migration, CRUD, API, auth, IA ou IoT actif.
 
 ## ADMIN-SHELL-01
 

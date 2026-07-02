@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-02 - ADMIN-00
+
+- Cadrage documentaire du futur centre d'administration d'organisation.
+- Decision: l'administration complete les modules `organizations`, `users_roles` et `modules` sans les dupliquer.
+- Clarification des futures surfaces: organisation, membres, roles, modules, donnees, securite, journal et archivage.
+- Confirmation que l'administration plateforme reste un futur lointain dependant d'une authentification reelle.
+- Aucun code applicatif, route, Prisma, Docker, dependance, authentification, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-02 - DOCS-ARCHITECTURE-SYNC-01
 
 - Synchronisation documentaire apres les lots data, materiel, transhumance et Archify.
