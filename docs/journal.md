@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-02 - VISITS-00
+
+- Cadrage documentaire du futur modele visites.
+- Decision: une visite doit rester une observation courte avec actions realisees et suites a prevoir, sans formulaire lourd.
+- Definition des statuts cibles, categories d'observations, permissions et liens optionnels avec taches, sanitaire, materiel et transhumance.
+- Aucun schema Prisma, aucune migration, aucune action serveur, aucun formulaire actif, aucune API publique, aucune analyse IA et aucune prescription sanitaire n'ont ete ajoutes.
+
 ## 2026-07-02 - VISITS-SHELL-01
 
 - Remplacement de la page shell generique `/visits` par une surface mobile-first dediee au parcours de visite.

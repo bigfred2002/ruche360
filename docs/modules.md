@@ -101,6 +101,9 @@ analyse IA, prescription sanitaire ou CRUD.
 
 Le cadrage detaille est documente dans [Module Visites](visits.md).
 
+`VISITS-00` precise le modele cible, les statuts, les permissions et les limites
+du module, toujours sans schema Prisma ni formulaire actif.
+
 ## Partage et transhumance
 
 Le partage initial d'un rucher se fait par l'organisation, les roles et les permissions. Un partage fin par rucher pourra devenir un module optionnel si le besoin est confirme.
