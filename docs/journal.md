@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-02 - ADMIN-SHELL-01
+
+- Ajout de la route shell `/admin` pour preparer le centre d'administration d'organisation.
+- Ajout d'une surface statique avec cartes Organisation, Membres, Modules, Donnees, Securite et Journal.
+- Ajout d'une entree desktop conditionnee aux permissions admin existantes et d'un lien catalogue, sans ajout dans la bottom nav mobile.
+- Aucun CRUD, API, persistance, authentification reelle, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-02 - AUDIT-LOG-00
 
 - Cadrage documentaire du futur journal d'activite metier.
