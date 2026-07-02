@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-02 - ADMIN-DATA-OVERVIEW-01
+
+- Ajout d'une lecture des volumes de donnees par organisation dans `/admin`.
+- Les compteurs couvrent membres, modules, ruchers, ruches, colonies, materiel et transhumance.
+- Les modules desactives sont signales sans suppression de donnees.
+- La vue reste strictement en lecture seule: aucun export, aucune suppression, aucune correction automatique, aucune API publique, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-07-02 - ADMIN-SHELL-01
 
 - Ajout de la route shell `/admin` pour preparer le centre d'administration d'organisation.
