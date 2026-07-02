@@ -79,7 +79,8 @@ Ne pas ajouter ces permissions tant qu'un lot executable ne les justifie pas.
 
 ## Donnees Et Volumes
 
-La premiere vue data doit rester en lecture seule.
+`ADMIN-DATA-OVERVIEW-01` ajoute la premiere vue data en lecture seule dans
+`/admin`.
 
 Compteurs utiles:
 
@@ -94,6 +95,10 @@ Compteurs utiles:
 - futures observations sanitaires.
 
 Les compteurs doivent aider a piloter, pas a supprimer rapidement.
+
+La vue actuelle lit uniquement les volumes de l'organisation active via la
+session de developpement. Elle ne cree pas d'export, de suppression, de purge,
+de correction automatique ou d'API publique.
 
 ## Archivage Et Suppression
 
@@ -161,6 +166,7 @@ Le detail exact est cadre dans [Journal D'Activite Metier](audit-log.md).
    - aucun CRUD.
 
 2. `ADMIN-DATA-OVERVIEW-01`
+   - termine;
    - compteurs par organisation en lecture seule;
    - aucun export ou suppression.
 
