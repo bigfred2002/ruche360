@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-02 - DATA-LIFECYCLE-00
+
+- Cadrage documentaire du cycle de vie des donnees: archivage, conservation, restauration et suppression controlee.
+- Decision confirmee: privilegier statuts metier et `archivedAt` avant toute suppression dure.
+- Identification des donnees sensibles: localisation, sanitaire, documents, contacts, photos/videos futures, capteurs futurs et journal d'activite metier.
+- Aucun schema Prisma, aucune migration, aucun job, aucune API, aucune interface, aucun export, aucune suppression effective, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-07-02 - ADMIN-SHELL-01
 
 - Ajout de la route shell `/admin` pour preparer le centre d'administration d'organisation.
