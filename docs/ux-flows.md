@@ -50,6 +50,10 @@ Dans `VISITS-SHELL-01`, ce flux est seulement prepare visuellement sur
 `/visits`: aucun formulaire, aucune action serveur, aucune analyse IA et aucune
 prescription sanitaire ne sont actifs.
 
+Dans `VISITS-00`, le flux est cadre comme une observation courte avec actions
+realisees et suites a prevoir. Les liens avec taches, sanitaire, materiel et
+transhumance restent optionnels.
+
 ## Flux futur: transhumance
 
 1. L'utilisateur ouvre le module transhumance ou une liste de ruches.
