@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-02 - AUDIT-LOG-00
+
+- Cadrage documentaire du futur journal d'activite metier.
+- Distinction explicite entre journal metier, audits techniques, scans de secrets, CI, logs Docker et historique Git.
+- Definition des actions candidates, donnees minimales, donnees a ne jamais journaliser, niveaux d'importance et surfaces futures.
+- Aucun schema Prisma, route, API, UI, export, moteur de recherche, authentification, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-02 - ADMIN-00
 
 - Cadrage documentaire du futur centre d'administration d'organisation.
