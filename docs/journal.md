@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-02 - VISITS-SHELL-01
+
+- Remplacement de la page shell generique `/visits` par une surface mobile-first dediee au parcours de visite.
+- Le shell presente les etapes preparer, observer, intervenir et suivre, ainsi que les futures informations a garder courtes sur mobile.
+- Ajout de `docs/visits.md` pour cadrer le futur module visites et ses limites.
+- Aucun schema Prisma, aucune migration, aucune action serveur, aucun formulaire actif, aucune API publique, aucune analyse IA et aucune prescription sanitaire n'ont ete ajoutes.
+
 ## 2026-07-02 - ADMIN-SHELL-01
 
 - Ajout de la route shell `/admin` pour preparer le centre d'administration d'organisation.

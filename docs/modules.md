@@ -92,6 +92,15 @@ Son ecran d'inventaire est pose dans `EQUIPMENT-SHELL-01` comme surface statique
 
 Le cadrage detaille est documente dans [Module Materiel](equipment.md).
 
+## Module visites
+
+`VISITS-SHELL-01` remplace la page shell generique `/visits` par une surface
+mobile-first dediee au parcours terrain: preparer, observer, intervenir et
+suivre. Le lot ne cree pas de modele Prisma, formulaire actif, action serveur,
+analyse IA, prescription sanitaire ou CRUD.
+
+Le cadrage detaille est documente dans [Module Visites](visits.md).
+
 ## Partage et transhumance
 
 Le partage initial d'un rucher se fait par l'organisation, les roles et les permissions. Un partage fin par rucher pourra devenir un module optionnel si le besoin est confirme.
