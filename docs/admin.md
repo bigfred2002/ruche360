@@ -133,7 +133,7 @@ Il doit tracer des evenements utiles a l'organisation, par exemple:
 - changement important sur le materiel;
 - future action sanitaire importante.
 
-Le detail exact est cadre dans `AUDIT-LOG-00`.
+Le detail exact est cadre dans [Journal D'Activite Metier](audit-log.md).
 
 ## Hors Perimetre
 

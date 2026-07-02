@@ -4,6 +4,10 @@ Diagramme complementaire:
 
 - [Flux de donnees sensibles](diagrams/svg/flux-donnees-sensibles.svg)
 
+Sujet lie:
+
+- [Journal d'activite metier](audit-log.md)
+
 ## Objectif
 
 `DATA-00` prépare le passage du modèle conceptuel vers un schéma exécutable sans créer encore de migration, client Prisma ou logique métier.

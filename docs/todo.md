@@ -92,7 +92,7 @@
 - [x] `ADMIN-00`: cadrer le centre d'administration d'organisation, sans code.
 - [ ] `ADMIN-SHELL-01`: ajouter un shell `/admin` desktop/catalogue uniquement, sans CRUD.
 - [ ] `ADMIN-DATA-OVERVIEW-01`: afficher les volumes de donnees par organisation en lecture seule.
-- [ ] `AUDIT-LOG-00`: cadrer le journal d'activite metier, distinct de l'audit dependances.
+- [x] `AUDIT-LOG-00`: cadrer le journal d'activite metier, distinct de l'audit dependances.
 - [ ] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
 - [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
 
@@ -509,11 +509,11 @@
 
 ## AUDIT-LOG-00
 
-- [ ] Cadrer le futur journal d'activite metier.
-- [ ] Distinguer ce journal de l'audit securite/dependances `pnpm audit --prod`.
-- [ ] Definir les actions candidates: creation, modification, archivage, changement de role et activation module.
-- [ ] Definir les donnees a ne jamais journaliser: secrets, tokens, dumps et contenus sensibles inutiles.
-- [ ] Ne pas creer de schema Prisma, route, API, CRUD, auth reelle, IA ou IoT actif.
+- [x] Cadrer le futur journal d'activite metier.
+- [x] Distinguer ce journal de l'audit securite/dependances `pnpm audit --prod`.
+- [x] Definir les actions candidates: creation, modification, archivage, changement de role et activation module.
+- [x] Definir les donnees a ne jamais journaliser: secrets, tokens, dumps et contenus sensibles inutiles.
+- [x] Ne pas creer de schema Prisma, route, API, CRUD, auth reelle, IA ou IoT actif.
 
 ## DATA-LIFECYCLE-00
 
