@@ -157,6 +157,7 @@ Le detail exact est cadre dans [Journal D'Activite Metier](audit-log.md).
 1. `ADMIN-SHELL-01`
    - route shell `/admin`;
    - cartes statiques;
+   - entree desktop et catalogue, sans bottom nav mobile;
    - aucun CRUD.
 
 2. `ADMIN-DATA-OVERVIEW-01`

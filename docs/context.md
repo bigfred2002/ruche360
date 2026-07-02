@@ -69,6 +69,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `DOCS-ARCHITECTURE-SYNC-01` realigne README, architecture, cartographie des modules, modele de donnees, todo, contexte et journal apres les lots data, materiel, transhumance et Archify.
 - `ADMIN-00` cadre le futur centre d'administration d'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier, sans implementation.
 - `AUDIT-LOG-00` cadre le futur journal d'activite metier, distinct des audits techniques et des scans de securite.
+- `ADMIN-SHELL-01` ajoute la route shell `/admin` et une entree de catalogue/desktop pour l'administration d'organisation, sans CRUD, API, auth reelle ou action active.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
@@ -86,7 +87,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - Moment opportun pour introduire un partage fin par rucher.
 - Branchement futur des formulaires transhumance sur une session authentifiee.
 - Revue periodique des diagrammes Archify pour eviter la derive avec le code et les modules actifs.
-- Definition executable future de la route shell `/admin` dans `ADMIN-SHELL-01`.
+- Branchement futur des compteurs d'administration en lecture seule dans `ADMIN-DATA-OVERVIEW-01`.
 
 ## Commandes utiles actuelles
 

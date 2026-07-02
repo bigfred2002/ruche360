@@ -90,7 +90,7 @@
 ### Backlog administration et gouvernance
 
 - [x] `ADMIN-00`: cadrer le centre d'administration d'organisation, sans code.
-- [ ] `ADMIN-SHELL-01`: ajouter un shell `/admin` desktop/catalogue uniquement, sans CRUD.
+- [x] `ADMIN-SHELL-01`: ajouter un shell `/admin` desktop/catalogue uniquement, sans CRUD.
 - [ ] `ADMIN-DATA-OVERVIEW-01`: afficher les volumes de donnees par organisation en lecture seule.
 - [x] `AUDIT-LOG-00`: cadrer le journal d'activite metier, distinct de l'audit dependances.
 - [ ] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
@@ -494,11 +494,11 @@
 
 ## ADMIN-SHELL-01
 
-- [ ] Ajouter une route shell `/admin`.
-- [ ] Afficher des cartes statiques: Organisation, Membres, Modules, Donnees, Securite et Journal.
-- [ ] Rendre l'entree visible en desktop/catalogue uniquement, pas dans la bottom nav mobile.
-- [ ] Conditionner la surface aux permissions admin deja existantes.
-- [ ] Ne pas creer de CRUD, API, persistance, auth reelle, secret, IA ou IoT actif.
+- [x] Ajouter une route shell `/admin`.
+- [x] Afficher des cartes statiques: Organisation, Membres, Modules, Donnees, Securite et Journal.
+- [x] Rendre l'entree visible en desktop/catalogue uniquement, pas dans la bottom nav mobile.
+- [x] Conditionner la surface desktop aux permissions admin deja existantes.
+- [x] Ne pas creer de CRUD, API, persistance, auth reelle, secret, IA ou IoT actif.
 
 ## ADMIN-DATA-OVERVIEW-01
 

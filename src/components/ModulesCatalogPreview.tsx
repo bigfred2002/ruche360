@@ -1,8 +1,11 @@
+import Link from "next/link";
+
 import {
   createEnabledModuleSet,
   createPermissionSet,
   moduleRegistry,
   type ModuleRegistryEntry,
+  type PermissionCode,
 } from "@/features/rbac";
 
 import { AppShell } from "./AppShell";
@@ -23,6 +26,13 @@ const stateLabels: Record<
   disabled: { label: "Désactivé", tone: "muted" },
   "no-permission": { label: "Sans permission", tone: "alert" },
 };
+
+const adminCatalogPermissions = [
+  "organization.manage",
+  "users.manage",
+  "roles.manage",
+  "modules.manage",
+] satisfies PermissionCode[];
 
 function getCatalogState(entry: ModuleRegistryEntry): CatalogState {
   const enabledModules = createEnabledModuleSet(activeUserContextScenario.enabledModules);
@@ -49,6 +59,10 @@ function getCatalogState(entry: ModuleRegistryEntry): CatalogState {
 export function ModulesCatalogPreview() {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/modules");
+  const permissions = createPermissionSet(activeUserContextScenario.permissions);
+  const canSeeAdministration = adminCatalogPermissions.some((permission) =>
+    permissions.has(permission),
+  );
   const catalogEntries = moduleRegistry.map((entry) => ({
     entry,
     presentation: getModulePresentation(entry.code),
@@ -101,6 +115,38 @@ export function ModulesCatalogPreview() {
               );
             })}
           </div>
+
+          {canSeeAdministration ? (
+            <section className="surface-panel rounded-3xl p-5 sm:p-6">
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <p className="section-kicker">Surfaces transverses</p>
+                  <h2 className="mt-2 text-2xl font-black text-slate-950">
+                    Administration
+                  </h2>
+                  <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
+                    Le centre d&apos;administration prépare une vue secondaire
+                    pour organisation, membres, rôles, modules, données,
+                    sécurité, journal et archivage. Il ne s&apos;affiche pas dans la
+                    navigation basse mobile.
+                  </p>
+                </div>
+                <StatusBadge label="Shell" tone="preview" />
+              </div>
+              <Link
+                className="focus-ring motion-card mt-5 flex min-h-16 items-center justify-between rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 hover:bg-white hover:shadow-field"
+                href="/admin"
+              >
+                <span className="flex items-center gap-3">
+                  <span className="grid size-10 place-items-center rounded-2xl bg-slate-100 text-xs font-black text-slate-800 ring-1 ring-slate-200">
+                    Ad
+                  </span>
+                  Centre d&apos;administration
+                </span>
+                <span className="text-xs uppercase text-slate-600">Desktop/catalogue</span>
+              </Link>
+            </section>
+          ) : null}
 
           <StatePanel
             detail="Le catalogue clarifie ce qui existe et ce qui reste prévu, sans exposer les modules futurs dans le cockpit principal."
