@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Cycle de vie transhumance</title>
+  <desc id="desc">Cycle de vie d'un mouvement de transhumance de ruches avec etats prevu, en cours, termine et annule.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="arrow-head"/></marker>
+    <style>
+      :root{--bg:#f8f5ed;--grid:#eadfc8;--text:#172033;--muted:#5f6b7a;--panel:#fff;--stroke:#d8c7a7;--amber:#d97706;--green:#15803d;--blue:#0369a1;--rose:#be123c;--slate:#334155}
+      @media (prefers-color-scheme: dark){:root{--bg:#111827;--grid:#243041;--text:#f8fafc;--muted:#cbd5e1;--panel:#1f2937;--stroke:#475569;--amber:#f59e0b;--green:#22c55e;--blue:#38bdf8;--rose:#fb7185;--slate:#94a3b8}}
+      .bg{fill:var(--bg)}.grid{stroke:var(--grid);stroke-width:1;opacity:.55}.title{fill:var(--text);font:800 34px ui-sans-serif,system-ui,sans-serif}.subtitle{fill:var(--muted);font:500 15px ui-sans-serif,system-ui,sans-serif}
+      .state{fill:var(--panel);stroke:var(--stroke);stroke-width:3;rx:24}.planned{stroke:var(--amber)}.active{stroke:var(--blue)}.done{stroke:var(--green)}.cancel{stroke:var(--rose)}
+      .label{fill:var(--text);font:900 24px ui-sans-serif,system-ui,sans-serif}.small{fill:var(--muted);font:600 13px ui-sans-serif,system-ui,sans-serif}.line{fill:none;stroke:var(--slate);stroke-width:3;marker-end:url(#arrow)}.cancel-line{fill:none;stroke:var(--rose);stroke-width:3;stroke-dasharray:8 8;marker-end:url(#arrow)}.arrow-head{fill:var(--slate)}
+      .effect{fill:var(--panel);stroke:var(--green);stroke-width:2;rx:18}.warning{fill:var(--panel);stroke:var(--amber);stroke-width:2;rx:18}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760"/>
+  <g opacity=".5"><path class="grid" d="M0 80H1200M0 160H1200M0 240H1200M0 320H1200M0 400H1200M0 480H1200M0 560H1200M0 640H1200"/><path class="grid" d="M120 0V760M240 0V760M360 0V760M480 0V760M600 0V760M720 0V760M840 0V760M960 0V760M1080 0V760"/></g>
+  <text class="title" x="60" y="64">Cycle de vie transhumance</text>
+  <text class="subtitle" x="60" y="91">Le rucher est un site fixe; seules les ruches se deplacent.</text>
+
+  <rect class="state planned" x="95" y="235" width="230" height="120"/><text class="label" x="135" y="285">PLANNED</text><text class="small" x="135" y="316">Mouvement prevu</text><text class="small" x="135" y="338">Aucun effet courant</text>
+  <rect class="state active" x="485" y="235" width="230" height="120"/><text class="label" x="525" y="285">IN_PROGRESS</text><text class="small" x="525" y="316">Depart terrain</text><text class="small" x="525" y="338">Pas encore arrive</text>
+  <rect class="state done" x="875" y="235" width="230" height="120"/><text class="label" x="915" y="285">COMPLETED</text><text class="small" x="915" y="316">Arrivee confirmee</text><text class="small" x="915" y="338">Etat terminal</text>
+  <rect class="state cancel" x="485" y="500" width="230" height="120"/><text class="label" x="540" y="550">CANCELLED</text><text class="small" x="540" y="581">Trace conservee</text><text class="small" x="540" y="603">Etat terminal</text>
+
+  <path class="line" d="M325 295H485"/><text class="small" x="360" y="275">depart</text>
+  <path class="line" d="M715 295H875"/><text class="small" x="750" y="275">arrivee</text>
+  <path class="cancel-line" d="M210 355C210 520 400 560 485 560"/><text class="small" x="270" y="468">annulation</text>
+  <path class="cancel-line" d="M600 355V500"/><text class="small" x="620" y="435">annulation</text>
+
+  <rect class="effect" x="810" y="445" width="300" height="92"/><text class="label" x="838" y="485" style="font-size:18px">Effet de finalisation</text><text class="small" x="838" y="512">Met a jour Hive.apiaryId</text><text class="small" x="838" y="532">vers le rucher destination</text>
+  <path class="line" d="M990 355V445"/>
+
+  <rect class="warning" x="95" y="115" width="330" height="78"/><text class="label" x="123" y="148" style="font-size:18px">Permissions</text><text class="small" x="123" y="174">read, write, manage selon action</text>
+  <rect class="warning" x="775" y="115" width="330" height="78"/><text class="label" x="803" y="148" style="font-size:18px">Hors perimetre</text><text class="small" x="803" y="174">Pas de GPS actif, IA ou IoT</text>
+
+  <rect class="effect" x="95" y="650" width="1010" height="54"/><text class="small" x="125" y="682">Exemple fictif uniquement: DEV-RU-001 de Rucher ecole vers Rucher des coteaux. Aucune coordonnee reelle.</text>
+</svg>

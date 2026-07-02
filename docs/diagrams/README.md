@@ -26,6 +26,20 @@ Cette approche garde Rucher360 sobre: Archify aide a documenter, mais ne devient
 4. Flux de donnees sensibles.
 5. Cycle de vie d'une transhumance.
 
+## Diagrammes Versionnes
+
+Les premiers exports SVG stables sont disponibles dans `docs/diagrams/svg/`:
+
+| Diagramme | Prompt source | Export SVG |
+| --- | --- | --- |
+| Architecture logique | [architecture-logique.md](prompts/architecture-logique.md) | [architecture-logique.svg](svg/architecture-logique.svg) |
+| Architecture technique | [architecture-technique.md](prompts/architecture-technique.md) | [architecture-technique.svg](svg/architecture-technique.svg) |
+| Workflow agentique | [workflow-agentique.md](prompts/workflow-agentique.md) | [workflow-agentique.svg](svg/workflow-agentique.svg) |
+| Flux de donnees sensibles | [flux-donnees-sensibles.md](prompts/flux-donnees-sensibles.md) | [flux-donnees-sensibles.svg](svg/flux-donnees-sensibles.svg) |
+| Cycle transhumance | [lifecycle-transhumance.md](prompts/lifecycle-transhumance.md) | [lifecycle-transhumance.svg](svg/lifecycle-transhumance.svg) |
+
+Ces SVG sont des supports de lecture. En cas d'ecart, la documentation Markdown detaillee garde priorite.
+
 ## Regles De Confidentialite
 
 Le depot est public. Les prompts et exports ne doivent jamais contenir:

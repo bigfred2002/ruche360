@@ -8,6 +8,10 @@ La transhumance dans Rucher360 doit etre modelisee comme un mouvement de ruches 
 
 Un rucher represente un site apicole. Il ne doit pas etre deplace.
 
+Diagramme complementaire:
+
+- [Cycle de vie transhumance](diagrams/svg/lifecycle-transhumance.svg)
+
 ## Principes Metier
 
 - `Apiary` est un emplacement ou site apicole.

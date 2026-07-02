@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Architecture logique Rucher360</title>
+  <desc id="desc">Diagramme des moteurs organisation, modules, permissions, interface, actions et donnees de Rucher360.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-head"/>
+    </marker>
+    <style>
+      :root {
+        --bg: #f8f5ed;
+        --grid: #eadfc8;
+        --text: #172033;
+        --muted: #5f6b7a;
+        --panel: #ffffff;
+        --stroke: #d8c7a7;
+        --amber: #d97706;
+        --green: #15803d;
+        --blue: #0369a1;
+        --rose: #be123c;
+        --violet: #7c3aed;
+        --slate: #334155;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #111827;
+          --grid: #243041;
+          --text: #f8fafc;
+          --muted: #cbd5e1;
+          --panel: #1f2937;
+          --stroke: #475569;
+          --amber: #f59e0b;
+          --green: #22c55e;
+          --blue: #38bdf8;
+          --rose: #fb7185;
+          --violet: #a78bfa;
+          --slate: #94a3b8;
+        }
+      }
+      .bg { fill: var(--bg); }
+      .grid { stroke: var(--grid); stroke-width: 1; opacity: .55; }
+      .title { fill: var(--text); font: 800 34px ui-sans-serif, system-ui, sans-serif; }
+      .subtitle { fill: var(--muted); font: 500 15px ui-sans-serif, system-ui, sans-serif; }
+      .box { fill: var(--panel); stroke: var(--stroke); stroke-width: 2; rx: 18; }
+      .label { fill: var(--text); font: 800 17px ui-sans-serif, system-ui, sans-serif; }
+      .small { fill: var(--muted); font: 600 12px ui-sans-serif, system-ui, sans-serif; }
+      .tag { fill: var(--panel); stroke: currentColor; stroke-width: 2; rx: 12; }
+      .tag-text { fill: currentColor; font: 800 11px ui-sans-serif, system-ui, sans-serif; }
+      .line { fill: none; stroke: var(--slate); stroke-width: 2.5; marker-end: url(#arrow); }
+      .dash { fill: none; stroke: var(--rose); stroke-width: 2.5; stroke-dasharray: 8 8; marker-end: url(#arrow); }
+      .arrow-head { fill: var(--slate); }
+      .boundary { fill: none; stroke: var(--green); stroke-width: 3; stroke-dasharray: 10 10; rx: 28; }
+      .green { color: var(--green); }
+      .amber { color: var(--amber); }
+      .blue { color: var(--blue); }
+      .rose { color: var(--rose); }
+      .violet { color: var(--violet); }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760"/>
+  <g opacity=".5">
+    <path class="grid" d="M0 80H1200M0 160H1200M0 240H1200M0 320H1200M0 400H1200M0 480H1200M0 560H1200M0 640H1200"/>
+    <path class="grid" d="M120 0V760M240 0V760M360 0V760M480 0V760M600 0V760M720 0V760M840 0V760M960 0V760M1080 0V760"/>
+  </g>
+  <text class="title" x="60" y="64">Architecture logique Rucher360</text>
+  <text class="subtitle" x="60" y="91">Organisation, modules dynamiques, permissions et donnees conservees.</text>
+
+  <rect class="boundary" x="395" y="118" width="700" height="552"/>
+  <text class="small" x="418" y="145">Frontiere organisationnelle: les donnees metier restent rattachees a une organisation.</text>
+
+  <rect class="box" x="60" y="170" width="220" height="86"/>
+  <text class="label" x="88" y="204">Utilisateur</text>
+  <text class="small" x="88" y="229">Compte applicatif futur</text>
+
+  <rect class="box" x="420" y="170" width="230" height="86"/>
+  <text class="label" x="448" y="204">Membership</text>
+  <text class="small" x="448" y="229">Adhesion a une organisation</text>
+
+  <rect class="box" x="800" y="170" width="240" height="86"/>
+  <text class="label" x="828" y="204">Organisation</text>
+  <text class="small" x="828" y="229">Proprietaire des donnees</text>
+
+  <rect class="box" x="420" y="310" width="230" height="96"/>
+  <text class="label" x="448" y="344">Modules effectifs</text>
+  <text class="small" x="448" y="369">Catalogue + organisation</text>
+  <text class="small" x="448" y="388">+ preference adhesion</text>
+
+  <rect class="box" x="800" y="310" width="240" height="96"/>
+  <text class="label" x="828" y="344">Roles &amp; permissions</text>
+  <text class="small" x="828" y="369">Actions autorisees</text>
+  <text class="small" x="828" y="388">par organisation</text>
+
+  <rect class="box" x="180" y="470" width="230" height="92"/>
+  <text class="label" x="208" y="504">Navigation</text>
+  <text class="small" x="208" y="529">Cockpit et routes visibles</text>
+
+  <rect class="box" x="500" y="470" width="230" height="92"/>
+  <text class="label" x="528" y="504">Actions serveur</text>
+  <text class="small" x="528" y="529">Verifient module + permission</text>
+
+  <rect class="box" x="820" y="470" width="240" height="92"/>
+  <text class="label" x="848" y="504">Modules metier</text>
+  <text class="small" x="848" y="529">Ruchers, materiel, transhumance</text>
+
+  <rect class="box" x="420" y="615" width="260" height="86"/>
+  <text class="label" x="448" y="649">Donnees conservees</text>
+  <text class="small" x="448" y="674">Statuts, historiques, archivage</text>
+
+  <rect class="box" x="750" y="615" width="290" height="86"/>
+  <text class="label" x="778" y="649">IA / IoT prevus</text>
+  <text class="small" x="778" y="674">Desactives jusqu'a lot dedie</text>
+
+  <path class="line" d="M280 213H420"/>
+  <path class="line" d="M650 213H800"/>
+  <path class="line" d="M535 256V310"/>
+  <path class="line" d="M920 256V310"/>
+  <path class="line" d="M535 406L330 470"/>
+  <path class="line" d="M920 406L650 470"/>
+  <path class="line" d="M410 516H500"/>
+  <path class="line" d="M730 516H820"/>
+  <path class="line" d="M940 562L650 615"/>
+  <path class="dash" d="M895 615L940 562"/>
+
+  <g class="green">
+    <rect class="tag" x="60" y="300" width="250" height="36"/>
+    <text class="tag-text" x="78" y="323">Desactivation masque, ne supprime pas</text>
+  </g>
+  <g class="blue">
+    <rect class="tag" x="60" y="350" width="250" height="36"/>
+    <text class="tag-text" x="78" y="373">UI visible != action autorisee</text>
+  </g>
+  <g class="rose">
+    <rect class="tag" x="60" y="400" width="250" height="36"/>
+    <text class="tag-text" x="78" y="423">Localisation et documents sensibles</text>
+  </g>
+</svg>

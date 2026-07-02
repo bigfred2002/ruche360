@@ -2,6 +2,10 @@
 
 Ce lot prépare un runner GitHub Actions auto-hébergé dans Docker pour exécuter des validations DevSecOps locales de Rucher360.
 
+Diagramme complementaire:
+
+- [Architecture technique Docker-first](diagrams/svg/architecture-technique.svg)
+
 ## Position de sécurité
 
 Le dépôt est public. Un runner auto-hébergé ne doit pas exécuter automatiquement du code provenant de Pull Requests non fiables.

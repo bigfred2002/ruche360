@@ -65,6 +65,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - `TRANSHUMANCE-ACTIONS-01` ajoute les actions serveur minimales de transhumance: lecture, creation, ajout de ruches et changement de statut. La finalisation d'un mouvement met a jour l'emplacement courant des ruches sans effacer l'historique.
 - `TRANSHUMANCE-FORMS-SHELL-01` branche `/transhumance` sur la lecture Prisma et ajoute des formulaires serveur de developpement bases sur les donnees fictives du seed, sans API publique ni authentification reelle.
 - `ARCHIFY-DOCS-00` cadre Archify comme documentation visuelle complementaire: prompts sources versionnes, exports SVG futurs et aucune dependance applicative.
+- `ARCHIFY-DIAGRAMS-01` ajoute les premiers SVG de documentation visuelle: architecture logique, architecture technique, workflow agentique, flux de donnees sensibles et cycle transhumance.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
@@ -81,7 +82,7 @@ Le dépôt Rucher360 est initialisé sur GitHub et préparé pour un développem
 - Branchement futur des formulaires materiel sur une session authentifiee.
 - Moment opportun pour introduire un partage fin par rucher.
 - Branchement futur des formulaires transhumance sur une session authentifiee.
-- Generation future des premiers SVG Archify stables sans donnees sensibles.
+- Revue periodique des diagrammes Archify pour eviter la derive avec le code et les modules actifs.
 
 ## Commandes utiles actuelles
 

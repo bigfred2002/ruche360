@@ -1,5 +1,9 @@
 # Stratégie Data
 
+Diagramme complementaire:
+
+- [Flux de donnees sensibles](diagrams/svg/flux-donnees-sensibles.svg)
+
 ## Objectif
 
 `DATA-00` prépare le passage du modèle conceptuel vers un schéma exécutable sans créer encore de migration, client Prisma ou logique métier.

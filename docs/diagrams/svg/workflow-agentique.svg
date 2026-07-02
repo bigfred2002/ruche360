@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Workflow agentique Rucher360</title>
+  <desc id="desc">Workflow de micro-lot avec branche codex, validations Docker, scans de securite, PR, CI et squash merge.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="arrow-head"/></marker>
+    <style>
+      :root{--bg:#f8f5ed;--grid:#eadfc8;--text:#172033;--muted:#5f6b7a;--panel:#fff;--stroke:#d8c7a7;--amber:#d97706;--green:#15803d;--blue:#0369a1;--rose:#be123c;--slate:#334155}
+      @media (prefers-color-scheme: dark){:root{--bg:#111827;--grid:#243041;--text:#f8fafc;--muted:#cbd5e1;--panel:#1f2937;--stroke:#475569;--amber:#f59e0b;--green:#22c55e;--blue:#38bdf8;--rose:#fb7185;--slate:#94a3b8}}
+      .bg{fill:var(--bg)}.grid{stroke:var(--grid);stroke-width:1;opacity:.55}.title{fill:var(--text);font:800 34px ui-sans-serif,system-ui,sans-serif}.subtitle{fill:var(--muted);font:500 15px ui-sans-serif,system-ui,sans-serif}
+      .lane{fill:var(--panel);stroke:var(--stroke);stroke-width:2;rx:24;opacity:.86}.lane-title{fill:var(--muted);font:800 13px ui-sans-serif,system-ui,sans-serif}
+      .step{fill:var(--panel);stroke:var(--stroke);stroke-width:2;rx:16}.ok{stroke:var(--green)}.warn{stroke:var(--amber)}.stop{stroke:var(--rose)}
+      .label{fill:var(--text);font:800 14px ui-sans-serif,system-ui,sans-serif}.small{fill:var(--muted);font:600 11px ui-sans-serif,system-ui,sans-serif}.line{fill:none;stroke:var(--slate);stroke-width:2.5;marker-end:url(#arrow)}.branch{fill:none;stroke:var(--rose);stroke-width:2.5;stroke-dasharray:8 8;marker-end:url(#arrow)}.arrow-head{fill:var(--slate)}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760"/>
+  <g opacity=".5"><path class="grid" d="M0 80H1200M0 160H1200M0 240H1200M0 320H1200M0 400H1200M0 480H1200M0 560H1200M0 640H1200"/><path class="grid" d="M120 0V760M240 0V760M360 0V760M480 0V760M600 0V760M720 0V760M840 0V760M960 0V760M1080 0V760"/></g>
+  <text class="title" x="60" y="64">Workflow agentique de micro-lot</text>
+  <text class="subtitle" x="60" y="91">Petits changements, validations Docker-first, PR verte puis squash merge.</text>
+
+  <rect class="lane" x="55" y="130" width="1090" height="130"/><text class="lane-title" x="80" y="158">Preparation</text>
+  <rect class="lane" x="55" y="300" width="1090" height="130"/><text class="lane-title" x="80" y="328">Implementation</text>
+  <rect class="lane" x="55" y="470" width="1090" height="130"/><text class="lane-title" x="80" y="498">Validation et revue</text>
+  <rect class="lane" x="55" y="640" width="1090" height="82"/><text class="lane-title" x="80" y="668">Merge</text>
+
+  <rect class="step ok" x="90" y="180" width="150" height="54"/><text class="label" x="112" y="203">Lire docs</text><text class="small" x="112" y="221">README, AGENTS</text>
+  <rect class="step ok" x="285" y="180" width="150" height="54"/><text class="label" x="307" y="203">Sync main</text><text class="small" x="307" y="221">ff-only</text>
+  <rect class="step ok" x="480" y="180" width="170" height="54"/><text class="label" x="502" y="203">Branche codex</text><text class="small" x="502" y="221">un lot = une branche</text>
+  <rect class="step warn" x="705" y="180" width="180" height="54"/><text class="label" x="727" y="203">Verifier scope</text><text class="small" x="727" y="221">fichiers autorises</text>
+
+  <rect class="step ok" x="160" y="350" width="185" height="54"/><text class="label" x="182" y="373">Changer le lot</text><text class="small" x="182" y="391">code ou docs ciblees</text>
+  <rect class="step ok" x="410" y="350" width="185" height="54"/><text class="label" x="432" y="373">Mettre a jour docs</text><text class="small" x="432" y="391">context, todo, journal</text>
+  <rect class="step warn" x="660" y="350" width="185" height="54"/><text class="label" x="682" y="373">Garder limites</text><text class="small" x="682" y="391">pas de secret, pas hors-scope</text>
+
+  <rect class="step ok" x="90" y="520" width="155" height="54"/><text class="label" x="112" y="543">diff check</text><text class="small" x="112" y="561">whitespace</text>
+  <rect class="step ok" x="285" y="520" width="170" height="54"/><text class="label" x="307" y="543">security scans</text><text class="small" x="307" y="561">pre-push + gitleaks</text>
+  <rect class="step ok" x="500" y="520" width="170" height="54"/><text class="label" x="522" y="543">Docker checks</text><text class="small" x="522" y="561">lint/build si utile</text>
+  <rect class="step warn" x="715" y="520" width="155" height="54"/><text class="label" x="737" y="543">PR draft</text><text class="small" x="737" y="561">revue + CI</text>
+  <rect class="step ok" x="910" y="520" width="155" height="54"/><text class="label" x="932" y="543">CI verte</text><text class="small" x="932" y="561">ready review</text>
+
+  <rect class="step ok" x="430" y="666" width="170" height="44"/><text class="label" x="452" y="693">Squash merge</text>
+  <rect class="step ok" x="660" y="666" width="170" height="44"/><text class="label" x="682" y="693">Sync main</text>
+
+  <path class="line" d="M240 207H285"/><path class="line" d="M435 207H480"/><path class="line" d="M650 207H705"/>
+  <path class="line" d="M795 234C795 300 252 300 252 350"/><path class="line" d="M345 377H410"/><path class="line" d="M595 377H660"/>
+  <path class="line" d="M752 404C752 470 168 470 168 520"/><path class="line" d="M245 547H285"/><path class="line" d="M455 547H500"/><path class="line" d="M670 547H715"/><path class="line" d="M870 547H910"/>
+  <path class="line" d="M988 574C988 640 515 640 515 666"/><path class="line" d="M600 688H660"/>
+
+  <rect class="step stop" x="915" y="350" width="185" height="54"/><text class="label" x="937" y="373">Stop si doute</text><text class="small" x="937" y="391">conflit, CI, secret</text>
+  <path class="branch" d="M845 377H915"/>
+</svg>
