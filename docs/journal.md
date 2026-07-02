@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-02 - DOCS-ARCHITECTURE-SYNC-01
+
+- Synchronisation documentaire apres les lots data, materiel, transhumance et Archify.
+- Mise a jour du README pour refleter Prisma, les modeles executables et les formulaires de developpement.
+- Alignement de l'architecture technique, de l'architecture logique, de la cartographie des modules et du modele de donnees avec l'etat courant.
+- Aucun code applicatif, Docker, Prisma, dependance, authentification, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-02 - ARCHIFY-DIAGRAMS-01
 
 - Ajout des premiers SVG stables de documentation visuelle dans `docs/diagrams/svg/`.

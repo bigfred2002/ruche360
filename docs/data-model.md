@@ -1,5 +1,7 @@
 # Modèle de Données
 
+Etat courant: le schéma Prisma couvre le socle organisationnel, les modules dynamiques, ruchers, ruches, colonies, matériel et transhumance. Les visites, tâches, sanitaire détaillé, récoltes, documents et connaissances restent à modéliser dans des lots dédiés.
+
 Ce document décrit les entités métier et prépare leur passage progressif vers un schéma exécutable. La stratégie de cadrage est détaillée dans [Stratégie Data](data-strategy.md).
 
 ## Entités principales

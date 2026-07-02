@@ -85,7 +85,7 @@
 
 - [x] `ARCHIFY-DOCS-00`: cadrer l'usage d'Archify sans dependance applicative.
 - [x] `ARCHIFY-DIAGRAMS-01`: generer les premiers SVG stables depuis les prompts versionnes.
-- [ ] `DOCS-ARCHITECTURE-SYNC-01`: verifier la synchronisation entre diagrammes, architecture et modules.
+- [x] `DOCS-ARCHITECTURE-SYNC-01`: verifier la synchronisation entre diagrammes, architecture et modules.
 
 ### Backlog administration et gouvernance
 
@@ -475,6 +475,14 @@
 - [x] Garder les diagrammes comme documentation complementaire, non comme source de verite unique.
 - [x] Ne pas versionner d'export HTML ou PNG temporaire.
 - [x] Ne pas ajouter de dependance, code applicatif, Docker, API, auth, IA ou IoT actif.
+
+## DOCS-ARCHITECTURE-SYNC-01
+
+- [x] Mettre a jour README avec l'etat reel apres Prisma, materiel, transhumance et Archify.
+- [x] Aligner `docs/technical-architecture.md` avec le socle applicatif existant.
+- [x] Aligner `docs/application-architecture.md`, `docs/module-function-map.md` et `docs/data-model.md`.
+- [x] Mettre a jour `docs/context.md`, `docs/todo.md` et `docs/journal.md`.
+- [x] Ne pas modifier le code applicatif, Prisma, Docker, dependances, auth, IA ou IoT.
 
 ## ADMIN-00
 
