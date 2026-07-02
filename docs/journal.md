@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-02 - ARCHIFY-DOCS-00
+
+- Cadrage d'Archify comme documentation visuelle complementaire, sans dependance applicative.
+- Ajout de `docs/diagrams/README.md` pour definir workflow, confidentialite, exports et criteres de qualite.
+- Ajout de prompts sources pour architecture logique, architecture technique, workflow agentique, flux de donnees sensibles et cycle de vie transhumance.
+- Decision: versionner les prompts et futurs SVG stables, mais garder les HTML generes hors commit par defaut.
+- Aucun code applicatif, Docker, Prisma, dependance, authentification, secret, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-01 - TRANSHUMANCE-FORMS-SHELL-01
 
 - Branchement de `/transhumance` en lecture sur les mouvements Prisma via la session de developpement.
