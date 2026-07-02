@@ -79,6 +79,13 @@
 - [x] Preparer le backlog admin sans implementation dans `ADMIN-BACKLOG-01`.
 - [x] Ajouter les actions serveur minimales de transhumance dans `TRANSHUMANCE-ACTIONS-01`.
 - [x] Ajouter les formulaires de developpement transhumance dans `TRANSHUMANCE-FORMS-SHELL-01`.
+- [x] Cadrer Archify comme documentation visuelle complementaire dans `ARCHIFY-DOCS-00`.
+
+### Documentation visuelle
+
+- [x] `ARCHIFY-DOCS-00`: cadrer l'usage d'Archify sans dependance applicative.
+- [ ] `ARCHIFY-DIAGRAMS-01`: generer les premiers SVG stables depuis les prompts versionnes.
+- [ ] `DOCS-ARCHITECTURE-SYNC-01`: verifier la synchronisation entre diagrammes, architecture et modules.
 
 ### Backlog administration et gouvernance
 
@@ -452,6 +459,14 @@
 - [x] Utiliser uniquement les ruchers et ruches fictifs du seed local.
 - [x] Afficher clairement que ces actions restent limitees au developpement.
 - [x] Ne pas ajouter d'API publique, auth reelle, GPS actif, IA, IoT, dependance ou logistique avancee.
+
+## ARCHIFY-DOCS-00
+
+- [x] Documenter Archify comme outil complementaire de diagrammes.
+- [x] Definir les regles de confidentialite pour prompts et exports.
+- [x] Ajouter les prompts sources pour architecture logique, architecture technique, workflow agentique, flux sensibles et cycle transhumance.
+- [x] Prevoir les exports SVG futurs sans versionner les HTML generes par defaut.
+- [x] Ne pas ajouter de dependance, code applicatif, Docker, API, auth, IA ou IoT actif.
 
 ## ADMIN-00
 

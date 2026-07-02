@@ -215,6 +215,7 @@ Le dépôt étant public, le workflow local est limité à `workflow_dispatch`. 
 - [Authentification et organisations](docs/auth.md)
 - [Modèle de données](docs/data-model.md)
 - [Architecture technique](docs/technical-architecture.md)
+- [Documentation visuelle avec Archify](docs/diagrams/README.md)
 - [Sécurité et dépendances](docs/security-dependencies.md)
 - [Flux UX](docs/ux-flows.md)
 - [Backlog agentique](docs/backlog-agentique.md)
