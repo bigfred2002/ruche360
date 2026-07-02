@@ -12,7 +12,8 @@ Le projet est développé par micro-lots avec Codex, GitHub et Docker Compose. L
 - Ruchers, ruches et colonies.
 - Modèle exécutable séparant les sites apicoles, le matériel ruche et le vivant.
 - Module matériel apicole prévu pour suivre consommables, équipements durables, emplacements et statuts simples sans gestion commerciale lourde.
-- Commandes serveur minimales du module matériel préparées avec contrôle organisation/permissions, sans formulaire public tant que l'authentification réelle n'est pas disponible.
+- Commandes serveur minimales et formulaires de développement du module matériel préparés avec contrôle organisation/permissions, sans API publique ni authentification réelle.
+- Module transhumance préparé pour tracer les mouvements de ruches entre ruchers, avec actions serveur et formulaires de développement sur données fictives.
 - Visites et observations terrain.
 - Tâches à planifier, réaliser ou suivre.
 - Récoltes simples.
@@ -77,13 +78,17 @@ Les lots déjà intégrés posent:
 - un shell applicatif mobile-first statique;
 - le contrôle de confidentialité pre-push;
 - la CI Docker-first;
-- la stratégie data préalable au schéma exécutable.
+- la stratégie data et le schéma Prisma multi-organisation;
+- les modèles exécutables ruchers, ruches, colonies, matériel et transhumance;
+- les actions serveur de développement pour matériel et transhumance;
+- la documentation visuelle complémentaire avec prompts et SVG Archify.
 
-Le shell actuel est une interface statique de cockpit apicole. Il ne contient pas encore de CRUD métier, d'authentification, d'appel API applicatif, d'IA active ou d'IoT actif.
+Le shell actuel contient des surfaces statiques et quelques formulaires de développement contrôlés par une session fictive. Il ne contient pas encore d'authentification réelle, d'API publique, d'IA active ou d'IoT actif.
 
 ## Architecture de développement
 
 - Application: Next.js App Router, TypeScript, Tailwind CSS.
+- Données: Prisma et PostgreSQL.
 - Conteneur applicatif: service Docker Compose `app`.
 - Base de données locale: PostgreSQL via service Docker Compose `db`.
 - Dépendances Node: volume Docker `node_modules`.
@@ -216,6 +221,7 @@ Le dépôt étant public, le workflow local est limité à `workflow_dispatch`. 
 - [Modèle de données](docs/data-model.md)
 - [Architecture technique](docs/technical-architecture.md)
 - [Documentation visuelle avec Archify](docs/diagrams/README.md)
+- [Stratégie data](docs/data-strategy.md)
 - [Sécurité et dépendances](docs/security-dependencies.md)
 - [Flux UX](docs/ux-flows.md)
 - [Backlog agentique](docs/backlog-agentique.md)

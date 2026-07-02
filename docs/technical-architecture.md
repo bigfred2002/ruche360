@@ -2,7 +2,7 @@
 
 ## Position actuelle
 
-Le dépôt contient un socle Next.js App Router, TypeScript, Tailwind CSS, Docker Compose et un shell applicatif statique. `DATA-00` prépare la stratégie data sans créer encore de schéma Prisma exécutable.
+Le dépôt contient un socle Next.js App Router, TypeScript, Tailwind CSS, Docker Compose, Prisma, PostgreSQL et un shell applicatif mobile-first. Les lots data et métier déjà intégrés posent un modèle multi-organisation, un seed de développement fictif, les modèles ruchers/ruches/colonies, matériel et transhumance.
 
 ## Contraintes structurantes
 
@@ -46,9 +46,9 @@ Tant que `package.json` n'existe pas, le service `app` ne force aucune initialis
 
 ## Images Docker
 
-`Dockerfile.dev` sert au développement. Il active Corepack, expose le port 3000 et lance `pnpm dev` uniquement si `package.json` existe.
+`Dockerfile.dev` sert au développement. Il active Corepack, expose le port 3000 et lance `pnpm dev`.
 
-`Dockerfile` prépare une image de production future. En l'absence de `package.json`, le build reste un no-op documenté pour ne pas introduire de scaffold hors périmètre.
+`Dockerfile` prépare une image de production future pour l'application Next.js.
 
 ## Commandes prévues
 
@@ -56,9 +56,8 @@ Tant que `package.json` n'existe pas, le service `app` ne force aucune initialis
 docker compose build app
 docker compose run --rm app pnpm lint
 docker compose run --rm app pnpm build
+docker compose run --rm app pnpm seed:dev
 ```
-
-Les commandes `pnpm lint` et `pnpm build` seront applicables quand l'application Next.js existera.
 
 ## Modules désactivés
 
@@ -73,8 +72,8 @@ Les modules connectés et IA doivent être représentés comme capacités prévu
 
 ## Validation future
 
-Les tests futurs devront s'exécuter dans Docker Compose. Les commandes de validation seront documentées dans `README.md` ou dans les lots concernés lorsqu'une stack technique sera ajoutée.
+Les tests et validations doivent s'exécuter dans Docker Compose. Les commandes de référence sont documentées dans `README.md`, `AGENTS.md` et les lots concernés.
 
 ## Stratégie data
 
-Le premier schéma exécutable devra démarrer par les organisations, utilisateurs, adhésions, rôles, permissions et modules activables. Les entités rucher, ruche, colonie, visite, tâche et sanitaire restent différées jusqu'aux lots métier dédiés.
+Le schéma exécutable démarre par les organisations, utilisateurs, adhésions, rôles, permissions et modules activables. Les entités rucher, ruche, colonie, matériel et transhumance disposent maintenant d'un socle exécutable. Les visites, tâches, sanitaire détaillé, récoltes, documents, IA et IoT restent différés jusqu'aux lots dédiés.

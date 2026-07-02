@@ -59,9 +59,14 @@ L'administration doit rester une surface transverse d'organisation, pas un modul
 
 | Module | Statut | Responsabilite | Pourquoi differer |
 | --- | --- | --- | --- |
-| Materiel | A cadrer | Inventaire leger, emplacements, statuts | Eviter de creer un ERP achats/stock trop tot. |
-| Transhumance | A cadrer | Mouvements de ruches entre sites | Necessite historique clair sans deplacer le rucher. |
 | Partage fin par rucher | A cadrer | Acces a certains ruchers uniquement | Le partage organisationnel suffit d'abord. |
+
+## Modules apicoles avec socle executable
+
+| Module | Statut | Responsabilite | Limites actuelles |
+| --- | --- | --- | --- |
+| Materiel | Initial | Inventaire leger, emplacements, statuts et evenements simples | Formulaires de developpement seulement; pas d'achats, fournisseurs, prix ou comptabilite. |
+| Transhumance | Initial | Mouvements de ruches entre sites et emplacement courant deduit | Formulaires de developpement seulement; pas de GPS actif, logistique transport ou cartographie temps reel. |
 
 ## Modules connectes desactives
 

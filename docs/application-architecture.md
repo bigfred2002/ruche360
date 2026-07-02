@@ -17,7 +17,7 @@ Rucher360 est organise autour de cinq moteurs logiques:
 - moteur organisation: espaces de travail, membres et statut d'acces;
 - moteur modules: catalogue produit et activation par organisation puis par adhesion;
 - moteur permissions: roles et droits applicables aux actions;
-- moteurs metier: ruchers, ruches, colonies, visites, taches, sanitaire, materiel, recoltes et contenus;
+- moteurs metier: ruchers, ruches, colonies, materiel, transhumance, visites, taches, sanitaire, recoltes et contenus;
 - moteur de gouvernance: micro-lots, validations, documentation et securite depot public.
 
 ```mermaid
@@ -119,8 +119,8 @@ Principe:
 Exemples:
 
 - `apiary` possede ruchers, ruches et colonies;
-- `equipment` possedera types de materiel, stock leger, items et evenements;
-- `transhumance` possedera les mouvements de ruches;
+- `equipment` possede types de materiel, stock leger, items et evenements;
+- `transhumance` possede les mouvements de ruches;
 - `visits` pourra referencer ruches, colonies, materiel ou taches sans devenir proprietaire de ces modules.
 
 ## Flux d'une action
