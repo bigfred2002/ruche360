@@ -141,6 +141,13 @@ enum TaskPriority {
   URGENT
 }
 
+enum ActivityLogImportance {
+  INFO
+  IMPORTANT
+  SENSITIVE
+  SECURITY
+}
+
 model Organization {
   id         String             @id @default(cuid())
   name       String
@@ -165,6 +172,7 @@ model Organization {
   equipmentItems      EquipmentItem[]
   equipmentEvents     EquipmentEvent[]
   hiveMovements       HiveMovement[]
+  activityLogEntries  ActivityLogEntry[]
 
   @@index([status])
 }
@@ -201,9 +209,10 @@ model Membership {
   role              Role?                        @relation(fields: [roleId], references: [id], onDelete: SetNull)
   modulePreferences MembershipModulePreference[]
   authoredHiveMovements HiveMovement[]
-  authoredVisits    Visit[]
-  createdTasks      Task[] @relation("TaskCreatedByMembership")
-  assignedTasks     Task[] @relation("TaskAssignedToMembership")
+  authoredVisits       Visit[]
+  createdTasks         Task[]             @relation("TaskCreatedByMembership")
+  assignedTasks        Task[]             @relation("TaskAssignedToMembership")
+  activityLogEntries ActivityLogEntry[]
 
   @@unique([organizationId, userId])
   @@index([userId])
@@ -622,4 +631,31 @@ model Task {
   @@index([status])
   @@index([priority])
   @@index([dueAt])
+}
+
+model ActivityLogEntry {
+  id                String                @id @default(cuid())
+  organizationId    String
+  actorMembershipId String?
+  moduleCode        String
+  actionType        String
+  targetType        String?
+  targetId          String?
+  label             String
+  importance        ActivityLogImportance @default(INFO)
+  summary           String?
+  metadata          Json?
+  occurredAt        DateTime              @default(now())
+  createdAt         DateTime              @default(now())
+
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  actorMembership Membership?  @relation(fields: [actorMembershipId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([actorMembershipId])
+  @@index([moduleCode])
+  @@index([actionType])
+  @@index([targetType, targetId])
+  @@index([importance])
+  @@index([occurredAt])
 }

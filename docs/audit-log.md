@@ -162,8 +162,30 @@ Hypotheses:
 ## Lots Suivants
 
 1. `AUDIT-LOG-01`
+   - termine comme modele executable minimal;
    - modele Prisma minimal du journal metier;
    - aucun ecran complet.
+
+## AUDIT-LOG-01
+
+`AUDIT-LOG-01` ajoute le modele executable minimal du journal d'activite metier:
+
+- `ActivityLogEntry`;
+- `ActivityLogImportance`;
+- types TypeScript domaine;
+- helpers purs pour filtrer les cles de metadata sensibles.
+
+Le modele reste volontairement generique:
+
+- `moduleCode` reste une chaine pour eviter une relation forte avec la registry;
+- `actionType` reste une chaine pour eviter de modifier l'enum a chaque nouveau
+  type d'action;
+- `targetType` et `targetId` referencent une cible sans recopier son contenu;
+- `metadata` doit rester minimale et non sensible.
+
+Ce lot n'ajoute pas de route `/admin/journal`, pas d'ecran, pas d'action
+serveur, pas d'emission automatique d'evenements, pas d'export et pas de
+surveillance temps reel.
 
 2. `AUDIT-LOG-SHELL-01`
    - route shell d'administration en lecture seule ou preview;

@@ -6,6 +6,13 @@
 - Le shell presente les statuts, priorites, rattachements optionnels et limites avant actions serveur.
 - Aucune lecture Prisma, aucun formulaire actif, aucune action serveur, aucun CRUD, aucune notification, aucune recurrence, aucune analyse IA et aucune prescription sanitaire n'ont ete ajoutes.
 
+## 2026-07-03 - AUDIT-LOG-01
+
+- Ajout du modele executable minimal du journal d'activite metier avec `ActivityLogEntry`.
+- Ajout de l'importance d'evenement, d'une cible referencee et d'une metadata minimale non sensible.
+- Ajout de types TypeScript domaine et de helpers purs pour filtrer les cles metadata sensibles.
+- Aucun ecran, route, action serveur, emission automatique d'evenements, export, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-03 - TASKS-01
 
 - Ajout du modele executable minimal des taches avec `Task`, statuts et priorites.
