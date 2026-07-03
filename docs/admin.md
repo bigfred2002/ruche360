@@ -119,6 +119,8 @@ La suppression dure doit rester exceptionnelle et cadrée par lot dedie, surtout
 - historique de mouvements;
 - roles et permissions.
 
+Le cadrage detaille est documente dans [Cycle De Vie Des Donnees](data-lifecycle.md).
+
 ## Journal D'Activite Metier
 
 Le journal d'activite metier est distinct de:

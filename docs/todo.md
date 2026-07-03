@@ -93,7 +93,7 @@
 - [x] `ADMIN-SHELL-01`: ajouter un shell `/admin` desktop/catalogue uniquement, sans CRUD.
 - [x] `ADMIN-DATA-OVERVIEW-01`: afficher les volumes de donnees par organisation en lecture seule.
 - [x] `AUDIT-LOG-00`: cadrer le journal d'activite metier, distinct de l'audit dependances.
-- [ ] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
+- [x] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
 - [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
 
 ## EQUIPMENT-00
@@ -517,11 +517,11 @@
 
 ## DATA-LIFECYCLE-00
 
-- [ ] Cadrer archivage, conservation et suppression controlee.
-- [ ] Privilegier `archivedAt` et les statuts metier plutot que la suppression dure.
-- [ ] Definir les regles pour donnees sanitaires, contacts, documents et localisation de ruchers.
-- [ ] Cadrer la restauration ou consultation d'archives sans exposer de donnees sensibles.
-- [ ] Ne pas creer de migration, job automatique, purge, export, API, IA ou IoT actif.
+- [x] Cadrer archivage, conservation et suppression controlee.
+- [x] Privilegier `archivedAt` et les statuts metier plutot que la suppression dure.
+- [x] Definir les regles pour donnees sanitaires, contacts, documents et localisation de ruchers.
+- [x] Cadrer la restauration ou consultation d'archives sans exposer de donnees sensibles.
+- [x] Ne pas creer de migration, job automatique, purge, export, API, IA ou IoT actif.
 
 ## PLATFORM-ADMIN-00
 
