@@ -126,6 +126,21 @@ enum VisitObservationCategory {
   NOTE
 }
 
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+  CANCELLED
+  ARCHIVED
+}
+
+enum TaskPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
 model Organization {
   id         String             @id @default(cuid())
   name       String
@@ -144,6 +159,7 @@ model Organization {
   colonies            Colony[]
   visits              Visit[]
   visitObservations   VisitObservation[]
+  tasks               Task[]
   equipmentTypes      EquipmentType[]
   equipmentStocks     EquipmentStock[]
   equipmentItems      EquipmentItem[]
@@ -186,6 +202,8 @@ model Membership {
   modulePreferences MembershipModulePreference[]
   authoredHiveMovements HiveMovement[]
   authoredVisits    Visit[]
+  createdTasks      Task[] @relation("TaskCreatedByMembership")
+  assignedTasks     Task[] @relation("TaskAssignedToMembership")
 
   @@unique([organizationId, userId])
   @@index([userId])
@@ -314,6 +332,7 @@ model Apiary {
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   hives        Hive[]
   visits       Visit[]
+  tasks        Task[]
   equipmentStocks EquipmentStock[]
   equipmentItems  EquipmentItem[]
   equipmentEvents EquipmentEvent[]
@@ -342,6 +361,7 @@ model Hive {
   colonies     Colony[]
   movementItems HiveMovementItem[]
   visits       Visit[]
+  tasks        Task[]
 
   @@unique([organizationId, fieldIdentifier])
   @@index([apiaryId])
@@ -365,6 +385,7 @@ model Colony {
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   hive         Hive?        @relation(fields: [hiveId], references: [id], onDelete: SetNull)
   visits       Visit[]
+  tasks        Task[]
 
   @@index([organizationId])
   @@index([hiveId])
@@ -535,6 +556,7 @@ model Visit {
   colony           Colony?            @relation(fields: [colonyId], references: [id], onDelete: SetNull)
   authorMembership Membership?        @relation(fields: [authorMembershipId], references: [id], onDelete: SetNull)
   observations     VisitObservation[]
+  tasks            Task[]
 
   @@index([organizationId])
   @@index([apiaryId])
@@ -561,4 +583,43 @@ model VisitObservation {
   @@index([organizationId])
   @@index([visitId])
   @@index([category])
+}
+
+model Task {
+  id                    String       @id @default(cuid())
+  organizationId        String
+  apiaryId              String?
+  hiveId                String?
+  colonyId              String?
+  visitId               String?
+  createdByMembershipId String?
+  assignedToMembershipId String?
+  title                 String
+  description           String?
+  status                TaskStatus   @default(TODO)
+  priority              TaskPriority @default(NORMAL)
+  dueAt                 DateTime?
+  completedAt           DateTime?
+  createdAt             DateTime     @default(now())
+  updatedAt             DateTime     @updatedAt
+  archivedAt            DateTime?
+
+  organization         Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  apiary               Apiary?      @relation(fields: [apiaryId], references: [id], onDelete: SetNull)
+  hive                 Hive?        @relation(fields: [hiveId], references: [id], onDelete: SetNull)
+  colony               Colony?      @relation(fields: [colonyId], references: [id], onDelete: SetNull)
+  visit                Visit?       @relation(fields: [visitId], references: [id], onDelete: SetNull)
+  createdByMembership  Membership?  @relation("TaskCreatedByMembership", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+  assignedToMembership Membership?  @relation("TaskAssignedToMembership", fields: [assignedToMembershipId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([apiaryId])
+  @@index([hiveId])
+  @@index([colonyId])
+  @@index([visitId])
+  @@index([createdByMembershipId])
+  @@index([assignedToMembershipId])
+  @@index([status])
+  @@index([priority])
+  @@index([dueAt])
 }

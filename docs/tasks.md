@@ -1,0 +1,113 @@
+# Module Taches
+
+## Objectif
+
+`TASKS-01` ajoute le modele executable minimal des taches sans creer d'ecran,
+formulaire actif, action serveur, CRUD complet ou automatisation.
+
+Une tache represente une action a faire dans une organisation apicole: preparer
+une visite, revoir une ruche, nettoyer du materiel, suivre une observation ou
+planifier une action terrain.
+
+## Decision Produit
+
+La tache doit rester legere et transversale.
+
+Principe cible:
+
+```text
+tache = action courte + statut + priorite + lien optionnel avec le contexte
+```
+
+Elle ne doit pas devenir un outil de gestion de projet lourd.
+
+## Modele Minimal
+
+`TASKS-01` ajoute:
+
+- `Task`;
+- `TaskStatus`;
+- `TaskPriority`;
+- types TypeScript domaine;
+- helpers purs de statut.
+
+Relations optionnelles:
+
+- rucher;
+- ruche;
+- colonie;
+- visite;
+- createur;
+- personne assignee.
+
+## Statuts Cibles
+
+Statuts:
+
+- `TODO`: a faire;
+- `IN_PROGRESS`: en cours;
+- `DONE`: terminee;
+- `CANCELLED`: annulee;
+- `ARCHIVED`: masquee des vues courantes.
+
+## Priorites
+
+Priorites:
+
+- `LOW`;
+- `NORMAL`;
+- `HIGH`;
+- `URGENT`.
+
+La priorite aide a trier le terrain, mais ne doit pas declencher d'alerte
+automatique dans ce lot.
+
+## Relations Avec Les Visites
+
+Une visite pourra creer ou afficher des taches de suivi plus tard, mais
+`TASKS-01` ne cree aucune tache automatiquement.
+
+Le lien `visitId` reste optionnel pour permettre des taches independantes:
+preparation de materiel, controle de rucher, rappel sanitaire ou rangement.
+
+## Donnees Sensibles
+
+Une tache peut indirectement reveler:
+
+- une localisation de rucher;
+- une observation sanitaire;
+- une action sensible;
+- une information personnelle si le titre est trop descriptif.
+
+Les futurs journaux et exports devront eviter de recopier les descriptions
+completes quand un resume suffit.
+
+## Hors Perimetre
+
+`TASKS-01` ne cree pas:
+
+- ecran;
+- formulaire actif;
+- action serveur;
+- API publique;
+- notifications;
+- rappels automatiques;
+- recurrence;
+- assignation avancee;
+- calendrier;
+- analyse IA;
+- prescription sanitaire.
+
+## Lots Suivants Possibles
+
+1. `TASKS-SHELL-01`
+   - ecran mobile-first de lecture/preparation;
+   - aucun CRUD complet.
+
+2. `TASKS-ACTIONS-01`
+   - actions serveur minimales;
+   - creation, changement de statut, assignation simple.
+
+3. `VISIT-TASKS-LINK-01`
+   - afficher ou creer des taches depuis une visite;
+   - pas d'automatisation lourde.

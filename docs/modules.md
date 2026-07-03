@@ -104,6 +104,15 @@ Le cadrage detaille est documente dans [Module Visites](visits.md).
 `VISITS-00` precise le modele cible, les statuts, les permissions et les limites
 du module, toujours sans schema Prisma ni formulaire actif.
 
+## Module taches
+
+`TASKS-01` ajoute le modele executable minimal des taches. Une tache reste une
+action courte avec statut, priorite, echeance optionnelle et liens optionnels
+vers rucher, ruche, colonie ou visite. Aucun ecran, formulaire actif, action
+serveur, notification ou automatisation n'est ajoute.
+
+Le cadrage detaille est documente dans [Module Taches](tasks.md).
+
 ## Partage et transhumance
 
 Le partage initial d'un rucher se fait par l'organisation, les roles et les permissions. Un partage fin par rucher pourra devenir un module optionnel si le besoin est confirme.
