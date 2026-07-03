@@ -91,7 +91,7 @@
 
 - [x] `ADMIN-00`: cadrer le centre d'administration d'organisation, sans code.
 - [x] `ADMIN-SHELL-01`: ajouter un shell `/admin` desktop/catalogue uniquement, sans CRUD.
-- [ ] `ADMIN-DATA-OVERVIEW-01`: afficher les volumes de donnees par organisation en lecture seule.
+- [x] `ADMIN-DATA-OVERVIEW-01`: afficher les volumes de donnees par organisation en lecture seule.
 - [x] `AUDIT-LOG-00`: cadrer le journal d'activite metier, distinct de l'audit dependances.
 - [x] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
 - [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
@@ -502,10 +502,10 @@
 
 ## ADMIN-DATA-OVERVIEW-01
 
-- [ ] Afficher des compteurs par organisation en lecture seule.
-- [ ] Couvrir au minimum ruchers, ruches, colonies, materiel et transhumance.
-- [ ] Signaler les modules desactives sans supprimer leurs donnees.
-- [ ] Ne pas ajouter d'export, suppression, correction automatique, API publique, IA ou IoT actif.
+- [x] Afficher des compteurs par organisation en lecture seule.
+- [x] Couvrir au minimum ruchers, ruches, colonies, materiel et transhumance.
+- [x] Signaler les modules desactives sans supprimer leurs donnees.
+- [x] Ne pas ajouter d'export, suppression, correction automatique, API publique, IA ou IoT actif.
 
 ## AUDIT-LOG-00
 
