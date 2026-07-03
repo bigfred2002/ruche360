@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-03 - VISITS-01
+
+- Ajout du modele executable minimal des visites avec `Visit` et `VisitObservation`.
+- Ajout des statuts de visite et categories d'observation simples.
+- Ajout de types TypeScript domaine et de helpers purs pour les statuts.
+- Aucun ecran, formulaire actif, action serveur, API publique, CRUD, analyse IA ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-02 - VISITS-00
 
 - Cadrage documentaire du futur modele visites.

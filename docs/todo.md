@@ -100,7 +100,7 @@
 
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.
-- [ ] `VISITS-01`: ajouter le modele Prisma minimal des visites, sans CRUD complet.
+- [x] `VISITS-01`: ajouter le modele Prisma minimal des visites, sans CRUD complet.
 - [ ] `TASKS-01`: ajouter le modele minimal des taches et preparer le lien avec les visites.
 
 ## EQUIPMENT-00
@@ -553,6 +553,14 @@
 - [x] Cadrer les liens futurs avec taches, sanitaire, materiel et transhumance comme optionnels.
 - [x] Documenter les donnees sensibles et la strategie d'archivage.
 - [x] Ne pas creer de schema Prisma, migration, action serveur, formulaire actif, API publique, CRUD, IA ou prescription sanitaire.
+
+## VISITS-01
+
+- [x] Ajouter les enums Prisma de statut visite et categorie d'observation.
+- [x] Ajouter les modeles Prisma `Visit` et `VisitObservation`.
+- [x] Relier les visites a l'organisation, au rucher, a la ruche, a la colonie et a l'adhesion auteur de maniere optionnelle quand necessaire.
+- [x] Ajouter des types TypeScript domaine et helpers purs.
+- [x] Ne pas creer d'ecran, formulaire actif, action serveur, API publique, CRUD, analyse IA, prescription sanitaire ou creation automatique de tache.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.

@@ -74,6 +74,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `VISITS-00` cadre le futur modele visite: observation courte, actions realisees, suites a prevoir, statuts simples et liens optionnels avec taches, sanitaire, materiel et transhumance.
 - `DATA-LIFECYCLE-00` cadre l'archivage, la conservation, la restauration et la suppression controlee. L'archivage et les statuts metier priment sur la suppression dure, surtout pour localisation, sanitaire, contacts, documents et historique.
 - `ADMIN-DATA-OVERVIEW-01` branche `/admin` sur des compteurs par organisation en lecture seule: membres, modules, ruchers, ruches, colonies, materiel et transhumance. Aucun export, suppression, correction automatique, API publique, IA ou IoT actif n'est ajoute.
+- `VISITS-01` ajoute le modele executable minimal des visites avec `Visit`, `VisitObservation`, statuts et categories d'observation, sans CRUD, action serveur, formulaire actif, IA ou prescription sanitaire.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
@@ -91,7 +92,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - Moment opportun pour introduire un partage fin par rucher.
 - Branchement futur des formulaires transhumance sur une session authentifiee.
 - Revue periodique des diagrammes Archify pour eviter la derive avec le code et les modules actifs.
-- Modele executable minimal des visites dans `VISITS-01` avant toute saisie reelle.
+- Futur branchement lecture ou formulaires visites apres validation du modele `VISITS-01`.
 
 ## Commandes utiles actuelles
 

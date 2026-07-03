@@ -177,8 +177,27 @@ La suppression dure doit rester exceptionnelle et suivre le cadrage
    - aucun code executable.
 
 2. `VISITS-01`
+   - termine comme modele executable minimal;
    - modele Prisma minimal des visites;
    - aucun CRUD complet.
+
+## VISITS-01
+
+`VISITS-01` ajoute le modele executable minimal des visites:
+
+- `Visit`;
+- `VisitObservation`;
+- statuts de visite;
+- categories d'observation simples;
+- types TypeScript domaine et helpers purs de statut.
+
+Le modele garde les relations principales optionnelles quand c'est pertinent:
+rucher, ruche, colonie et auteur. Cela permet de saisir plus tard une visite
+rapide sans imposer toute la structure apicole a chaque note terrain.
+
+Ce lot n'ajoute pas d'ecran, formulaire actif, action serveur, API publique,
+analyse IA, prescription sanitaire, creation automatique de tache ou lien
+obligatoire avec le materiel.
 
 3. `VISITS-FORMS-SHELL-01`
    - formulaire de developpement non operationnel ou limite;
