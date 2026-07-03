@@ -188,6 +188,7 @@ serveur, pas d'emission automatique d'evenements, pas d'export et pas de
 surveillance temps reel.
 
 2. `AUDIT-LOG-SHELL-01`
+   - termine comme shell statique;
    - route shell d'administration en lecture seule ou preview;
    - filtres statiques ou simples.
 
@@ -206,3 +207,18 @@ surveillance temps reel.
 - Ne pas utiliser le journal pour contourner les droits.
 - Ne pas creer un audit global plateforme avant l'authentification reelle.
 - Ne pas confondre journal metier et scans DevSecOps.
+
+## AUDIT-LOG-SHELL-01
+
+`AUDIT-LOG-SHELL-01` ajoute la route `/admin/journal` comme shell statique de
+consultation future.
+
+La page presente:
+
+- filtres cibles par organisation, module, importance, periode et cible;
+- exemples non dynamiques d'entrees de journal;
+- garde-fous de minimisation des donnees;
+- rappel que le journal n'est pas une sauvegarde complete.
+
+Elle ne lit pas `ActivityLogEntry`, ne pagine pas, n'exporte rien, n'emet aucun
+evenement et ne remplace pas les audits techniques.
