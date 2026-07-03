@@ -93,6 +93,7 @@
 - [x] `ADMIN-SHELL-01`: ajouter un shell `/admin` desktop/catalogue uniquement, sans CRUD.
 - [x] `ADMIN-DATA-OVERVIEW-01`: afficher les volumes de donnees par organisation en lecture seule.
 - [x] `AUDIT-LOG-00`: cadrer le journal d'activite metier, distinct de l'audit dependances.
+- [x] `AUDIT-LOG-01`: ajouter le modele executable minimal du journal d'activite metier.
 - [x] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
 - [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
 
@@ -522,6 +523,14 @@
 - [x] Definir les actions candidates: creation, modification, archivage, changement de role et activation module.
 - [x] Definir les donnees a ne jamais journaliser: secrets, tokens, dumps et contenus sensibles inutiles.
 - [x] Ne pas creer de schema Prisma, route, API, CRUD, auth reelle, IA ou IoT actif.
+
+## AUDIT-LOG-01
+
+- [x] Ajouter le modele Prisma `ActivityLogEntry`.
+- [x] Ajouter l'enum Prisma `ActivityLogImportance`.
+- [x] Relier le journal a l'organisation et optionnellement a l'adhesion acteur.
+- [x] Ajouter des types TypeScript domaine et helpers purs de filtrage metadata.
+- [x] Ne pas creer de route, ecran, action serveur, emission automatique d'evenements, export, API publique, IA ou IoT actif.
 
 ## DATA-LIFECYCLE-00
 

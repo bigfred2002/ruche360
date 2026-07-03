@@ -69,6 +69,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `DOCS-ARCHITECTURE-SYNC-01` realigne README, architecture, cartographie des modules, modele de donnees, todo, contexte et journal apres les lots data, materiel, transhumance et Archify.
 - `ADMIN-00` cadre le futur centre d'administration d'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier, sans implementation.
 - `AUDIT-LOG-00` cadre le futur journal d'activite metier, distinct des audits techniques et des scans de securite.
+- `AUDIT-LOG-01` ajoute le modele executable minimal du journal d'activite metier avec `ActivityLogEntry`, importance, cible referencee et metadata minimale non sensible. Aucun ecran, route, emission automatique d'evenements ou export n'est ajoute.
 - `ADMIN-SHELL-01` ajoute la route shell `/admin` et une entree de catalogue/desktop pour l'administration d'organisation, sans CRUD, API, auth reelle ou action active.
 - `VISITS-SHELL-01` remplace `/visits` par un shell mobile-first dedie aux visites: preparer, observer, intervenir et suivre, sans schema Prisma, formulaire actif, CRUD, IA ou prescription sanitaire.
 - `VISITS-00` cadre le futur modele visite: observation courte, actions realisees, suites a prevoir, statuts simples et liens optionnels avec taches, sanitaire, materiel et transhumance.
@@ -89,7 +90,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - Niveau de détail de la localisation des ruchers.
 - Politique de conservation des données sanitaires.
 - Traduction executable future de la strategie d'archivage dans les modeles et interfaces dedies.
-- Modele executable futur du journal d'activite metier dans `AUDIT-LOG-01`.
+- Consultation future du journal d'activite metier dans `AUDIT-LOG-SHELL-01`.
 - Branchement futur des formulaires materiel sur une session authentifiee.
 - Moment opportun pour introduire un partage fin par rucher.
 - Branchement futur des formulaires transhumance sur une session authentifiee.
