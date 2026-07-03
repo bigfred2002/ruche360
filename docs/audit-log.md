@@ -129,7 +129,9 @@ La bottom nav mobile ne doit pas afficher ce journal. Il doit rester une surface
 
 ## Retention Et Archivage
 
-La retention exacte devra etre cadree dans `DATA-LIFECYCLE-00`.
+La retention exacte est cadree au niveau produit dans
+[Cycle De Vie Des Donnees](data-lifecycle.md). Un futur lot executable devra
+ensuite traduire ces regles en modele et en ecrans.
 
 Hypotheses:
 
@@ -172,6 +174,7 @@ Hypotheses:
    - materiel, transhumance, modules et roles en priorite.
 
 4. `DATA-LIFECYCLE-00`
+   - termine comme cadrage documentaire;
    - retention, archivage, restauration et suppression controlee.
 
 ## Regles De Coherence
