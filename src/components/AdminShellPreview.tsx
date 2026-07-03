@@ -1,7 +1,17 @@
+import {
+  createAdminDataMetrics,
+  type AdminDataMetric,
+  type AdminDataOverview,
+} from "@/features/admin";
+
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
+
+type AdminShellPreviewProps = {
+  overview: AdminDataOverview | null;
+};
 
 const adminCards = [
   {
@@ -49,9 +59,10 @@ const governanceRules = [
   "Aucune action admin ne contourne les permissions métier.",
 ];
 
-export function AdminShellPreview() {
+export function AdminShellPreview({ overview }: AdminShellPreviewProps) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/admin");
+  const dataMetrics = overview ? createAdminDataMetrics(overview) : [];
 
   return (
     <AppShell
@@ -86,6 +97,53 @@ export function AdminShellPreview() {
                 </p>
               </div>
             </div>
+          </section>
+
+          <section className="surface-panel rounded-3xl p-5 sm:p-6">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="section-kicker">Vue données</p>
+                <h2 className="mt-2 text-2xl font-black text-slate-950">
+                  Volumes par organisation
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
+                  Compteurs lus depuis PostgreSQL pour l&apos;organisation active.
+                  Cette vue ne propose ni export, ni suppression, ni correction
+                  automatique.
+                </p>
+              </div>
+              <StatusBadge
+                label={overview ? "Lecture seule" : "Base indisponible"}
+                tone={overview ? "active" : "soon"}
+              />
+            </div>
+
+            {overview ? (
+              <div className="mt-5 space-y-4">
+                <div className="rounded-2xl border border-cream-300 bg-cream-50 p-4">
+                  <p className="text-xs font-black uppercase text-amber-800">
+                    Organisation active
+                  </p>
+                  <p className="mt-2 text-xl font-black text-slate-950">
+                    {overview.organizationName}
+                  </p>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                  {dataMetrics.map((metric) => (
+                    <DataMetricCard key={metric.label} metric={metric} />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="mt-5">
+                <StatePanel
+                  detail="Les compteurs apparaîtront dès que la base locale et le seed de développement seront disponibles. Le shell reste consultable sans lancer d'action."
+                  kind="empty"
+                  label="Lecture seule"
+                  title="Aucun compteur disponible pour le moment"
+                />
+              </div>
+            )}
           </section>
 
           <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -156,4 +214,53 @@ export function AdminShellPreview() {
       </div>
     </AppShell>
   );
+}
+
+function DataMetricCard({ metric }: { metric: AdminDataMetric }) {
+  return (
+    <article className="rounded-2xl border border-cream-300 bg-white p-4">
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-sm font-black uppercase text-slate-650">
+          {metric.label}
+        </p>
+        <StatusBadge label={labelForMetricState(metric.state)} tone={toneForMetricState(metric.state)} />
+      </div>
+      <p className="mt-4 text-4xl font-black text-slate-950">
+        {metric.value}
+      </p>
+      <p className="mt-2 text-sm leading-6 text-field-muted">
+        {metric.detail}
+      </p>
+    </article>
+  );
+}
+
+function labelForMetricState(state: AdminDataMetric["state"]): string {
+  if (state === "archived") {
+    return "Avec archives";
+  }
+
+  if (state === "disabled") {
+    return "Désactivés";
+  }
+
+  if (state === "muted") {
+    return "Suivi";
+  }
+
+  return "Actif";
+}
+
+function toneForMetricState(
+  state: AdminDataMetric["state"],
+): "active" | "amber" | "muted" | "soon" {
+  if (state === "archived" || state === "disabled") {
+    return "amber";
+  }
+
+  if (state === "muted") {
+    return "muted";
+  }
+
+  return "active";
 }
