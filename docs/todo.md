@@ -96,6 +96,13 @@
 - [x] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
 - [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
 
+### Backlog terrain
+
+- [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
+- [ ] `VISITS-00`: cadrer le modele visite avant schema executable.
+- [ ] `VISITS-01`: ajouter le modele Prisma minimal des visites, sans CRUD complet.
+- [ ] `TASKS-01`: ajouter le modele minimal des taches et preparer le lien avec les visites.
+
 ## EQUIPMENT-00
 
 - [x] Documenter les categories de materiel apicole ciblees.
@@ -530,6 +537,14 @@
 - [ ] La conditionner a une authentification reelle et a des roles plateforme dedies.
 - [ ] Exclure toute exposition aux utilisateurs apiculteurs ordinaires.
 - [ ] Ne pas creer de route `/platform-admin`, schema, API, secret, IA ou IoT actif.
+
+## VISITS-SHELL-01
+
+- [x] Remplacer la page shell generique `/visits` par une surface dediee aux visites.
+- [x] Cadrer le parcours mobile-first: preparer, observer, intervenir et suivre.
+- [x] Afficher les futures informations de visite sans formulaire actif.
+- [x] Documenter les limites dans `docs/visits.md`.
+- [x] Ne pas creer de schema Prisma, migration, action serveur, API publique, CRUD, analyse IA, prescription sanitaire ou lien obligatoire avec materiel/transhumance.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.

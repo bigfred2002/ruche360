@@ -70,6 +70,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `ADMIN-00` cadre le futur centre d'administration d'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier, sans implementation.
 - `AUDIT-LOG-00` cadre le futur journal d'activite metier, distinct des audits techniques et des scans de securite.
 - `ADMIN-SHELL-01` ajoute la route shell `/admin` et une entree de catalogue/desktop pour l'administration d'organisation, sans CRUD, API, auth reelle ou action active.
+- `VISITS-SHELL-01` remplace `/visits` par un shell mobile-first dedie aux visites: preparer, observer, intervenir et suivre, sans schema Prisma, formulaire actif, CRUD, IA ou prescription sanitaire.
 - `DATA-LIFECYCLE-00` cadre l'archivage, la conservation, la restauration et la suppression controlee. L'archivage et les statuts metier priment sur la suppression dure, surtout pour localisation, sanitaire, contacts, documents et historique.
 - `ADMIN-DATA-OVERVIEW-01` branche `/admin` sur des compteurs par organisation en lecture seule: membres, modules, ruchers, ruches, colonies, materiel et transhumance. Aucun export, suppression, correction automatique, API publique, IA ou IoT actif n'est ajoute.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
@@ -89,6 +90,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - Moment opportun pour introduire un partage fin par rucher.
 - Branchement futur des formulaires transhumance sur une session authentifiee.
 - Revue periodique des diagrammes Archify pour eviter la derive avec le code et les modules actifs.
+- Cadrage du modele executable des visites dans `VISITS-00` ou `VISITS-01` avant toute saisie reelle.
 
 ## Commandes utiles actuelles
 

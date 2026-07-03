@@ -46,6 +46,10 @@ Ce flux reste optionnel et ne doit pas apparaitre dans la navigation basse mobil
 4. Il crée des tâches depuis la visite si besoin.
 5. La visite est datée et attribuée.
 
+Dans `VISITS-SHELL-01`, ce flux est seulement prepare visuellement sur
+`/visits`: aucun formulaire, aucune action serveur, aucune analyse IA et aucune
+prescription sanitaire ne sont actifs.
+
 ## Flux futur: transhumance
 
 1. L'utilisateur ouvre le module transhumance ou une liste de ruches.
