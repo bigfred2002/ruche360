@@ -99,7 +99,7 @@
 ### Backlog terrain
 
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
-- [ ] `VISITS-00`: cadrer le modele visite avant schema executable.
+- [x] `VISITS-00`: cadrer le modele visite avant schema executable.
 - [ ] `VISITS-01`: ajouter le modele Prisma minimal des visites, sans CRUD complet.
 - [ ] `TASKS-01`: ajouter le modele minimal des taches et preparer le lien avec les visites.
 
@@ -545,6 +545,14 @@
 - [x] Afficher les futures informations de visite sans formulaire actif.
 - [x] Documenter les limites dans `docs/visits.md`.
 - [x] Ne pas creer de schema Prisma, migration, action serveur, API publique, CRUD, analyse IA, prescription sanitaire ou lien obligatoire avec materiel/transhumance.
+
+## VISITS-00
+
+- [x] Cadrer la visite comme observation courte, actions realisees et suites a prevoir.
+- [x] Definir les statuts cibles: brouillon, prevue, en cours, terminee, annulee et archivee.
+- [x] Cadrer les liens futurs avec taches, sanitaire, materiel et transhumance comme optionnels.
+- [x] Documenter les donnees sensibles et la strategie d'archivage.
+- [x] Ne pas creer de schema Prisma, migration, action serveur, formulaire actif, API publique, CRUD, IA ou prescription sanitaire.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.
