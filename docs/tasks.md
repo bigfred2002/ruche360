@@ -101,6 +101,7 @@ completes quand un resume suffit.
 ## Lots Suivants Possibles
 
 1. `TASKS-SHELL-01`
+   - termine comme shell statique;
    - ecran mobile-first de lecture/preparation;
    - aucun CRUD complet.
 
@@ -111,3 +112,18 @@ completes quand un resume suffit.
 3. `VISIT-TASKS-LINK-01`
    - afficher ou creer des taches depuis une visite;
    - pas d'automatisation lourde.
+
+## TASKS-SHELL-01
+
+`TASKS-SHELL-01` remplace la page shell generique `/tasks` par une surface
+mobile-first dediee aux taches.
+
+La page presente:
+
+- les statuts principaux;
+- le principe de priorite;
+- les rattachements optionnels au contexte terrain;
+- les limites avant actions serveur.
+
+Elle ne lit pas encore la base, ne cree aucune tache, ne change aucun statut,
+n'assigne personne et n'active aucune notification ou recurrence.

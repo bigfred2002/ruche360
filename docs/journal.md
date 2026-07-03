@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-03 - TASKS-SHELL-01
+
+- Remplacement de la page shell generique `/tasks` par une surface mobile-first dediee aux taches.
+- Le shell presente les statuts, priorites, rattachements optionnels et limites avant actions serveur.
+- Aucune lecture Prisma, aucun formulaire actif, aucune action serveur, aucun CRUD, aucune notification, aucune recurrence, aucune analyse IA et aucune prescription sanitaire n'ont ete ajoutes.
+
 ## 2026-07-03 - TASKS-01
 
 - Ajout du modele executable minimal des taches avec `Task`, statuts et priorites.
