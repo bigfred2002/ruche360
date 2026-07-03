@@ -76,6 +76,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `ADMIN-DATA-OVERVIEW-01` branche `/admin` sur des compteurs par organisation en lecture seule: membres, modules, ruchers, ruches, colonies, materiel et transhumance. Aucun export, suppression, correction automatique, API publique, IA ou IoT actif n'est ajoute.
 - `VISITS-01` ajoute le modele executable minimal des visites avec `Visit`, `VisitObservation`, statuts et categories d'observation, sans CRUD, action serveur, formulaire actif, IA ou prescription sanitaire.
 - `TASKS-01` ajoute le modele executable minimal des taches avec statut, priorite, echeance et liens optionnels vers rucher, ruche, colonie, visite et adhesions, sans ecran, CRUD, notification ou automatisation.
+- `TASKS-SHELL-01` remplace `/tasks` par un shell mobile-first statique pour visualiser statuts, priorites et rattachements optionnels, sans lecture Prisma, formulaire actif, action serveur, notification ou recurrence.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.

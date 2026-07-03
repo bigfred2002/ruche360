@@ -1,12 +1,5 @@
-import { ShellRoutePage } from "@/components/ShellRoutePage";
+import { TasksShellPreview } from "@/components/TasksShellPreview";
 
 export default function TasksPage() {
-  return (
-    <ShellRoutePage
-      currentPath="/tasks"
-      eyebrow="Parcours tâches"
-      highlights={["À faire", "Terrain", "Suivi"]}
-      title="Tâches"
-    />
-  );
+  return <TasksShellPreview />;
 }

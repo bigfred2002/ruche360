@@ -102,6 +102,7 @@
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.
 - [x] `VISITS-01`: ajouter le modele Prisma minimal des visites, sans CRUD complet.
 - [x] `TASKS-01`: ajouter le modele minimal des taches et preparer le lien avec les visites.
+- [x] `TASKS-SHELL-01`: ajouter un shell mobile-first statique pour les taches, sans CRUD.
 
 ## EQUIPMENT-00
 
@@ -569,6 +570,13 @@
 - [x] Relier les taches a l'organisation, au rucher, a la ruche, a la colonie, a la visite et aux adhesions createur/assignee de maniere optionnelle quand necessaire.
 - [x] Ajouter des types TypeScript domaine et helpers purs.
 - [x] Ne pas creer d'ecran, formulaire actif, action serveur, API publique, CRUD, notification, recurrence, analyse IA ou prescription sanitaire.
+
+## TASKS-SHELL-01
+
+- [x] Remplacer la page shell generique `/tasks` par une surface dediee aux taches.
+- [x] Afficher les statuts principaux, les priorites et les rattachements optionnels.
+- [x] Rappeler les limites avant actions serveur.
+- [x] Ne pas lire Prisma, creer de formulaire actif, action serveur, CRUD, notification, recurrence, analyse IA ou prescription sanitaire.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.
