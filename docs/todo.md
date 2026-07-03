@@ -94,6 +94,7 @@
 - [x] `ADMIN-DATA-OVERVIEW-01`: afficher les volumes de donnees par organisation en lecture seule.
 - [x] `AUDIT-LOG-00`: cadrer le journal d'activite metier, distinct de l'audit dependances.
 - [x] `AUDIT-LOG-01`: ajouter le modele executable minimal du journal d'activite metier.
+- [x] `AUDIT-LOG-SHELL-01`: ajouter un shell statique `/admin/journal`, sans lecture reelle.
 - [x] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
 - [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
 
@@ -531,6 +532,13 @@
 - [x] Relier le journal a l'organisation et optionnellement a l'adhesion acteur.
 - [x] Ajouter des types TypeScript domaine et helpers purs de filtrage metadata.
 - [x] Ne pas creer de route, ecran, action serveur, emission automatique d'evenements, export, API publique, IA ou IoT actif.
+
+## AUDIT-LOG-SHELL-01
+
+- [x] Ajouter la route `/admin/journal`.
+- [x] Afficher des filtres et exemples statiques d'entrees de journal.
+- [x] Rappeler les garde-fous de minimisation et de confidentialite.
+- [x] Ne pas lire Prisma, paginer, exporter, emettre des evenements, creer d'action serveur, API publique, IA ou IoT actif.
 
 ## DATA-LIFECYCLE-00
 

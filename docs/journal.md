@@ -6,6 +6,12 @@
 - Le shell presente les statuts, priorites, rattachements optionnels et limites avant actions serveur.
 - Aucune lecture Prisma, aucun formulaire actif, aucune action serveur, aucun CRUD, aucune notification, aucune recurrence, aucune analyse IA et aucune prescription sanitaire n'ont ete ajoutes.
 
+## 2026-07-03 - AUDIT-LOG-SHELL-01
+
+- Ajout de la route shell `/admin/journal` pour previsualiser la future consultation du journal d'activite metier.
+- La page presente des filtres cibles, exemples statiques et garde-fous de minimisation des donnees.
+- Aucune lecture Prisma, pagination, emission automatique d'evenements, action serveur, API publique, export, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-03 - AUDIT-LOG-01
 
 - Ajout du modele executable minimal du journal d'activite metier avec `ActivityLogEntry`.
