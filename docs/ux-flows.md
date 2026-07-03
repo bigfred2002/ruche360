@@ -54,6 +54,17 @@ Dans `VISITS-00`, le flux est cadre comme une observation courte avec actions
 realisees et suites a prevoir. Les liens avec taches, sanitaire, materiel et
 transhumance restent optionnels.
 
+## Flux futur: suivre une tache
+
+1. L'utilisateur ouvre une tache depuis le cockpit, une visite, un rucher ou une
+   ruche.
+2. Il consulte l'action courte, la priorite, l'echeance et le contexte lie.
+3. Il change le statut ou l'assigne dans un lot futur.
+4. La tache conserve le lien avec son contexte sans dupliquer toutes les donnees.
+
+Dans `TASKS-01`, ce flux n'est pas encore actif: seul le modele minimal est
+ajoute.
+
 ## Flux futur: transhumance
 
 1. L'utilisateur ouvre le module transhumance ou une liste de ruches.

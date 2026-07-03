@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-03 - TASKS-01
+
+- Ajout du modele executable minimal des taches avec `Task`, statuts et priorites.
+- Les liens vers rucher, ruche, colonie, visite, createur et assignee restent optionnels.
+- Ajout de types TypeScript domaine et de helpers purs pour les statuts.
+- Aucun ecran, formulaire actif, action serveur, API publique, CRUD, notification, recurrence, analyse IA ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-03 - VISITS-01
 
 - Ajout du modele executable minimal des visites avec `Visit` et `VisitObservation`.
