@@ -104,6 +104,7 @@
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.
 - [x] `VISITS-01`: ajouter le modele Prisma minimal des visites, sans CRUD complet.
+- [x] `VISITS-ACTIONS-01`: ajouter les actions serveur minimales des visites, sans formulaire actif.
 - [x] `TASKS-01`: ajouter le modele minimal des taches et preparer le lien avec les visites.
 - [x] `TASKS-SHELL-01`: ajouter un shell mobile-first statique pour les taches, sans CRUD.
 
@@ -587,6 +588,13 @@
 - [x] Relier les visites a l'organisation, au rucher, a la ruche, a la colonie et a l'adhesion auteur de maniere optionnelle quand necessaire.
 - [x] Ajouter des types TypeScript domaine et helpers purs.
 - [x] Ne pas creer d'ecran, formulaire actif, action serveur, API publique, CRUD, analyse IA, prescription sanitaire ou creation automatique de tache.
+
+## VISITS-ACTIONS-01
+
+- [x] Ajouter un contexte d'action visites avec controle module `visits` et permissions `visits.read` / `visits.write`.
+- [x] Ajouter les commandes serveur pour lister les visites, creer une visite, changer son statut et ajouter une observation courte.
+- [x] Verifier les rattachements optionnels a l'organisation active: rucher, ruche et colonie.
+- [x] Ne pas creer de formulaire actif, API publique, lecture dans `/visits`, creation automatique de tache, IA ou prescription sanitaire.
 
 ## TASKS-01
 

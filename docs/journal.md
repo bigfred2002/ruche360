@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-04 - VISITS-ACTIONS-01
+
+- Ajout d'un contexte d'action visites base sur l'organisation active, les modules actives et les permissions `visits.read` / `visits.write`.
+- Ajout des commandes serveur minimales pour lister les visites, creer une visite, changer son statut et ajouter une observation courte.
+- Les rattachements rucher, ruche et colonie restent optionnels et verifies dans l'organisation active.
+- Aucun formulaire actif, API publique, lecture dans `/visits`, creation automatique de tache, analyse IA ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-04 - TOOLING-DEPENDENCIES-01
 
 - Mise a jour du gestionnaire pnpm declare de `11.8.0` vers `11.9.0`, sans ajout de dependance applicative.
