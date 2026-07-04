@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-04 - TASKS-FORMS-SHELL-01
+
+- Branchement de `/tasks` en lecture sur Prisma via la session de developpement.
+- Ajout de formulaires serveur de developpement pour creer une tache, changer un statut et assigner simplement.
+- Les formulaires utilisent les ruchers, ruches, colonies et adhesion fictifs du seed local.
+- Aucun compte reel, API publique, notification, recurrence, calendrier, analyse IA ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-04 - TASKS-ACTIONS-01
 
 - Ajout d'un contexte d'action taches base sur l'organisation active, les modules actives et les permissions `tasks.read` / `tasks.write`.
