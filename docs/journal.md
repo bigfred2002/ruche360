@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-04 - TASKS-ACTIONS-01
+
+- Ajout d'un contexte d'action taches base sur l'organisation active, les modules actives et les permissions `tasks.read` / `tasks.write`.
+- Ajout des commandes serveur minimales pour lister les taches, creer une tache, changer son statut et assigner simplement un membre.
+- Les rattachements rucher, ruche, colonie, visite et adhesion assignee restent optionnels et verifies dans l'organisation active.
+- Aucun formulaire actif, API publique, notification, recurrence, calendrier, analyse IA ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-04 - VISITS-FORMS-SHELL-01
 
 - Branchement de `/visits` en lecture sur Prisma via la session de developpement.
