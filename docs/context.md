@@ -71,6 +71,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `AUDIT-LOG-00` cadre le futur journal d'activite metier, distinct des audits techniques et des scans de securite.
 - `AUDIT-LOG-01` ajoute le modele executable minimal du journal d'activite metier avec `ActivityLogEntry`, importance, cible referencee et metadata minimale non sensible. Aucun ecran, route, emission automatique d'evenements ou export n'est ajoute.
 - `AUDIT-LOG-SHELL-01` ajoute `/admin/journal` comme shell statique de consultation future, sans lecture Prisma, pagination, export ou emission automatique d'evenements.
+- `TOOLING-DEPENDENCIES-01` met a jour le gestionnaire pnpm declare vers `11.9.0` et rend explicite la regle d'un commit distinct apres chaque lot, sans changer les dependances applicatives.
 - `ADMIN-SHELL-01` ajoute la route shell `/admin` et une entree de catalogue/desktop pour l'administration d'organisation, sans CRUD, API, auth reelle ou action active.
 - `VISITS-SHELL-01` remplace `/visits` par un shell mobile-first dedie aux visites: preparer, observer, intervenir et suivre, sans schema Prisma, formulaire actif, CRUD, IA ou prescription sanitaire.
 - `VISITS-00` cadre le futur modele visite: observation courte, actions realisees, suites a prevoir, statuts simples et liens optionnels avec taches, sanitaire, materiel et transhumance.

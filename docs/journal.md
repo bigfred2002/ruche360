@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-04 - TOOLING-DEPENDENCIES-01
+
+- Mise a jour du gestionnaire pnpm declare de `11.8.0` vers `11.9.0`, sans ajout de dependance applicative.
+- Execution de `pnpm install` uniquement via Docker Compose pour verifier l'outillage.
+- Ajout dans `AGENTS.md` de la regle de commit distinct apres chaque lot termine.
+- Aucun code metier, schema Prisma, Docker, secret, auth, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-03 - TASKS-SHELL-01
 
 - Remplacement de la page shell generique `/tasks` par une surface mobile-first dediee aux taches.

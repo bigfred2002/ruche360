@@ -96,6 +96,7 @@
 - [x] `AUDIT-LOG-01`: ajouter le modele executable minimal du journal d'activite metier.
 - [x] `AUDIT-LOG-SHELL-01`: ajouter un shell statique `/admin/journal`, sans lecture reelle.
 - [x] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
+- [x] `TOOLING-DEPENDENCIES-01`: mettre a jour le gestionnaire pnpm declare et la regle de commit par lot, sans changer les dependances applicatives.
 - [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
 
 ### Backlog terrain
@@ -547,6 +548,13 @@
 - [x] Definir les regles pour donnees sanitaires, contacts, documents et localisation de ruchers.
 - [x] Cadrer la restauration ou consultation d'archives sans exposer de donnees sensibles.
 - [x] Ne pas creer de migration, job automatique, purge, export, API, IA ou IoT actif.
+
+## TOOLING-DEPENDENCIES-01
+
+- [x] Mettre a jour `packageManager` vers `pnpm@11.9.0`.
+- [x] Executer `pnpm install` uniquement via Docker Compose.
+- [x] Documenter la regle de commit distinct apres chaque lot.
+- [x] Ne pas ajouter, supprimer ou mettre a jour de dependance applicative.
 
 ## PLATFORM-ADMIN-00
 
