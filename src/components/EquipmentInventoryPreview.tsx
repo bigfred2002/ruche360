@@ -7,9 +7,11 @@ import type {
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DecorativeImage } from "./DecorativeImage";
 import { EquipmentFormsPreview } from "./EquipmentFormsPreview";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
+import { visualAssets } from "./visualAssets";
 
 type EquipmentInventoryPreviewProps = {
   inventory: EquipmentInventorySnapshot | null;
@@ -131,6 +133,13 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                 </p>
               </div>
             </div>
+            <DecorativeImage
+              alt={visualAssets.equipment.alt}
+              aspect="wide"
+              className="mt-6"
+              priority
+              src={visualAssets.equipment.src}
+            />
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">

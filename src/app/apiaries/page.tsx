@@ -1,4 +1,5 @@
 import { ShellRoutePage } from "@/components/ShellRoutePage";
+import { visualAssets } from "@/components/visualAssets";
 
 export default function ApiariesPage() {
   return (
@@ -7,6 +8,7 @@ export default function ApiariesPage() {
       eyebrow="Parcours ruchers"
       highlights={["Liste des sites", "Fiche rucher", "Modules liés"]}
       title="Ruchers"
+      visual={visualAssets.apiaries}
     />
   );
 }

@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-04 - VISUAL-ASSETS-01
+
+- Ajout de neuf images apicoles generees pour decorer le cockpit et les pages shell.
+- Creation d'un registre TypeScript `visualAssets` et d'un composant `DecorativeImage` reutilisable.
+- Integration visuelle sur le cockpit, ruchers, ruches, visites, taches, sanitaire, connaissance, materiel et transhumance.
+- Ajout d'un manifeste local des assets dans `public/images/rucher360/README.md`.
+- Aucun module metier, aucune dependance, aucun appel API, aucune authentification, aucun Prisma, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-07-04 - TASKS-ACTIONS-01
 
 - Ajout d'un contexte d'action taches base sur l'organisation active, les modules actives et les permissions `tasks.read` / `tasks.write`.

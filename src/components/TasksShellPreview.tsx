@@ -1,7 +1,9 @@
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DecorativeImage } from "./DecorativeImage";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
+import { visualAssets } from "./visualAssets";
 
 const taskLanes = [
   {
@@ -76,6 +78,13 @@ export function TasksShellPreview() {
                 </p>
               </div>
             </div>
+            <DecorativeImage
+              alt={visualAssets.tasks.alt}
+              aspect="wide"
+              className="mt-6"
+              priority
+              src={visualAssets.tasks.src}
+            />
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">

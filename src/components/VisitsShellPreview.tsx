@@ -2,9 +2,11 @@ import type { VisitStatus, VisitSummary } from "@/features/visits";
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DecorativeImage } from "./DecorativeImage";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 import { VisitsFormsPreview } from "./VisitsFormsPreview";
+import { visualAssets } from "./visualAssets";
 
 const visitSteps = [
   {
@@ -124,6 +126,13 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
                 </p>
               </div>
             </div>
+            <DecorativeImage
+              alt={visualAssets.visits.alt}
+              aspect="wide"
+              className="mt-6"
+              priority
+              src={visualAssets.visits.src}
+            />
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">
