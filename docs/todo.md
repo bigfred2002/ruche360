@@ -96,6 +96,7 @@
 - [x] `AUDIT-LOG-01`: ajouter le modele executable minimal du journal d'activite metier.
 - [x] `AUDIT-LOG-SHELL-01`: ajouter un shell statique `/admin/journal`, sans lecture reelle.
 - [x] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
+- [x] `TOOLING-DEPENDENCIES-01`: mettre a jour le gestionnaire pnpm declare et la regle de commit par lot, sans changer les dependances applicatives.
 - [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
 
 ### Backlog terrain
@@ -103,8 +104,11 @@
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.
 - [x] `VISITS-01`: ajouter le modele Prisma minimal des visites, sans CRUD complet.
+- [x] `VISITS-ACTIONS-01`: ajouter les actions serveur minimales des visites, sans formulaire actif.
+- [x] `VISITS-FORMS-SHELL-01`: brancher `/visits` sur la lecture Prisma et des formulaires serveur de developpement.
 - [x] `TASKS-01`: ajouter le modele minimal des taches et preparer le lien avec les visites.
 - [x] `TASKS-SHELL-01`: ajouter un shell mobile-first statique pour les taches, sans CRUD.
+- [x] `TASKS-ACTIONS-01`: ajouter les actions serveur minimales des taches, sans notification ni recurrence.
 
 ## EQUIPMENT-00
 
@@ -548,6 +552,13 @@
 - [x] Cadrer la restauration ou consultation d'archives sans exposer de donnees sensibles.
 - [x] Ne pas creer de migration, job automatique, purge, export, API, IA ou IoT actif.
 
+## TOOLING-DEPENDENCIES-01
+
+- [x] Mettre a jour `packageManager` vers `pnpm@11.9.0`.
+- [x] Executer `pnpm install` uniquement via Docker Compose.
+- [x] Documenter la regle de commit distinct apres chaque lot.
+- [x] Ne pas ajouter, supprimer ou mettre a jour de dependance applicative.
+
 ## PLATFORM-ADMIN-00
 
 - [ ] Cadrer l'administration plateforme comme futur lointain.
@@ -580,6 +591,20 @@
 - [x] Ajouter des types TypeScript domaine et helpers purs.
 - [x] Ne pas creer d'ecran, formulaire actif, action serveur, API publique, CRUD, analyse IA, prescription sanitaire ou creation automatique de tache.
 
+## VISITS-ACTIONS-01
+
+- [x] Ajouter un contexte d'action visites avec controle module `visits` et permissions `visits.read` / `visits.write`.
+- [x] Ajouter les commandes serveur pour lister les visites, creer une visite, changer son statut et ajouter une observation courte.
+- [x] Verifier les rattachements optionnels a l'organisation active: rucher, ruche et colonie.
+- [x] Ne pas creer de formulaire actif, API publique, lecture dans `/visits`, creation automatique de tache, IA ou prescription sanitaire.
+
+## VISITS-FORMS-SHELL-01
+
+- [x] Brancher `/visits` en lecture Prisma via la session de developpement.
+- [x] Ajouter des formulaires serveur de developpement pour creer une visite, ajouter une observation et changer un statut.
+- [x] Limiter les choix aux ruchers, ruches et colonies fictifs du seed local.
+- [x] Ne pas ajouter d'authentification reelle, API publique, creation automatique de tache, analyse IA ou prescription sanitaire.
+
 ## TASKS-01
 
 - [x] Ajouter les enums Prisma de statut et priorite de tache.
@@ -594,6 +619,13 @@
 - [x] Afficher les statuts principaux, les priorites et les rattachements optionnels.
 - [x] Rappeler les limites avant actions serveur.
 - [x] Ne pas lire Prisma, creer de formulaire actif, action serveur, CRUD, notification, recurrence, analyse IA ou prescription sanitaire.
+
+## TASKS-ACTIONS-01
+
+- [x] Ajouter un contexte d'action taches avec controle module `tasks` et permissions `tasks.read` / `tasks.write`.
+- [x] Ajouter les commandes serveur pour lister les taches, creer une tache, changer son statut et assigner simplement un membre.
+- [x] Verifier les rattachements optionnels a l'organisation active: rucher, ruche, colonie, visite et adhesion assignee.
+- [x] Ne pas creer de formulaire actif, API publique, notification, recurrence, calendrier, analyse IA ou prescription sanitaire.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.

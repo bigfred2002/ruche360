@@ -71,14 +71,18 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `AUDIT-LOG-00` cadre le futur journal d'activite metier, distinct des audits techniques et des scans de securite.
 - `AUDIT-LOG-01` ajoute le modele executable minimal du journal d'activite metier avec `ActivityLogEntry`, importance, cible referencee et metadata minimale non sensible. Aucun ecran, route, emission automatique d'evenements ou export n'est ajoute.
 - `AUDIT-LOG-SHELL-01` ajoute `/admin/journal` comme shell statique de consultation future, sans lecture Prisma, pagination, export ou emission automatique d'evenements.
+- `TOOLING-DEPENDENCIES-01` met a jour le gestionnaire pnpm declare vers `11.9.0` et rend explicite la regle d'un commit distinct apres chaque lot, sans changer les dependances applicatives.
 - `ADMIN-SHELL-01` ajoute la route shell `/admin` et une entree de catalogue/desktop pour l'administration d'organisation, sans CRUD, API, auth reelle ou action active.
 - `VISITS-SHELL-01` remplace `/visits` par un shell mobile-first dedie aux visites: preparer, observer, intervenir et suivre, sans schema Prisma, formulaire actif, CRUD, IA ou prescription sanitaire.
 - `VISITS-00` cadre le futur modele visite: observation courte, actions realisees, suites a prevoir, statuts simples et liens optionnels avec taches, sanitaire, materiel et transhumance.
 - `DATA-LIFECYCLE-00` cadre l'archivage, la conservation, la restauration et la suppression controlee. L'archivage et les statuts metier priment sur la suppression dure, surtout pour localisation, sanitaire, contacts, documents et historique.
 - `ADMIN-DATA-OVERVIEW-01` branche `/admin` sur des compteurs par organisation en lecture seule: membres, modules, ruchers, ruches, colonies, materiel et transhumance. Aucun export, suppression, correction automatique, API publique, IA ou IoT actif n'est ajoute.
 - `VISITS-01` ajoute le modele executable minimal des visites avec `Visit`, `VisitObservation`, statuts et categories d'observation, sans CRUD, action serveur, formulaire actif, IA ou prescription sanitaire.
+- `VISITS-ACTIONS-01` ajoute les actions serveur minimales des visites: lecture, creation de visite, changement de statut et ajout d'observation courte. Aucun formulaire actif, API publique, IA, prescription sanitaire ou creation automatique de tache n'est ajoute.
+- `VISITS-FORMS-SHELL-01` branche `/visits` en lecture sur Prisma via la session de developpement et ajoute des formulaires serveur de developpement pour creer une visite, ajouter une observation et changer un statut, sans auth reelle, API publique, IA ou prescription sanitaire.
 - `TASKS-01` ajoute le modele executable minimal des taches avec statut, priorite, echeance et liens optionnels vers rucher, ruche, colonie, visite et adhesions, sans ecran, CRUD, notification ou automatisation.
 - `TASKS-SHELL-01` remplace `/tasks` par un shell mobile-first statique pour visualiser statuts, priorites et rattachements optionnels, sans lecture Prisma, formulaire actif, action serveur, notification ou recurrence.
+- `TASKS-ACTIONS-01` ajoute les actions serveur minimales des taches: lecture, creation, changement de statut et assignation simple, sans formulaire actif, notification, recurrence, calendrier, IA ou prescription sanitaire.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.

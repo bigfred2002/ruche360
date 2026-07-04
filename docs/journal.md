@@ -1,5 +1,33 @@
 # Journal
 
+## 2026-07-04 - TASKS-ACTIONS-01
+
+- Ajout d'un contexte d'action taches base sur l'organisation active, les modules actives et les permissions `tasks.read` / `tasks.write`.
+- Ajout des commandes serveur minimales pour lister les taches, creer une tache, changer son statut et assigner simplement un membre.
+- Les rattachements rucher, ruche, colonie, visite et adhesion assignee restent optionnels et verifies dans l'organisation active.
+- Aucun formulaire actif, API publique, notification, recurrence, calendrier, analyse IA ou prescription sanitaire n'a ete ajoute.
+
+## 2026-07-04 - VISITS-FORMS-SHELL-01
+
+- Branchement de `/visits` en lecture sur Prisma via la session de developpement.
+- Ajout de formulaires serveur de developpement pour creer une visite, ajouter une observation courte et changer un statut.
+- Les formulaires utilisent les ruchers, ruches et colonies fictifs du seed local.
+- Aucun compte reel, API publique, creation automatique de tache, analyse IA ou prescription sanitaire n'a ete ajoute.
+
+## 2026-07-04 - VISITS-ACTIONS-01
+
+- Ajout d'un contexte d'action visites base sur l'organisation active, les modules actives et les permissions `visits.read` / `visits.write`.
+- Ajout des commandes serveur minimales pour lister les visites, creer une visite, changer son statut et ajouter une observation courte.
+- Les rattachements rucher, ruche et colonie restent optionnels et verifies dans l'organisation active.
+- Aucun formulaire actif, API publique, lecture dans `/visits`, creation automatique de tache, analyse IA ou prescription sanitaire n'a ete ajoute.
+
+## 2026-07-04 - TOOLING-DEPENDENCIES-01
+
+- Mise a jour du gestionnaire pnpm declare de `11.8.0` vers `11.9.0`, sans ajout de dependance applicative.
+- Execution de `pnpm install` uniquement via Docker Compose pour verifier l'outillage.
+- Ajout dans `AGENTS.md` de la regle de commit distinct apres chaque lot termine.
+- Aucun code metier, schema Prisma, Docker, secret, auth, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-03 - TASKS-SHELL-01
 
 - Remplacement de la page shell generique `/tasks` par une surface mobile-first dediee aux taches.

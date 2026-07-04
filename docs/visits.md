@@ -199,8 +199,40 @@ Ce lot n'ajoute pas d'ecran, formulaire actif, action serveur, API publique,
 analyse IA, prescription sanitaire, creation automatique de tache ou lien
 obligatoire avec le materiel.
 
+## VISITS-ACTIONS-01
+
+`VISITS-ACTIONS-01` ajoute les commandes serveur minimales du module visites:
+
+- lister les visites de l'organisation active;
+- creer une visite en brouillon, prevue ou en cours;
+- changer le statut d'une visite encore editable;
+- ajouter une observation courte.
+
+Les actions verifient le module `visits`, les permissions `visits.read` et
+`visits.write`, ainsi que l'appartenance optionnelle du rucher, de la ruche et
+de la colonie a l'organisation active.
+
+Ce lot ne branche pas encore `/visits` sur Prisma, ne cree pas de formulaire
+actif, ne cree aucune tache automatiquement et n'ajoute ni analyse IA ni
+prescription sanitaire.
+
+## VISITS-FORMS-SHELL-01
+
+`VISITS-FORMS-SHELL-01` branche la page `/visits` sur la session de
+developpement:
+
+- lecture des visites depuis PostgreSQL avec Prisma;
+- formulaire de creation de visite;
+- formulaire d'ajout d'observation courte;
+- formulaire de changement de statut.
+
+Les formulaires restent limites au developpement local et aux donnees fictives
+du seed. Ils n'introduisent pas d'authentification reelle, d'API publique, de
+creation automatique de tache, de diagnostic sanitaire, d'analyse IA ou de
+prescription.
+
 3. `VISITS-FORMS-SHELL-01`
-   - formulaire de developpement non operationnel ou limite;
+   - termine comme formulaires serveur de developpement limites;
    - aucun automatisme sanitaire.
 
 4. `TASKS-01`

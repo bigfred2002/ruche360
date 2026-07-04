@@ -127,3 +127,20 @@ La page presente:
 
 Elle ne lit pas encore la base, ne cree aucune tache, ne change aucun statut,
 n'assigne personne et n'active aucune notification ou recurrence.
+
+## TASKS-ACTIONS-01
+
+`TASKS-ACTIONS-01` ajoute les commandes serveur minimales du module taches:
+
+- lister les taches de l'organisation active;
+- creer une tache courte;
+- changer le statut d'une tache encore editable;
+- assigner ou desassigner simplement une adhesion membre.
+
+Les actions verifient le module `tasks`, les permissions `tasks.read` et
+`tasks.write`, ainsi que l'appartenance optionnelle du rucher, de la ruche, de
+la colonie, de la visite et de l'adhesion assignee a l'organisation active.
+
+Ce lot ne branche pas encore `/tasks` sur Prisma, ne cree pas de formulaire
+actif, n'ajoute aucune notification, recurrence, vue calendrier, analyse IA ou
+prescription sanitaire.
