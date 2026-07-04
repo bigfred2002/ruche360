@@ -216,8 +216,23 @@ Ce lot ne branche pas encore `/visits` sur Prisma, ne cree pas de formulaire
 actif, ne cree aucune tache automatiquement et n'ajoute ni analyse IA ni
 prescription sanitaire.
 
+## VISITS-FORMS-SHELL-01
+
+`VISITS-FORMS-SHELL-01` branche la page `/visits` sur la session de
+developpement:
+
+- lecture des visites depuis PostgreSQL avec Prisma;
+- formulaire de creation de visite;
+- formulaire d'ajout d'observation courte;
+- formulaire de changement de statut.
+
+Les formulaires restent limites au developpement local et aux donnees fictives
+du seed. Ils n'introduisent pas d'authentification reelle, d'API publique, de
+creation automatique de tache, de diagnostic sanitaire, d'analyse IA ou de
+prescription.
+
 3. `VISITS-FORMS-SHELL-01`
-   - formulaire de developpement non operationnel ou limite;
+   - termine comme formulaires serveur de developpement limites;
    - aucun automatisme sanitaire.
 
 4. `TASKS-01`

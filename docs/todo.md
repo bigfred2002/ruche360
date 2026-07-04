@@ -105,6 +105,7 @@
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.
 - [x] `VISITS-01`: ajouter le modele Prisma minimal des visites, sans CRUD complet.
 - [x] `VISITS-ACTIONS-01`: ajouter les actions serveur minimales des visites, sans formulaire actif.
+- [x] `VISITS-FORMS-SHELL-01`: brancher `/visits` sur la lecture Prisma et des formulaires serveur de developpement.
 - [x] `TASKS-01`: ajouter le modele minimal des taches et preparer le lien avec les visites.
 - [x] `TASKS-SHELL-01`: ajouter un shell mobile-first statique pour les taches, sans CRUD.
 
@@ -595,6 +596,13 @@
 - [x] Ajouter les commandes serveur pour lister les visites, creer une visite, changer son statut et ajouter une observation courte.
 - [x] Verifier les rattachements optionnels a l'organisation active: rucher, ruche et colonie.
 - [x] Ne pas creer de formulaire actif, API publique, lecture dans `/visits`, creation automatique de tache, IA ou prescription sanitaire.
+
+## VISITS-FORMS-SHELL-01
+
+- [x] Brancher `/visits` en lecture Prisma via la session de developpement.
+- [x] Ajouter des formulaires serveur de developpement pour creer une visite, ajouter une observation et changer un statut.
+- [x] Limiter les choix aux ruchers, ruches et colonies fictifs du seed local.
+- [x] Ne pas ajouter d'authentification reelle, API publique, creation automatique de tache, analyse IA ou prescription sanitaire.
 
 ## TASKS-01
 

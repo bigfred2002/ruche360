@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-04 - VISITS-FORMS-SHELL-01
+
+- Branchement de `/visits` en lecture sur Prisma via la session de developpement.
+- Ajout de formulaires serveur de developpement pour creer une visite, ajouter une observation courte et changer un statut.
+- Les formulaires utilisent les ruchers, ruches et colonies fictifs du seed local.
+- Aucun compte reel, API publique, creation automatique de tache, analyse IA ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-04 - VISITS-ACTIONS-01
 
 - Ajout d'un contexte d'action visites base sur l'organisation active, les modules actives et les permissions `visits.read` / `visits.write`.

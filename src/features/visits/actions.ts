@@ -1,6 +1,9 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import type { ApplicationSession } from "@/features/auth";
+import { createDevelopmentApplicationSession } from "@/features/auth";
 
 import type { VisitActionContext } from "./access";
 import { createVisitActionContextFromSession } from "./session-context";
@@ -62,4 +65,64 @@ export async function addVisitObservationForSessionAction(
   input: AddVisitObservationInput,
 ) {
   return addVisitObservation(createVisitActionContextFromSession(session), input);
+}
+
+export async function createDevelopmentVisitFormAction(formData: FormData) {
+  const session = createDevelopmentApplicationSession();
+
+  await createVisitForSessionAction(session, {
+    apiaryId: readOptionalFormText(formData, "apiaryId"),
+    hiveId: readOptionalFormText(formData, "hiveId"),
+    colonyId: readOptionalFormText(formData, "colonyId"),
+    status: readOptionalFormText(formData, "status"),
+    visitedAt: readOptionalFormText(formData, "visitedAt"),
+    objective: readOptionalFormText(formData, "objective"),
+    weatherSummary: readOptionalFormText(formData, "weatherSummary"),
+    colonyStrength: readOptionalFormText(formData, "colonyStrength"),
+    notes: readOptionalFormText(formData, "notes"),
+    followUpSummary: readOptionalFormText(formData, "followUpSummary"),
+  });
+
+  revalidatePath("/visits");
+}
+
+export async function updateDevelopmentVisitStatusFormAction(formData: FormData) {
+  const session = createDevelopmentApplicationSession();
+
+  await updateVisitStatusForSessionAction(session, {
+    visitId: readFormText(formData, "visitId"),
+    status: readFormText(formData, "status"),
+  });
+
+  revalidatePath("/visits");
+}
+
+export async function addDevelopmentVisitObservationFormAction(formData: FormData) {
+  const session = createDevelopmentApplicationSession();
+
+  await addVisitObservationForSessionAction(session, {
+    visitId: readFormText(formData, "visitId"),
+    category: readFormText(formData, "category"),
+    label: readFormText(formData, "label"),
+    value: readOptionalFormText(formData, "value"),
+    notes: readOptionalFormText(formData, "notes"),
+  });
+
+  revalidatePath("/visits");
+}
+
+function readFormText(formData: FormData, key: string) {
+  const value = formData.get(key);
+
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value;
+}
+
+function readOptionalFormText(formData: FormData, key: string) {
+  const value = readFormText(formData, key).trim();
+
+  return value.length > 0 ? value : null;
 }
