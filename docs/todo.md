@@ -23,6 +23,9 @@
 
 ### Analyse lots dynamiques UI/applicatifs
 
+- [ ] `UX-DENSITY-01`: alléger le cockpit et les premières sections mobiles sans changer les modules ni les données.
+- [ ] `UX-MODULE-PAGES-01`: harmoniser les pages module avec un gabarit plus progressif et moins répétitif.
+- [ ] `UX-COPY-01`: raccourcir les textes UI et déplacer les explications longues vers la documentation.
 - [x] `APP-NAVIGATION-ROUTES-01`: activer la navigation vers des routes shell statiques, sans logique métier.
 - [x] `DESIGN-DYNAMIC-SHELL-01`: rendre le shell plus vivant sans Figma, avec cockpit modernise, micro-interactions sobres, etats visuels et meilleure hierarchie mobile/desktop.
 - [x] `MODULES-NAVIGATION-01`: brancher la navigation mobile/desktop et le cockpit sur la registry de modules, sans CRUD metier.

@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-05 - VISUAL-ASSETS-01 iteration ergonomie
+
+- Ajout de quatre visuels complementaires pour gouvernance, parcours, onboarding leger et maintenance materiel.
+- Integration des nouveaux assets dans `/admin`, les parcours responsive, `/onboarding` et `/equipment`.
+- Ajout de `docs/ux-ergonomic-review.md` pour analyser la surcharge d'information et proposer des lots UX dedies.
+- Ajout dans la todo des lots `UX-DENSITY-01`, `UX-MODULE-PAGES-01` et `UX-COPY-01`.
+- Aucun module metier, aucune dependance, aucun Docker, aucune auth, aucun Prisma, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-07-04 - VISUAL-ASSETS-01
 
 - Ajout de neuf images apicoles generees pour decorer le cockpit et les pages shell.

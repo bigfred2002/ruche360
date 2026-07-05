@@ -15,6 +15,10 @@ logos tiers, de texte utilisateur ou d'information de production.
 - `module-transhumance-banner.png` - page transhumance, 1672 x 941.
 - `module-health-observation.png` - page sanitaire et connaissance, 1448 x 1086.
 - `module-hive-square.png` - vignette secondaire ruche, 1254 x 1254.
+- `module-governance-docs.png` - gouvernance et administration, 1448 x 1086.
+- `module-workflow-planning.png` - parcours et planification, 1448 x 1086.
+- `hero-apiary-light.png` - onboarding et respiration visuelle, 1672 x 941.
+- `module-maintenance-tools.png` - maintenance materiel, 1672 x 941.
 
 ## Regles d'utilisation
 

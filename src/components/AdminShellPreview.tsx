@@ -6,8 +6,10 @@ import {
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DecorativeImage } from "./DecorativeImage";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
+import { visualAssets } from "./visualAssets";
 
 type AdminShellPreviewProps = {
   overview: AdminDataOverview | null;
@@ -97,6 +99,13 @@ export function AdminShellPreview({ overview }: AdminShellPreviewProps) {
                 </p>
               </div>
             </div>
+            <DecorativeImage
+              alt={visualAssets.governance.alt}
+              aspect="card"
+              className="mt-6"
+              priority
+              src={visualAssets.governance.src}
+            />
           </section>
 
           <section className="surface-panel rounded-3xl p-5 sm:p-6">

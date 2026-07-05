@@ -67,6 +67,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `ARCHIFY-DOCS-00` cadre Archify comme documentation visuelle complementaire: prompts sources versionnes, exports SVG futurs et aucune dependance applicative.
 - `ARCHIFY-DIAGRAMS-01` ajoute les premiers SVG de documentation visuelle: architecture logique, architecture technique, workflow agentique, flux de donnees sensibles et cycle transhumance.
 - `DOCS-ARCHITECTURE-SYNC-01` realigne README, architecture, cartographie des modules, modele de donnees, todo, contexte et journal apres les lots data, materiel, transhumance et Archify.
+- `VISUAL-ASSETS-01` ajoute des visuels apicoles generes comme habillage statique du shell et documente que la densite des pages doit etre traitee par des lots UX dedies, sans melanger assets, navigation et logique metier.
 - `ADMIN-00` cadre le futur centre d'administration d'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier, sans implementation.
 - `AUDIT-LOG-00` cadre le futur journal d'activite metier, distinct des audits techniques et des scans de securite.
 - `AUDIT-LOG-01` ajoute le modele executable minimal du journal d'activite metier avec `ActivityLogEntry`, importance, cible referencee et metadata minimale non sensible. Aucun ecran, route, emission automatique d'evenements ou export n'est ajoute.
