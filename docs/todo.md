@@ -23,6 +23,7 @@
 
 ### Analyse lots dynamiques UI/applicatifs
 
+- [x] `UX-RULES-SKILLS-01`: formaliser le référentiel UX, les skills d'audit et les règles agentiques avant les lots UX.
 - [ ] `UX-DENSITY-01`: alléger le cockpit et les premières sections mobiles sans changer les modules ni les données.
 - [ ] `UX-MODULE-PAGES-01`: harmoniser les pages module avec un gabarit plus progressif et moins répétitif.
 - [ ] `UX-COPY-01`: raccourcir les textes UI et déplacer les explications longues vers la documentation.
