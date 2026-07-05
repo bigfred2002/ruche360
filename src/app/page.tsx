@@ -1,6 +1,9 @@
+import Image from "next/image";
+
 import { AppShell } from "@/components/AppShell";
 import { createAppNavigation } from "@/components/appNavigation";
 import { DashboardCard } from "@/components/DashboardCard";
+import { DecorativeImage } from "@/components/DecorativeImage";
 import { DynamicStatesPreview } from "@/components/DynamicStatesPreview";
 import { MemberModulePreferencesPreview } from "@/components/MemberModulePreferencesPreview";
 import { ModuleCard } from "@/components/ModuleCard";
@@ -16,6 +19,7 @@ import {
   activeUserContextScenario,
   userContextScenarios,
 } from "@/components/userContextScenarios";
+import { visualAssets } from "@/components/visualAssets";
 import {
   createEnabledModuleSet,
   createPermissionSet,
@@ -104,8 +108,17 @@ export default function Home() {
             <SeasonRhythmPreview />
 
             <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-              <article className="apiary-visual min-h-72 overflow-hidden rounded-3xl p-6 text-white shadow-field-lg">
-                <div className="flex h-full min-h-60 flex-col justify-end">
+              <article className="relative min-h-72 overflow-hidden rounded-3xl text-white shadow-field-lg">
+                <Image
+                  alt={visualAssets.cockpit.alt}
+                  className="object-cover"
+                  fill
+                  priority
+                  sizes="(min-width: 1280px) 48rem, (min-width: 1024px) 58vw, 100vw"
+                  src={visualAssets.cockpit.src}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/22 to-transparent" />
+                <div className="relative flex h-full min-h-72 flex-col justify-end p-6">
                   <StatusBadge label="Inspirations du jour" tone="amber" />
                   <h2 className="mt-5 max-w-xl text-3xl font-black leading-tight sm:text-4xl">
                     Observer vite, décider calmement.
@@ -272,6 +285,12 @@ export default function Home() {
             </section>
 
             <section className="overflow-hidden rounded-3xl bg-gradient-amber p-6 text-white shadow-amber">
+              <DecorativeImage
+                alt={visualAssets.hiveSquare.alt}
+                aspect="square"
+                className="mb-5 border-white/20 shadow-none"
+                src={visualAssets.hiveSquare.src}
+              />
               <p className="text-sm font-black uppercase tracking-wide text-amber-100">
                 Preview
               </p>

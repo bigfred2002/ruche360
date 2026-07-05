@@ -1,7 +1,9 @@
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DecorativeImage } from "./DecorativeImage";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
+import { visualAssets } from "./visualAssets";
 
 const onboardingSteps = [
   {
@@ -44,6 +46,13 @@ export function ProfileOnboardingPreview() {
               simplement. Il ne crée aucun compte, aucune organisation réelle et
               aucune donnée persistée.
             </p>
+            <DecorativeImage
+              alt={visualAssets.heroLight.alt}
+              aspect="wide"
+              className="mt-6"
+              priority
+              src={visualAssets.heroLight.src}
+            />
           </section>
 
           <section className="grid gap-4 md:grid-cols-2">

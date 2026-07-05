@@ -1,6 +1,9 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import type { ApplicationSession } from "@/features/auth";
+import { createDevelopmentApplicationSession } from "@/features/auth";
 
 import type { TaskActionContext } from "./access";
 import { createTaskActionContextFromSession } from "./session-context";
@@ -62,4 +65,61 @@ export async function assignTaskForSessionAction(
   input: AssignTaskInput,
 ) {
   return assignTask(createTaskActionContextFromSession(session), input);
+}
+
+export async function createDevelopmentTaskFormAction(formData: FormData) {
+  const session = createDevelopmentApplicationSession();
+
+  await createTaskForSessionAction(session, {
+    title: readFormText(formData, "title"),
+    description: readOptionalFormText(formData, "description"),
+    apiaryId: readOptionalFormText(formData, "apiaryId"),
+    hiveId: readOptionalFormText(formData, "hiveId"),
+    colonyId: readOptionalFormText(formData, "colonyId"),
+    visitId: readOptionalFormText(formData, "visitId"),
+    assignedToMembershipId: readOptionalFormText(formData, "assignedToMembershipId"),
+    status: readOptionalFormText(formData, "status"),
+    priority: readOptionalFormText(formData, "priority"),
+    dueAt: readOptionalFormText(formData, "dueAt"),
+  });
+
+  revalidatePath("/tasks");
+}
+
+export async function updateDevelopmentTaskStatusFormAction(formData: FormData) {
+  const session = createDevelopmentApplicationSession();
+
+  await updateTaskStatusForSessionAction(session, {
+    taskId: readFormText(formData, "taskId"),
+    status: readFormText(formData, "status"),
+  });
+
+  revalidatePath("/tasks");
+}
+
+export async function assignDevelopmentTaskFormAction(formData: FormData) {
+  const session = createDevelopmentApplicationSession();
+
+  await assignTaskForSessionAction(session, {
+    taskId: readFormText(formData, "taskId"),
+    assignedToMembershipId: readOptionalFormText(formData, "assignedToMembershipId"),
+  });
+
+  revalidatePath("/tasks");
+}
+
+function readFormText(formData: FormData, key: string) {
+  const value = formData.get(key);
+
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value;
+}
+
+function readOptionalFormText(formData: FormData, key: string) {
+  const value = readFormText(formData, key).trim();
+
+  return value.length > 0 ? value : null;
 }

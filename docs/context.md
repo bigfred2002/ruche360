@@ -68,6 +68,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `ARCHIFY-DIAGRAMS-01` ajoute les premiers SVG de documentation visuelle: architecture logique, architecture technique, workflow agentique, flux de donnees sensibles et cycle transhumance.
 - `DOCS-ARCHITECTURE-SYNC-01` realigne README, architecture, cartographie des modules, modele de donnees, todo, contexte et journal apres les lots data, materiel, transhumance et Archify.
 - `UX-RULES-SKILLS-01` formalise le référentiel ergonomique et les skills `AUDIT_INTERFACE`, `RESPONSIVE_ADAPTATION` et `ACCESSIBILITY_CHECK` avant les lots UX applicatifs.
+- `VISUAL-ASSETS-01` ajoute des visuels apicoles generes comme habillage statique du shell et documente que la densite des pages doit etre traitee par des lots UX dedies, sans melanger assets, navigation et logique metier.
 - `ADMIN-00` cadre le futur centre d'administration d'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier, sans implementation.
 - `AUDIT-LOG-00` cadre le futur journal d'activite metier, distinct des audits techniques et des scans de securite.
 - `AUDIT-LOG-01` ajoute le modele executable minimal du journal d'activite metier avec `ActivityLogEntry`, importance, cible referencee et metadata minimale non sensible. Aucun ecran, route, emission automatique d'evenements ou export n'est ajoute.
@@ -84,6 +85,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `TASKS-01` ajoute le modele executable minimal des taches avec statut, priorite, echeance et liens optionnels vers rucher, ruche, colonie, visite et adhesions, sans ecran, CRUD, notification ou automatisation.
 - `TASKS-SHELL-01` remplace `/tasks` par un shell mobile-first statique pour visualiser statuts, priorites et rattachements optionnels, sans lecture Prisma, formulaire actif, action serveur, notification ou recurrence.
 - `TASKS-ACTIONS-01` ajoute les actions serveur minimales des taches: lecture, creation, changement de statut et assignation simple, sans formulaire actif, notification, recurrence, calendrier, IA ou prescription sanitaire.
+- `TASKS-FORMS-SHELL-01` branche `/tasks` en lecture sur Prisma via la session de developpement et ajoute des formulaires serveur de developpement pour creer une tache, changer un statut et assigner simplement, sans auth reelle, API publique, notification, recurrence ou calendrier.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
