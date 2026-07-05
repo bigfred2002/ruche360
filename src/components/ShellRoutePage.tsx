@@ -1,5 +1,6 @@
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DecorativeImage } from "./DecorativeImage";
 import { DynamicStatesPreview } from "./DynamicStatesPreview";
 import { ResponsiveWorkflowsPreview } from "./ResponsiveWorkflowsPreview";
 import { StatePanel } from "./StatePanel";
@@ -10,6 +11,11 @@ type ShellRoutePageProps = {
   eyebrow: string;
   highlights: string[];
   title: string;
+  visual?: {
+    alt: string;
+    aspect?: "wide" | "card" | "square";
+    src: string;
+  };
 };
 
 export function ShellRoutePage({
@@ -17,6 +23,7 @@ export function ShellRoutePage({
   eyebrow,
   highlights,
   title,
+  visual,
 }: ShellRoutePageProps) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation(currentPath);
@@ -54,6 +61,15 @@ export function ShellRoutePage({
                 </p>
               </div>
             </div>
+            {visual ? (
+              <DecorativeImage
+                alt={visual.alt}
+                aspect={visual.aspect}
+                className="mt-6"
+                priority
+                src={visual.src}
+              />
+            ) : null}
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">

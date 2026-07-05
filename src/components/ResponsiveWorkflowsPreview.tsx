@@ -1,4 +1,6 @@
+import { DecorativeImage } from "./DecorativeImage";
 import { StatusBadge } from "./StatusBadge";
+import { visualAssets } from "./visualAssets";
 
 type WorkflowStep = {
   label: string;
@@ -90,6 +92,13 @@ export function ResponsiveWorkflowsPreview() {
         </div>
         <StatusBadge label="Workflow statique" tone="preview" />
       </div>
+
+      <DecorativeImage
+        alt={visualAssets.workflow.alt}
+        aspect="wide"
+        className="mt-5"
+        src={visualAssets.workflow.src}
+      />
 
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
         {workflowPreviews.map((workflow) => (

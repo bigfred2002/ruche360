@@ -1,5 +1,21 @@
 # Journal
 
+## 2026-07-05 - VISUAL-ASSETS-01 iteration ergonomie
+
+- Ajout de quatre visuels complementaires pour gouvernance, parcours, onboarding leger et maintenance materiel.
+- Integration des nouveaux assets dans `/admin`, les parcours responsive, `/onboarding` et `/equipment`.
+- Ajout de `docs/ux-ergonomic-review.md` pour analyser la surcharge d'information et proposer des lots UX dedies.
+- Ajout dans la todo des lots `UX-DENSITY-01`, `UX-MODULE-PAGES-01` et `UX-COPY-01`.
+- Aucun module metier, aucune dependance, aucun Docker, aucune auth, aucun Prisma, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
+## 2026-07-04 - VISUAL-ASSETS-01
+
+- Ajout de neuf images apicoles generees pour decorer le cockpit et les pages shell.
+- Creation d'un registre TypeScript `visualAssets` et d'un composant `DecorativeImage` reutilisable.
+- Integration visuelle sur le cockpit, ruchers, ruches, visites, taches, sanitaire, connaissance, materiel et transhumance.
+- Ajout d'un manifeste local des assets dans `public/images/rucher360/README.md`.
+- Aucun module metier, aucune dependance, aucun appel API, aucune authentification, aucun Prisma, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-07-04 - TASKS-FORMS-SHELL-01
 
 - Branchement de `/tasks` en lecture sur Prisma via la session de developpement.

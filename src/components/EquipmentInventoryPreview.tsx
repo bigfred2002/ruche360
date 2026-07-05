@@ -7,9 +7,11 @@ import type {
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DecorativeImage } from "./DecorativeImage";
 import { EquipmentFormsPreview } from "./EquipmentFormsPreview";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
+import { visualAssets } from "./visualAssets";
 
 type EquipmentInventoryPreviewProps = {
   inventory: EquipmentInventorySnapshot | null;
@@ -131,6 +133,13 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                 </p>
               </div>
             </div>
+            <DecorativeImage
+              alt={visualAssets.equipment.alt}
+              aspect="wide"
+              className="mt-6"
+              priority
+              src={visualAssets.equipment.src}
+            />
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">
@@ -285,6 +294,12 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
             </div>
 
             <aside className="surface-muted rounded-3xl p-5">
+              <DecorativeImage
+                alt={visualAssets.maintenance.alt}
+                aspect="wide"
+                className="mb-5"
+                src={visualAssets.maintenance.src}
+              />
               <p className="section-kicker">Maintenance</p>
               <h2 className="mt-2 text-2xl font-black text-slate-950">
                 Points à revoir

@@ -10,9 +10,11 @@ import type {
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DecorativeImage } from "./DecorativeImage";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 import { TranshumanceFormsPreview } from "./TranshumanceFormsPreview";
+import { visualAssets } from "./visualAssets";
 
 const apiariesById = {
   "dev-apiary-home": "Rucher école",
@@ -113,6 +115,13 @@ export function TranshumanceShellPreview({
                 </p>
               </div>
             </div>
+            <DecorativeImage
+              alt={visualAssets.transhumance.alt}
+              aspect="wide"
+              className="mt-6"
+              priority
+              src={visualAssets.transhumance.src}
+            />
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">
