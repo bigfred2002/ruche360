@@ -112,6 +112,7 @@
 - [x] `TASKS-01`: ajouter le modele minimal des taches et preparer le lien avec les visites.
 - [x] `TASKS-SHELL-01`: ajouter un shell mobile-first statique pour les taches, sans CRUD.
 - [x] `TASKS-ACTIONS-01`: ajouter les actions serveur minimales des taches, sans notification ni recurrence.
+- [x] `TASKS-FORMS-SHELL-01`: brancher `/tasks` sur la lecture Prisma et des formulaires serveur de developpement.
 
 ## EQUIPMENT-00
 
@@ -629,6 +630,13 @@
 - [x] Ajouter les commandes serveur pour lister les taches, creer une tache, changer son statut et assigner simplement un membre.
 - [x] Verifier les rattachements optionnels a l'organisation active: rucher, ruche, colonie, visite et adhesion assignee.
 - [x] Ne pas creer de formulaire actif, API publique, notification, recurrence, calendrier, analyse IA ou prescription sanitaire.
+
+## TASKS-FORMS-SHELL-01
+
+- [x] Brancher `/tasks` en lecture Prisma via la session de developpement.
+- [x] Ajouter des formulaires serveur de developpement pour creer une tache, changer un statut et assigner simplement.
+- [x] Limiter les choix aux ruchers, ruches, colonies et adhesion fictifs du seed local.
+- [x] Ne pas ajouter d'authentification reelle, API publique, notification, recurrence, calendrier, analyse IA ou prescription sanitaire.
 
 - [x] Ajouter les types domaine utilisateur, organisation et adhésion.
 - [x] Ajouter des helpers purs d'accès organisationnel.
