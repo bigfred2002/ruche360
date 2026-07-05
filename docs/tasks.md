@@ -144,3 +144,17 @@ la colonie, de la visite et de l'adhesion assignee a l'organisation active.
 Ce lot ne branche pas encore `/tasks` sur Prisma, ne cree pas de formulaire
 actif, n'ajoute aucune notification, recurrence, vue calendrier, analyse IA ou
 prescription sanitaire.
+
+## TASKS-FORMS-SHELL-01
+
+`TASKS-FORMS-SHELL-01` branche la page `/tasks` sur la session de
+developpement:
+
+- lecture des taches depuis PostgreSQL avec Prisma;
+- formulaire de creation de tache;
+- formulaire de changement de statut;
+- formulaire d'assignation simple.
+
+Les formulaires restent limites au developpement local et aux donnees fictives
+du seed. Ils n'introduisent pas d'authentification reelle, d'API publique, de
+notification, de recurrence, de calendrier, d'analyse IA ou de prescription.
