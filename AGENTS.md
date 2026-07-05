@@ -34,6 +34,26 @@ Rucher360 est une application apicole modulaire multi-utilisateurs. Le dépôt d
 9. Exécuter `make security-scan` avant push.
 10. Préparer une Pull Request.
 
+## Workflow UX et interface
+
+Avant tout lot qui modifie l'interface, la navigation, les parcours, les textes
+UI ou les états visuels:
+
+- lire `DESIGN.md` et `docs/ux-rules-skills.md`;
+- identifier les règles UX utilisées dans le résumé du lot;
+- vérifier séparément le comportement mobile et desktop;
+- préserver la modularité: un module désactivé ou à venir ne doit pas sembler
+  opérationnel;
+- ne pas mélanger refonte UX, logique métier, schéma de données et dépendances
+  dans le même lot.
+
+Pour une analyse UX, utiliser le format:
+
+1. Diagnostic global.
+2. Spécificités desktop vs mobile.
+3. Plan d'action.
+4. Règle source.
+
 ## Style de travail
 
 - Préférer des micro-lots livrables et faciles à relire.

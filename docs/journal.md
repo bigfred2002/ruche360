@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-05 - UX-RULES-SKILLS-01
+
+- Ajout du référentiel `docs/ux-rules-skills.md` pour cadrer les lots UX Rucher360.
+- Ajout du prompt réutilisable `prompts/ux-audit-agent.md`.
+- Mise à jour de `AGENTS.md` avec le workflow UX avant toute modification d'interface.
+- Mise à jour de `DESIGN.md`, `docs/context.md` et `docs/todo.md`.
+- Aucun code applicatif, aucune dépendance, aucun Docker, aucune auth, aucun Prisma, aucune IA active et aucun IoT actif n'ont été ajoutés.
+
 ## 2026-07-04 - TASKS-ACTIONS-01
 
 - Ajout d'un contexte d'action taches base sur l'organisation active, les modules actives et les permissions `tasks.read` / `tasks.write`.

@@ -14,6 +14,18 @@ L'interface doit être calme, lisible, efficace en mobilité et utilisable avec 
 - Historique clair: toute observation importante doit être datée, attribuée et reliée à une entité métier.
 - Faible consommation: les fonctionnalités de configuration de ruche doivent tenir compte des contraintes énergie, réseau et matériel.
 
+## Référentiel ergonomique
+
+- Les lots UX doivent s'appuyer sur `docs/ux-rules-skills.md`.
+- Mobile: viser des cibles tactiles confortables, idéalement 48 x 48 px CSS,
+  avec un minimum compatible Apple de 44 x 44 pt pour les actions importantes.
+- Desktop: prévoir états de survol, focus clavier visible et densité plus forte
+  uniquement lorsque la comparaison ou l'administration le justifie.
+- Accessibilité: viser WCAG 2.2 AA, avec contraste texte 4.5:1 minimum et
+  information jamais portée par la couleur seule.
+- Les analyses ergonomiques suivent le format: diagnostic global, desktop vs
+  mobile, plan d'action, règle source.
+
 ## Ton éditorial
 
 - Français clair.
