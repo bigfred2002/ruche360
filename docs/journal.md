@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-09 - TASKS-UX-FLOW-01
+
+- Ajout d'une surface "À traiter d'abord" sur `/tasks` pour mieux guider le triage terrain.
+- Ajout d'un rappel compact des trois gestes: prioriser, rattacher, cloturer.
+- Repli des statuts, contextes optionnels et limites pour reduire la densite de la page.
+- Aucun calendrier, notification, automatisation, modele, action serveur, API ou auth n'a ete ajoute.
+
 ## 2026-07-09 - VISITS-UX-FLOW-01
 
 - Ajout d'une surface "Prochaine sortie" sur `/visits` pour prioriser la preparation terrain.
