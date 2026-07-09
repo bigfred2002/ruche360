@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-09 - EQUIPMENT-UX-FLOW-01
+
+- Ajout d'une surface "Caisse de visite" sur `/equipment` pour préparer le matériel terrain.
+- Mise en avant compacte des points de maintenance et conservation d'un repere de stock simple.
+- Aucun achat, fournisseur, prix, stock avance, modele, action serveur, API ou auth n'a ete ajoute.
+
 ## 2026-07-09 - TASKS-UX-FLOW-01
 
 - Ajout d'une surface "À traiter d'abord" sur `/tasks` pour mieux guider le triage terrain.

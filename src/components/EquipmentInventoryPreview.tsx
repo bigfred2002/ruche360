@@ -25,6 +25,15 @@ type InventoryGroup = {
   status: string;
 };
 
+type BadgeTone = "active" | "amber" | "alert" | "muted" | "preview" | "soon";
+
+type FieldKitItem = {
+  detail: string;
+  label: string;
+  status: string;
+  tone: BadgeTone;
+};
+
 const fallbackSummaryCards = [
   {
     label: "Disponible",
@@ -97,6 +106,7 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
   const maintenanceItems = inventory
     ? createLiveMaintenanceItems(inventory, typeById)
     : fallbackMaintenanceItems;
+  const fieldKitItems = createFieldKitItems(inventory, typeById);
 
   return (
     <AppShell
@@ -261,6 +271,56 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
           </section>
 
           <section className="grid gap-4 lg:grid-cols-[1fr_20rem]">
+            <article className="surface-panel rounded-3xl p-5 sm:p-6">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <p className="section-kicker">Caisse de visite</p>
+                  <h2 className="mt-2 text-2xl font-black text-slate-950">
+                    Préparer sans chercher
+                  </h2>
+                </div>
+                <StatusBadge label="Terrain" tone="amber" />
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                {fieldKitItems.map((item) => (
+                  <div
+                    className="rounded-2xl border border-cream-300 bg-cream-50 p-4"
+                    key={item.label}
+                  >
+                    <StatusBadge label={item.status} tone={item.tone} />
+                    <p className="mt-3 text-sm font-black text-slate-950">
+                      {item.label}
+                    </p>
+                    <p className="mt-1 text-xs font-bold text-slate-650">
+                      {item.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <aside className="surface-muted rounded-3xl p-5">
+              <p className="section-kicker">Maintenance</p>
+              <h2 className="mt-2 text-2xl font-black text-slate-950">
+                À traiter
+              </h2>
+              <div className="mt-4 space-y-2">
+                {maintenanceItems.slice(0, 3).map((item) => (
+                  <div
+                    className="rounded-2xl border border-cream-300 bg-white p-3"
+                    key={item}
+                  >
+                    <StatusBadge label="À suivre" tone="soon" />
+                    <p className="mt-2 text-sm font-bold leading-6 text-slate-800">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          </section>
+
+          <section className="grid gap-4 lg:grid-cols-[1fr_20rem]">
             <div className="grid gap-4 md:grid-cols-2">
               {inventoryGroups.map((group) => (
                 <article
@@ -298,23 +358,13 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                 className="mb-5"
                 src={visualAssets.maintenance.src}
               />
-              <p className="section-kicker">Maintenance</p>
+              <p className="section-kicker">Repères</p>
               <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Points à revoir
+                Stock simple
               </h2>
-              <div className="mt-5 space-y-3">
-                {maintenanceItems.map((item) => (
-                  <div
-                    className="rounded-2xl border border-cream-300 bg-white p-4"
-                    key={item}
-                  >
-                    <StatusBadge label="À suivre" tone="soon" />
-                    <p className="mt-3 text-sm font-bold leading-6 text-slate-800">
-                      {item}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <p className="mt-3 text-sm font-bold leading-6 text-slate-700">
+                Quantités, emplacement et statut suffisent pour ce stade.
+              </p>
             </aside>
           </section>
 
@@ -422,6 +472,46 @@ function createLiveMaintenanceItems(
     });
 
   return items.length > 0 ? items : ["Aucun point de maintenance dans le seed actuel"];
+}
+
+function createFieldKitItems(
+  inventory: EquipmentInventorySnapshot | null,
+  typeById: Map<string, EquipmentInventorySnapshot["types"][number]>,
+): FieldKitItem[] {
+  if (!inventory) {
+    return [
+      {
+        detail: "À vérifier avant départ",
+        label: "Enfumoir",
+        status: "Prêt",
+        tone: "active" as const,
+      },
+      {
+        detail: "Caisse terrain",
+        label: "Lève-cadres",
+        status: "Prêt",
+        tone: "active" as const,
+      },
+      {
+        detail: "Après visite",
+        label: "Gants",
+        status: "À nettoyer",
+        tone: "amber" as const,
+      },
+    ];
+  }
+
+  return inventory.items.slice(0, 3).map((item) => {
+    const type = typeById.get(item.equipmentTypeId);
+    const status = labelForItemStatus(item.status);
+
+    return {
+      detail: item.locationLabel ?? "Emplacement à préciser",
+      label: type?.name ?? item.fieldIdentifier,
+      status,
+      tone: toneForItemStatus(item),
+    };
+  });
 }
 
 function formatQuantity(quantity: number) {
