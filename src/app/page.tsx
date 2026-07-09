@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 
 import { AppShell } from "@/components/AppShell";
 import { createAppNavigation } from "@/components/appNavigation";
@@ -57,6 +58,44 @@ const scenarioSummaries = userContextScenarios.map((scenario) => ({
     icon: getModulePresentation(code).icon,
   })),
 }));
+
+function ProgressiveDisclosure({
+  badge,
+  children,
+  description,
+  eyebrow,
+  title,
+}: {
+  badge: string;
+  children: ReactNode;
+  description: string;
+  eyebrow: string;
+  title: string;
+}) {
+  return (
+    <details className="group rounded-3xl border border-cream-300 bg-white shadow-field">
+      <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 focus-ring sm:px-6 [&::-webkit-details-marker]:hidden">
+        <span>
+          <span className="text-sm font-black uppercase tracking-wide text-amber-800">
+            {eyebrow}
+          </span>
+          <span className="mt-1 block text-xl font-black text-slate-950">
+            {title}
+          </span>
+          <span className="mt-1 block max-w-2xl text-sm leading-6 text-slate-650">
+            {description}
+          </span>
+        </span>
+        <span className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-700">
+          {badge}
+        </span>
+      </summary>
+      <div className="border-t border-cream-300 px-5 py-5 sm:px-6">
+        {children}
+      </div>
+    </details>
+  );
+}
 
 export default function Home() {
   return (
@@ -178,73 +217,6 @@ export default function Home() {
               <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
                 <div>
                   <p className="text-sm font-black uppercase tracking-wide text-amber-800">
-                    Contextes simulés
-                  </p>
-                  <h2 className="mt-2 text-2xl font-black text-slate-950">
-                    Variations de cockpit prévues
-                  </h2>
-                </div>
-                <StatusBadge label="Statique" tone="preview" />
-              </div>
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {scenarioSummaries.map((scenario) => (
-                  <article
-                    className={`rounded-2xl border p-4 shadow-field ${
-                      scenario.id === activeScenario.id
-                        ? "border-amber-300 bg-amber-50"
-                        : "border-cream-300 bg-white"
-                    }`}
-                    key={scenario.id}
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <h3 className="text-base font-black text-slate-950">
-                          {scenario.label}
-                        </h3>
-                        <p className="mt-1 text-sm leading-6 text-slate-650">
-                          {scenario.organization}
-                        </p>
-                      </div>
-                      <StatusBadge
-                        label={
-                          scenario.id === activeScenario.id ? "Actif" : "Exemple"
-                        }
-                        tone={
-                          scenario.id === activeScenario.id ? "amber" : "preview"
-                        }
-                      />
-                    </div>
-                    <p className="mt-3 text-sm leading-6 text-slate-650">
-                      {scenario.description}
-                    </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {scenario.modulePreview.map((module) => (
-                        <span
-                          className="inline-flex min-h-8 items-center gap-2 rounded-full border border-cream-300 bg-white px-3 text-xs font-bold text-slate-700"
-                          key={module.code}
-                        >
-                          <span className="text-[10px] font-black text-amber-800">
-                            {module.icon}
-                          </span>
-                          {module.label}
-                        </span>
-                      ))}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <MemberModulePreferencesPreview scenario={activeScenario} />
-
-            <DynamicStatesPreview />
-
-            <ResponsiveWorkflowsPreview />
-
-            <section>
-              <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
-                <div>
-                  <p className="text-sm font-black uppercase tracking-wide text-amber-800">
                     Modules visibles
                   </p>
                   <h2 className="mt-2 text-2xl font-black text-slate-950">
@@ -259,6 +231,88 @@ export default function Home() {
                 ))}
               </div>
             </section>
+
+            <div className="space-y-4">
+              <ProgressiveDisclosure
+                badge="Afficher"
+                description="Les profils restent utiles pour tester la modularité, mais ils ne doivent pas dominer la lecture terrain."
+                eyebrow="Contextes simulés"
+                title="Variations de cockpit prévues"
+              >
+                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {scenarioSummaries.map((scenario) => (
+                    <article
+                      className={`rounded-2xl border p-4 shadow-field ${
+                        scenario.id === activeScenario.id
+                          ? "border-amber-300 bg-amber-50"
+                          : "border-cream-300 bg-white"
+                      }`}
+                      key={scenario.id}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <h3 className="text-base font-black text-slate-950">
+                            {scenario.label}
+                          </h3>
+                          <p className="mt-1 text-sm leading-6 text-slate-650">
+                            {scenario.organization}
+                          </p>
+                        </div>
+                        <StatusBadge
+                          label={
+                            scenario.id === activeScenario.id
+                              ? "Actif"
+                              : "Exemple"
+                          }
+                          tone={
+                            scenario.id === activeScenario.id
+                              ? "amber"
+                              : "preview"
+                          }
+                        />
+                      </div>
+                      <p className="mt-3 text-sm leading-6 text-slate-650">
+                        {scenario.description}
+                      </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {scenario.modulePreview.map((module) => (
+                          <span
+                            className="inline-flex min-h-8 items-center gap-2 rounded-full border border-cream-300 bg-white px-3 text-xs font-bold text-slate-700"
+                            key={module.code}
+                          >
+                            <span className="text-[10px] font-black text-amber-800">
+                              {module.icon}
+                            </span>
+                            {module.label}
+                          </span>
+                        ))}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </ProgressiveDisclosure>
+
+              <ProgressiveDisclosure
+                badge="Ouvrir"
+                description="Les préférences membres et états UI restent consultables, sans occuper le premier parcours de cockpit."
+                eyebrow="Références UI"
+                title="Préférences et états dynamiques"
+              >
+                <div className="space-y-6">
+                  <MemberModulePreferencesPreview scenario={activeScenario} />
+                  <DynamicStatesPreview />
+                </div>
+              </ProgressiveDisclosure>
+
+              <ProgressiveDisclosure
+                badge="Voir"
+                description="Les workflows préparatoires restent en support de conception, séparés des actions terrain immédiates."
+                eyebrow="Parcours"
+                title="Workflows responsive prévus"
+              >
+                <ResponsiveWorkflowsPreview />
+              </ProgressiveDisclosure>
+            </div>
           </div>
 
           <aside className="hidden space-y-5 xl:block">

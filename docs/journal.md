@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-09 - UX-DENSITY-01
+
+- Allègement du cockpit en priorisant le contexte actif, les priorités terrain et les modules visibles.
+- Passage des profils simulés, préférences membres, états UI et workflows responsive dans des sections repliables natives.
+- Ajout de `docs/ux-density-review.md` pour tracer le diagnostic ergonomique et les règles utilisées.
+- Aucun module métier, aucune donnée, aucune dépendance, aucun Prisma, aucune auth, aucune IA active et aucun IoT actif n'ont été ajoutés.
+
 ## 2026-07-09 - DEV-SERVER-01
 
 - Stabilisation du serveur de developpement Docker en forcant `next dev --webpack`.

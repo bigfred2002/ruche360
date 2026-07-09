@@ -62,6 +62,13 @@ L'interface doit être calme, lisible, efficace en mobilité et utilisable avec 
 - Etats vides utiles, sans discours marketing.
 - Icônes pour les actions courantes quand une bibliothèque d'icônes sera choisie.
 
+## Conventions appliquées dans UX-DENSITY-01
+
+- Le cockpit privilégie d'abord le contexte actif, les priorités et les modules visibles.
+- Les contenus de démonstration longs passent dans des sections repliables natives.
+- Les sections repliables conservent des zones tactiles confortables et un focus visible.
+- Les explications de conception restent accessibles, mais ne saturent plus le premier parcours mobile.
+
 ## Conventions appliquées dans DESIGN-SHELL-01
 
 - Shell mobile-first avec navigation basse sur mobile et repères de navigation sobres sur desktop.
