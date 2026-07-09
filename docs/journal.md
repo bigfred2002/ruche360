@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-09 - VISITS-UX-FLOW-01
+
+- Ajout d'une surface "Prochaine sortie" sur `/visits` pour prioriser la preparation terrain.
+- Remplacement des cartes de workflow visibles par un rythme compact en quatre etapes.
+- Repli des champs futurs et des limites pour reduire la densite de la page.
+- Aucun modele, action serveur, API, auth, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-09 - UX-COPY-01
 
 - Raccourcissement des textes visibles dans les pages visites, taches, materiel, transhumance, admin, modules et onboarding.
