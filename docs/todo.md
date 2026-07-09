@@ -26,7 +26,7 @@
 
 - [x] `UX-RULES-SKILLS-01`: formaliser le référentiel UX, les skills d'audit et les règles agentiques avant les lots UX.
 - [x] `UX-DENSITY-01`: alléger le cockpit et les premières sections mobiles sans changer les modules ni les données.
-- [ ] `UX-MODULE-PAGES-01`: harmoniser les pages module avec un gabarit plus progressif et moins répétitif.
+- [x] `UX-MODULE-PAGES-01`: harmoniser les pages module avec un gabarit plus progressif et moins répétitif.
 - [ ] `UX-COPY-01`: raccourcir les textes UI et déplacer les explications longues vers la documentation.
 - [x] `APP-NAVIGATION-ROUTES-01`: activer la navigation vers des routes shell statiques, sans logique métier.
 - [x] `DESIGN-DYNAMIC-SHELL-01`: rendre le shell plus vivant sans Figma, avec cockpit modernise, micro-interactions sobres, etats visuels et meilleure hierarchie mobile/desktop.
