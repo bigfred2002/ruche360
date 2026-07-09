@@ -119,6 +119,8 @@ docker compose up --build
 
 L'application est disponible sur `http://localhost:3000` quand le service `app` est démarré.
 
+Le serveur de développement Docker utilise `next dev --webpack` afin de conserver un rendu local stable dans le conteneur. Le build de production reste validé par `next build`.
+
 ## Commandes utiles
 
 Les commandes pnpm doivent toujours passer par Docker Compose:

@@ -14,6 +14,7 @@
 
 ### Point lots en cours
 
+- [x] `DEV-SERVER-01`: stabiliser le serveur dev Docker apres le panic Turbopack local et retrouver un HTTP 200.
 - [x] Reconciler la todo avec les lots deja termines dans `TODO-CLEANUP-01`.
 - [x] Confirmer que `EQUIPMENT-00`, `MODULES-DYNAMIC-00`, `ARCHITECTURE-DOCS-00`, `MODULES-DYNAMIC-01` et `MODULES-REGISTRY-01` sont termines.
 - [x] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
