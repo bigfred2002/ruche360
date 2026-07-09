@@ -87,6 +87,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `TASKS-ACTIONS-01` ajoute les actions serveur minimales des taches: lecture, creation, changement de statut et assignation simple, sans formulaire actif, notification, recurrence, calendrier, IA ou prescription sanitaire.
 - `TASKS-FORMS-SHELL-01` branche `/tasks` en lecture sur Prisma via la session de developpement et ajoute des formulaires serveur de developpement pour creer une tache, changer un statut et assigner simplement, sans auth reelle, API publique, notification, recurrence ou calendrier.
 - `DEV-SERVER-01` force le serveur de developpement Docker sur `next dev --webpack` apres un panic Turbopack local sur `globals.css`; le build production reste valide via `next build`.
+- `UX-DENSITY-01` allege le cockpit en remontant les modules visibles et en repliant les contenus de demonstration longs, sans supprimer d'information ni ajouter de logique metier.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
