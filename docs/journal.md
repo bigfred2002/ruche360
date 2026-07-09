@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-09 - UX-COPY-01
+
+- Raccourcissement des textes visibles dans les pages visites, taches, materiel, transhumance, admin, modules et onboarding.
+- Ajout de `docs/ux-copy-review.md` pour conserver le diagnostic et les règles éditoriales.
+- Les garde-fous restent visibles, mais sous forme de phrases plus courtes.
+- Aucun flux, aucune action serveur, aucune donnee, aucune dependance, aucun Docker, aucun Prisma, aucune auth, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-07-09 - UX-MODULE-PAGES-01
 
 - Harmonisation du gabarit `ShellRoutePage` pour les pages module generiques.

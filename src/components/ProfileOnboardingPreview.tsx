@@ -72,7 +72,7 @@ export function ProfileOnboardingPreview() {
           </section>
 
           <StatePanel
-            detail="Le futur onboarding devra rester réversible: masquer ou ajouter des modules ne supprimera pas les données déjà créées."
+            detail="L'onboarding restera réversible: masquer un module ne supprimera pas ses données."
             kind="empty"
             label="Simulation"
             title="Aucune donnée créée"

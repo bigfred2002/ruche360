@@ -149,7 +149,7 @@ export function ModulesCatalogPreview() {
           ) : null}
 
           <StatePanel
-            detail="Le catalogue clarifie ce qui existe et ce qui reste prévu, sans exposer les modules futurs dans le cockpit principal."
+            detail="Le catalogue sépare l'actif, le prévu et le non disponible."
             kind="coming-soon"
             label="Sans activation"
             title="Aucune action fonctionnelle"

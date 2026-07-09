@@ -32,6 +32,7 @@ L'interface doit être calme, lisible, efficace en mobilité et utilisable avec 
 - Vocabulaire apicole précis mais pas jargonnant.
 - Libellés courts dans l'interface.
 - Aides contextuelles concises.
+- Les explications longues vivent dans la documentation plutôt que dans les cartes UI.
 
 ## Objets métier structurants
 
@@ -75,6 +76,12 @@ L'interface doit être calme, lisible, efficace en mobilité et utilisable avec 
 - Les explications de conception passent en section repliable pour réduire la répétition.
 - Les pages shell évitent les boutons ou textes qui pourraient laisser croire à une action métier active.
 - Les pages spécialisées restent hors périmètre du lot pour éviter une refonte trop large.
+
+## Conventions appliquées dans UX-COPY-01
+
+- Les descriptions visibles privilégient une phrase courte.
+- Les garde-fous restent présents, mais sous forme de messages scannables.
+- Les détails longs sont reportés dans les revues UX et la documentation.
 
 ## Conventions appliquées dans DESIGN-SHELL-01
 

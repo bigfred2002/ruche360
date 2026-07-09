@@ -153,7 +153,7 @@ export function AuditLogShellPreview() {
           </section>
 
           <StatePanel
-            detail="La lecture Prisma, la pagination et les filtres fonctionnels arriveront dans un lot dédié. Les émissions d'événements resteront séparées."
+            detail="Lecture Prisma, pagination et filtres arriveront plus tard. Les émissions restent séparées."
             kind="coming-soon"
             label="Sans données réelles"
             title="Le modèle existe, la consultation réelle attend son tour"

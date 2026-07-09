@@ -51,10 +51,10 @@ const previewMovements = [
 ] satisfies HiveMovementSummary[];
 
 const checklistItems = [
-  "Vérifier les ruches incluses dans le déplacement",
-  "Préparer sangles, plancher et aération",
-  "Noter le rucher source et le rucher destination",
-  "Confirmer l'arrivée sans activer de suivi GPS",
+  "Vérifier les ruches incluses",
+  "Préparer sangles et aération",
+  "Noter source et destination",
+  "Confirmer sans suivi GPS",
 ];
 
 export function TranshumanceShellPreview({
@@ -96,10 +96,8 @@ export function TranshumanceShellPreview({
                   Transhumance
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Préparation du suivi des mouvements de ruches entre ruchers.
-                  Le rucher reste un site fixe; seules les ruches ou lots de
-                  ruches se déplacent. Aucun GPS, carte temps réel ou logistique
-                  lourde n&apos;est activé dans ce lot.
+                  Suivre les mouvements de ruches entre sites. Le rucher reste
+                  fixe; seules les ruches se déplacent.
                 </p>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
@@ -110,8 +108,7 @@ export function TranshumanceShellPreview({
                   {labelForApiary(currentApiaryId)}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
-                  Calcul pur depuis les mouvements terminés, sans capteur ni
-                  géolocalisation active.
+                  Calculé depuis les mouvements terminés, sans GPS actif.
                 </p>
               </div>
             </div>
@@ -125,9 +122,9 @@ export function TranshumanceShellPreview({
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">
-            <SummaryCard detail="Déplacements en préparation ou à réaliser" label="Prévu" value={String(plannedCount)} />
+            <SummaryCard detail="À préparer ou réaliser" label="Prévu" value={String(plannedCount)} />
             <SummaryCard detail="Déplacements déjà finalisés" label="Terminé" value={String(completedCount)} />
-            <SummaryCard detail="Ruches incluses dans les mouvements affichés" label="Ruches" value={String(hiveCount)} />
+            <SummaryCard detail="Ruches affichées" label="Ruches" value={String(hiveCount)} />
           </section>
 
           <section className="grid gap-4 lg:grid-cols-[1fr_20rem]">
@@ -203,7 +200,7 @@ export function TranshumanceShellPreview({
           <TranshumanceFormsPreview movements={movements ?? null} />
 
           <StatePanel
-            detail="Les formulaires ci-dessus restent limites a la session de developpement et aux donnees fictives. Le branchement a de vrais comptes arrivera avec l'authentification."
+            detail="Formulaires limités au développement. Les vrais comptes viendront avec l'authentification."
             kind="empty"
             label="Dev uniquement"
             title="Actions actives sans exposition publique"

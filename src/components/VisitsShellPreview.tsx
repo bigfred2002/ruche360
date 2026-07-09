@@ -10,22 +10,22 @@ import { visualAssets } from "./visualAssets";
 
 const visitSteps = [
   {
-    detail: "Rucher, ruche ou colonie cible, météo observée, objectif de passage.",
+    detail: "Cible, météo et objectif.",
     label: "Préparer",
     metric: "Avant terrain",
   },
   {
-    detail: "Force, ponte, réserves, comportement, signes sanitaires et notes courtes.",
+    detail: "Force, réserves, signes et notes.",
     label: "Observer",
     metric: "Sur place",
   },
   {
-    detail: "Actions réalisées, matériel utilisé, nourrissement ou contrôle sanitaire.",
+    detail: "Actions, matériel et soins notés.",
     label: "Intervenir",
     metric: "Sans automatisme",
   },
   {
-    detail: "Tâches à planifier, points de vigilance et prochaine fenêtre de visite.",
+    detail: "Suites et prochaine visite.",
     label: "Suivre",
     metric: "Après visite",
   },
@@ -109,9 +109,8 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
                   Visites
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Première surface mobile-first pour cadrer une future visite:
-                  préparer le passage, observer vite, noter les actions et
-                  garder les suites visibles. Tout reste statique dans ce lot.
+                  Préparer le passage, noter l&apos;essentiel et garder les
+                  suites visibles. Les actions restent limitées au développement.
                 </p>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
@@ -121,8 +120,8 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
                 <p className="mt-3 text-3xl font-black">Prévu</p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
                   {hasLiveVisits
-                    ? "Visites de développement lues depuis PostgreSQL."
-                    : "Route prête, aucune visite réelle affichée."}
+                    ? "Données de développement lues depuis PostgreSQL."
+                    : "Route prête, sans visite réelle."}
                 </p>
               </div>
             </div>
@@ -142,12 +141,12 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
               value={String(plannedCount)}
             />
             <SummaryCard
-              detail="Saisies terrain encore ouvertes"
+              detail="Saisies encore ouvertes"
               label="En cours"
               value={String(inProgressCount)}
             />
             <SummaryCard
-              detail="Visites terminées dans la liste affichée"
+              detail="Visites de la liste"
               label="Terminées"
               value={String(completedCount)}
             />
@@ -227,7 +226,7 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
             <div className="surface-panel rounded-3xl p-5 sm:p-6">
               <p className="section-kicker">Future fiche</p>
               <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Informations à garder courtes sur mobile
+                Champs courts sur mobile
               </h2>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 {futureFields.map((field) => (
@@ -247,7 +246,7 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
             <aside className="surface-muted rounded-3xl p-5">
               <p className="section-kicker">Limites</p>
               <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Pas encore un carnet public
+                Limites claires
               </h2>
               <div className="mt-4 space-y-3">
                 {formLimits.map((rule) => (
@@ -267,7 +266,7 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
           <VisitsFormsPreview visits={visits ?? null} />
 
           <StatePanel
-            detail="Les formulaires ci-dessus restent limites a la session de developpement et aux donnees fictives. Le branchement a de vrais comptes attend l'authentification."
+            detail="Formulaires limités à la session de développement. Les vrais comptes attendent l'authentification."
             kind="empty"
             label="Dev uniquement"
             title="Actions actives sans exposition publique"
