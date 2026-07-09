@@ -10,19 +10,19 @@ import { visualAssets } from "./visualAssets";
 
 const taskLanes = [
   {
-    detail: "Actions courtes à préparer avant la prochaine sortie terrain.",
+    detail: "Actions à préparer.",
     label: "À faire",
     metric: "TODO",
     tone: "soon" as const,
   },
   {
-    detail: "Interventions en cours de suivi, sans automatisme ni rappel actif.",
+    detail: "Suivi en cours.",
     label: "En cours",
     metric: "IN_PROGRESS",
     tone: "amber" as const,
   },
   {
-    detail: "Actions terminées, annulées ou archivées hors des vues courantes.",
+    detail: "Actions sorties du flux.",
     label: "Clôturées",
     metric: "DONE",
     tone: "active" as const,
@@ -102,9 +102,8 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
                   Tâches
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Première surface mobile-first pour cadrer les actions à faire:
-                  prioriser, rattacher au bon contexte et garder les suites
-                  visibles. Tout reste statique dans ce lot.
+                  Prioriser les actions, les rattacher au bon contexte et
+                  garder les suites visibles.
                 </p>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
@@ -114,8 +113,8 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
                 <p className="mt-3 text-3xl font-black">Court</p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
                   {hasLiveTasks
-                    ? "Tâches de développement lues depuis PostgreSQL."
-                    : "Une tâche est une action simple, pas un outil de gestion de projet."}
+                    ? "Données de développement lues depuis PostgreSQL."
+                    : "Une tâche reste une action simple."}
                 </p>
               </div>
             </div>
@@ -140,7 +139,7 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
               value={String(inProgressCount)}
             />
             <SummaryCard
-              detail="Actions terminées dans la liste affichée"
+              detail="Actions de la liste"
               label="Terminées"
               value={String(doneCount)}
             />
@@ -223,12 +222,11 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
             <div className="surface-panel rounded-3xl p-5 sm:p-6">
               <p className="section-kicker">Contexte</p>
               <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Rattacher sans alourdir
+                Rattacher léger
               </h2>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
-                Une tâche pourra vivre seule ou pointer vers une visite, un
-                rucher, une ruche ou une colonie. Les liens restent optionnels
-                pour préserver la saisie rapide.
+                Une tâche peut vivre seule ou pointer vers un contexte.
+                Les liens restent optionnels.
               </p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 {taskContexts.map((context) => (
@@ -248,7 +246,7 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
             <aside className="surface-muted rounded-3xl p-5">
               <p className="section-kicker">Limites</p>
               <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Pas encore un gestionnaire actif
+                Limites claires
               </h2>
               <div className="mt-4 space-y-3">
                 {guardrails.map((rule) => (
@@ -268,7 +266,7 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
           <TasksFormsPreview tasks={tasks ?? null} />
 
           <StatePanel
-            detail="Les formulaires ci-dessus restent limites a la session de developpement et aux donnees fictives. Les rappels, calendriers et notifications attendent des lots dedies."
+            detail="Formulaires limités au développement. Rappels, calendriers et notifications viendront plus tard."
             kind="empty"
             label="Dev uniquement"
             title="Actions actives sans automatisme"

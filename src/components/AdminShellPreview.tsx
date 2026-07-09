@@ -146,7 +146,7 @@ export function AdminShellPreview({ overview }: AdminShellPreviewProps) {
             ) : (
               <div className="mt-5">
                 <StatePanel
-                  detail="Les compteurs apparaîtront dès que la base locale et le seed de développement seront disponibles. Le shell reste consultable sans lancer d'action."
+                  detail="Les compteurs apparaissent avec la base locale. Le shell reste sans action."
                   kind="empty"
                   label="Lecture seule"
                   title="Aucun compteur disponible pour le moment"
@@ -214,7 +214,7 @@ export function AdminShellPreview({ overview }: AdminShellPreviewProps) {
           </section>
 
           <StatePanel
-            detail="Le shell /admin prépare la navigation et les conventions visuelles. Les compteurs, le journal, les exports et les actions d'administration arriveront dans des lots dédiés."
+            detail="Le shell prépare l'administration. Compteurs, journal, exports et actions restent par lots dédiés."
             kind="coming-soon"
             label="Sans CRUD"
             title="Administration cadrée, actions non actives"

@@ -117,10 +117,8 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                   Matériel
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Vue d&apos;inventaire mobile-first alimentée par le seed de
-                  développement quand la base locale est prête. Les écritures
-                  restent cadrées: les formulaires affichent les futurs
-                  branchements sans déclencher d&apos;action métier.
+                  Inventaire mobile-first pour lire les stocks, les emplacements
+                  et les points à traiter.
                 </p>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
@@ -129,7 +127,7 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                 </p>
                 <p className="mt-3 text-3xl font-black">Sobre</p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
-                  Quantités pour consommables, items pour matériel durable.
+                  Quantités pour consommables, items pour le durable.
                 </p>
               </div>
             </div>
@@ -167,7 +165,7 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                 <div>
                   <p className="section-kicker">Inventaire seedé</p>
                   <h2 className="mt-2 text-2xl font-black text-slate-950">
-                    Données de démonstration lues depuis PostgreSQL
+                    Données lues depuis PostgreSQL
                   </h2>
                 </div>
                 <StatusBadge label={`${inventory.types.length} types`} tone="preview" />
@@ -241,7 +239,7 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
               <div>
                 <p className="section-kicker">Filtres visuels</p>
                 <h2 className="mt-2 text-2xl font-black text-slate-950">
-                  Lire vite sans lancer d&apos;action
+                  Lire sans agir
                 </h2>
               </div>
               <StatusBadge label="Non fonctionnel" tone="soon" />
@@ -323,7 +321,7 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
           <EquipmentFormsPreview inventory={inventory} />
 
           <StatePanel
-            detail="Les données affichées viennent du seed local et les formulaires peuvent créer des entrées de développement. Les usages restent limités: pas de suppression, achat, fournisseur, prix ou authentification réelle."
+            detail="Données de seed et formulaires de développement. Pas de suppression, achat, prix ou compte réel."
             kind="coming-soon"
             label="Développement contrôlé"
             title="Inventaire vivant, actions limitées"
@@ -346,7 +344,7 @@ function createLiveSummaryCards(inventory: EquipmentInventorySnapshot) {
     {
       label: "Disponible",
       value: String(availableItems + Math.round(totalStockQuantity)),
-      detail: "Items disponibles et quantités consommables issues du seed dev",
+      detail: "Items et consommables du seed dev",
       tone: "active" as const,
     },
     {
@@ -358,7 +356,7 @@ function createLiveSummaryCards(inventory: EquipmentInventorySnapshot) {
     {
       label: "Maintenance",
       value: String(maintenanceItemsCount),
-      detail: "Éléments individuels à réparer ou contrôler",
+      detail: "À réparer ou contrôler",
       tone: "alert" as const,
     },
   ];
