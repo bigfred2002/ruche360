@@ -69,6 +69,13 @@ L'interface doit être calme, lisible, efficace en mobilité et utilisable avec 
 - Les sections repliables conservent des zones tactiles confortables et un focus visible.
 - Les explications de conception restent accessibles, mais ne saturent plus le premier parcours mobile.
 
+## Conventions appliquées dans UX-MODULE-PAGES-01
+
+- Les pages module génériques utilisent un gabarit court: statut, résumé, trois repères et garde-fou.
+- Les explications de conception passent en section repliable pour réduire la répétition.
+- Les pages shell évitent les boutons ou textes qui pourraient laisser croire à une action métier active.
+- Les pages spécialisées restent hors périmètre du lot pour éviter une refonte trop large.
+
 ## Conventions appliquées dans DESIGN-SHELL-01
 
 - Shell mobile-first avec navigation basse sur mobile et repères de navigation sobres sur desktop.

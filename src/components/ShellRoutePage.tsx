@@ -34,30 +34,33 @@ export function ShellRoutePage({
       mobileNavigationItems={mobileNavigationItems}
     >
       <div className="mx-auto w-full max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
-        <div className="space-y-6">
+        <div className="space-y-5 lg:space-y-6">
           <section className="surface-panel rounded-3xl p-5 backdrop-blur sm:p-7 lg:p-8">
-            <StatusBadge label="Écran shell" tone="preview" />
-            <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_18rem] lg:items-end">
+            <div className="flex flex-wrap items-center gap-2">
+              <StatusBadge label="Module préparé" tone="preview" />
+              <StatusBadge label="Lecture statique" tone="soon" />
+            </div>
+            <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
               <div>
-                <p className="section-kicker">
-                  {eyebrow}
-                </p>
-                <h1 className="mt-2 text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
+                <p className="section-kicker">{eyebrow}</p>
+                <h1 className="mt-2 text-3xl font-black leading-tight text-slate-950 sm:text-4xl">
                   {title}
                 </h1>
-                <p className="mt-3 max-w-2xl text-lg leading-8 text-slate-700">
-                  Cette page active la navigation prévue, mais reste une surface
-                  statique. Aucun formulaire, CRUD, API ou traitement métier
-                  n&apos;est branché dans ce lot.
+                <p className="mt-3 max-w-2xl text-base leading-7 text-slate-700">
+                  Une page courte pour cadrer le futur module, garder la
+                  navigation utilisable et éviter de suggérer une fonction
+                  métier déjà active.
                 </p>
               </div>
-              <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
-                <p className="text-sm font-bold uppercase tracking-wide text-amber-100">
-                  Statut
+              <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5">
+                <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+                  État du module
                 </p>
-                <p className="mt-3 text-3xl font-black">Préparation</p>
-                <p className="mt-2 text-sm leading-6 text-amber-50">
-                  Route disponible, données et actions encore non fonctionnelles.
+                <p className="mt-2 text-2xl font-black text-slate-950">
+                  Préparation
+                </p>
+                <p className="mt-2 text-sm leading-6 text-slate-650">
+                  Route active, actions métier non branchées.
                 </p>
               </div>
             </div>
@@ -73,31 +76,49 @@ export function ShellRoutePage({
           </section>
 
           <section className="grid gap-4 md:grid-cols-3">
-            {highlights.map((highlight) => (
+            {highlights.slice(0, 3).map((highlight, index) => (
               <article
                 className="surface-panel rounded-2xl p-4"
                 key={highlight}
               >
-                <StatusBadge label="Prévu" tone="soon" />
+                <StatusBadge label={`Repère ${index + 1}`} tone="soon" />
                 <p className="mt-3 text-base font-black text-slate-950">
                   {highlight}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-field-muted">
-                  Élément de parcours affiché pour cadrer le futur écran.
+                  Repère de parcours, sans bouton ni action opérationnelle.
                 </p>
               </article>
             ))}
           </section>
 
           <StatePanel
-            detail="Le contenu réel sera ajouté dans un lot dédié, avec ses validations et ses limites métier."
+            detail="Les contenus réels, permissions fines et formulaires seront ajoutés dans des lots dédiés."
             kind="coming-soon"
-            label="Route active"
-            title="Navigation maintenant fonctionnelle"
+            label="À venir"
+            title="Module volontairement non opérationnel"
           />
 
-          <ResponsiveWorkflowsPreview />
-          <DynamicStatesPreview />
+          <details className="rounded-3xl border border-cream-300 bg-white shadow-field">
+            <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 focus-ring sm:px-6 [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="section-kicker">Conception</span>
+                <span className="mt-1 block text-xl font-black text-slate-950">
+                  Parcours et états prévus
+                </span>
+                <span className="mt-1 block text-sm leading-6 text-slate-650">
+                  Références UX conservées en support, sans alourdir le module.
+                </span>
+              </span>
+              <span className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-700">
+                Voir
+              </span>
+            </summary>
+            <div className="space-y-6 border-t border-cream-300 px-5 py-5 sm:px-6">
+              <ResponsiveWorkflowsPreview />
+              <DynamicStatesPreview />
+            </div>
+          </details>
         </div>
       </div>
     </AppShell>

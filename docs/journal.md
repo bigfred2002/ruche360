@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-09 - UX-MODULE-PAGES-01
+
+- Harmonisation du gabarit `ShellRoutePage` pour les pages module generiques.
+- Reduction des textes repetitifs, limitation a trois reperes visibles et passage des references UX en section repliable.
+- Ajout de `docs/ux-module-pages-review.md` pour tracer le diagnostic ergonomique.
+- Aucun module metier, aucune donnee, aucune dependance, aucun Docker, aucun Prisma, aucune auth, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-07-09 - UX-DENSITY-01
 
 - Allègement du cockpit en priorisant le contexte actif, les priorités terrain et les modules visibles.
