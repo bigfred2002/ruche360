@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-09 - DEV-SERVER-01
+
+- Stabilisation du serveur de developpement Docker en forcant `next dev --webpack`.
+- Le correctif cible un panic Turbopack local observe sur `src/app/globals.css` pendant la validation HTTP de `main`.
+- Le build de production reste controle par `next build`.
+- Aucun module metier, aucune dependance, aucun Prisma, aucune auth, aucune IA active et aucun IoT actif n'ont ete ajoutes.
+
 ## 2026-07-05 - UX-RULES-SKILLS-01
 
 - Ajout du référentiel `docs/ux-rules-skills.md` pour cadrer les lots UX Rucher360.
