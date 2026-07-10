@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-10 - DEPLOY-HOME-00
+
+- Cadrage documentaire de l'hebergement: developpement Docker local, beta privee sur Synology compatible Container Manager, puis VPS europeen lorsque l'ouverture et la disponibilite l'exigent.
+- Definition des prerequis avant exposition: HTTPS, PostgreSQL non public, sauvegardes chiffrees hors hote, restauration testee, supervision et mises a jour.
+- Le Raspberry Pi reste adapte au developpement ou a la demonstration; le cloud gratuit est reserve a une demonstration temporaire.
+- Aucun deploiement, domaine, tunnel, secret, Docker, schema Prisma, dependance ou code applicatif n'a ete ajoute.
+
 ## 2026-07-10 - AUTH-REAL-00
 
 - Cadrage de l'authentification reelle: fournisseur OIDC, session serveur, cookie securise, organisations personnelles et invitations.
