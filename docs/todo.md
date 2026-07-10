@@ -425,6 +425,14 @@
 - [x] Ne pas ajouter secret, token, mot de passe, cookie, Auth.js, page de connexion ou utilisateur réel.
 - [x] Ne pas ajouter Auth.js, cookie, JWT, page de connexion, API d'authentification, secret ou stockage de mot de passe.
 
+## AUTH-REAL-00
+
+- [x] Cadrer le parcours d'un apiculteur proprietaire et celui d'un membre invite.
+- [x] Retenir une identite OIDC, une session serveur et un cookie securise comme cible.
+- [x] Documenter les regles de confidentialite, de reauthentification et de minimisation.
+- [x] Definir la sequence `AUTH-PROVIDER-DECISION-01`, `AUTH-SESSION-WEB-01`, `AUTH-ONBOARDING-REAL-01`, `INVITATIONS-01`, `MODULE-ADMIN-01` et `AUTH-CUTOVER-ACTIONS-01`.
+- [x] Ne pas ajouter de dependance, schema, route, secret, fournisseur ou auth reelle.
+
 ## DATA-SEED-DEV-01
 
 - [x] Ajouter un script de seed de développement idempotent.
