@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-10 - AUTH-REAL-00
+
+- Cadrage de l'authentification reelle: fournisseur OIDC, session serveur, cookie securise, organisations personnelles et invitations.
+- Definition d'une sequence de lots pour choisir le fournisseur, integrer la session web, onboarder un proprietaire, inviter des membres et remplacer progressivement les fixtures.
+- Aucun code applicatif, dependance, schema Prisma, route, cookie, secret, fournisseur configure, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-09 - EQUIPMENT-UX-FLOW-01
 
 - Ajout d'une surface "Caisse de visite" sur `/equipment` pour préparer le matériel terrain.

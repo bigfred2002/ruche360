@@ -220,6 +220,7 @@ Le dépôt étant public, le workflow local est limité à `workflow_dispatch`. 
 - [Partage de rucher et transhumance](docs/apiary-sharing-transhumance.md)
 - [Rôles et permissions](docs/roles-permissions.md)
 - [Authentification et organisations](docs/auth.md)
+- [Cadrage de l'authentification réelle](docs/auth-real.md)
 - [Modèle de données](docs/data-model.md)
 - [Architecture technique](docs/technical-architecture.md)
 - [Documentation visuelle avec Archify](docs/diagrams/README.md)

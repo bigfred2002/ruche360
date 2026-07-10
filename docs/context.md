@@ -28,6 +28,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `AUTH-01` pose les conventions TypeScript comptes, organisations et adhésions sans activer d'authentification réelle.
 - `AUTH-SESSION-01` ajoute un contrat TypeScript de session applicative et de scope actif, sans Auth.js, cookie, page de connexion, API d'authentification ou secret.
 - `AUTH-DEV-SESSION-01` ajoute une session de développement déterministe et fictive pour brancher les prochains écrans sans secret, cookie, Auth.js ou utilisateur réel.
+- `AUTH-REAL-00` cadre l'authentification réelle autour d'une identité OIDC, d'une session serveur, d'organisations personnelles ou rejointes par invitation, sans implementation ni secret.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.
 - `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.
 - `EQUIPMENT-00` cadre le futur module materiel comme inventaire leger hybride, sans code metier, migration, CRUD, achats, fournisseurs, comptabilite, IA ou IoT actif.
@@ -100,7 +101,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 
 ## Points ouverts
 
-- Choix du système d'authentification.
+- Choix du fournisseur OIDC et du mode de connexion initial dans `AUTH-PROVIDER-DECISION-01`.
 - Choix du stockage documentaire.
 - Niveau de détail de la localisation des ruchers.
 - Politique de conservation des données sanitaires.

@@ -2,6 +2,9 @@
 
 `AUTH-01` pose les conventions du domaine identité sans activer de mécanisme d'authentification.
 
+Le cadrage de la future authentification réelle, de ses sessions et de ses
+parcours organisationnels se trouve dans [AUTH-REAL-00](auth-real.md).
+
 ## Périmètre
 
 - Représenter un compte utilisateur.
