@@ -21,6 +21,7 @@
 - [x] Cadrer le partage fin par rucher dans `APIARY-ACCESS-00` si le besoin est confirme.
 - [x] Cadrer la transhumance dans `TRANSHUMANCE-00` avant d'implementer les mouvements de ruches.
 - [x] Ajouter le module, les permissions et le modele minimal du materiel dans `EQUIPMENT-01`.
+- [x] `DEPLOY-HOME-00`: cadrer l'hebergement local, beta Synology, bascule VPS et prerequis de confidentialite, sans deploiement actif.
 
 ### Analyse lots dynamiques UI/applicatifs
 
@@ -103,6 +104,14 @@
 - [x] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
 - [x] `TOOLING-DEPENDENCIES-01`: mettre a jour le gestionnaire pnpm declare et la regle de commit par lot, sans changer les dependances applicatives.
 - [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
+
+### Backlog exploitation et hebergement
+
+- [x] `DEPLOY-HOME-00`: choisir une trajectoire Docker-first locale, beta Synology et VPS europeen, sans exposition publique.
+- [ ] `DEPLOY-PROD-ARCHITECTURE-00`: definir l'architecture de production, le point d'entree HTTPS et les configurations attendues, sans secret reel.
+- [ ] `BACKUP-RESTORE-00`: cadrer sauvegarde, chiffrement, retention et restauration PostgreSQL avant toute beta publique.
+- [ ] `DEPLOY-SYNOLOGY-01`: mettre en oeuvre une beta privee seulement apres validation de l'architecture, des sauvegardes et de l'authentification.
+- [ ] `DEPLOY-VPS-00`: cadrer la migration vers un VPS europeen et le retour arriere avant ouverture large.
 
 ### Backlog terrain
 
@@ -432,6 +441,14 @@
 - [x] Documenter les regles de confidentialite, de reauthentification et de minimisation.
 - [x] Definir la sequence `AUTH-PROVIDER-DECISION-01`, `AUTH-SESSION-WEB-01`, `AUTH-ONBOARDING-REAL-01`, `INVITATIONS-01`, `MODULE-ADMIN-01` et `AUTH-CUTOVER-ACTIONS-01`.
 - [x] Ne pas ajouter de dependance, schema, route, secret, fournisseur ou auth reelle.
+
+## DEPLOY-HOME-00
+
+- [x] Comparer cloud gratuit, Raspberry Pi, Synology et VPS europeen.
+- [x] Retenir Synology pour une beta privee et VPS europeen pour une ouverture large.
+- [x] Documenter HTTPS, isolation PostgreSQL, sauvegardes chiffrees, supervision et restauration.
+- [x] Cadrer les dependencies avec l'authentification OIDC future.
+- [x] Ne creer aucun deploiement, domaine, tunnel, secret, configuration Docker ou compte externe.
 
 ## DATA-SEED-DEV-01
 

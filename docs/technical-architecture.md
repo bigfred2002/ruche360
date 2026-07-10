@@ -50,6 +50,15 @@ Tant que `package.json` n'existe pas, le service `app` ne force aucune initialis
 
 `Dockerfile` prépare une image de production future pour l'application Next.js.
 
+## Exploitation et hebergement
+
+Le developpement reste local et Docker-first. La beta privee pourra etre
+hebergee sur un Synology compatible Container Manager; une cible VPS europeenne
+est prevue lorsque la disponibilite et le nombre d'organisations l'exigeront.
+Dans les deux cas, PostgreSQL reste sur un reseau prive et les sauvegardes
+chiffrees sont conservees hors de l'hote. Le cadrage et les lots ulterieurs
+sont decrits dans [Hebergement](deployment-home.md).
+
 ## Commandes prévues
 
 ```bash
