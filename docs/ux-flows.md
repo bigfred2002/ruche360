@@ -1,5 +1,16 @@
 # Flux UX
 
+## Parcours classique de développement
+
+La route `/journey` rassemble le premier essai guidé d'un apiculteur amateur
+dans l'environnement local: contexte rucher, visite, tâche puis matériel. Elle
+renvoie vers les écrans existants et leurs formulaires de développement; elle
+ne crée ni compte, ni donnée métier automatique, ni authentification réelle.
+
+Avant l'essai, le seed local fictif doit être initialisé avec `make seed-dev`.
+Le parcours reste volontairement court afin de vérifier la continuité de
+navigation avant les futurs écrans de détail rucher, ruche et colonie.
+
 ## Principes
 
 Les flux doivent être courts, lisibles sur mobile et adaptés au terrain. Une action fréquente ne doit pas nécessiter de traverser plusieurs écrans de configuration.
