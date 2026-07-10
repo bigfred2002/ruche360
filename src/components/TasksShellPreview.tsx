@@ -82,6 +82,9 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
   const todoCount = displayTasks.filter((task) => task.status === "TODO").length;
   const inProgressCount = displayTasks.filter((task) => task.status === "IN_PROGRESS").length;
   const doneCount = displayTasks.filter((task) => task.status === "DONE").length;
+  const priorityTask =
+    displayTasks.find((task) => task.priority === "URGENT" || task.priority === "HIGH") ??
+    displayTasks[0];
 
   return (
     <AppShell
@@ -145,6 +148,51 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
             />
           </section>
 
+          <section className="grid gap-4 lg:grid-cols-[1fr_20rem]">
+            <article className="surface-panel rounded-3xl p-5 sm:p-6">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <p className="section-kicker">À traiter d&apos;abord</p>
+                  <h2 className="mt-2 text-2xl font-black text-slate-950">
+                    {priorityTask.title}
+                  </h2>
+                </div>
+                <StatusBadge
+                  label={labelForPriority(priorityTask.priority)}
+                  tone={toneForPriority(priorityTask.priority)}
+                />
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <DetailPill label="Échéance" value={formatDueDate(priorityTask.dueAt)} />
+                <DetailPill label="Rucher" value={priorityTask.apiaryId ?? "Non précisé"} />
+                <DetailPill
+                  label="Assignée"
+                  value={priorityTask.assignedToMembershipId ?? "Non assignée"}
+                />
+              </div>
+            </article>
+
+            <aside className="surface-muted rounded-3xl p-5">
+              <p className="section-kicker">Triage</p>
+              <h2 className="mt-2 text-2xl font-black text-slate-950">
+                3 gestes simples
+              </h2>
+              <div className="mt-4 space-y-2">
+                {["Prioriser", "Rattacher", "Clôturer"].map((label, index) => (
+                  <div
+                    className="flex items-center gap-3 rounded-2xl border border-cream-300 bg-white p-3"
+                    key={label}
+                  >
+                    <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-amber-100 text-xs font-black text-amber-950">
+                      {index + 1}
+                    </span>
+                    <p className="text-sm font-black text-slate-950">{label}</p>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          </section>
+
           <section className="grid gap-4 lg:grid-cols-[1fr_22rem]">
             <div className="space-y-4">
               {displayTasks.map((task) => (
@@ -196,72 +244,87 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
             </aside>
           </section>
 
-          <section className="grid gap-4 md:grid-cols-3">
-            {taskLanes.map((lane) => (
-              <article
-                className="motion-card surface-panel rounded-2xl p-5"
-                key={lane.label}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <span className="grid size-11 place-items-center rounded-2xl bg-slate-100 text-sm font-black text-slate-800 ring-1 ring-slate-200">
-                    {lane.label.slice(0, 2)}
-                  </span>
-                  <StatusBadge label={lane.metric} tone={lane.tone} />
+          <details className="surface-panel rounded-3xl">
+            <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 focus-ring sm:px-6 [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="section-kicker">Conception</span>
+                <span className="mt-1 block text-xl font-black text-slate-950">
+                  Statuts, contextes et limites
+                </span>
+              </span>
+              <span className="inline-flex min-h-11 items-center rounded-full border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-700">
+                Voir
+              </span>
+            </summary>
+            <div className="space-y-5 border-t border-cream-300 px-5 py-5 sm:px-6">
+              <section className="grid gap-4 md:grid-cols-3">
+                {taskLanes.map((lane) => (
+                  <article
+                    className="motion-card surface-panel rounded-2xl p-5"
+                    key={lane.label}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="grid size-11 place-items-center rounded-2xl bg-slate-100 text-sm font-black text-slate-800 ring-1 ring-slate-200">
+                        {lane.label.slice(0, 2)}
+                      </span>
+                      <StatusBadge label={lane.metric} tone={lane.tone} />
+                    </div>
+                    <h2 className="mt-5 text-lg font-black text-slate-950">
+                      {lane.label}
+                    </h2>
+                    <p className="mt-2 text-sm leading-6 text-field-muted">
+                      {lane.detail}
+                    </p>
+                  </article>
+                ))}
+              </section>
+
+              <section className="grid gap-4 lg:grid-cols-[1fr_22rem]">
+                <div className="rounded-3xl border border-cream-300 bg-white p-5 sm:p-6">
+                  <p className="section-kicker">Contexte</p>
+                  <h2 className="mt-2 text-2xl font-black text-slate-950">
+                    Rattacher léger
+                  </h2>
+                  <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
+                    Une tâche peut vivre seule ou pointer vers un contexte.
+                    Les liens restent optionnels.
+                  </p>
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                    {taskContexts.map((context) => (
+                      <div
+                        className="rounded-2xl border border-cream-300 bg-cream-50 p-4"
+                        key={context}
+                      >
+                        <StatusBadge label="Optionnel" tone="preview" />
+                        <p className="mt-3 text-sm font-bold leading-6 text-slate-800">
+                          {context}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <h2 className="mt-5 text-lg font-black text-slate-950">
-                  {lane.label}
-                </h2>
-                <p className="mt-2 text-sm leading-6 text-field-muted">
-                  {lane.detail}
-                </p>
-              </article>
-            ))}
-          </section>
 
-          <section className="grid gap-4 lg:grid-cols-[1fr_22rem]">
-            <div className="surface-panel rounded-3xl p-5 sm:p-6">
-              <p className="section-kicker">Contexte</p>
-              <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Rattacher léger
-              </h2>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
-                Une tâche peut vivre seule ou pointer vers un contexte.
-                Les liens restent optionnels.
-              </p>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                {taskContexts.map((context) => (
-                  <div
-                    className="rounded-2xl border border-cream-300 bg-cream-50 p-4"
-                    key={context}
-                  >
-                    <StatusBadge label="Optionnel" tone="preview" />
-                    <p className="mt-3 text-sm font-bold leading-6 text-slate-800">
-                      {context}
-                    </p>
+                <aside className="surface-muted rounded-3xl p-5">
+                  <p className="section-kicker">Limites</p>
+                  <h2 className="mt-2 text-2xl font-black text-slate-950">
+                    Limites claires
+                  </h2>
+                  <div className="mt-4 space-y-3">
+                    {guardrails.map((rule) => (
+                      <div
+                        className="rounded-2xl border border-stone-200 bg-white p-4"
+                        key={rule}
+                      >
+                        <p className="text-sm font-bold leading-6 text-slate-800">
+                          {rule}
+                        </p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </aside>
+              </section>
             </div>
-
-            <aside className="surface-muted rounded-3xl p-5">
-              <p className="section-kicker">Limites</p>
-              <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Limites claires
-              </h2>
-              <div className="mt-4 space-y-3">
-                {guardrails.map((rule) => (
-                  <div
-                    className="rounded-2xl border border-stone-200 bg-white p-4"
-                    key={rule}
-                  >
-                    <p className="text-sm font-bold leading-6 text-slate-800">
-                      {rule}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </aside>
-          </section>
+          </details>
 
           <TasksFormsPreview tasks={tasks ?? null} />
 

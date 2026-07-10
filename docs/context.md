@@ -90,6 +90,9 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `UX-DENSITY-01` allege le cockpit en remontant les modules visibles et en repliant les contenus de demonstration longs, sans supprimer d'information ni ajouter de logique metier.
 - `UX-MODULE-PAGES-01` harmonise les pages module generiques avec un gabarit plus court et progressif: statut, resume, trois reperes et references UX repliees.
 - `UX-COPY-01` raccourcit les textes visibles des pages specialisees et garde les explications longues dans la documentation.
+- `VISITS-UX-FLOW-01` oriente `/visits` vers la preparation terrain avec une prochaine sortie lisible, un rythme court et les details de conception repliees.
+- `TASKS-UX-FLOW-01` oriente `/tasks` vers le triage terrain avec une tache prioritaire, trois gestes simples et les details de conception replies.
+- `EQUIPMENT-UX-FLOW-01` oriente `/equipment` vers la preparation de caisse terrain et les points de maintenance, sans achats, prix ou stock avance.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.

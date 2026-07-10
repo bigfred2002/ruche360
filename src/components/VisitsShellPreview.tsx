@@ -89,6 +89,7 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
   const plannedCount = displayVisits.filter((visit) => visit.status === "PLANNED").length;
   const inProgressCount = displayVisits.filter((visit) => visit.status === "IN_PROGRESS").length;
   const completedCount = displayVisits.filter((visit) => visit.status === "COMPLETED").length;
+  const nextVisit = displayVisits[0];
 
   return (
     <AppShell
@@ -152,6 +153,58 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
             />
           </section>
 
+          <section className="grid gap-4 lg:grid-cols-[1fr_20rem]">
+            <article className="surface-panel rounded-3xl p-5 sm:p-6">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <p className="section-kicker">Prochaine sortie</p>
+                  <h2 className="mt-2 text-2xl font-black text-slate-950">
+                    {nextVisit.objective ?? "Visite à préparer"}
+                  </h2>
+                </div>
+                <StatusBadge
+                  label={labelForStatus(nextVisit.status)}
+                  tone={toneForStatus(nextVisit.status)}
+                />
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <DetailPill label="Date" value={formatVisitDate(nextVisit.visitedAt)} />
+                <DetailPill label="Rucher" value={nextVisit.apiaryId ?? "Non précisé"} />
+                <DetailPill label="Ruche" value={nextVisit.hiveId ?? "Non précisée"} />
+              </div>
+              <p className="mt-4 rounded-2xl border border-cream-300 bg-cream-50 p-4 text-sm font-bold leading-6 text-slate-800">
+                {nextVisit.followUpSummary ?? "Aucune suite indiquée."}
+              </p>
+            </article>
+
+            <aside className="surface-muted rounded-3xl p-5">
+              <p className="section-kicker">Rythme terrain</p>
+              <h2 className="mt-2 text-2xl font-black text-slate-950">
+                4 étapes courtes
+              </h2>
+              <div className="mt-4 space-y-2">
+                {visitSteps.map((step, index) => (
+                  <div
+                    className="flex items-center gap-3 rounded-2xl border border-cream-300 bg-white p-3"
+                    key={step.label}
+                  >
+                    <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-sage-100 text-xs font-black text-forest-900">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <p className="text-sm font-black text-slate-950">
+                        {step.label}
+                      </p>
+                      <p className="text-xs font-bold text-slate-650">
+                        {step.detail}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          </section>
+
           <section className="grid gap-4 lg:grid-cols-[1fr_22rem]">
             <div className="space-y-4">
               {displayVisits.map((visit) => (
@@ -200,35 +253,20 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
             </aside>
           </section>
 
-          <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {visitSteps.map((step) => (
-              <article
-                className="motion-card surface-panel rounded-2xl p-5"
-                key={step.label}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <span className="grid size-11 place-items-center rounded-2xl bg-sage-100 text-sm font-black text-forest-900 ring-1 ring-sage-200">
-                    {step.label.slice(0, 2)}
-                  </span>
-                  <StatusBadge label={step.metric} tone="soon" />
-                </div>
-                <h2 className="mt-5 text-lg font-black text-slate-950">
-                  {step.label}
-                </h2>
-                <p className="mt-2 text-sm leading-6 text-field-muted">
-                  {step.detail}
-                </p>
-              </article>
-            ))}
-          </section>
-
-          <section className="grid gap-4 lg:grid-cols-[1fr_22rem]">
-            <div className="surface-panel rounded-3xl p-5 sm:p-6">
-              <p className="section-kicker">Future fiche</p>
-              <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Champs courts sur mobile
-              </h2>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          <details className="surface-panel rounded-3xl">
+            <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 focus-ring sm:px-6 [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="section-kicker">Conception</span>
+                <span className="mt-1 block text-xl font-black text-slate-950">
+                  Champs futurs et limites
+                </span>
+              </span>
+              <span className="inline-flex min-h-11 items-center rounded-full border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-700">
+                Voir
+              </span>
+            </summary>
+            <div className="grid gap-4 border-t border-cream-300 px-5 py-5 sm:px-6 lg:grid-cols-[1fr_22rem]">
+              <div className="grid gap-3 sm:grid-cols-2">
                 {futureFields.map((field) => (
                   <div
                     className="rounded-2xl border border-cream-300 bg-cream-50 p-4"
@@ -241,27 +279,27 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
                   </div>
                 ))}
               </div>
-            </div>
 
-            <aside className="surface-muted rounded-3xl p-5">
-              <p className="section-kicker">Limites</p>
-              <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Limites claires
-              </h2>
-              <div className="mt-4 space-y-3">
-                {formLimits.map((rule) => (
-                  <div
-                    className="rounded-2xl border border-stone-200 bg-white p-4"
-                    key={rule}
-                  >
-                    <p className="text-sm font-bold leading-6 text-slate-800">
-                      {rule}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </aside>
-          </section>
+              <aside className="surface-muted rounded-3xl p-5">
+                <p className="section-kicker">Limites</p>
+                <h2 className="mt-2 text-2xl font-black text-slate-950">
+                  Limites claires
+                </h2>
+                <div className="mt-4 space-y-3">
+                  {formLimits.map((rule) => (
+                    <div
+                      className="rounded-2xl border border-stone-200 bg-white p-4"
+                      key={rule}
+                    >
+                      <p className="text-sm font-bold leading-6 text-slate-800">
+                        {rule}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </aside>
+            </div>
+          </details>
 
           <VisitsFormsPreview visits={visits ?? null} />
 
