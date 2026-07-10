@@ -126,9 +126,9 @@ export default function Home() {
                   </div>
                   <Link
                     className="mt-5 inline-flex min-h-12 items-center rounded-2xl bg-forest-900 px-5 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
-                    href="/journey"
+                    href="/visits"
                   >
-                    Tester un parcours terrain
+                    Préparer une visite
                   </Link>
                 </div>
                 <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">

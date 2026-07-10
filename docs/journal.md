@@ -7,6 +7,13 @@
 - Le Raspberry Pi reste adapte au developpement ou a la demonstration; le cloud gratuit est reserve a une demonstration temporaire.
 - Aucun deploiement, domaine, tunnel, secret, Docker, schema Prisma, dependance ou code applicatif n'a ete ajoute.
 
+## 2026-07-10 - CLASSIC-JOURNEY-UX-01
+
+- Simplification de `/journey`: demarrage direct par la visite, tache comme suite, materiel optionnel et suppression de l'etape de contexte statique du chemin principal.
+- Repli des limites de developpement et raccourcissement de l'entree cockpit vers la preparation de visite.
+- Regles appliquees: guidage et reduction de charge (Bastien et Scapin), choix limite (Hick), action principale visible (Fitts) et divulgation progressive.
+- Aucun modele, mutation, authentification, API publique, dependance, IA ou IoT n'a ete ajoute.
+
 ## 2026-07-10 - CLASSIC-JOURNEY-01
 
 - Ajout de la route `/journey` pour tester un parcours classique: contexte rucher, visite, tache et materiel.

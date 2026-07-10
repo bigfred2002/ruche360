@@ -7,35 +7,27 @@ import { StatusBadge } from "./StatusBadge";
 const journeySteps = [
   {
     detail:
-      "Repérer le rucher, la ruche et la colonie fictifs utilisés par les formulaires de développement.",
-    href: "/apiaries",
-    label: "Voir les ruchers",
-    number: "01",
-    title: "Choisir le contexte terrain",
-  },
-  {
-    detail:
-      "Préparer une visite, noter une observation courte puis faire évoluer son statut dans les données locales.",
+      "Choisir le rucher fictif dans le formulaire, noter l'essentiel et faire évoluer le statut.",
     href: "/visits",
     label: "Préparer une visite",
-    number: "02",
-    title: "Passer au rucher",
+    number: "01",
+    title: "Préparer la sortie",
   },
   {
     detail:
-      "Créer une action liée au contexte, la prioriser puis la clôturer sans rappel automatique.",
+      "Garder une seule suite visible, la prioriser puis la clôturer quand le terrain est traité.",
     href: "/tasks",
-    label: "Suivre les tâches",
-    number: "03",
-    title: "Garder une suite visible",
+    label: "Voir les tâches",
+    number: "02",
+    title: "Suivre une action",
   },
   {
     detail:
-      "Vérifier la caisse de visite et les éléments à nettoyer, sans achat ni gestion commerciale.",
+      "Vérifier la caisse de visite et les éléments à nettoyer seulement lorsque c'est utile.",
     href: "/equipment",
     label: "Vérifier le matériel",
-    number: "04",
-    title: "Préparer la prochaine sortie",
+    number: "03",
+    title: "Vérifier si nécessaire",
   },
 ] as const;
 
@@ -63,15 +55,18 @@ export function ClassicJourneyPreview() {
             </div>
             <p className="section-kicker mt-5">Essai terrain</p>
             <h1 className="mt-2 text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
-              Un parcours apicole simple
+              Préparer une sortie
             </h1>
             <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-              Suivre un rucher, préparer une visite, garder une tâche et vérifier
-              la caisse de terrain. Chaque étape ouvre une surface déjà présente.
+              Commencer par la visite. Les tâches et le matériel restent à portée
+              de main quand une suite est nécessaire.
             </p>
-            <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm font-bold leading-6 text-amber-950">
-              Avant l&apos;essai, initialiser les données locales avec <code>make seed-dev</code>.
-            </div>
+            <Link
+              className="mt-6 inline-flex min-h-12 items-center justify-center rounded-2xl bg-forest-900 px-5 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
+              href="/visits"
+            >
+              Commencer la visite
+            </Link>
           </section>
 
           <ol className="grid gap-4">
@@ -83,7 +78,12 @@ export function ClassicJourneyPreview() {
                       {step.number}
                     </span>
                     <div>
-                      <h2 className="text-xl font-black text-slate-950">{step.title}</h2>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h2 className="text-xl font-black text-slate-950">{step.title}</h2>
+                        {step.number === "03" ? (
+                          <StatusBadge label="Optionnel" tone="soon" />
+                        ) : null}
+                      </div>
                       <p className="mt-2 max-w-2xl text-sm leading-6 text-field-muted">
                         {step.detail}
                       </p>
@@ -100,12 +100,19 @@ export function ClassicJourneyPreview() {
             ))}
           </ol>
 
-          <section className="surface-muted rounded-3xl p-5 sm:p-6">
-            <p className="section-kicker">Limites volontaires</p>
-            <h2 className="mt-2 text-2xl font-black text-slate-950">
-              Un essai guidé, pas une production
-            </h2>
-            <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <details className="surface-muted rounded-3xl">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 focus-ring sm:px-6 [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="section-kicker">Développement</span>
+                <span className="mt-1 block text-base font-black text-slate-950">
+                  Données fictives et limites du parcours
+                </span>
+              </span>
+              <span className="inline-flex min-h-11 items-center rounded-full border border-cream-300 bg-white px-4 text-sm font-black text-slate-700">
+                Voir
+              </span>
+            </summary>
+            <div className="grid gap-3 border-t border-cream-300 px-5 py-5 md:grid-cols-3 sm:px-6">
               {guardrails.map((rule) => (
                 <p
                   className="rounded-2xl border border-cream-300 bg-white p-4 text-sm font-bold leading-6 text-slate-800"
@@ -115,7 +122,7 @@ export function ClassicJourneyPreview() {
                 </p>
               ))}
             </div>
-          </section>
+          </details>
         </div>
       </div>
     </AppShell>
