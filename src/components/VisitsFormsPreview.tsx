@@ -4,6 +4,7 @@ import {
   canUseSessionModulePermission,
   createDevelopmentApplicationSession,
 } from "@/features/auth";
+import type { HiveSummary } from "@/features/apiary";
 import {
   addDevelopmentVisitObservationFormAction,
   createDevelopmentVisitFormAction,
@@ -14,22 +15,19 @@ import type { VisitSummary } from "@/features/visits/types";
 import { StatusBadge } from "./StatusBadge";
 
 type VisitsFormsPreviewProps = {
+  hives: HiveSummary[] | null;
   visits: VisitSummary[] | null;
 };
-
-const hiveOptions = [
-  { id: "dev-hive-001", label: "DEV-RU-001 · Rucher école" },
-  { id: "dev-hive-002", label: "DEV-RU-002 · Rucher école" },
-];
 
 const fieldClass =
   "mt-1 min-h-11 w-full rounded-2xl border border-cream-300 bg-cream-50 px-3 py-2 text-sm font-bold text-slate-800 outline-none transition focus:border-amber-400 focus:bg-white focus:ring-2 focus:ring-amber-200";
 
 const labelClass = "block text-xs font-black uppercase text-slate-600";
 
-export function VisitsFormsPreview({ visits }: VisitsFormsPreviewProps) {
+export function VisitsFormsPreview({ hives, visits }: VisitsFormsPreviewProps) {
   const session = createDevelopmentApplicationSession();
   const canWrite = canUseSessionModulePermission(session, "visits", "visits.write");
+  const activeHives = hives?.filter((hive) => hive.status === "ACTIVE") ?? [];
   const editableVisits =
     visits?.filter(
       (visit) =>
@@ -38,6 +36,7 @@ export function VisitsFormsPreview({ visits }: VisitsFormsPreviewProps) {
         visit.status !== "ARCHIVED",
     ) ?? [];
   const canUpdateExisting = canWrite && editableVisits.length > 0;
+  const canCreateVisit = canWrite && activeHives.length > 0;
 
   return (
     <section className="surface-panel rounded-3xl p-5 sm:p-6">
@@ -66,44 +65,44 @@ export function VisitsFormsPreview({ visits }: VisitsFormsPreviewProps) {
           className="rounded-2xl border border-cream-300 bg-white p-4"
         >
           <FormHeader
-            badge={canWrite ? "Actif dev" : "Verrouillé"}
-            detail="Créer une note de visite courte sur une ruche fictive active."
+            badge={canCreateVisit ? "Actif dev" : "Ruche requise"}
+            detail="Créer une note courte sur une ruche active de l'organisation."
             permission="visits.write"
             title="Nouvelle visite"
-            tone={canWrite ? "active" : "soon"}
+            tone={canCreateVisit ? "active" : "soon"}
           />
           <div className="mt-4 space-y-3">
-            <HiveSelect disabled={!canWrite} />
+            <HiveSelect disabled={!canCreateVisit} hives={activeHives} />
             <p className="rounded-2xl border border-sage-200 bg-sage-50 p-3 text-sm font-bold leading-6 text-forest-900">
               Le rucher et la colonie active sont associés automatiquement.
             </p>
             <Field label="Statut">
-              <select className={fieldClass} disabled={!canWrite} name="status">
+              <select className={fieldClass} disabled={!canCreateVisit} name="status">
                 <option value="DRAFT">Brouillon</option>
                 <option value="PLANNED">Prévue</option>
                 <option value="IN_PROGRESS">En cours</option>
               </select>
             </Field>
             <Field label="Date de visite">
-              <input className={fieldClass} disabled={!canWrite} name="visitedAt" type="date" />
+              <input className={fieldClass} disabled={!canCreateVisit} name="visitedAt" type="date" />
             </Field>
             <Field label="Objectif">
-              <input className={fieldClass} disabled={!canWrite} name="objective" placeholder="Ex: contrôle rapide" />
+              <input className={fieldClass} disabled={!canCreateVisit} name="objective" placeholder="Ex: contrôle rapide" />
             </Field>
             <Field label="Météo observée">
-              <input className={fieldClass} disabled={!canWrite} name="weatherSummary" placeholder="Ex: doux, vent faible" />
+              <input className={fieldClass} disabled={!canCreateVisit} name="weatherSummary" placeholder="Ex: doux, vent faible" />
             </Field>
             <Field label="Force colonie">
-              <input className={fieldClass} disabled={!canWrite} max="10" min="0" name="colonyStrength" type="number" />
+              <input className={fieldClass} disabled={!canCreateVisit} max="10" min="0" name="colonyStrength" type="number" />
             </Field>
             <Field label="Notes">
-              <textarea className={fieldClass} disabled={!canWrite} name="notes" placeholder="Observation courte" rows={3} />
+              <textarea className={fieldClass} disabled={!canCreateVisit} name="notes" placeholder="Observation courte" rows={3} />
             </Field>
             <Field label="Suite à prévoir">
-              <textarea className={fieldClass} disabled={!canWrite} name="followUpSummary" placeholder="Prochaine action ou vigilance" rows={3} />
+              <textarea className={fieldClass} disabled={!canCreateVisit} name="followUpSummary" placeholder="Prochaine action ou vigilance" rows={3} />
             </Field>
           </div>
-          <SubmitButton disabled={!canWrite} label="Créer la visite" />
+          <SubmitButton disabled={!canCreateVisit} label="Créer la visite" />
         </form>
 
         <form
@@ -172,14 +171,20 @@ export function VisitsFormsPreview({ visits }: VisitsFormsPreviewProps) {
   );
 }
 
-function HiveSelect({ disabled }: { disabled: boolean }) {
+function HiveSelect({
+  disabled,
+  hives,
+}: {
+  disabled: boolean;
+  hives: HiveSummary[];
+}) {
   return (
     <Field label="Ruche">
       <select className={fieldClass} disabled={disabled} name="hiveId" required>
         <option value="">Choisir une ruche active</option>
-        {hiveOptions.map((hive) => (
+        {hives.map((hive) => (
           <option key={hive.id} value={hive.id}>
-            {hive.label}
+            {hive.fieldIdentifier}
           </option>
         ))}
       </select>

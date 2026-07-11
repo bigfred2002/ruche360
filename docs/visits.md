@@ -236,6 +236,22 @@ du seed. Ils n'introduisent pas d'authentification reelle, d'API publique, de
 creation automatique de tache, de diagnostic sanitaire, d'analyse IA ou de
 prescription.
 
+## VISITS-REAL-FLOW-01
+
+`VISITS-REAL-FLOW-01` rapproche le flux visites du parcours terrain reel:
+
+- `/visits` charge les ruches de l'organisation active via le contrat
+  `ApplicationSession`;
+- le formulaire de creation de visite propose les ruches actives issues de
+  `/apiaries`;
+- une visite ne peut plus etre creee depuis l'interface si aucune ruche active
+  n'est disponible;
+- le rucher et la colonie active restent derives cote serveur depuis la ruche.
+
+Le lot utilise encore la session de developpement tant que `AUTH-SESSION-WEB-01`
+n'est pas implemente. Il ne cree pas d'authentification reelle, d'API publique,
+de prescription sanitaire, d'analyse IA ou de creation automatique de tache.
+
 3. `VISITS-FORMS-SHELL-01`
    - termine comme formulaires serveur de developpement limites;
    - aucun automatisme sanitaire.

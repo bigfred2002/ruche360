@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - VISITS-REAL-FLOW-01
+
+- Branchement de `/visits` sur la liste des ruches de l'organisation active via les actions ruchers existantes.
+- Le formulaire de creation de visite propose maintenant les ruches actives creees ou lues dans `/apiaries`, au lieu d'options codees en dur.
+- La creation de visite reste centree sur une ruche active; rucher et colonie active sont toujours derives cote serveur.
+- Aucun schema Prisma, migration, dependance, authentification reelle, API publique, prescription sanitaire, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-11 - APIARY-FORMS-01
 
 - Ajout des actions serveur ruchers/ruches basees sur le contrat `ApplicationSession`: lecture, creation de rucher et creation de ruche.

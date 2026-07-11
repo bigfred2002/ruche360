@@ -125,6 +125,7 @@
 - [x] `CLASSIC-JOURNEY-01`: relier les ecrans de developpement dans un essai terrain guide, sans ajouter de logique metier ou de donnee.
 - [x] `CLASSIC-JOURNEY-UX-01`: reduire le parcours de demonstration a visite, tache et materiel optionnel, avec divulgation progressive des limites.
 - [x] `APIARY-FORMS-01`: ajouter la lecture et les formulaires serveur de developpement pour creer rucher et ruche, sans auth reelle ni GPS.
+- [x] `VISITS-REAL-FLOW-01`: utiliser les ruches actives de l'organisation dans le formulaire de creation de visite.
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.
 - [x] `VISITS-01`: ajouter le modele Prisma minimal des visites, sans CRUD complet.
