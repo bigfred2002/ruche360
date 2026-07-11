@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - BACKUP-RESTORE-00
+
+- Cadrage de la strategie de sauvegarde PostgreSQL: dump logique quotidien chiffre, copie hors hote, retention cible et restauration testee.
+- Definition d'une checklist de restauration sur base separee et d'objectifs beta initiaux: RPO 24 heures, RTO de quelques heures.
+- Clarification de l'evolution future vers sauvegarde physique, archivage WAL et PITR si le volume ou le niveau de service l'exige.
+- Aucun script, job, secret, cle, dump, Docker, schema Prisma, route applicative, auth, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-11 - DEPLOY-PROD-ARCHITECTURE-00
 
 - Cadrage de l'architecture de production Docker-first: un seul point d'entree HTTPS public, application isolee, PostgreSQL prive et sauvegardes chiffrees hors hote.

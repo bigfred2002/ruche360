@@ -208,7 +208,8 @@ Ce lot ne cree pas:
 ## Lots Suivants
 
 1. `BACKUP-RESTORE-00`
-   - cadrer sauvegardes PostgreSQL, chiffrement, retention et restauration.
+   - termine;
+   - cadre sauvegardes PostgreSQL, chiffrement, retention et restauration.
 
 2. `AUTH-PROVIDER-DECISION-01`
    - choisir le fournisseur OIDC et separer les clients par environnement.
