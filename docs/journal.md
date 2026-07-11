@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-10 - VISITS-HIVE-FIRST-01
+
+- La creation de visite de developpement demande desormais une seule ruche active.
+- Le service derive son rucher et sa colonie active dans la meme organisation, tout en conservant les liens separes dans l'historique.
+- La selection explicite de colonie est retiree du parcours courant et reservee aux futurs cas avances.
+- Aucun schema Prisma, dependance, authentification reelle, API publique, IA ou IoT n'a ete ajoute.
+
 ## 2026-07-10 - DEPLOY-HOME-00
 
 - Cadrage documentaire de l'hebergement: developpement Docker local, beta privee sur Synology compatible Container Manager, puis VPS europeen lorsque l'ouverture et la disponibilite l'exigent.

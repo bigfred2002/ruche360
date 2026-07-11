@@ -221,10 +221,9 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
                       tone={toneForStatus(visit.status)}
                     />
                   </div>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     <DetailPill label="Rucher" value={visit.apiaryId ?? "Non précisé"} />
                     <DetailPill label="Ruche" value={visit.hiveId ?? "Non précisée"} />
-                    <DetailPill label="Colonie" value={visit.colonyId ?? "Non précisée"} />
                   </div>
                   <p className="mt-4 rounded-2xl border border-cream-300 bg-cream-50 p-4 text-sm font-bold leading-6 text-slate-800">
                     {visit.followUpSummary ?? "Aucune suite indiquée."}
