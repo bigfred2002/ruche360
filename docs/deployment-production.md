@@ -212,7 +212,8 @@ Ce lot ne cree pas:
    - cadre sauvegardes PostgreSQL, chiffrement, retention et restauration.
 
 2. `AUTH-PROVIDER-DECISION-01`
-   - choisir le fournisseur OIDC et separer les clients par environnement.
+   - termine;
+   - retient Google OIDC pour la beta privee et separe les clients par environnement.
 
 3. `DEPLOY-SYNOLOGY-01`
    - preparer une beta privee Synology apres sauvegardes et auth.

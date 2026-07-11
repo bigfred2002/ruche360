@@ -91,9 +91,9 @@ supprime jamais les donnees existantes.
 ## Lots suivants
 
 1. `AUTH-PROVIDER-DECISION-01`
-   - choisir le fournisseur OIDC et le mode de connexion initial;
-   - valider hebergement, cout, RGPD, MFA, export et recuperation;
-   - documenter les secrets attendus sans les creer ni les committer.
+   - termine;
+   - retient Google OIDC comme fournisseur initial de beta privee;
+   - documente les secrets attendus sans les creer ni les committer.
 
 2. `AUTH-SESSION-WEB-01`
    - ajouter l'integration choisie, les routes de connexion/deconnexion et la
@@ -130,6 +130,7 @@ supprime jamais les donnees existantes.
 
 ## References
 
+- [Decision fournisseur d'authentification](auth-provider-decision.md)
 - [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 - [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
 - [OpenID Connect specifications](https://openid.net/developers/specs/)

@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - AUTH-PROVIDER-DECISION-01
+
+- Decision: Google OIDC est retenu comme fournisseur initial pour la beta privee, avec clients separes local, beta et production.
+- Confirmation que Google verifie l'identite uniquement; les organisations, adhesions, roles, permissions et modules restent portes par Rucher360.
+- Cadrage du flux Authorization Code avec PKCE, session serveur opaque et scopes initiaux `openid`, `email`, `profile`.
+- Aucun fournisseur configure, compte Google Cloud, dependance, route, cookie, secret, migration Prisma, UI de connexion, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-11 - BACKUP-RESTORE-00
 
 - Cadrage de la strategie de sauvegarde PostgreSQL: dump logique quotidien chiffre, copie hors hote, retention cible et restauration testee.
