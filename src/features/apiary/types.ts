@@ -11,7 +11,11 @@ export type ApiarySummary = {
   organizationId: string;
   name: string;
   status: ApiaryStatus;
+  description: string | null;
   locationDescription: string | null;
+  accessNotes: string | null;
+  hiveCount: number;
+  activeHiveCount: number;
 };
 
 export type HiveSummary = {
@@ -19,7 +23,9 @@ export type HiveSummary = {
   organizationId: string;
   apiaryId: string | null;
   fieldIdentifier: string;
+  hiveType: string | null;
   status: HiveStatus;
+  notes: string | null;
 };
 
 export type ColonySummary = {
