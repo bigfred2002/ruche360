@@ -64,6 +64,12 @@ un seul point d'entree HTTPS public, application Docker isolee, PostgreSQL prive
 secrets injectes hors Git et sauvegardes chiffrees hors hote. Le detail est
 documente dans [Architecture De Production](deployment-production.md).
 
+`BACKUP-RESTORE-00` cadre la strategie initiale de sauvegarde et restauration:
+dump logique PostgreSQL chiffre hors hote pour la beta privee, restauration
+testee, puis evolution future vers sauvegardes physiques et PITR si les
+objectifs RPO/RTO l'exigent. Le detail est documente dans
+[Sauvegarde Et Restauration](backup-restore.md).
+
 ## Commandes prévues
 
 ```bash

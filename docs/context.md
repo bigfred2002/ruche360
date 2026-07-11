@@ -37,6 +37,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `AGENT-WORKFLOW-COMMIT-GUARD-01` renforce la regle de flux: un lot doit etre committe, pousse, controle en PR et merge ou arbitre avant de demarrer le lot suivant.
 - `PLATFORM-ADMIN-00` reserve l'administration plateforme a l'exploitation technique future, separee de l'administration d'organisation et dependante d'une authentification reelle, de roles plateforme et d'une architecture d'hebergement validee.
 - `DEPLOY-PROD-ARCHITECTURE-00` retient une architecture de production Docker-first avec un seul point d'entree HTTPS, PostgreSQL prive, secrets hors Git, sauvegardes chiffrees hors hote et choix tunnel/reverse proxy selon beta Synology ou VPS.
+- `BACKUP-RESTORE-00` retient une sauvegarde logique PostgreSQL quotidienne chiffree et conservee hors hote pour la beta privee, avec restauration testee comme condition de validite et evolution future vers PITR si les objectifs RPO/RTO l'exigent.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.
 - `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.
 - `EQUIPMENT-00` cadre le futur module materiel comme inventaire leger hybride, sans code metier, migration, CRUD, achats, fournisseurs, comptabilite, IA ou IoT actif.
