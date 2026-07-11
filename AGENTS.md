@@ -15,6 +15,9 @@ Rucher360 est une application apicole modulaire multi-utilisateurs. Le dépôt d
 - Ne jamais committer directement sur `main`.
 - Créer une branche dédiée par lot, avec le préfixe `codex/` par défaut.
 - Créer un commit distinct après chaque lot terminé, avant d'enchaîner sur le lot suivant.
+- Ne pas empiler plusieurs lots non mergés sur une même branche ou une chaîne de branches, sauf demande explicite.
+- Après chaque lot applicatif ou documentaire, pousser la branche, ouvrir ou mettre à jour la PR, attendre la CI verte, puis merger ou demander l'arbitrage avant de démarrer le lot suivant.
+- Après un squash merge, resynchroniser `main` localement avant de créer la branche du lot suivant.
 - Avant tout push, vérifier que le hook local `pre-push` de confidentialité est installé avec `make install-security-hooks`.
 - Ne jamais pousser d'exports locaux, secrets, fichiers `.env`, clés, dumps ou données personnelles.
 - Les Pull Requests doivent conserver la CI verte avant merge.
@@ -32,7 +35,9 @@ Rucher360 est une application apicole modulaire multi-utilisateurs. Le dépôt d
 7. Mettre à jour `docs/journal.md`.
 8. Créer un commit dédié au lot terminé.
 9. Exécuter `make security-scan` avant push.
-10. Préparer une Pull Request.
+10. Pousser la branche du lot.
+11. Préparer ou mettre à jour une Pull Request.
+12. Ne démarrer aucun autre lot tant que la PR courante n'est pas mergée, explicitement mise en attente ou arbitrée par l'utilisateur.
 
 ## Workflow UX et interface
 

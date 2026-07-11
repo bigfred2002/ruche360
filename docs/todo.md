@@ -22,6 +22,7 @@
 - [x] Cadrer la transhumance dans `TRANSHUMANCE-00` avant d'implementer les mouvements de ruches.
 - [x] Ajouter le module, les permissions et le modele minimal du materiel dans `EQUIPMENT-01`.
 - [x] `DEPLOY-HOME-00`: cadrer l'hebergement local, beta Synology, bascule VPS et prerequis de confidentialite, sans deploiement actif.
+- [x] `AGENT-WORKFLOW-COMMIT-GUARD-01`: renforcer les consignes pour imposer commit, push, PR et merge/arbitrage avant d'enchainer un nouveau lot.
 
 ### Analyse lots dynamiques UI/applicatifs
 
