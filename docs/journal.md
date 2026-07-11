@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - APIARY-FORMS-01
+
+- Ajout des actions serveur ruchers/ruches basees sur le contrat `ApplicationSession`: lecture, creation de rucher et creation de ruche.
+- Branchement de `/apiaries` sur la lecture Prisma et sur des formulaires serveur de developpement pour creer un site apicole et une ruche.
+- Conservation d'une UX volontairement simple: pas de coordonnees GPS, pas de carte, pas de partage fin, pas de suppression et pas de creation de colonie dans ce lot.
+- Aucun schema Prisma, migration, dependance, authentification reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-11 - AUTH-PROVIDER-DECISION-01
 
 - Decision: Google OIDC est retenu comme fournisseur initial pour la beta privee, avec clients separes local, beta et production.
