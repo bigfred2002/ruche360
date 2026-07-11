@@ -20,6 +20,64 @@ Cela signifie:
 - l'administration complete les modules `organizations`, `users_roles` et `modules`;
 - l'administration plateforme reste un sujet futur separe.
 
+## Administration Plateforme Future
+
+`PLATFORM-ADMIN-00` cadre le sujet sans l'implementer.
+
+L'administration plateforme concerne l'exploitation technique globale de
+Rucher360, pas la gestion quotidienne d'une organisation apicole.
+
+Elle pourra devenir utile seulement lorsque l'application aura:
+
+- une authentification reelle;
+- des roles plateforme distincts des roles d'organisation;
+- plusieurs organisations actives;
+- des sauvegardes et restaurations cadrees;
+- des journaux d'activite et de securite suffisamment fiables;
+- un mode d'hebergement cible valide.
+
+Elle ne remplace pas `/admin`. Le centre `/admin` reste l'administration d'une
+organisation active. Une future administration plateforme devra etre separee,
+probablement sous une surface reservee a l'exploitation technique, par exemple
+`/platform-admin` ou un outil d'exploitation non expose aux utilisateurs finaux.
+
+### Responsabilites Possibles
+
+Fonctions candidates, a garder hors perimetre tant qu'elles ne sont pas
+necessaires:
+
+- liste des organisations;
+- etat global des volumes de donnees;
+- etat des migrations et versions applicatives;
+- supervision des sauvegardes;
+- statut des jobs ou traitements futurs;
+- revue de securite et des alertes techniques;
+- gestion des incidents;
+- support technique limite, avec minimisation des donnees visibles.
+
+### Limites
+
+Ne pas introduire dans l'administration plateforme:
+
+- lecture libre des donnees metier d'une organisation;
+- contournement des permissions d'organisation;
+- modification directe des ruchers, ruches, visites, taches ou materiel;
+- export global de donnees personnelles;
+- suppression dure sans procedure d'archivage et de restauration;
+- activation IA, IoT, GPS, camera ou capteurs;
+- secret, token ou configuration de production versionnee.
+
+### Dependances Avant Implementation
+
+Avant tout lot executable, il faudra au minimum:
+
+- choisir le fournisseur d'authentification reel;
+- ajouter les roles plateforme dans un lot dedie;
+- definir la politique d'acces support;
+- cadrer les sauvegardes et restaurations;
+- cadrer les logs techniques et metier;
+- valider l'architecture d'hebergement.
+
 ## Responsabilites Cibles
 
 Le centre d'administration d'organisation devra couvrir progressivement:
@@ -179,9 +237,9 @@ Le detail exact est cadre dans [Journal D'Activite Metier](audit-log.md).
    - cadrage archivage, conservation, restauration et suppression controlee.
 
 5. `PLATFORM-ADMIN-00`
-   - futur lointain;
-   - exploitation technique globale;
-   - depend d'une authentification reelle et de roles plateforme.
+   - termine;
+   - cadrage futur de l'exploitation technique globale;
+   - aucune route, permission, role ou donnee plateforme n'est ajoutee.
 
 ## Regles De Coherence
 

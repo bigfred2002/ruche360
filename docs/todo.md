@@ -104,7 +104,7 @@
 - [x] `AUDIT-LOG-SHELL-01`: ajouter un shell statique `/admin/journal`, sans lecture reelle.
 - [x] `DATA-LIFECYCLE-00`: cadrer archivage, conservation et suppression controlee.
 - [x] `TOOLING-DEPENDENCIES-01`: mettre a jour le gestionnaire pnpm declare et la regle de commit par lot, sans changer les dependances applicatives.
-- [ ] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
+- [x] `PLATFORM-ADMIN-00`: cadrer plus tard l'administration plateforme, reservee a l'exploitation technique.
 
 ### Backlog exploitation et hebergement
 
