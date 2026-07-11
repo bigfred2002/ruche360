@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - APIARY-DETAIL-SHELL-01
+
+- Ajout des lectures de detail rucher et ruche via le contrat `ApplicationSession`.
+- Ajout des routes `/apiaries/[apiaryId]` et `/hives/[hiveId]` pour consulter le contexte terrain en lecture seule.
+- La liste `/apiaries` pointe maintenant vers la fiche rucher, qui pointe elle-même vers les fiches ruches.
+- Aucun formulaire supplementaire, edition, suppression, carte, GPS, partage fin, schema Prisma, migration, dependance, authentification reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-11 - CLASSIC-JOURNEY-REAL-01
 
 - Branchement de `/journey` sur les lectures existantes de ruches, visites, taches et materiel via la session de developpement.

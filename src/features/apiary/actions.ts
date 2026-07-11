@@ -10,6 +10,8 @@ import { createApiaryActionContextFromSession } from "./session-context";
 import {
   createApiary,
   createHive,
+  getApiaryDetail,
+  getHiveDetail,
   listApiaries,
   listHives,
   type CreateApiaryInput,
@@ -26,6 +28,20 @@ export async function listApiariesForSessionAction(session: ApplicationSession) 
 
 export async function listHivesForSessionAction(session: ApplicationSession) {
   return listHives(createApiaryActionContextFromSession(session));
+}
+
+export async function getApiaryDetailForSessionAction(
+  session: ApplicationSession,
+  apiaryId: string,
+) {
+  return getApiaryDetail(createApiaryActionContextFromSession(session), apiaryId);
+}
+
+export async function getHiveDetailForSessionAction(
+  session: ApplicationSession,
+  hiveId: string,
+) {
+  return getHiveDetail(createApiaryActionContextFromSession(session), hiveId);
 }
 
 export async function createApiaryAction(
