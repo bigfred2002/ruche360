@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-10 - TASKS-HIVE-FIRST-01
+
+- La creation de tache de developpement demande une ruche optionnelle, sans selection distincte de rucher, colonie ou assignation.
+- Lorsqu'une ruche active est choisie, le service derive son rucher et sa colonie active dans la meme organisation.
+- Une tache generale reste possible sans ruche, notamment pour le materiel ou la preparation terrain.
+- Aucun schema Prisma, dependance, authentification reelle, API publique, IA ou IoT n'a ete ajoute.
+
 ## 2026-07-10 - VISITS-HIVE-FIRST-01
 
 - La creation de visite de developpement demande desormais une seule ruche active.

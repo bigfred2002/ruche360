@@ -40,6 +40,11 @@ Relations optionnelles:
 - createur;
 - personne assignee.
 
+Pour les taches terrain courantes, la ruche est le seul contexte selectionne:
+son rucher et sa colonie active sont derives. Une tache sans ruche reste
+possible pour les actions generales, notamment la preparation du materiel.
+La selection explicite de colonie est reservee aux futurs cas avances.
+
 ## Statuts Cibles
 
 Statuts:

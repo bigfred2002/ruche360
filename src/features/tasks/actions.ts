@@ -9,10 +9,12 @@ import type { TaskActionContext } from "./access";
 import { createTaskActionContextFromSession } from "./session-context";
 import {
   assignTask,
+  createHiveFirstTask,
   createTask,
   listTasks,
   updateTaskStatus,
   type AssignTaskInput,
+  type CreateHiveFirstTaskInput,
   type CreateTaskInput,
   type UpdateTaskStatusInput,
 } from "./service";
@@ -37,6 +39,13 @@ export async function createTaskForSessionAction(
   input: CreateTaskInput,
 ) {
   return createTask(createTaskActionContextFromSession(session), input);
+}
+
+export async function createHiveFirstTaskForSessionAction(
+  session: ApplicationSession,
+  input: CreateHiveFirstTaskInput,
+) {
+  return createHiveFirstTask(createTaskActionContextFromSession(session), input);
 }
 
 export async function updateTaskStatusAction(
@@ -70,14 +79,11 @@ export async function assignTaskForSessionAction(
 export async function createDevelopmentTaskFormAction(formData: FormData) {
   const session = createDevelopmentApplicationSession();
 
-  await createTaskForSessionAction(session, {
+  await createHiveFirstTaskForSessionAction(session, {
     title: readFormText(formData, "title"),
     description: readOptionalFormText(formData, "description"),
-    apiaryId: readOptionalFormText(formData, "apiaryId"),
     hiveId: readOptionalFormText(formData, "hiveId"),
-    colonyId: readOptionalFormText(formData, "colonyId"),
     visitId: readOptionalFormText(formData, "visitId"),
-    assignedToMembershipId: readOptionalFormText(formData, "assignedToMembershipId"),
     status: readOptionalFormText(formData, "status"),
     priority: readOptionalFormText(formData, "priority"),
     dueAt: readOptionalFormText(formData, "dueAt"),

@@ -33,6 +33,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `CLASSIC-JOURNEY-01` ajoute une route de demonstration qui relie cockpit, contexte rucher, visite, tache et materiel via les ecrans et donnees de developpement deja disponibles, sans nouvelle mutation ni authentification reelle.
 - `CLASSIC-JOURNEY-UX-01` simplifie ce parcours: la visite devient l'entree principale, la tache est une suite et le materiel reste optionnel; les limites de developpement sont repliees.
 - `VISITS-HIVE-FIRST-01` adopte la ruche comme point d'entree de visite: le rucher et la colonie active sont derives cote serveur pour les visites de terrain courantes.
+- `TASKS-HIVE-FIRST-01` simplifie les taches terrain: une ruche optionnelle derive le rucher et la colonie active, tandis qu'une tache generale reste sans contexte apicole.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.
 - `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.
 - `EQUIPMENT-00` cadre le futur module materiel comme inventaire leger hybride, sans code metier, migration, CRUD, achats, fournisseurs, comptabilite, IA ou IoT actif.

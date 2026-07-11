@@ -118,6 +118,7 @@
 - [x] `VISITS-UX-FLOW-01`: rendre la page visites plus orientee sortie terrain, sans modifier les actions ni les donnees.
 - [x] `VISITS-HIVE-FIRST-01`: simplifier la creation de visite autour d'une ruche active et deriver le rucher et la colonie active.
 - [x] `TASKS-UX-FLOW-01`: rendre la page taches plus orientee triage terrain, sans notification ni calendrier.
+- [x] `TASKS-HIVE-FIRST-01`: simplifier la creation de tache autour d'une ruche optionnelle et deriver son contexte actif.
 - [x] `EQUIPMENT-UX-FLOW-01`: rendre la page materiel plus orientee preparation et maintenance, sans achat ni stock avance.
 - [x] `CLASSIC-JOURNEY-01`: relier les ecrans de developpement dans un essai terrain guide, sans ajouter de logique metier ou de donnee.
 - [x] `CLASSIC-JOURNEY-UX-01`: reduire le parcours de demonstration a visite, tache et materiel optionnel, avec divulgation progressive des limites.

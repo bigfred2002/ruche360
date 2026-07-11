@@ -40,6 +40,13 @@ export type CreateTaskInput = {
   dueAt?: Date | string | null;
 };
 
+export type CreateHiveFirstTaskInput = Omit<
+  CreateTaskInput,
+  "apiaryId" | "colonyId" | "hiveId"
+> & {
+  hiveId?: string | null;
+};
+
 export type UpdateTaskStatusInput = {
   taskId: string;
   status: string;
@@ -74,40 +81,51 @@ export async function createTask(
 ): Promise<TaskCommandResult<TaskSummary>> {
   assertCanWriteTasks(context);
 
+  return db.$transaction((tx) => createTaskRecord(context, input, tx));
+}
+
+export async function createHiveFirstTask(
+  context: TaskActionContext,
+  input: CreateHiveFirstTaskInput,
+  db: TaskDatabase = prisma,
+): Promise<TaskCommandResult<TaskSummary>> {
+  assertCanWriteTasks(context);
+
   return db.$transaction(async (tx) => {
-    const apiaryId = normalizeOptionalText(input.apiaryId);
     const hiveId = normalizeOptionalText(input.hiveId);
-    const colonyId = normalizeOptionalText(input.colonyId);
-    const visitId = normalizeOptionalText(input.visitId);
-    const assignedToMembershipId = normalizeOptionalText(input.assignedToMembershipId);
-    const status = input.status ? requireTaskStatus(input.status) : "TODO";
-    const priority = input.priority ? requireTaskPriority(input.priority) : "NORMAL";
 
-    assertTaskCanBeCreatedWithStatus(status);
-    await assertApiaryBelongsToOrganization(tx, context.organizationId, apiaryId);
-    await assertHiveBelongsToOrganization(tx, context.organizationId, hiveId);
-    await assertColonyBelongsToOrganization(tx, context.organizationId, colonyId);
-    await assertVisitBelongsToOrganization(tx, context.organizationId, visitId);
-    await assertMembershipBelongsToOrganization(tx, context.organizationId, assignedToMembershipId);
+    if (!hiveId) {
+      return createTaskRecord(context, input, tx);
+    }
 
-    const task = await tx.task.create({
-      data: {
+    const hive = await tx.hive.findFirstOrThrow({
+      where: {
+        id: hiveId,
         organizationId: context.organizationId,
-        apiaryId,
-        hiveId,
-        colonyId,
-        visitId,
-        createdByMembershipId: context.membershipId ?? null,
-        assignedToMembershipId,
-        title: requireText(input.title, "Le titre de tache"),
-        description: normalizeOptionalText(input.description),
-        status,
-        priority,
-        dueAt: normalizeOptionalDate(input.dueAt),
+        status: "ACTIVE",
+        archivedAt: null,
       },
     });
+    const colony = await tx.colony.findFirst({
+      where: {
+        organizationId: context.organizationId,
+        hiveId: hive.id,
+        status: "ACTIVE",
+        archivedAt: null,
+      },
+      orderBy: [{ updatedAt: "desc" }, { createdAt: "desc" }],
+    });
 
-    return { ok: true, data: toTaskSummary(task) };
+    return createTaskRecord(
+      context,
+      {
+        ...input,
+        apiaryId: hive.apiaryId,
+        colonyId: colony?.id ?? null,
+        hiveId: hive.id,
+      },
+      tx,
+    );
   });
 }
 
@@ -178,6 +196,50 @@ function assertTaskCanBeCreatedWithStatus(status: TaskStatus): void {
   if (status === "DONE" || status === "ARCHIVED") {
     throw new Error("Une nouvelle tache doit demarrer a faire ou en cours.");
   }
+}
+
+async function createTaskRecord(
+  context: TaskActionContext,
+  input: CreateTaskInput,
+  db: TaskReader,
+): Promise<TaskCommandResult<TaskSummary>> {
+  const apiaryId = normalizeOptionalText(input.apiaryId);
+  const hiveId = normalizeOptionalText(input.hiveId);
+  const colonyId = normalizeOptionalText(input.colonyId);
+  const visitId = normalizeOptionalText(input.visitId);
+  const assignedToMembershipId = normalizeOptionalText(input.assignedToMembershipId);
+  const status = input.status ? requireTaskStatus(input.status) : "TODO";
+  const priority = input.priority ? requireTaskPriority(input.priority) : "NORMAL";
+
+  assertTaskCanBeCreatedWithStatus(status);
+  await assertApiaryBelongsToOrganization(db, context.organizationId, apiaryId);
+  await assertHiveBelongsToOrganization(db, context.organizationId, hiveId);
+  await assertColonyBelongsToOrganization(db, context.organizationId, colonyId);
+  await assertVisitBelongsToOrganization(db, context.organizationId, visitId);
+  await assertMembershipBelongsToOrganization(
+    db,
+    context.organizationId,
+    assignedToMembershipId,
+  );
+
+  const task = await db.task.create({
+    data: {
+      organizationId: context.organizationId,
+      apiaryId,
+      hiveId,
+      colonyId,
+      visitId,
+      createdByMembershipId: context.membershipId ?? null,
+      assignedToMembershipId,
+      title: requireText(input.title, "Le titre de tache"),
+      description: normalizeOptionalText(input.description),
+      status,
+      priority,
+      dueAt: normalizeOptionalDate(input.dueAt),
+    },
+  });
+
+  return { ok: true, data: toTaskSummary(task) };
 }
 
 async function assertApiaryBelongsToOrganization(
