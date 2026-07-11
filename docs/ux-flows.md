@@ -14,6 +14,13 @@ Le parcours reste volontairement court afin de vérifier la continuité de
 navigation avant les futurs écrans de détail rucher, ruche et colonie. Les
 limites techniques sont repliées afin que la première décision reste la visite.
 
+Depuis `CLASSIC-JOURNEY-REAL-01`, la route lit les données de développement
+existantes pour afficher l'état réel du parcours: ruches actives, visites
+ouvertes, tâches à suivre et matériel disponible ou stocké. Si aucune ruche
+active n'existe, le premier appel renvoie vers `/apiaries`; sinon il renvoie
+vers `/visits`. La route reste une orchestration en lecture seule et ne crée
+aucune donnée.
+
 ## Principes
 
 Les flux doivent être courts, lisibles sur mobile et adaptés au terrain. Une action fréquente ne doit pas nécessiter de traverser plusieurs écrans de configuration.
