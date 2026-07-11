@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - CLASSIC-JOURNEY-REAL-01
+
+- Branchement de `/journey` sur les lectures existantes de ruches, visites, taches et materiel via la session de developpement.
+- Ajout d'un resume de readiness: ruches actives, visites ouvertes, taches a suivre et materiel disponible ou stocke.
+- Le parcours oriente vers `/apiaries` si aucune ruche active n'existe, puis vers `/visits` quand le contexte est pret.
+- Aucun formulaire, mutation, schema Prisma, migration, dependance, authentification reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-11 - TASKS-REAL-FLOW-01
 
 - Branchement de `/tasks` sur la liste des ruches actives de l'organisation via les actions ruchers existantes.

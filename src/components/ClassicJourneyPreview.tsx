@@ -1,35 +1,28 @@
 import Link from "next/link";
 
+import type { HiveSummary } from "@/features/apiary";
+import type {
+  EquipmentItemSummary,
+  EquipmentStockSummary,
+} from "@/features/equipment";
+import type { TaskSummary } from "@/features/tasks";
+import type { VisitSummary } from "@/features/visits";
+
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { StatusBadge } from "./StatusBadge";
 
-const journeySteps = [
-  {
-    detail:
-      "Choisir le rucher fictif dans le formulaire, noter l'essentiel et faire évoluer le statut.",
-    href: "/visits",
-    label: "Préparer une visite",
-    number: "01",
-    title: "Préparer la sortie",
-  },
-  {
-    detail:
-      "Garder une seule suite visible, la prioriser puis la clôturer quand le terrain est traité.",
-    href: "/tasks",
-    label: "Voir les tâches",
-    number: "02",
-    title: "Suivre une action",
-  },
-  {
-    detail:
-      "Vérifier la caisse de visite et les éléments à nettoyer seulement lorsque c'est utile.",
-    href: "/equipment",
-    label: "Vérifier le matériel",
-    number: "03",
-    title: "Vérifier si nécessaire",
-  },
-] as const;
+type EquipmentSnapshot = {
+  items: EquipmentItemSummary[];
+  stocks: EquipmentStockSummary[];
+};
+
+type ClassicJourneyPreviewProps = {
+  equipment?: EquipmentSnapshot | null;
+  hives?: HiveSummary[] | null;
+  tasks?: TaskSummary[] | null;
+  visits?: VisitSummary[] | null;
+};
 
 const guardrails = [
   "Les données sont fictives et limitées à PostgreSQL local.",
@@ -37,9 +30,78 @@ const guardrails = [
   "Aucune recommandation sanitaire, IA, IoT ou GPS n'est activée.",
 ] as const;
 
-export function ClassicJourneyPreview() {
+export function ClassicJourneyPreview({
+  equipment,
+  hives,
+  tasks,
+  visits,
+}: ClassicJourneyPreviewProps) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/journey");
+  const activeHives = hives?.filter((hive) => hive.status === "ACTIVE") ?? [];
+  const openVisits =
+    visits?.filter(
+      (visit) =>
+        visit.status !== "COMPLETED" &&
+        visit.status !== "CANCELLED" &&
+        visit.status !== "ARCHIVED",
+    ) ?? [];
+  const openTasks =
+    tasks?.filter(
+      (task) =>
+        task.status === "TODO" || task.status === "IN_PROGRESS",
+    ) ?? [];
+  const availableItems =
+    equipment?.items.filter((item) => item.status === "AVAILABLE").length ?? 0;
+  const stockedLines =
+    equipment?.stocks.filter((stock) => stock.quantity > 0).length ?? 0;
+  const hasLiveRead = Boolean(hives || visits || tasks || equipment);
+  const hasActiveHive = activeHives.length > 0;
+  const primaryHref = hasActiveHive ? "/visits" : "/apiaries";
+  const primaryLabel = hasActiveHive ? "Commencer la visite" : "Créer une ruche";
+  const journeySteps = [
+    {
+      detail: hasActiveHive
+        ? "Le contexte de terrain existe déjà: choisissez une ruche active dans la visite."
+        : "Créez d'abord un rucher et une ruche active pour éviter une visite hors contexte.",
+      href: "/apiaries",
+      label: "Voir les ruchers",
+      metric: `${activeHives.length} active${activeHives.length > 1 ? "s" : ""}`,
+      number: "01",
+      title: "Préparer le contexte",
+      tone: hasActiveHive ? "active" : "soon",
+    },
+    {
+      detail:
+        "Saisir l'objectif, l'observation et le suivi depuis la ruche active.",
+      href: "/visits",
+      label: "Ouvrir les visites",
+      metric: `${openVisits.length} ouverte${openVisits.length > 1 ? "s" : ""}`,
+      number: "02",
+      title: "Faire la visite",
+      tone: openVisits.length > 0 ? "amber" : "preview",
+    },
+    {
+      detail:
+        "Transformer uniquement les suites utiles en actions courtes, sans calendrier lourd.",
+      href: "/tasks",
+      label: "Voir les tâches",
+      metric: `${openTasks.length} à suivre`,
+      number: "03",
+      title: "Suivre une action",
+      tone: openTasks.length > 0 ? "amber" : "preview",
+    },
+    {
+      detail:
+        "Vérifier la caisse de visite et les éléments à nettoyer seulement lorsque c'est utile.",
+      href: "/equipment",
+      label: "Vérifier le matériel",
+      metric: `${availableItems + stockedLines} repères`,
+      number: "04",
+      title: "Vérifier si nécessaire",
+      tone: "soon",
+    },
+  ] as const;
 
   return (
     <AppShell
@@ -50,7 +112,10 @@ export function ClassicJourneyPreview() {
         <div className="space-y-6">
           <section className="surface-panel rounded-3xl p-5 sm:p-7 lg:p-8">
             <div className="flex flex-wrap gap-2">
-              <StatusBadge label="Parcours de développement" tone="preview" />
+              <StatusBadge
+                label={hasLiveRead ? "Lecture Prisma active" : "Parcours de développement"}
+                tone={hasLiveRead ? "active" : "preview"}
+              />
               <StatusBadge label="Données fictives" tone="soon" />
             </div>
             <p className="section-kicker mt-5">Essai terrain</p>
@@ -58,15 +123,38 @@ export function ClassicJourneyPreview() {
               Préparer une sortie
             </h1>
             <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-              Commencer par la visite. Les tâches et le matériel restent à portée
-              de main quand une suite est nécessaire.
+              Commencer par une ruche active, saisir la visite, puis garder
+              seulement les suites utiles en tâches courtes.
             </p>
             <Link
               className="mt-6 inline-flex min-h-12 items-center justify-center rounded-2xl bg-forest-900 px-5 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
-              href="/visits"
+              href={primaryHref}
             >
-              Commencer la visite
+              {primaryLabel}
             </Link>
+          </section>
+
+          <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <ReadinessCard
+              detail="Ruches actives"
+              label="Contexte"
+              value={String(activeHives.length)}
+            />
+            <ReadinessCard
+              detail="Visites non closes"
+              label="Visites"
+              value={String(openVisits.length)}
+            />
+            <ReadinessCard
+              detail="Actions ouvertes"
+              label="Tâches"
+              value={String(openTasks.length)}
+            />
+            <ReadinessCard
+              detail="Matériel disponible ou stocké"
+              label="Matériel"
+              value={String(availableItems + stockedLines)}
+            />
           </section>
 
           <ol className="grid gap-4">
@@ -80,9 +168,7 @@ export function ClassicJourneyPreview() {
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
                         <h2 className="text-xl font-black text-slate-950">{step.title}</h2>
-                        {step.number === "03" ? (
-                          <StatusBadge label="Optionnel" tone="soon" />
-                        ) : null}
+                        <StatusBadge label={step.metric} tone={step.tone} />
                       </div>
                       <p className="mt-2 max-w-2xl text-sm leading-6 text-field-muted">
                         {step.detail}
@@ -126,5 +212,23 @@ export function ClassicJourneyPreview() {
         </div>
       </div>
     </AppShell>
+  );
+}
+
+function ReadinessCard({
+  detail,
+  label,
+  value,
+}: {
+  detail: string;
+  label: string;
+  value: string;
+}) {
+  return (
+    <article className="surface-muted rounded-2xl p-4">
+      <p className="text-xs font-black uppercase text-slate-650">{label}</p>
+      <p className="mt-2 text-3xl font-black text-slate-950">{value}</p>
+      <p className="mt-1 text-sm font-bold leading-6 text-field-muted">{detail}</p>
+    </article>
   );
 }
