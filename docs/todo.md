@@ -109,7 +109,7 @@
 ### Backlog exploitation et hebergement
 
 - [x] `DEPLOY-HOME-00`: choisir une trajectoire Docker-first locale, beta Synology et VPS europeen, sans exposition publique.
-- [ ] `DEPLOY-PROD-ARCHITECTURE-00`: definir l'architecture de production, le point d'entree HTTPS et les configurations attendues, sans secret reel.
+- [x] `DEPLOY-PROD-ARCHITECTURE-00`: definir l'architecture de production, le point d'entree HTTPS et les configurations attendues, sans secret reel.
 - [ ] `BACKUP-RESTORE-00`: cadrer sauvegarde, chiffrement, retention et restauration PostgreSQL avant toute beta publique.
 - [ ] `DEPLOY-SYNOLOGY-01`: mettre en oeuvre une beta privee seulement apres validation de l'architecture, des sauvegardes et de l'authentification.
 - [ ] `DEPLOY-VPS-00`: cadrer la migration vers un VPS europeen et le retour arriere avant ouverture large.

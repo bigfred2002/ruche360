@@ -101,9 +101,11 @@ restauration.
 ## Lots ulterieurs
 
 1. `DEPLOY-PROD-ARCHITECTURE-00`
-   - definir le Compose de production, les reseaux, le point d'entree et les
-     variables attendues sans secret reel;
-   - choisir entre reverse proxy et tunnel sortant pour la beta Synology.
+   - termine;
+   - definit l'architecture cible, le point d'entree HTTPS, les reseaux prives
+     et les variables attendues sans secret reel;
+   - documente le choix tunnel sortant ou reverse proxy selon beta Synology ou
+     VPS.
 
 2. `BACKUP-RESTORE-00`
    - definir les sauvegardes PostgreSQL, le chiffrement, la retention et un
@@ -132,6 +134,8 @@ restauration.
 - aucune collecte de telemetrie, IA ou IoT actif.
 
 ## References
+
+- [Architecture de production](deployment-production.md)
 
 - [Synology Container Manager - Projets](https://kb.synology.com/fr-fr/DSM/help/ContainerManager/docker_project?version=7)
 - [Docker - Images multi-plateformes](https://docs.docker.com/build/building/multi-platform/)
