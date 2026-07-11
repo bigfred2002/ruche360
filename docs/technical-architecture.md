@@ -70,6 +70,11 @@ testee, puis evolution future vers sauvegardes physiques et PITR si les
 objectifs RPO/RTO l'exigent. Le detail est documente dans
 [Sauvegarde Et Restauration](backup-restore.md).
 
+`AUTH-PROVIDER-DECISION-01` retient Google OIDC comme fournisseur initial de
+beta privee, tout en gardant une identite interne Rucher360 fournisseur-agnostique.
+La session applicative future reste serveur et les permissions continuent de
+venir des organisations, adhesions, modules et roles internes.
+
 ## Commandes prévues
 
 ```bash

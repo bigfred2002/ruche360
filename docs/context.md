@@ -38,6 +38,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `PLATFORM-ADMIN-00` reserve l'administration plateforme a l'exploitation technique future, separee de l'administration d'organisation et dependante d'une authentification reelle, de roles plateforme et d'une architecture d'hebergement validee.
 - `DEPLOY-PROD-ARCHITECTURE-00` retient une architecture de production Docker-first avec un seul point d'entree HTTPS, PostgreSQL prive, secrets hors Git, sauvegardes chiffrees hors hote et choix tunnel/reverse proxy selon beta Synology ou VPS.
 - `BACKUP-RESTORE-00` retient une sauvegarde logique PostgreSQL quotidienne chiffree et conservee hors hote pour la beta privee, avec restauration testee comme condition de validite et evolution future vers PITR si les objectifs RPO/RTO l'exigent.
+- `AUTH-PROVIDER-DECISION-01` retient Google OIDC comme fournisseur initial de beta privee, avec clients separes local/beta/production et une identite interne Rucher360 qui reste source de verite pour organisations, adhesions, roles, permissions et modules.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.
 - `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.
 - `EQUIPMENT-00` cadre le futur module materiel comme inventaire leger hybride, sans code metier, migration, CRUD, achats, fournisseurs, comptabilite, IA ou IoT actif.
@@ -110,7 +111,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 
 ## Points ouverts
 
-- Choix du fournisseur OIDC et du mode de connexion initial dans `AUTH-PROVIDER-DECISION-01`.
+- Choix de la bibliotheque OIDC concrete pour `AUTH-SESSION-WEB-01`.
 - Validation operationnelle du point d'entree beta privee: tunnel sortant ou reverse proxy selon les contraintes reseau reelles.
 - Choix d'une surface future d'administration plateforme, apres authentification reelle et roles plateforme.
 - Choix du stockage documentaire.
