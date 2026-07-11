@@ -36,6 +36,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `TASKS-HIVE-FIRST-01` simplifie les taches terrain: une ruche optionnelle derive le rucher et la colonie active, tandis qu'une tache generale reste sans contexte apicole.
 - `AGENT-WORKFLOW-COMMIT-GUARD-01` renforce la regle de flux: un lot doit etre committe, pousse, controle en PR et merge ou arbitre avant de demarrer le lot suivant.
 - `PLATFORM-ADMIN-00` reserve l'administration plateforme a l'exploitation technique future, separee de l'administration d'organisation et dependante d'une authentification reelle, de roles plateforme et d'une architecture d'hebergement validee.
+- `DEPLOY-PROD-ARCHITECTURE-00` retient une architecture de production Docker-first avec un seul point d'entree HTTPS, PostgreSQL prive, secrets hors Git, sauvegardes chiffrees hors hote et choix tunnel/reverse proxy selon beta Synology ou VPS.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.
 - `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.
 - `EQUIPMENT-00` cadre le futur module materiel comme inventaire leger hybride, sans code metier, migration, CRUD, achats, fournisseurs, comptabilite, IA ou IoT actif.
@@ -109,7 +110,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 ## Points ouverts
 
 - Choix du fournisseur OIDC et du mode de connexion initial dans `AUTH-PROVIDER-DECISION-01`.
-- Choix du point d'entree de la beta privee: reverse proxy ou tunnel sortant, dans `DEPLOY-PROD-ARCHITECTURE-00`.
+- Validation operationnelle du point d'entree beta privee: tunnel sortant ou reverse proxy selon les contraintes reseau reelles.
 - Choix d'une surface future d'administration plateforme, apres authentification reelle et roles plateforme.
 - Choix du stockage documentaire.
 - Niveau de détail de la localisation des ruchers.

@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - DEPLOY-PROD-ARCHITECTURE-00
+
+- Cadrage de l'architecture de production Docker-first: un seul point d'entree HTTPS public, application isolee, PostgreSQL prive et sauvegardes chiffrees hors hote.
+- Decision: tunnel sortant recommande pour une beta privee a domicile si l'ouverture de ports est indesirable; reverse proxy recommande pour VPS et possible sur Synology maitrise.
+- Documentation des variables attendues sans valeur reelle et de la separation local, beta et production.
+- Aucun deploiement, domaine, certificat, tunnel, Docker, secret, schema Prisma, code applicatif, auth, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-11 - PLATFORM-ADMIN-00
 
 - Cadrage de l'administration plateforme comme sujet futur d'exploitation technique, distinct de l'administration d'organisation `/admin`.

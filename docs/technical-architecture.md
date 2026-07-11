@@ -59,6 +59,11 @@ Dans les deux cas, PostgreSQL reste sur un reseau prive et les sauvegardes
 chiffrees sont conservees hors de l'hote. Le cadrage et les lots ulterieurs
 sont decrits dans [Hebergement](deployment-home.md).
 
+`DEPLOY-PROD-ARCHITECTURE-00` precise l'architecture cible de production:
+un seul point d'entree HTTPS public, application Docker isolee, PostgreSQL prive,
+secrets injectes hors Git et sauvegardes chiffrees hors hote. Le detail est
+documente dans [Architecture De Production](deployment-production.md).
+
 ## Commandes prévues
 
 ```bash
