@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 import {
   canUseSessionModulePermission,
@@ -123,6 +124,12 @@ export function ApiariesFormsPreview({
                       <Metric label="Ruches" value={apiary.hiveCount} />
                       <Metric label="Actives" value={apiary.activeHiveCount} />
                     </div>
+                    <Link
+                      className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
+                      href={`/apiaries/${apiary.id}`}
+                    >
+                      Ouvrir la fiche
+                    </Link>
                   </article>
                 ))}
               </div>

@@ -41,6 +41,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `BACKUP-RESTORE-00` retient une sauvegarde logique PostgreSQL quotidienne chiffree et conservee hors hote pour la beta privee, avec restauration testee comme condition de validite et evolution future vers PITR si les objectifs RPO/RTO l'exigent.
 - `AUTH-PROVIDER-DECISION-01` retient Google OIDC comme fournisseur initial de beta privee, avec clients separes local/beta/production et une identite interne Rucher360 qui reste source de verite pour organisations, adhesions, roles, permissions et modules.
 - `APIARY-FORMS-01` ajoute les actions serveur et formulaires de developpement pour creer un rucher et une ruche via le contrat `ApplicationSession`, sans carte, GPS, suppression, partage fin ou authentification reelle.
+- `APIARY-DETAIL-SHELL-01` ajoute des fiches de lecture pour rucher et ruche, afin de consulter le contexte terrain avant visite ou tache sans edition ni suppression.
 - `VISITS-REAL-FLOW-01` branche le formulaire de creation de visite sur les ruches actives lues depuis l'organisation active, afin qu'une ruche creee dans `/apiaries` soit utilisable dans `/visits`.
 - `TASKS-REAL-FLOW-01` branche le formulaire de creation de tache sur les ruches actives de l'organisation tout en conservant les taches generales sans ruche.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.

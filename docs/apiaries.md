@@ -25,6 +25,16 @@ developpement pour tester:
 - rattachement optionnel d'une ruche a un rucher;
 - lecture des compteurs simples par rucher.
 
+`APIARY-DETAIL-SHELL-01` ajoute deux fiches de lecture:
+
+- `/apiaries/[apiaryId]` pour consulter un rucher, ses reperes terrain et ses
+  ruches;
+- `/hives/[hiveId]` pour consulter une ruche, son rattachement et ses colonies
+  connues.
+
+Ces fiches sont volontairement sobres: elles aident a naviguer entre contexte,
+visite et tache sans creer d'edition, de suppression ou de workflow avance.
+
 ## Regles Produit
 
 - Les coordonnees exactes ne sont pas saisies dans ce lot.
@@ -44,6 +54,7 @@ Ce lot ne cree pas:
 - GPS;
 - partage fin par rucher;
 - creation de colonie depuis le formulaire;
+- edition depuis les fiches detail;
 - import massif;
 - authentification reelle;
 - API publique;

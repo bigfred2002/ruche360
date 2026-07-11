@@ -125,6 +125,7 @@
 - [x] `CLASSIC-JOURNEY-01`: relier les ecrans de developpement dans un essai terrain guide, sans ajouter de logique metier ou de donnee.
 - [x] `CLASSIC-JOURNEY-UX-01`: reduire le parcours de demonstration a visite, tache et materiel optionnel, avec divulgation progressive des limites.
 - [x] `APIARY-FORMS-01`: ajouter la lecture et les formulaires serveur de developpement pour creer rucher et ruche, sans auth reelle ni GPS.
+- [x] `APIARY-DETAIL-SHELL-01`: ajouter des fiches de lecture rucher et ruche, sans edition, suppression, GPS ou partage fin.
 - [x] `VISITS-REAL-FLOW-01`: utiliser les ruches actives de l'organisation dans le formulaire de creation de visite.
 - [x] `TASKS-REAL-FLOW-01`: utiliser les ruches actives de l'organisation dans le formulaire de creation de tache, avec tache generale toujours possible.
 - [x] `CLASSIC-JOURNEY-REAL-01`: brancher le parcours classique sur les compteurs reels de developpement et orienter vers ruchers ou visites selon l'etat.

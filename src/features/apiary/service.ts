@@ -6,7 +6,13 @@ import {
   type ApiaryActionContext,
 } from "./access";
 import { prisma } from "./prisma";
-import type { ApiarySummary, HiveSummary } from "./types";
+import type {
+  ApiaryDetail,
+  ApiarySummary,
+  ColonySummary,
+  HiveDetail,
+  HiveSummary,
+} from "./types";
 import {
   normalizeOptionalText,
   requireApiaryStatus,
@@ -71,6 +77,59 @@ export async function listApiaries(
   }));
 }
 
+export async function getApiaryDetail(
+  context: ApiaryActionContext,
+  apiaryId: string,
+  db: ApiaryReader = prisma,
+): Promise<ApiaryDetail | null> {
+  assertCanReadApiaries(context);
+
+  const apiary = await db.apiary.findFirst({
+    where: {
+      id: apiaryId,
+      organizationId: context.organizationId,
+      archivedAt: null,
+    },
+    include: {
+      hives: {
+        where: { archivedAt: null },
+        include: {
+          colonies: {
+            where: { archivedAt: null },
+            orderBy: [{ status: "asc" }, { createdAt: "desc" }],
+          },
+        },
+        orderBy: [{ status: "asc" }, { fieldIdentifier: "asc" }],
+      },
+    },
+  });
+
+  if (!apiary) {
+    return null;
+  }
+
+  return {
+    id: apiary.id,
+    organizationId: apiary.organizationId,
+    name: apiary.name,
+    description: apiary.description,
+    locationDescription: apiary.locationDescription,
+    accessNotes: apiary.accessNotes,
+    status: apiary.status,
+    hiveCount: apiary.hives.length,
+    activeHiveCount: apiary.hives.filter((hive) => hive.status === "ACTIVE").length,
+    hives: apiary.hives.map((hive) => {
+      const colonies = hive.colonies.map(toColonySummary);
+
+      return {
+        ...toHiveSummary(hive),
+        colonyCount: colonies.length,
+        activeColonyCount: colonies.filter((colony) => colony.status === "ACTIVE").length,
+      };
+    }),
+  };
+}
+
 export async function listHives(
   context: ApiaryActionContext,
   db: ApiaryReader = prisma,
@@ -86,6 +145,43 @@ export async function listHives(
   });
 
   return hives.map(toHiveSummary);
+}
+
+export async function getHiveDetail(
+  context: ApiaryActionContext,
+  hiveId: string,
+  db: ApiaryReader = prisma,
+): Promise<HiveDetail | null> {
+  assertCanReadApiaries(context);
+
+  const hive = await db.hive.findFirst({
+    where: {
+      id: hiveId,
+      organizationId: context.organizationId,
+      archivedAt: null,
+    },
+    include: {
+      apiary: true,
+      colonies: {
+        where: { archivedAt: null },
+        orderBy: [{ status: "asc" }, { createdAt: "desc" }],
+      },
+    },
+  });
+
+  if (!hive) {
+    return null;
+  }
+
+  const colonies = hive.colonies.map(toColonySummary);
+
+  return {
+    ...toHiveSummary(hive),
+    apiaryName: hive.apiary?.name ?? null,
+    colonies,
+    colonyCount: colonies.length,
+    activeColonyCount: colonies.filter((colony) => colony.status === "ACTIVE").length,
+  };
 }
 
 export async function createApiary(
@@ -184,5 +280,21 @@ function toHiveSummary(hive: {
     hiveType: hive.hiveType,
     status: hive.status,
     notes: hive.notes,
+  };
+}
+
+function toColonySummary(colony: {
+  id: string;
+  organizationId: string;
+  hiveId: string | null;
+  status: ColonySummary["status"];
+  queenKnown: boolean;
+}): ColonySummary {
+  return {
+    id: colony.id,
+    organizationId: colony.organizationId,
+    hiveId: colony.hiveId,
+    status: colony.status,
+    queenKnown: colony.queenKnown,
   };
 }

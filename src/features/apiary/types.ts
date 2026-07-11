@@ -18,6 +18,15 @@ export type ApiarySummary = {
   activeHiveCount: number;
 };
 
+export type ApiaryDetail = ApiarySummary & {
+  hives: Array<
+    HiveSummary & {
+      activeColonyCount: number;
+      colonyCount: number;
+    }
+  >;
+};
+
 export type HiveSummary = {
   id: string;
   organizationId: string;
@@ -26,6 +35,13 @@ export type HiveSummary = {
   hiveType: string | null;
   status: HiveStatus;
   notes: string | null;
+};
+
+export type HiveDetail = HiveSummary & {
+  activeColonyCount: number;
+  apiaryName: string | null;
+  colonyCount: number;
+  colonies: ColonySummary[];
 };
 
 export type ColonySummary = {
