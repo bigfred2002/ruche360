@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { AppShell } from "@/components/AppShell";
@@ -123,6 +124,12 @@ export default function Home() {
                     />
                     <StatusBadge label={activeScenario.role} tone="amber" />
                   </div>
+                  <Link
+                    className="mt-5 inline-flex min-h-12 items-center rounded-2xl bg-forest-900 px-5 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
+                    href="/journey"
+                  >
+                    Préparer une visite
+                  </Link>
                 </div>
                 <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
                   <p className="text-sm font-bold uppercase tracking-wide text-amber-100">

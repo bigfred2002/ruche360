@@ -30,6 +30,8 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `AUTH-DEV-SESSION-01` ajoute une session de développement déterministe et fictive pour brancher les prochains écrans sans secret, cookie, Auth.js ou utilisateur réel.
 - `AUTH-REAL-00` cadre l'authentification réelle autour d'une identité OIDC, d'une session serveur, d'organisations personnelles ou rejointes par invitation, sans implementation ni secret.
 - `DEPLOY-HOME-00` retient le Synology pour une beta privee a domicile, un VPS europeen pour une ouverture plus large, et reserve le Raspberry Pi au developpement ou a la demonstration. Toute exposition future impose HTTPS, une base non publique et des sauvegardes chiffrees hors hote.
+- `CLASSIC-JOURNEY-01` ajoute une route de demonstration qui relie cockpit, contexte rucher, visite, tache et materiel via les ecrans et donnees de developpement deja disponibles, sans nouvelle mutation ni authentification reelle.
+- `CLASSIC-JOURNEY-UX-01` simplifie ce parcours: la visite devient l'entree principale, la tache est une suite et le materiel reste optionnel; les limites de developpement sont repliees.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.
 - `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.
 - `EQUIPMENT-00` cadre le futur module materiel comme inventaire leger hybride, sans code metier, migration, CRUD, achats, fournisseurs, comptabilite, IA ou IoT actif.
