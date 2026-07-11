@@ -9,10 +9,12 @@ import type { VisitActionContext } from "./access";
 import { createVisitActionContextFromSession } from "./session-context";
 import {
   addVisitObservation,
+  createHiveFirstVisit,
   createVisit,
   listVisits,
   updateVisitStatus,
   type AddVisitObservationInput,
+  type CreateHiveFirstVisitInput,
   type CreateVisitInput,
   type UpdateVisitStatusInput,
 } from "./service";
@@ -37,6 +39,13 @@ export async function createVisitForSessionAction(
   input: CreateVisitInput,
 ) {
   return createVisit(createVisitActionContextFromSession(session), input);
+}
+
+export async function createHiveFirstVisitForSessionAction(
+  session: ApplicationSession,
+  input: CreateHiveFirstVisitInput,
+) {
+  return createHiveFirstVisit(createVisitActionContextFromSession(session), input);
 }
 
 export async function updateVisitStatusAction(
@@ -70,10 +79,8 @@ export async function addVisitObservationForSessionAction(
 export async function createDevelopmentVisitFormAction(formData: FormData) {
   const session = createDevelopmentApplicationSession();
 
-  await createVisitForSessionAction(session, {
-    apiaryId: readOptionalFormText(formData, "apiaryId"),
-    hiveId: readOptionalFormText(formData, "hiveId"),
-    colonyId: readOptionalFormText(formData, "colonyId"),
+  await createHiveFirstVisitForSessionAction(session, {
+    hiveId: readFormText(formData, "hiveId"),
     status: readOptionalFormText(formData, "status"),
     visitedAt: readOptionalFormText(formData, "visitedAt"),
     objective: readOptionalFormText(formData, "objective"),

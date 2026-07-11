@@ -45,6 +45,13 @@ export type CreateVisitInput = {
   followUpSummary?: string | null;
 };
 
+export type CreateHiveFirstVisitInput = Omit<
+  CreateVisitInput,
+  "apiaryId" | "colonyId" | "hiveId"
+> & {
+  hiveId: string;
+};
+
 export type UpdateVisitStatusInput = {
   visitId: string;
   status: string;
@@ -82,35 +89,45 @@ export async function createVisit(
 ): Promise<VisitCommandResult<VisitSummary>> {
   assertCanWriteVisits(context);
 
+  return db.$transaction((tx) => createVisitRecord(context, input, tx));
+}
+
+export async function createHiveFirstVisit(
+  context: VisitActionContext,
+  input: CreateHiveFirstVisitInput,
+  db: VisitDatabase = prisma,
+): Promise<VisitCommandResult<VisitSummary>> {
+  assertCanWriteVisits(context);
+
   return db.$transaction(async (tx) => {
-    const apiaryId = normalizeOptionalText(input.apiaryId);
-    const hiveId = normalizeOptionalText(input.hiveId);
-    const colonyId = normalizeOptionalText(input.colonyId);
-    const status = input.status ? requireVisitStatus(input.status) : "DRAFT";
-
-    assertVisitCanBeCreatedWithStatus(status);
-    await assertApiaryBelongsToOrganization(tx, context.organizationId, apiaryId);
-    await assertHiveBelongsToOrganization(tx, context.organizationId, hiveId);
-    await assertColonyBelongsToOrganization(tx, context.organizationId, colonyId);
-
-    const visit = await tx.visit.create({
-      data: {
+    const hive = await tx.hive.findFirstOrThrow({
+      where: {
+        id: requireText(input.hiveId, "La ruche"),
         organizationId: context.organizationId,
-        apiaryId,
-        hiveId,
-        colonyId,
-        authorMembershipId: context.membershipId ?? null,
-        status,
-        visitedAt: normalizeOptionalDate(input.visitedAt),
-        objective: normalizeOptionalText(input.objective),
-        weatherSummary: normalizeOptionalText(input.weatherSummary),
-        colonyStrength: normalizeOptionalInteger(input.colonyStrength),
-        notes: normalizeOptionalText(input.notes),
-        followUpSummary: normalizeOptionalText(input.followUpSummary),
+        status: "ACTIVE",
+        archivedAt: null,
       },
     });
+    const colony = await tx.colony.findFirst({
+      where: {
+        organizationId: context.organizationId,
+        hiveId: hive.id,
+        status: "ACTIVE",
+        archivedAt: null,
+      },
+      orderBy: [{ updatedAt: "desc" }, { createdAt: "desc" }],
+    });
 
-    return { ok: true, data: toVisitSummary(visit) };
+    return createVisitRecord(
+      context,
+      {
+        ...input,
+        apiaryId: hive.apiaryId,
+        colonyId: colony?.id ?? null,
+        hiveId: hive.id,
+      },
+      tx,
+    );
   });
 }
 
@@ -181,6 +198,41 @@ function assertVisitCanBeCreatedWithStatus(status: VisitStatus): void {
   if (status === "COMPLETED" || status === "ARCHIVED") {
     throw new Error("Une nouvelle visite doit demarrer en brouillon, prevue ou en cours.");
   }
+}
+
+async function createVisitRecord(
+  context: VisitActionContext,
+  input: CreateVisitInput,
+  db: VisitReader,
+): Promise<VisitCommandResult<VisitSummary>> {
+  const apiaryId = normalizeOptionalText(input.apiaryId);
+  const hiveId = normalizeOptionalText(input.hiveId);
+  const colonyId = normalizeOptionalText(input.colonyId);
+  const status = input.status ? requireVisitStatus(input.status) : "DRAFT";
+
+  assertVisitCanBeCreatedWithStatus(status);
+  await assertApiaryBelongsToOrganization(db, context.organizationId, apiaryId);
+  await assertHiveBelongsToOrganization(db, context.organizationId, hiveId);
+  await assertColonyBelongsToOrganization(db, context.organizationId, colonyId);
+
+  const visit = await db.visit.create({
+    data: {
+      organizationId: context.organizationId,
+      apiaryId,
+      hiveId,
+      colonyId,
+      authorMembershipId: context.membershipId ?? null,
+      status,
+      visitedAt: normalizeOptionalDate(input.visitedAt),
+      objective: normalizeOptionalText(input.objective),
+      weatherSummary: normalizeOptionalText(input.weatherSummary),
+      colonyStrength: normalizeOptionalInteger(input.colonyStrength),
+      notes: normalizeOptionalText(input.notes),
+      followUpSummary: normalizeOptionalText(input.followUpSummary),
+    },
+  });
+
+  return { ok: true, data: toVisitSummary(visit) };
 }
 
 async function assertApiaryBelongsToOrganization(

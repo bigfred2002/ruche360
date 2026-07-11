@@ -17,19 +17,9 @@ type VisitsFormsPreviewProps = {
   visits: VisitSummary[] | null;
 };
 
-const apiaryOptions = [
-  { id: "dev-apiary-home", label: "Rucher école" },
-  { id: "dev-apiary-hill", label: "Rucher des coteaux" },
-];
-
 const hiveOptions = [
-  { id: "dev-hive-001", label: "DEV-RU-001" },
-  { id: "dev-hive-002", label: "DEV-RU-002" },
-];
-
-const colonyOptions = [
-  { id: "dev-colony-001", label: "Colonie DEV-001" },
-  { id: "dev-colony-002", label: "Colonie DEV-002" },
+  { id: "dev-hive-001", label: "DEV-RU-001 · Rucher école" },
+  { id: "dev-hive-002", label: "DEV-RU-002 · Rucher école" },
 ];
 
 const fieldClass =
@@ -77,15 +67,16 @@ export function VisitsFormsPreview({ visits }: VisitsFormsPreviewProps) {
         >
           <FormHeader
             badge={canWrite ? "Actif dev" : "Verrouillé"}
-            detail="Créer une note de visite courte sur les ruchers fictifs."
+            detail="Créer une note de visite courte sur une ruche fictive active."
             permission="visits.write"
             title="Nouvelle visite"
             tone={canWrite ? "active" : "soon"}
           />
           <div className="mt-4 space-y-3">
-            <ApiarySelect disabled={!canWrite} />
             <HiveSelect disabled={!canWrite} />
-            <ColonySelect disabled={!canWrite} />
+            <p className="rounded-2xl border border-sage-200 bg-sage-50 p-3 text-sm font-bold leading-6 text-forest-900">
+              Le rucher et la colonie active sont associés automatiquement.
+            </p>
             <Field label="Statut">
               <select className={fieldClass} disabled={!canWrite} name="status">
                 <option value="DRAFT">Brouillon</option>
@@ -181,44 +172,14 @@ export function VisitsFormsPreview({ visits }: VisitsFormsPreviewProps) {
   );
 }
 
-function ApiarySelect({ disabled }: { disabled: boolean }) {
-  return (
-    <Field label="Rucher">
-      <select className={fieldClass} disabled={disabled} name="apiaryId">
-        <option value="">Non précisé</option>
-        {apiaryOptions.map((apiary) => (
-          <option key={apiary.id} value={apiary.id}>
-            {apiary.label}
-          </option>
-        ))}
-      </select>
-    </Field>
-  );
-}
-
 function HiveSelect({ disabled }: { disabled: boolean }) {
   return (
     <Field label="Ruche">
-      <select className={fieldClass} disabled={disabled} name="hiveId">
-        <option value="">Non précisée</option>
+      <select className={fieldClass} disabled={disabled} name="hiveId" required>
+        <option value="">Choisir une ruche active</option>
         {hiveOptions.map((hive) => (
           <option key={hive.id} value={hive.id}>
             {hive.label}
-          </option>
-        ))}
-      </select>
-    </Field>
-  );
-}
-
-function ColonySelect({ disabled }: { disabled: boolean }) {
-  return (
-    <Field label="Colonie">
-      <select className={fieldClass} disabled={disabled} name="colonyId">
-        <option value="">Non précisée</option>
-        {colonyOptions.map((colony) => (
-          <option key={colony.id} value={colony.id}>
-            {colony.label}
           </option>
         ))}
       </select>

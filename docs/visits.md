@@ -29,8 +29,8 @@ progressifs et optionnels.
 
 Le parcours cible reste mobile-first:
 
-1. choisir le rucher;
-2. choisir une ruche ou une colonie si necessaire;
+1. choisir une ruche active;
+2. deduire son rucher et sa colonie active lorsqu'elle existe;
 3. noter les observations essentielles;
 4. indiquer les actions realisees;
 5. creer ou preparer des taches de suivi dans un lot ulterieur;
@@ -104,7 +104,10 @@ Relations a prevoir progressivement:
   confirme.
 
 Les relations doivent rester optionnelles autant que possible pour eviter de
-ralentir la saisie.
+ralentir la saisie. Pour le parcours terrain courant, la ruche est le point
+d'entree: le rucher et la colonie active sont derives. La selection explicite
+d'une colonie est reservee a de futurs cas avances (division, remplacement,
+reunion ou historique).
 
 ## Permissions Cibles
 
@@ -125,6 +128,8 @@ actives et les permissions de l'adhesion.
 La saisie doit etre mobile-first:
 
 - peu de champs obligatoires;
+- une ruche active comme seul choix terrain initial;
+- rucher et colonie active derives sans les afficher comme choix courants;
 - libelles terrain courts;
 - possibilite d'enregistrer une note minimale;
 - actions frequentes accessibles sans parcourir l'administration;
