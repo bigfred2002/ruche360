@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - AGENT-WORKFLOW-COMMIT-GUARD-01
+
+- Renforcement des consignes agentiques: un lot doit etre committe, pousse, controle en PR et merge ou arbitre avant de demarrer le suivant.
+- Ajout explicite de l'interdiction d'empiler plusieurs lots non mergés sur une meme branche ou une chaine de branches, sauf demande explicite.
+- Ajout de la resynchronisation obligatoire de `main` apres squash merge avant de creer la branche suivante.
+- Aucun code applicatif, dependance, Docker, schema Prisma, secret, auth, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-10 - TASKS-HIVE-FIRST-01
 
 - La creation de tache de developpement demande une ruche optionnelle, sans selection distincte de rucher, colonie ou assignation.
