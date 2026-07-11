@@ -163,3 +163,15 @@ developpement:
 Les formulaires restent limites au developpement local et aux donnees fictives
 du seed. Ils n'introduisent pas d'authentification reelle, d'API publique, de
 notification, de recurrence, de calendrier, d'analyse IA ou de prescription.
+
+## TASKS-REAL-FLOW-01
+
+`TASKS-REAL-FLOW-01` remplace la liste de ruches codee en dur du formulaire de
+creation de tache par les ruches actives lues dans l'organisation courante.
+
+Une tache peut toujours rester generale avec l'option "Aucune ruche". Quand une
+ruche active est selectionnee, le serveur continue de deriver le rucher et la
+colonie active depuis le contexte de la ruche.
+
+Ce lot ne cree pas de notification, recurrence, calendrier, assignation avancee,
+authentification reelle, API publique, IA active ou IoT actif.

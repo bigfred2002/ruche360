@@ -1,4 +1,5 @@
 import type { TaskPriority, TaskStatus, TaskSummary } from "@/features/tasks";
+import type { HiveSummary } from "@/features/apiary";
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
@@ -74,7 +75,13 @@ const previewTasks = [
   },
 ] satisfies TaskSummary[];
 
-export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
+export function TasksShellPreview({
+  hives,
+  tasks,
+}: {
+  hives?: HiveSummary[] | null;
+  tasks?: TaskSummary[] | null;
+}) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/tasks");
   const displayTasks = tasks && tasks.length > 0 ? tasks : previewTasks;
@@ -326,7 +333,7 @@ export function TasksShellPreview({ tasks }: { tasks?: TaskSummary[] | null }) {
             </div>
           </details>
 
-          <TasksFormsPreview tasks={tasks ?? null} />
+          <TasksFormsPreview hives={hives ?? null} tasks={tasks ?? null} />
 
           <StatePanel
             detail="Formulaires limités au développement. Rappels, calendriers et notifications viendront plus tard."

@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - TASKS-REAL-FLOW-01
+
+- Branchement de `/tasks` sur la liste des ruches actives de l'organisation via les actions ruchers existantes.
+- Le formulaire de creation de tache ne contient plus de ruches codees en dur et conserve l'option "Aucune ruche" pour les actions generales.
+- Le serveur continue de deriver le rucher et la colonie active lorsqu'une ruche est selectionnee.
+- Aucun schema Prisma, migration, dependance, authentification reelle, API publique, notification, calendrier, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-11 - VISITS-REAL-FLOW-01
 
 - Branchement de `/visits` sur la liste des ruches de l'organisation active via les actions ruchers existantes.

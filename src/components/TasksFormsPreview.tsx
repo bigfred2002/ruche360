@@ -5,6 +5,7 @@ import {
   createDevelopmentApplicationSession,
   developmentSessionIds,
 } from "@/features/auth";
+import type { HiveSummary } from "@/features/apiary";
 import {
   assignDevelopmentTaskFormAction,
   createDevelopmentTaskFormAction,
@@ -15,13 +16,9 @@ import type { TaskSummary } from "@/features/tasks/types";
 import { StatusBadge } from "./StatusBadge";
 
 type TasksFormsPreviewProps = {
+  hives: HiveSummary[] | null;
   tasks: TaskSummary[] | null;
 };
-
-const hiveOptions = [
-  { id: "dev-hive-001", label: "DEV-RU-001 · Rucher école" },
-  { id: "dev-hive-002", label: "DEV-RU-002 · Rucher école" },
-];
 
 const memberOptions = [
   {
@@ -35,9 +32,10 @@ const fieldClass =
 
 const labelClass = "block text-xs font-black uppercase text-slate-600";
 
-export function TasksFormsPreview({ tasks }: TasksFormsPreviewProps) {
+export function TasksFormsPreview({ hives, tasks }: TasksFormsPreviewProps) {
   const session = createDevelopmentApplicationSession();
   const canWrite = canUseSessionModulePermission(session, "tasks", "tasks.write");
+  const activeHives = hives?.filter((hive) => hive.status === "ACTIVE") ?? [];
   const editableTasks =
     tasks?.filter(
       (task) =>
@@ -57,8 +55,9 @@ export function TasksFormsPreview({ tasks }: TasksFormsPreviewProps) {
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
             Ces formulaires utilisent uniquement la session de développement et
-            les données fictives du seed. Ils préparent le suivi terrain sans
-            notification, récurrence, calendrier ou automatisme sanitaire.
+            les ruches actives de l&apos;organisation courante. Ils préparent le
+            suivi terrain sans notification, récurrence, calendrier ou
+            automatisme sanitaire.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -86,9 +85,10 @@ export function TasksFormsPreview({ tasks }: TasksFormsPreviewProps) {
             <Field label="Description">
               <textarea className={fieldClass} disabled={!canWrite} name="description" placeholder="Note courte, sans donnée sensible inutile" rows={3} />
             </Field>
-            <HiveSelect disabled={!canWrite} />
+            <HiveSelect disabled={!canWrite} hives={activeHives} />
             <p className="rounded-2xl border border-sage-200 bg-sage-50 p-3 text-sm font-bold leading-6 text-forest-900">
-              Une ruche renseigne automatiquement son rucher et sa colonie active.
+              Une ruche active renseigne automatiquement son rucher et sa
+              colonie active. Sans ruche, la tâche reste générale.
             </p>
             <Field label="Statut">
               <select className={fieldClass} disabled={!canWrite} name="status">
@@ -164,19 +164,37 @@ export function TasksFormsPreview({ tasks }: TasksFormsPreviewProps) {
   );
 }
 
-function HiveSelect({ disabled }: { disabled: boolean }) {
+function HiveSelect({
+  disabled,
+  hives,
+}: {
+  disabled: boolean;
+  hives: HiveSummary[];
+}) {
   return (
     <Field label="Ruche concernée">
       <select className={fieldClass} disabled={disabled} name="hiveId">
         <option value="">Aucune ruche</option>
-        {hiveOptions.map((hive) => (
+        {hives.map((hive) => (
           <option key={hive.id} value={hive.id}>
-            {hive.label}
+            {formatHiveOptionLabel(hive)}
           </option>
         ))}
       </select>
+      {hives.length === 0 ? (
+        <p className="mt-2 text-xs font-bold leading-5 text-field-muted">
+          Aucune ruche active disponible. Créez ou réactivez une ruche depuis
+          la page Ruchers pour lier une tâche au terrain.
+        </p>
+      ) : null}
     </Field>
   );
+}
+
+function formatHiveOptionLabel(hive: HiveSummary) {
+  const type = hive.hiveType ? ` · ${hive.hiveType}` : "";
+
+  return `${hive.fieldIdentifier}${type}`;
 }
 
 function MemberSelect({
