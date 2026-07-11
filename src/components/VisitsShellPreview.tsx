@@ -1,3 +1,4 @@
+import type { HiveSummary } from "@/features/apiary";
 import type { VisitStatus, VisitSummary } from "@/features/visits";
 
 import { AppShell } from "./AppShell";
@@ -81,7 +82,13 @@ const previewVisits = [
   },
 ] satisfies VisitSummary[];
 
-export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null }) {
+export function VisitsShellPreview({
+  hives,
+  visits,
+}: {
+  hives?: HiveSummary[] | null;
+  visits?: VisitSummary[] | null;
+}) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/visits");
   const displayVisits = visits && visits.length > 0 ? visits : previewVisits;
@@ -300,7 +307,7 @@ export function VisitsShellPreview({ visits }: { visits?: VisitSummary[] | null 
             </div>
           </details>
 
-          <VisitsFormsPreview visits={visits ?? null} />
+          <VisitsFormsPreview hives={hives ?? null} visits={visits ?? null} />
 
           <StatePanel
             detail="Formulaires limités à la session de développement. Les vrais comptes attendent l'authentification."
