@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-11 - PLATFORM-ADMIN-00
+
+- Cadrage de l'administration plateforme comme sujet futur d'exploitation technique, distinct de l'administration d'organisation `/admin`.
+- Clarification des prealables: authentification reelle, roles plateforme, sauvegardes, journaux fiables et architecture d'hebergement validee.
+- Exclusion explicite de la lecture libre des donnees metier, du contournement des permissions, des exports globaux et de toute activation IA, IoT, GPS ou camera.
+- Aucun code applicatif, route, permission, role, schema Prisma, dependance, Docker, secret, auth, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-11 - AGENT-WORKFLOW-COMMIT-GUARD-01
 
 - Renforcement des consignes agentiques: un lot doit etre committe, pousse, controle en PR et merge ou arbitre avant de demarrer le suivant.
