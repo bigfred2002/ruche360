@@ -47,6 +47,22 @@ export function TaskDetailPreview({ task }: TaskDetailPreviewProps) {
                   {task.description ??
                     "Action courte à suivre sans notification, récurrence ou calendrier lourd."}
                 </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <Link
+                    className="inline-flex min-h-11 items-center rounded-2xl bg-slate-950 px-4 text-sm font-black text-white transition hover:bg-amber-800 focus-ring"
+                    href="/tasks#task-quick-entry"
+                  >
+                    Mettre à jour
+                  </Link>
+                  {task.visitId ? (
+                    <Link
+                      className="inline-flex min-h-11 items-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                      href={`/visits/${task.visitId}`}
+                    >
+                      Revoir la visite
+                    </Link>
+                  ) : null}
+                </div>
               </div>
               <div className="rounded-3xl border border-sage-200 bg-sage-50 p-5">
                 <p className="text-sm font-black uppercase text-forest-900">

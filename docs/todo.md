@@ -123,6 +123,7 @@
 - [x] `TASKS-HIVE-FIRST-01`: simplifier la creation de tache autour d'une ruche optionnelle et deriver son contexte actif.
 - [x] `FIELD-TASK-HERO-01`: recentrer le haut de `/tasks` sur les taches ouvertes, les priorites et la creation rapide.
 - [x] `FIELD-TASK-LIST-ACTIONS-01`: rendre les cartes de tache plus actionnables avec prochaine action et raccourcis.
+- [x] `FIELD-TASK-DETAIL-ACTIONS-01`: ajouter des raccourcis de fiche tache vers mise a jour et contexte visite.
 - [x] `EQUIPMENT-UX-FLOW-01`: rendre la page materiel plus orientee preparation et maintenance, sans achat ni stock avance.
 - [x] `CLASSIC-JOURNEY-01`: relier les ecrans de developpement dans un essai terrain guide, sans ajouter de logique metier ou de donnee.
 - [x] `CLASSIC-JOURNEY-UX-01`: reduire le parcours de demonstration a visite, tache et materiel optionnel, avec divulgation progressive des limites.
