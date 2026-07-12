@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-12 - VISIT-OBSERVATION-PRESET-01
+
+- Ajout de boutons d'observations rapides sur `/visits` pour noter une observation courante sur la derniere visite modifiable.
+- Conservation du formulaire manuel pour les observations precises et explicites.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-12 - FIELD-JOURNEY-LOCAL-QA-01
 
 - Ajout dans `/journey` d'une section QA locale avec commandes Docker et points de controle UX du parcours classique.
