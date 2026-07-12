@@ -1,5 +1,23 @@
 # Journal
 
+## 2026-07-12 - FIELD-VISIT-DETAIL-ACTIONS-01
+
+- Ajout de raccourcis en haut de fiche visite vers l'ajout d'observation et la creation volontaire d'une tache de suivi.
+- Ancrage de la zone de suivi pour rendre l'action plus accessible sur mobile.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
+## 2026-07-12 - FIELD-VISIT-LIST-ACTIONS-01
+
+- Ajout d'une zone "Prochaine action" sur chaque carte de visite de `/visits`.
+- Ajout de raccourcis explicites vers la fiche visite, la creation volontaire de suite ou la saisie rapide.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
+## 2026-07-12 - FIELD-VISIT-HERO-01
+
+- Recentrage du haut de `/visits` sur les visites ouvertes, les ruches actives et l'acces direct a la saisie rapide.
+- Remplacement du message descriptif par des indicateurs et raccourcis terrain plus actionnables.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-12 - VISIT-OBSERVATION-PRESET-01
 
 - Ajout de boutons d'observations rapides sur `/visits` pour noter une observation courante sur la derniere visite modifiable.
