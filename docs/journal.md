@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-12 - FIELD-ACTION-SHORTCUTS-01
+
+- Ajout d'une zone d'acces rapides dans le cockpit vers ruchers/ruches, visites, taches et materiel.
+- Les raccourcis sont de simples liens vers les routes existantes, avec cibles tactiles confortables et libelles explicites.
+- Aucun formulaire nouveau, mutation, schema Prisma, migration, dependance, authentification reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-12 - FIELD-DASHBOARD-FOCUS-01
 
 - Recentrage de `/` sur un cockpit terrain court: ruches actives, visites ouvertes, taches ouvertes et materiel a nettoyer.

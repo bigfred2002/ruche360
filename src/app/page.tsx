@@ -29,6 +29,10 @@ type FocusLink = {
   title: string;
 };
 
+type QuickShortcut = FocusLink & {
+  icon: string;
+};
+
 function ProgressiveDisclosure({
   badge,
   children,
@@ -81,6 +85,30 @@ function FocusAction({ action }: { action: FocusLink }) {
       </span>
       <span className="mt-1 block text-sm leading-6 text-slate-650">
         {action.detail}
+      </span>
+    </Link>
+  );
+}
+
+function QuickShortcutCard({ shortcut }: { shortcut: QuickShortcut }) {
+  return (
+    <Link
+      className="motion-card flex min-h-24 items-start gap-3 rounded-2xl border border-cream-300 bg-white p-4 shadow-field transition hover:border-amber-300 hover:shadow-field-lg focus-ring"
+      href={shortcut.href}
+    >
+      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-100 text-sm font-black text-amber-900 ring-1 ring-amber-200">
+        {shortcut.icon}
+      </span>
+      <span>
+        <span className="block text-xs font-black uppercase tracking-wide text-amber-800">
+          {shortcut.label}
+        </span>
+        <span className="mt-1 block text-base font-black text-slate-950">
+          {shortcut.title}
+        </span>
+        <span className="mt-1 block text-sm leading-6 text-slate-650">
+          {shortcut.detail}
+        </span>
       </span>
     </Link>
   );
@@ -153,6 +181,37 @@ export default async function Home() {
     },
   ];
 
+  const quickShortcuts: QuickShortcut[] = [
+    {
+      detail: "Ajouter ou relire un site et ses ruches.",
+      href: "/apiaries",
+      icon: "Ru",
+      label: "Contexte",
+      title: "Ruchers et ruches",
+    },
+    {
+      detail: "Créer une observation terrain courte.",
+      href: "/visits",
+      icon: "Vi",
+      label: "Sortie",
+      title: "Visite",
+    },
+    {
+      detail: "Noter une suite simple après inspection.",
+      href: "/tasks",
+      icon: "Ta",
+      label: "Suivi",
+      title: "Tâche",
+    },
+    {
+      detail: "Vérifier caisse, stock et nettoyage.",
+      href: "/equipment",
+      icon: "Ma",
+      label: "Préparation",
+      title: "Matériel",
+    },
+  ];
+
   return (
     <AppShell
       desktopNavigationItems={desktopNavigationItems}
@@ -208,6 +267,28 @@ export default async function Home() {
                   </p>
                 </div>
               </article>
+            </section>
+
+            <section className="rounded-3xl border border-cream-300 bg-cream-50 p-4 shadow-field sm:p-5">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+                    Accès rapides
+                  </p>
+                  <h2 className="mt-1 text-2xl font-black text-slate-950">
+                    Aller au bon écran sans chercher.
+                  </h2>
+                </div>
+                <StatusBadge label="Liens terrain" tone="preview" />
+              </div>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                {quickShortcuts.map((shortcut) => (
+                  <QuickShortcutCard
+                    key={shortcut.href}
+                    shortcut={shortcut}
+                  />
+                ))}
+              </div>
             </section>
 
             <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
