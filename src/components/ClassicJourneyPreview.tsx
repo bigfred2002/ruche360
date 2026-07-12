@@ -30,6 +30,19 @@ const guardrails = [
   "Aucune recommandation sanitaire, IA, IoT ou GPS n'est activée.",
 ] as const;
 
+const localQaCommands = [
+  "make seed-dev",
+  "docker compose up -d app",
+  "curl -I http://localhost:3000/journey",
+] as const;
+
+const localQaChecks = [
+  "La checklist affiche au moins une ruche active.",
+  "Une visite rapide peut être créée depuis une ruche.",
+  "Une fiche visite propose une tâche de suivi volontaire.",
+  "Les pages visites et tâches affichent un état vide utile si la liste est vide.",
+] as const;
+
 export function ClassicJourneyPreview({
   equipment,
   hives,
@@ -256,6 +269,55 @@ export function ClassicJourneyPreview({
               </li>
             ))}
           </ol>
+
+          <section className="surface-panel rounded-3xl p-5 sm:p-6">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="section-kicker">QA locale</p>
+                <h2 className="mt-2 text-2xl font-black text-slate-950">
+                  Contrôler le parcours en quelques minutes
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
+                  Ces repères ne lancent rien depuis l&apos;interface. Ils
+                  rappellent la validation manuelle à faire dans Docker Compose
+                  avant d&apos;ouvrir le prochain lot fonctionnel.
+                </p>
+              </div>
+              <StatusBadge label="Manuel" tone="preview" />
+            </div>
+            <div className="mt-5 grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
+              <div className="rounded-2xl border border-cream-300 bg-cream-50 p-4">
+                <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+                  Commandes
+                </p>
+                <div className="mt-3 space-y-2">
+                  {localQaCommands.map((command) => (
+                    <code
+                      className="block rounded-xl bg-slate-950 px-3 py-2 text-xs font-bold text-cream-50"
+                      key={command}
+                    >
+                      {command}
+                    </code>
+                  ))}
+                </div>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {localQaChecks.map((check, index) => (
+                  <div
+                    className="rounded-2xl border border-cream-300 bg-white p-4"
+                    key={check}
+                  >
+                    <span className="grid size-9 place-items-center rounded-xl bg-sage-100 text-xs font-black text-forest-900 ring-1 ring-sage-200">
+                      {index + 1}
+                    </span>
+                    <p className="mt-3 text-sm font-bold leading-6 text-slate-800">
+                      {check}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
 
           <details className="surface-muted rounded-3xl">
             <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 focus-ring sm:px-6 [&::-webkit-details-marker]:hidden">
