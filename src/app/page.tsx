@@ -6,59 +6,28 @@ import { AppShell } from "@/components/AppShell";
 import { createAppNavigation } from "@/components/appNavigation";
 import { DashboardCard } from "@/components/DashboardCard";
 import { DecorativeImage } from "@/components/DecorativeImage";
-import { DynamicStatesPreview } from "@/components/DynamicStatesPreview";
-import { MemberModulePreferencesPreview } from "@/components/MemberModulePreferencesPreview";
-import { ModuleCard } from "@/components/ModuleCard";
-import {
-  createDashboardCard,
-  createModuleCard,
-  getModulePresentation,
-} from "@/components/modulePresentation";
 import { ResponsiveWorkflowsPreview } from "@/components/ResponsiveWorkflowsPreview";
-import { SeasonRhythmPreview } from "@/components/SeasonRhythmPreview";
 import { StatusBadge } from "@/components/StatusBadge";
-import {
-  activeUserContextScenario,
-  userContextScenarios,
-} from "@/components/userContextScenarios";
 import { visualAssets } from "@/components/visualAssets";
-import {
-  createEnabledModuleSet,
-  createPermissionSet,
-  getVisibleModuleEntries,
-} from "@/features/rbac";
+import { createDevelopmentApplicationSession } from "@/features/auth";
+import { listApiariesForSessionAction, listHivesForSessionAction } from "@/features/apiary/actions";
+import { isVisitClosed } from "@/features/visits/status";
+import { listVisitsForSessionAction } from "@/features/visits/actions";
+import { isTaskClosed } from "@/features/tasks/status";
+import { listTasksForSessionAction } from "@/features/tasks/actions";
+import { listEquipmentInventoryForSessionAction } from "@/features/equipment/actions";
+import { shouldCleanEquipmentItem } from "@/features/equipment/status";
 
-const activeScenario = activeUserContextScenario;
-
-const activeEnabledModules = createEnabledModuleSet(activeScenario.enabledModules);
-const activePermissions = createPermissionSet(activeScenario.permissions);
-
-const activeCatalogEntries = getVisibleModuleEntries(
-  activeEnabledModules,
-  activePermissions,
-  "catalog",
-);
-
-const dashboardCards = activeScenario.dashboardModules
-  .map((code) => activeCatalogEntries.find((entry) => entry.code === code))
-  .filter((entry) => entry !== undefined)
-  .map(createDashboardCard);
-
-const activeModules = activeScenario.featuredModules
-  .map((code) => activeCatalogEntries.find((entry) => entry.code === code))
-  .filter((entry) => entry !== undefined)
-  .map(createModuleCard);
+export const dynamic = "force-dynamic";
 
 const { desktopNavigationItems, mobileNavigationItems } = createAppNavigation("/");
 
-const scenarioSummaries = userContextScenarios.map((scenario) => ({
-  ...scenario,
-  modulePreview: scenario.dashboardModules.slice(0, 4).map((code) => ({
-    code,
-    label: getModulePresentation(code).shortLabel ?? code,
-    icon: getModulePresentation(code).icon,
-  })),
-}));
+type FocusLink = {
+  detail: string;
+  href: string;
+  label: string;
+  title: string;
+};
 
 function ProgressiveDisclosure({
   badge,
@@ -98,251 +67,259 @@ function ProgressiveDisclosure({
   );
 }
 
-export default function Home() {
+function FocusAction({ action }: { action: FocusLink }) {
+  return (
+    <Link
+      className="motion-card block rounded-2xl border border-cream-300 bg-white p-4 shadow-field hover:border-amber-300 hover:shadow-field-lg focus-ring"
+      href={action.href}
+    >
+      <span className="text-sm font-black uppercase tracking-wide text-amber-800">
+        {action.label}
+      </span>
+      <span className="mt-2 block text-lg font-black text-slate-950">
+        {action.title}
+      </span>
+      <span className="mt-1 block text-sm leading-6 text-slate-650">
+        {action.detail}
+      </span>
+    </Link>
+  );
+}
+
+function formatVisitDate(date: Date | null) {
+  if (!date) {
+    return "Date non renseignee";
+  }
+
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "2-digit",
+    month: "short",
+  }).format(date);
+}
+
+export default async function Home() {
+  const session = createDevelopmentApplicationSession();
+
+  const [apiaries, hives, visits, tasks, equipment] = await Promise.all([
+    listApiariesForSessionAction(session),
+    listHivesForSessionAction(session),
+    listVisitsForSessionAction(session),
+    listTasksForSessionAction(session),
+    listEquipmentInventoryForSessionAction(session),
+  ]);
+
+  const activeApiaries = apiaries.filter((apiary) => apiary.status === "ACTIVE");
+  const activeHives = hives.filter((hive) => hive.status === "ACTIVE");
+  const openVisits = visits.filter((visit) => !isVisitClosed(visit.status));
+  const openTasks = tasks.filter((task) => !isTaskClosed(task.status));
+  const urgentTasks = openTasks.filter((task) => task.priority === "URGENT" || task.priority === "HIGH");
+  const equipmentToClean = equipment.items.filter(shouldCleanEquipmentItem);
+  const nextVisit = openVisits[0] ?? visits[0] ?? null;
+  const nextTask = urgentTasks[0] ?? openTasks[0] ?? null;
+
+  const primaryAction =
+    activeHives.length > 0
+      ? {
+          detail: "Reprendre une observation, creer une visite ou relire les sorties recentes.",
+          href: "/visits",
+          label: "Action terrain",
+          title: "Preparer une visite",
+        }
+      : {
+          detail: "Creer le premier rucher et les ruches actives avant de saisir les visites.",
+          href: "/apiaries",
+          label: "Demarrage",
+          title: "Initialiser le rucher",
+        };
+
+  const focusLinks: FocusLink[] = [
+    primaryAction,
+    {
+      detail: nextTask
+        ? `${nextTask.priority.toLowerCase()} · ${nextTask.title}`
+        : "Aucune tache ouverte pour le moment.",
+      href: "/tasks",
+      label: "Triage",
+      title: "Voir les taches",
+    },
+    {
+      detail:
+        equipmentToClean.length > 0
+          ? `${equipmentToClean.length} element(s) a nettoyer avant la prochaine sortie.`
+          : "Materiel suivi sans alerte de nettoyage.",
+      href: "/equipment",
+      label: "Materiel",
+      title: "Verifier le sac de visite",
+    },
+  ];
+
   return (
     <AppShell
       desktopNavigationItems={desktopNavigationItems}
       mobileNavigationItems={mobileNavigationItems}
     >
-      <div className="mx-auto w-full max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
-        <section className="grid gap-6 xl:grid-cols-[1fr_22rem]">
+      <main className="mx-auto w-full max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
+        <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
           <div className="space-y-6">
-            <div className="rounded-3xl border border-cream-300 bg-white/86 p-5 shadow-field backdrop-blur sm:p-7 lg:p-8">
-              <StatusBadge label="Cockpit apicole modulaire" />
-              <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_18rem] lg:items-end">
-                <div>
-                  <h1 className="text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
-                    Bonjour, {activeScenario.userName}
-                  </h1>
-                  <p className="mt-3 max-w-2xl text-lg leading-8 text-slate-700">
-                    {activeScenario.description}
-                  </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    <StatusBadge
-                      label={activeScenario.organizationType}
-                      tone="preview"
-                    />
-                    <StatusBadge label={activeScenario.role} tone="amber" />
-                  </div>
+            <section className="grid gap-6 overflow-hidden rounded-3xl border border-cream-300 bg-white shadow-field-lg lg:grid-cols-[minmax(0,1fr)_21rem]">
+              <div className="p-5 sm:p-7 lg:p-8">
+                <StatusBadge label="Cockpit terrain" />
+                <h1 className="mt-5 text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
+                  Rucher360
+                </h1>
+                <p className="mt-3 max-w-2xl text-lg leading-8 text-slate-700">
+                  Une vue courte pour savoir quoi faire maintenant: ruches
+                  actives, visites ouvertes, taches a traiter et materiel a
+                  verifier.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
                   <Link
-                    className="mt-5 inline-flex min-h-12 items-center rounded-2xl bg-forest-900 px-5 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
+                    className="inline-flex min-h-12 items-center rounded-2xl bg-forest-900 px-5 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
+                    href={primaryAction.href}
+                  >
+                    {primaryAction.title}
+                  </Link>
+                  <Link
+                    className="inline-flex min-h-12 items-center rounded-2xl border border-cream-300 bg-cream-50 px-5 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
                     href="/journey"
                   >
-                    Préparer une visite
+                    Parcours classique
                   </Link>
                 </div>
-                <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
-                  <p className="text-sm font-bold uppercase tracking-wide text-amber-100">
-                    {activeScenario.seasonLabel}
-                  </p>
-                  <p className="mt-3 text-3xl font-black">
-                    {activeScenario.seasonMetric}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-amber-50">
-                    {activeScenario.seasonDetail}
-                  </p>
-                </div>
               </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {dashboardCards.slice(0, 4).map((card) => (
-                <DashboardCard key={card.title} {...card} />
-              ))}
-            </div>
-
-            <SeasonRhythmPreview />
-
-            <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-              <article className="relative min-h-72 overflow-hidden rounded-3xl text-white shadow-field-lg">
+              <article className="relative min-h-72 text-white lg:min-h-full">
                 <Image
-                  alt={visualAssets.cockpit.alt}
+                  alt={visualAssets.heroLight.alt}
                   className="object-cover"
                   fill
                   priority
-                  sizes="(min-width: 1280px) 48rem, (min-width: 1024px) 58vw, 100vw"
-                  src={visualAssets.cockpit.src}
+                  sizes="(min-width: 1280px) 22rem, (min-width: 1024px) 34vw, 100vw"
+                  src={visualAssets.heroLight.src}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/22 to-transparent" />
-                <div className="relative flex h-full min-h-72 flex-col justify-end p-6">
-                  <StatusBadge label="Inspirations du jour" tone="amber" />
-                  <h2 className="mt-5 max-w-xl text-3xl font-black leading-tight sm:text-4xl">
-                    Observer vite, décider calmement.
-                  </h2>
-                  <p className="mt-3 max-w-lg text-base leading-7 text-cream-50">
-                    Une présence plus visuelle, inspirée des exports Stitch,
-                    sans contenu dynamique ni activation métier.
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/76 via-slate-950/18 to-transparent" />
+                <div className="relative flex h-full min-h-72 flex-col justify-end p-5">
+                  <StatusBadge label="Lisible dehors" tone="amber" />
+                  <p className="mt-4 text-2xl font-black leading-tight">
+                    {activeApiaries.length} rucher(s), {activeHives.length} ruche(s)
+                    active(s)
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-cream-50">
+                    Les modules futurs restent ranges dans le catalogue.
                   </p>
                 </div>
               </article>
-
-              <section className="rounded-3xl border border-cream-300 bg-white p-5 shadow-field">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <p className="text-sm font-black uppercase tracking-wide text-amber-800">
-                      À surveiller
-                    </p>
-                    <h2 className="mt-2 text-2xl font-black text-slate-950">
-                      Priorités terrain
-                    </h2>
-                  </div>
-                  <StatusBadge label="Preview" tone="soon" />
-                </div>
-                <div className="mt-5 space-y-3">
-                  {activeScenario.watchItems.map((item) => (
-                    <article
-                      className="rounded-2xl border border-cream-300 bg-cream-50 p-4"
-                      key={item.title}
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="text-base font-black text-slate-950">
-                            {item.title}
-                          </p>
-                          <p className="mt-1 text-sm leading-6 text-slate-650">
-                            {item.detail}
-                          </p>
-                        </div>
-                        <StatusBadge
-                          label={item.label}
-                          tone={
-                            item.accent === "red"
-                              ? "alert"
-                              : item.accent === "amber"
-                                ? "amber"
-                                : "active"
-                          }
-                        />
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </section>
             </section>
 
-            <section>
-              <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
-                <div>
-                  <p className="text-sm font-black uppercase tracking-wide text-amber-800">
-                    Modules visibles
-                  </p>
-                  <h2 className="mt-2 text-2xl font-black text-slate-950">
-                    Surfaces statiques du cockpit
-                  </h2>
-                </div>
-                <StatusBadge label="Lecture seule" tone="preview" />
-              </div>
+            <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              <DashboardCard
+                accent="forest"
+                detail={`${activeApiaries.length} site(s) actif(s) suivis dans l'organisation de developpement.`}
+                icon="R"
+                metric={String(activeHives.length)}
+                status="Terrain"
+                statusTone="active"
+                title="Ruches actives"
+              />
+              <DashboardCard
+                accent="amber"
+                detail={
+                  nextVisit
+                    ? `${formatVisitDate(nextVisit.visitedAt)} · ${nextVisit.objective ?? "objectif a preciser"}`
+                    : "Aucune visite creee pour le moment."
+                }
+                icon="V"
+                metric={String(openVisits.length)}
+                status="Ouvertes"
+                statusTone={openVisits.length > 0 ? "amber" : "muted"}
+                title="Visites"
+              />
+              <DashboardCard
+                accent={urgentTasks.length > 0 ? "red" : "sage"}
+                detail={
+                  nextTask
+                    ? `${nextTask.priority.toLowerCase()} · ${nextTask.title}`
+                    : "Aucune tache ouverte a traiter."
+                }
+                icon="T"
+                metric={String(openTasks.length)}
+                status={urgentTasks.length > 0 ? "Priorite" : "Stable"}
+                statusTone={urgentTasks.length > 0 ? "alert" : "active"}
+                title="Taches"
+              />
+              <DashboardCard
+                accent={equipmentToClean.length > 0 ? "red" : "slate"}
+                detail={`${equipment.types.length} type(s), ${equipment.items.length} item(s), ${equipment.stocks.length} stock(s).`}
+                icon="M"
+                metric={String(equipmentToClean.length)}
+                status="A nettoyer"
+                statusTone={equipmentToClean.length > 0 ? "alert" : "muted"}
+                title="Materiel"
+              />
+            </section>
+
+            <section className="grid gap-4 lg:grid-cols-3">
+              {focusLinks.map((action) => (
+                <FocusAction action={action} key={action.href} />
+              ))}
+            </section>
+
+            <ProgressiveDisclosure
+              badge="Ouvrir"
+              description="Ces reperes restent disponibles sans saturer le premier ecran mobile."
+              eyebrow="Support"
+              title="Modules et parcours secondaires"
+            >
               <div className="grid gap-4 md:grid-cols-3">
-                {activeModules.map((card) => (
-                  <ModuleCard key={card.title} {...card} />
-                ))}
+                <FocusAction
+                  action={{
+                    detail: "Voir les modules actifs, masques et a venir.",
+                    href: "/modules",
+                    label: "Catalogue",
+                    title: "Modules",
+                  }}
+                />
+                <FocusAction
+                  action={{
+                    detail: "Relire la sequence de demonstration terrain.",
+                    href: "/journey",
+                    label: "Guide",
+                    title: "Parcours classique",
+                  }}
+                />
+                <FocusAction
+                  action={{
+                    detail: "Consulter les volumes et reperes d'organisation.",
+                    href: "/admin",
+                    label: "Organisation",
+                    title: "Administration",
+                  }}
+                />
               </div>
-            </section>
+            </ProgressiveDisclosure>
 
-            <div className="space-y-4">
-              <ProgressiveDisclosure
-                badge="Afficher"
-                description="Les profils restent utiles pour tester la modularité, mais ils ne doivent pas dominer la lecture terrain."
-                eyebrow="Contextes simulés"
-                title="Variations de cockpit prévues"
-              >
-                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                  {scenarioSummaries.map((scenario) => (
-                    <article
-                      className={`rounded-2xl border p-4 shadow-field ${
-                        scenario.id === activeScenario.id
-                          ? "border-amber-300 bg-amber-50"
-                          : "border-cream-300 bg-white"
-                      }`}
-                      key={scenario.id}
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <h3 className="text-base font-black text-slate-950">
-                            {scenario.label}
-                          </h3>
-                          <p className="mt-1 text-sm leading-6 text-slate-650">
-                            {scenario.organization}
-                          </p>
-                        </div>
-                        <StatusBadge
-                          label={
-                            scenario.id === activeScenario.id
-                              ? "Actif"
-                              : "Exemple"
-                          }
-                          tone={
-                            scenario.id === activeScenario.id
-                              ? "amber"
-                              : "preview"
-                          }
-                        />
-                      </div>
-                      <p className="mt-3 text-sm leading-6 text-slate-650">
-                        {scenario.description}
-                      </p>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {scenario.modulePreview.map((module) => (
-                          <span
-                            className="inline-flex min-h-8 items-center gap-2 rounded-full border border-cream-300 bg-white px-3 text-xs font-bold text-slate-700"
-                            key={module.code}
-                          >
-                            <span className="text-[10px] font-black text-amber-800">
-                              {module.icon}
-                            </span>
-                            {module.label}
-                          </span>
-                        ))}
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </ProgressiveDisclosure>
-
-              <ProgressiveDisclosure
-                badge="Ouvrir"
-                description="Les préférences membres et états UI restent consultables, sans occuper le premier parcours de cockpit."
-                eyebrow="Références UI"
-                title="Préférences et états dynamiques"
-              >
-                <div className="space-y-6">
-                  <MemberModulePreferencesPreview scenario={activeScenario} />
-                  <DynamicStatesPreview />
-                </div>
-              </ProgressiveDisclosure>
-
-              <ProgressiveDisclosure
-                badge="Voir"
-                description="Les workflows préparatoires restent en support de conception, séparés des actions terrain immédiates."
-                eyebrow="Parcours"
-                title="Workflows responsive prévus"
-              >
-                <ResponsiveWorkflowsPreview />
-              </ProgressiveDisclosure>
-            </div>
+            <ProgressiveDisclosure
+              badge="Voir"
+              description="Reference UX uniquement: pas de nouveau module actif dans ce lot."
+              eyebrow="Conception"
+              title="Workflows responsive prevus"
+            >
+              <ResponsiveWorkflowsPreview />
+            </ProgressiveDisclosure>
           </div>
 
           <aside className="hidden space-y-5 xl:block">
             <section className="rounded-3xl border border-cream-300 bg-cream-200 p-5 shadow-field">
               <p className="text-sm font-black uppercase tracking-wide text-amber-800">
-                Catalogue modules
+                Priorite UX
               </p>
               <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">
-                Les options restent rangées hors du cockpit.
+                Le cockpit ne doit plus faire catalogue.
               </h2>
               <p className="mt-3 text-sm leading-6 text-slate-650">
-                IA, capteurs, balance, météo et autres modules prévus sont
-                conservés dans la registry. Ils seront exposés dans un futur
-                catalogue dédié, sans encombrer l&apos;accueil terrain.
+                Les modules optionnels, IA, IoT et ecrans de conception restent
+                accessibles ailleurs. Ici, on privilegie la prochaine action
+                terrain.
               </p>
-              <div className="mt-5 rounded-2xl border border-dashed border-amber-300 bg-white/70 p-4">
-                <p className="text-sm font-black text-slate-950">
-                  Futur écran prévu
-                </p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
-                  Actif · désactivé · à venir · sans permission
-                </p>
-              </div>
             </section>
 
             <section className="overflow-hidden rounded-3xl bg-gradient-amber p-6 text-white shadow-amber">
@@ -353,19 +330,19 @@ export default function Home() {
                 src={visualAssets.hiveSquare.src}
               />
               <p className="text-sm font-black uppercase tracking-wide text-amber-100">
-                Preview
+                Modules futurs
               </p>
               <h2 className="mt-3 text-2xl font-black leading-tight">
-                Un shell plus proche des maquettes Stitch.
+                Affiches comme reperes, pas comme actions.
               </h2>
               <p className="mt-3 text-sm leading-6 text-amber-50">
-                Couleurs, profondeur et rythme visuel ont été renforcés sans
-                activer de fonctionnalité.
+                Balance, meteo, camera, capteurs et IA restent non actifs tant
+                que leurs lots dedies ne sont pas ouverts.
               </p>
             </section>
           </aside>
         </section>
-      </div>
+      </main>
     </AppShell>
   );
 }
