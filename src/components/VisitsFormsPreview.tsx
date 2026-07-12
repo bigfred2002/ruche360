@@ -10,7 +10,7 @@ import {
   createDevelopmentVisitFormAction,
   updateDevelopmentVisitStatusFormAction,
 } from "@/features/visits/actions";
-import type { VisitSummary } from "@/features/visits/types";
+import type { VisitObservationCategory, VisitSummary } from "@/features/visits/types";
 
 import { StatusBadge } from "./StatusBadge";
 
@@ -23,6 +23,38 @@ const fieldClass =
   "mt-1 min-h-11 w-full rounded-2xl border border-cream-300 bg-cream-50 px-3 py-2 text-sm font-bold text-slate-800 outline-none transition focus:border-amber-400 focus:bg-white focus:ring-2 focus:ring-amber-200";
 
 const labelClass = "block text-xs font-black uppercase text-slate-600";
+
+const observationPresets: {
+  category: VisitObservationCategory;
+  label: string;
+  notes: string;
+}[] = [
+  {
+    category: "HIVE",
+    label: "Activité normale",
+    notes: "Entrées et sorties régulières observées.",
+  },
+  {
+    category: "RESERVES",
+    label: "Réserves à revoir",
+    notes: "Contrôler les réserves au prochain passage.",
+  },
+  {
+    category: "ACTION",
+    label: "Action réalisée",
+    notes: "Action terrain notée, sans automatisme de suite.",
+  },
+  {
+    category: "FOLLOW_UP",
+    label: "Suite à prévoir",
+    notes: "Préparer une vérification volontaire.",
+  },
+  {
+    category: "HEALTH",
+    label: "Point sanitaire à surveiller",
+    notes: "Observation non prescriptive à confirmer manuellement.",
+  },
+];
 
 export function VisitsFormsPreview({ hives, visits }: VisitsFormsPreviewProps) {
   const session = createDevelopmentApplicationSession();
@@ -37,6 +69,7 @@ export function VisitsFormsPreview({ hives, visits }: VisitsFormsPreviewProps) {
     ) ?? [];
   const canUpdateExisting = canWrite && editableVisits.length > 0;
   const canCreateVisit = canWrite && activeHives.length > 0;
+  const defaultEditableVisit = editableVisits[0] ?? null;
 
   return (
     <section className="surface-panel rounded-3xl p-5 sm:p-6">
@@ -115,6 +148,40 @@ export function VisitsFormsPreview({ hives, visits }: VisitsFormsPreviewProps) {
         </form>
 
         <div className="space-y-4">
+          <div className="rounded-2xl border border-cream-300 bg-white p-4">
+            <FormHeader
+              badge={canUpdateExisting ? "Rapide" : "Visite requise"}
+              detail={
+                defaultEditableVisit
+                  ? `Ajouter une observation courte à "${defaultEditableVisit.objective ?? "visite ouverte"}".`
+                  : "Créer ou ouvrir une visite avant d'utiliser les raccourcis."
+              }
+              permission="visits.write"
+              title="Observations rapides"
+              tone={canUpdateExisting ? "active" : "soon"}
+            />
+            <div className="mt-4 grid gap-2">
+              {observationPresets.map((preset) => (
+                <form action={addDevelopmentVisitObservationFormAction} key={preset.label}>
+                  <input name="visitId" type="hidden" value={defaultEditableVisit?.id ?? ""} />
+                  <input name="category" type="hidden" value={preset.category} />
+                  <input name="label" type="hidden" value={preset.label} />
+                  <input name="notes" type="hidden" value={preset.notes} />
+                  <button
+                    className="min-h-11 w-full rounded-2xl border border-sage-200 bg-sage-50 px-3 py-2 text-left text-sm font-black text-forest-950 transition hover:border-amber-300 hover:bg-amber-50 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-500"
+                    disabled={!canUpdateExisting}
+                    type="submit"
+                  >
+                    {preset.label}
+                    <span className="mt-1 block text-xs font-bold leading-5 text-field-muted">
+                      {labelForObservationCategory(preset.category)}
+                    </span>
+                  </button>
+                </form>
+              ))}
+            </div>
+          </div>
+
           <form
             action={addDevelopmentVisitObservationFormAction}
             className="rounded-2xl border border-cream-300 bg-white p-4"
@@ -279,4 +346,18 @@ function labelForStatus(status: VisitSummary["status"]) {
   } satisfies Record<VisitSummary["status"], string>;
 
   return labels[status];
+}
+
+function labelForObservationCategory(category: VisitObservationCategory) {
+  const labels = {
+    ACTION: "Action",
+    COLONY: "Colonie",
+    FOLLOW_UP: "Suite",
+    HEALTH: "Sanitaire",
+    HIVE: "Ruche",
+    NOTE: "Note",
+    RESERVES: "Réserves",
+  } satisfies Record<VisitObservationCategory, string>;
+
+  return labels[category];
 }

@@ -47,6 +47,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `VISITS-REAL-FLOW-01` branche le formulaire de creation de visite sur les ruches actives lues depuis l'organisation active, afin qu'une ruche creee dans `/apiaries` soit utilisable dans `/visits`.
 - `VISIT-DETAIL-SHELL-01` ajoute une fiche de lecture visite pour consulter objectif, contexte, observations et suites sans edition ni automatisme.
 - `VISIT-QUICK-ENTRY-01` simplifie le formulaire de creation de visite: la ruche devient l'entree visible principale, les champs detailles sont replies, et rucher/colonie restent derives cote serveur.
+- `VISIT-OBSERVATION-PRESET-01` ajoute des observations rapides explicites sur la derniere visite modifiable pour reduire la saisie terrain, sans diagnostic automatique ni prescription.
 - `TASK-FOLLOWUP-FROM-VISIT-01` ajoute dans la fiche visite une creation volontaire de tache de suivi, pre-remplie depuis les suites de visite, sans automatisme ni prescription.
 - `TASKS-REAL-FLOW-01` branche le formulaire de creation de tache sur les ruches actives de l'organisation tout en conservant les taches generales sans ruche.
 - `TASK-DETAIL-SHELL-01` ajoute une fiche de lecture tache pour consulter statut, priorite, echeance, assignation et contexte sans notification ni calendrier.
