@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-12 - FIELD-VISIT-HERO-01
+
+- Recentrage du haut de `/visits` sur les visites ouvertes, les ruches actives et l'acces direct a la saisie rapide.
+- Remplacement du message descriptif par des indicateurs et raccourcis terrain plus actionnables.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-12 - VISIT-OBSERVATION-PRESET-01
 
 - Ajout de boutons d'observations rapides sur `/visits` pour noter une observation courante sur la derniere visite modifiable.

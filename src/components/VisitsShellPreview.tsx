@@ -99,6 +99,8 @@ export function VisitsShellPreview({
   const plannedCount = displayVisits.filter((visit) => visit.status === "PLANNED").length;
   const inProgressCount = displayVisits.filter((visit) => visit.status === "IN_PROGRESS").length;
   const completedCount = displayVisits.filter((visit) => visit.status === "COMPLETED").length;
+  const openCount = plannedCount + inProgressCount;
+  const activeHivesCount = hives?.filter((hive) => hive.status === "ACTIVE").length ?? 0;
   const nextVisit = displayVisits[0] ?? null;
 
   return (
@@ -120,20 +122,36 @@ export function VisitsShellPreview({
                   Visites
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Préparer le passage, noter l&apos;essentiel et garder les
-                  suites visibles. Les actions restent limitées au développement.
+                  Choisis une ruche, note l&apos;essentiel et garde une suite
+                  visible seulement si elle est utile.
                 </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <a
+                    className="inline-flex min-h-11 items-center rounded-2xl bg-slate-950 px-4 text-sm font-black text-white shadow-field transition hover:bg-amber-800 focus-ring"
+                    href="#visit-quick-entry"
+                  >
+                    Saisie rapide
+                  </a>
+                  <Link
+                    className="inline-flex min-h-11 items-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                    href="/apiaries"
+                  >
+                    Voir les ruches
+                  </Link>
+                </div>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
                 <p className="text-sm font-bold uppercase tracking-wide text-amber-100">
-                  Statut
+                  À traiter
                 </p>
-                <p className="mt-3 text-3xl font-black">Prévu</p>
+                <p className="mt-3 text-3xl font-black">
+                  {openCount} ouverte{openCount > 1 ? "s" : ""}
+                </p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
                   {hasLiveVisits
                     ? hasNoVisits
                       ? "Base prête, aucune visite créée."
-                      : "Données de développement lues depuis PostgreSQL."
+                      : "Priorise une visite courte, puis ferme ou crée une tâche."
                     : "Route prête, sans visite réelle."}
                 </p>
               </div>
@@ -149,17 +167,17 @@ export function VisitsShellPreview({
 
           <section className="grid gap-4 md:grid-cols-3">
             <SummaryCard
-              detail="Visites prévues à préparer sur le terrain"
-              label="Prévues"
-              value={String(plannedCount)}
+              detail="Prévue ou en cours, à reprendre sur le terrain"
+              label="Ouvertes"
+              value={String(openCount)}
             />
             <SummaryCard
-              detail="Saisies encore ouvertes"
-              label="En cours"
-              value={String(inProgressCount)}
+              detail="Ruches utilisables pour créer une visite"
+              label="Ruches actives"
+              value={String(activeHivesCount)}
             />
             <SummaryCard
-              detail="Visites de la liste"
+              detail="Historique déjà refermé"
               label="Terminées"
               value={String(completedCount)}
             />
@@ -328,7 +346,9 @@ export function VisitsShellPreview({
             </div>
           </details>
 
-          <VisitsFormsPreview hives={hives ?? null} visits={visits ?? null} />
+          <div id="visit-quick-entry">
+            <VisitsFormsPreview hives={hives ?? null} visits={visits ?? null} />
+          </div>
 
           <StatePanel
             detail="Formulaires limités à la session de développement. Les vrais comptes attendent l'authentification."
