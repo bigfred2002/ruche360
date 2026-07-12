@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+import {
+  canUseSessionModulePermission,
+  createDevelopmentApplicationSession,
+} from "@/features/auth";
+import { createDevelopmentTaskFormAction } from "@/features/tasks/actions";
 import type { VisitDetail, VisitObservationCategory, VisitStatus } from "@/features/visits";
 
 import { AppShell } from "./AppShell";
@@ -11,9 +16,14 @@ type VisitDetailPreviewProps = {
   visit: VisitDetail;
 };
 
+const fieldClass =
+  "mt-1 min-h-11 w-full rounded-2xl border border-cream-300 bg-cream-50 px-3 py-2 text-sm font-bold text-slate-800 outline-none transition focus:border-amber-400 focus:bg-white focus:ring-2 focus:ring-amber-200";
+
 export function VisitDetailPreview({ visit }: VisitDetailPreviewProps) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/visits");
+  const session = createDevelopmentApplicationSession();
+  const canCreateTask = canUseSessionModulePermission(session, "tasks", "tasks.write");
 
   return (
     <AppShell
@@ -101,6 +111,51 @@ export function VisitDetailPreview({ visit }: VisitDetailPreviewProps) {
                   Voir les tâches
                 </Link>
               </div>
+              <form
+                action={createDevelopmentTaskFormAction}
+                className="mt-4 rounded-2xl border border-cream-300 bg-white p-4"
+              >
+                <input name="visitId" type="hidden" value={visit.id} />
+                <input name="hiveId" type="hidden" value={visit.hiveId ?? ""} />
+                <input name="status" type="hidden" value="TODO" />
+                <input name="priority" type="hidden" value="NORMAL" />
+                <label className="block">
+                  <span className="text-xs font-black uppercase text-amber-800">
+                    Tâche de suivi
+                  </span>
+                  <input
+                    className={fieldClass}
+                    defaultValue={visit.followUpSummary ?? "Suite de visite à traiter"}
+                    disabled={!canCreateTask}
+                    name="title"
+                    required
+                  />
+                </label>
+                <label className="mt-3 block">
+                  <span className="text-xs font-black uppercase text-amber-800">
+                    Note
+                  </span>
+                  <textarea
+                    className={fieldClass}
+                    defaultValue={visit.notes ?? ""}
+                    disabled={!canCreateTask}
+                    name="description"
+                    placeholder="Contexte utile pour la prochaine action"
+                    rows={3}
+                  />
+                </label>
+                <button
+                  className="mt-4 min-h-11 w-full rounded-2xl bg-slate-950 px-4 py-3 text-sm font-black text-white shadow-field transition hover:bg-amber-800 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
+                  disabled={!canCreateTask}
+                  type="submit"
+                >
+                  Créer la tâche de suivi
+                </button>
+                <p className="mt-3 text-xs font-bold leading-5 text-field-muted">
+                  Action volontaire: rien n&apos;est créé automatiquement depuis
+                  la visite.
+                </p>
+              </form>
             </aside>
           </section>
 
