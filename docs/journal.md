@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-12 - TASK-FOLLOWUP-FROM-VISIT-01
+
+- Ajout d'un formulaire explicite de creation de tache de suivi depuis la fiche visite.
+- La tache reprend le contexte visite et ruche quand ils existent, mais reste une action volontaire de l'utilisateur.
+- Aucun automatisme de creation, notification, calendrier, prescription sanitaire, schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-12 - VISIT-QUICK-ENTRY-01
 
 - Simplification du formulaire de creation de visite autour de la ruche, de l'objectif, de l'observation courte et de la suite a prevoir.
