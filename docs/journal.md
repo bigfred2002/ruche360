@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-12 - TASK-DETAIL-SHELL-01
+
+- Ajout d'une lecture de detail tache via le contrat `ApplicationSession`.
+- Ajout de la route `/tasks/[taskId]` pour consulter titre, description, statut, priorite, echeance, assignation et contexte en lecture seule.
+- La liste `/tasks` pointe maintenant vers la fiche de chaque tache.
+- Aucun formulaire supplementaire, notification, recurrence, calendrier, schema Prisma, migration, dependance, authentification reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-12 - VISIT-DETAIL-SHELL-01
 
 - Ajout d'une lecture de detail visite via le contrat `ApplicationSession`.

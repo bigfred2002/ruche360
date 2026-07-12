@@ -175,3 +175,18 @@ colonie active depuis le contexte de la ruche.
 
 Ce lot ne cree pas de notification, recurrence, calendrier, assignation avancee,
 authentification reelle, API publique, IA active ou IoT actif.
+
+## TASK-DETAIL-SHELL-01
+
+`TASK-DETAIL-SHELL-01` ajoute une fiche de lecture `/tasks/[taskId]`.
+
+La fiche affiche:
+
+- titre, description, statut et priorite;
+- echeance et assignation simple;
+- rattachements optionnels au rucher, a la ruche, a la colonie et a la visite;
+- liens de retour vers la visite ou la ruche quand ils existent.
+
+La fiche reste volontairement simple. Elle ne cree pas de rappel, recurrence,
+calendrier, notification, edition avancee, automatisme sanitaire, IA active ou
+IoT actif.

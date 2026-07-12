@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { TaskPriority, TaskStatus, TaskSummary } from "@/features/tasks";
 import type { HiveSummary } from "@/features/apiary";
 
@@ -227,6 +229,12 @@ export function TasksShellPreview({
                     <DetailPill label="Ruche" value={task.hiveId ?? "Non précisée"} />
                     <DetailPill label="Assignée" value={task.assignedToMembershipId ?? "Non assignée"} />
                   </div>
+                  <Link
+                    className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                    href={`/tasks/${task.id}`}
+                  >
+                    Ouvrir la fiche
+                  </Link>
                 </article>
               ))}
             </div>
