@@ -91,7 +91,6 @@ export function TasksShellPreview({
   const hasNoTasks = hasLiveTasks && displayTasks.length === 0;
   const todoCount = displayTasks.filter((task) => task.status === "TODO").length;
   const inProgressCount = displayTasks.filter((task) => task.status === "IN_PROGRESS").length;
-  const doneCount = displayTasks.filter((task) => task.status === "DONE").length;
   const openCount = todoCount + inProgressCount;
   const urgentCount = displayTasks.filter(
     (task) => task.priority === "URGENT" || task.priority === "HIGH",
@@ -262,12 +261,28 @@ export function TasksShellPreview({
                       <DetailPill label="Ruche" value={task.hiveId ?? "Non précisée"} />
                       <DetailPill label="Assignée" value={task.assignedToMembershipId ?? "Non assignée"} />
                     </div>
-                    <Link
-                      className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
-                      href={`/tasks/${task.id}`}
-                    >
-                      Ouvrir la fiche
-                    </Link>
+                    <div className="mt-4 rounded-2xl border border-cream-300 bg-cream-50 p-4">
+                      <p className="text-xs font-black uppercase text-amber-800">
+                        Prochaine action
+                      </p>
+                      <p className="mt-2 text-sm font-bold leading-6 text-slate-800">
+                        {nextActionForTask(task)}
+                      </p>
+                    </div>
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                      <Link
+                        className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-slate-950 px-4 text-sm font-black text-white transition hover:bg-amber-800 focus-ring"
+                        href={`/tasks/${task.id}`}
+                      >
+                        Ouvrir la fiche
+                      </Link>
+                      <a
+                        className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                        href="#task-quick-entry"
+                      >
+                        Mettre à jour
+                      </a>
+                    </div>
                   </article>
                 ))
               )}
@@ -470,6 +485,30 @@ function toneForPriority(priority: TaskPriority) {
   }
 
   return "preview";
+}
+
+function nextActionForTask(task: TaskSummary) {
+  if (task.status === "DONE") {
+    return "Action terminée, garder seulement l'historique.";
+  }
+
+  if (task.status === "CANCELLED" || task.status === "ARCHIVED") {
+    return "Action sortie du flux terrain courant.";
+  }
+
+  if (task.priority === "URGENT") {
+    return "Traiter avant la prochaine action non urgente.";
+  }
+
+  if (task.status === "IN_PROGRESS") {
+    return "Terminer ou préciser la suite depuis le formulaire de statut.";
+  }
+
+  if (task.dueAt) {
+    return `À préparer pour le ${formatDueDate(task.dueAt).toLowerCase()}.`;
+  }
+
+  return "Rattacher à une ruche si utile, puis passer en cours.";
 }
 
 function formatDueDate(date: Date | null) {
