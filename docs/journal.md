@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-12 - FIELD-JOURNEY-LOCAL-QA-01
+
+- Ajout dans `/journey` d'une section QA locale avec commandes Docker et points de controle UX du parcours classique.
+- Les commandes sont affichees comme aide manuelle et ne sont pas executees depuis l'interface.
+- Aucun script, dependance, schema Prisma, migration, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-12 - FIELD-JOURNEY-CHECKLIST-01
 
 - Ajout d'une checklist de test dans `/journey` pour verifier le parcours ruche active, visite rapide, tache de suivi et materiel.
