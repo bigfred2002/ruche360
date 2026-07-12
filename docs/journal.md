@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-12 - FIELD-DASHBOARD-FOCUS-01
+
+- Recentrage de `/` sur un cockpit terrain court: ruches actives, visites ouvertes, taches ouvertes et materiel a nettoyer.
+- Branchement en lecture sur les actions serveur existantes et la session de developpement, sans mutation supplementaire.
+- Les modules secondaires, workflows de conception et modules futurs restent accessibles mais ne dominent plus le premier ecran.
+- Aucun schema Prisma, migration, dependance, authentification reelle, API publique, IA active, IoT actif, GPS actif ou module metier nouveau n'a ete ajoute.
+
 ## 2026-07-12 - TASK-DETAIL-SHELL-01
 
 - Ajout d'une lecture de detail tache via le contrat `ApplicationSession`.
