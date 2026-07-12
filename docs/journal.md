@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-12 - VISIT-DETAIL-SHELL-01
+
+- Ajout d'une lecture de detail visite via le contrat `ApplicationSession`.
+- Ajout de la route `/visits/[visitId]` pour consulter objectif, statut, date, contexte, observations et suites en lecture seule.
+- La liste `/visits` pointe maintenant vers la fiche de chaque visite.
+- Aucun formulaire supplementaire, edition, creation automatique de tache, schema Prisma, migration, dependance, authentification reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-11 - APIARY-DETAIL-SHELL-01
 
 - Ajout des lectures de detail rucher et ruche via le contrat `ApplicationSession`.

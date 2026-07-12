@@ -11,6 +11,7 @@ import {
   addVisitObservation,
   createHiveFirstVisit,
   createVisit,
+  getVisitDetail,
   listVisits,
   updateVisitStatus,
   type AddVisitObservationInput,
@@ -25,6 +26,13 @@ export async function listVisitsAction(context: VisitActionContext) {
 
 export async function listVisitsForSessionAction(session: ApplicationSession) {
   return listVisits(createVisitActionContextFromSession(session));
+}
+
+export async function getVisitDetailForSessionAction(
+  session: ApplicationSession,
+  visitId: string,
+) {
+  return getVisitDetail(createVisitActionContextFromSession(session), visitId);
 }
 
 export async function createVisitAction(

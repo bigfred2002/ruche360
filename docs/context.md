@@ -43,6 +43,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `APIARY-FORMS-01` ajoute les actions serveur et formulaires de developpement pour creer un rucher et une ruche via le contrat `ApplicationSession`, sans carte, GPS, suppression, partage fin ou authentification reelle.
 - `APIARY-DETAIL-SHELL-01` ajoute des fiches de lecture pour rucher et ruche, afin de consulter le contexte terrain avant visite ou tache sans edition ni suppression.
 - `VISITS-REAL-FLOW-01` branche le formulaire de creation de visite sur les ruches actives lues depuis l'organisation active, afin qu'une ruche creee dans `/apiaries` soit utilisable dans `/visits`.
+- `VISIT-DETAIL-SHELL-01` ajoute une fiche de lecture visite pour consulter objectif, contexte, observations et suites sans edition ni automatisme.
 - `TASKS-REAL-FLOW-01` branche le formulaire de creation de tache sur les ruches actives de l'organisation tout en conservant les taches generales sans ruche.
 - `RBAC-01` pose un catalogue statique des rôles, permissions et modules, sans interface de gestion et sans activation IA/IoT.
 - `APIARY-01` ajoute les modèles exécutables ruchers, ruches et colonies, sans CRUD ni écran métier.

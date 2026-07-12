@@ -33,6 +33,15 @@ export type VisitSummary = {
   followUpSummary: string | null;
 };
 
+export type VisitDetail = VisitSummary & {
+  apiaryName: string | null;
+  colonyStatus: string | null;
+  hiveIdentifier: string | null;
+  notes: string | null;
+  observations: VisitObservationSummary[];
+  weatherSummary: string | null;
+};
+
 export type VisitObservationSummary = {
   id: string;
   organizationId: string;
@@ -40,4 +49,5 @@ export type VisitObservationSummary = {
   category: VisitObservationCategory;
   label: string;
   value: string | null;
+  notes: string | null;
 };
