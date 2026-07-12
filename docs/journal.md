@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-12 - FIELD-VISIT-LIST-ACTIONS-01
+
+- Ajout d'une zone "Prochaine action" sur chaque carte de visite de `/visits`.
+- Ajout de raccourcis explicites vers la fiche visite, la creation volontaire de suite ou la saisie rapide.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-12 - FIELD-VISIT-HERO-01
 
 - Recentrage du haut de `/visits` sur les visites ouvertes, les ruches actives et l'acces direct a la saisie rapide.

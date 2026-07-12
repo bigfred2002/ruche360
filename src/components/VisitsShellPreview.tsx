@@ -264,15 +264,28 @@ export function VisitsShellPreview({
                       <DetailPill label="Rucher" value={visit.apiaryId ?? "Non précisé"} />
                       <DetailPill label="Ruche" value={visit.hiveId ?? "Non précisée"} />
                     </div>
-                    <p className="mt-4 rounded-2xl border border-cream-300 bg-cream-50 p-4 text-sm font-bold leading-6 text-slate-800">
-                      {visit.followUpSummary ?? "Aucune suite indiquée."}
-                    </p>
-                    <Link
-                      className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
-                      href={`/visits/${visit.id}`}
-                    >
-                      Ouvrir la fiche
-                    </Link>
+                    <div className="mt-4 rounded-2xl border border-cream-300 bg-cream-50 p-4">
+                      <p className="text-xs font-black uppercase text-amber-800">
+                        Prochaine action
+                      </p>
+                      <p className="mt-2 text-sm font-bold leading-6 text-slate-800">
+                        {nextActionForVisit(visit)}
+                      </p>
+                    </div>
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                      <Link
+                        className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-slate-950 px-4 text-sm font-black text-white transition hover:bg-amber-800 focus-ring"
+                        href={`/visits/${visit.id}`}
+                      >
+                        Ouvrir la fiche
+                      </Link>
+                      <Link
+                        className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                        href={visit.followUpSummary ? `/visits/${visit.id}` : "#visit-quick-entry"}
+                      >
+                        {visit.followUpSummary ? "Créer une suite" : "Ajouter une note"}
+                      </Link>
+                    </div>
                   </article>
                 ))
               )}
@@ -431,4 +444,24 @@ function formatVisitDate(date: Date | null) {
     month: "long",
     year: "numeric",
   }).format(date);
+}
+
+function nextActionForVisit(visit: VisitSummary) {
+  if (visit.followUpSummary) {
+    return visit.followUpSummary;
+  }
+
+  if (visit.status === "COMPLETED") {
+    return "Visite terminée, aucune suite indiquée.";
+  }
+
+  if (visit.status === "PLANNED") {
+    return "Préparer la visite puis noter une observation courte.";
+  }
+
+  if (visit.status === "IN_PROGRESS") {
+    return "Ajouter une observation ou terminer la visite.";
+  }
+
+  return "Compléter seulement si une information utile manque.";
 }

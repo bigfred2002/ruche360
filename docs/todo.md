@@ -131,6 +131,7 @@
 - [x] `VISIT-QUICK-ENTRY-01`: simplifier la saisie de visite autour de la ruche, de l'observation courte et de la suite a prevoir.
 - [x] `VISIT-OBSERVATION-PRESET-01`: ajouter des observations rapides explicites sur une visite ouverte, sans automatisme sanitaire.
 - [x] `FIELD-VISIT-HERO-01`: recentrer le haut de `/visits` sur les visites ouvertes, les ruches actives et la saisie rapide.
+- [x] `FIELD-VISIT-LIST-ACTIONS-01`: rendre les cartes de visite plus actionnables avec prochaine action et raccourcis.
 - [x] `TASK-FOLLOWUP-FROM-VISIT-01`: ajouter depuis la fiche visite une creation explicite de tache de suivi, sans automatisme.
 - [x] `TASKS-REAL-FLOW-01`: utiliser les ruches actives de l'organisation dans le formulaire de creation de tache, avec tache generale toujours possible.
 - [x] `TASK-DETAIL-SHELL-01`: ajouter une fiche tache en lecture seule, sans notification, recurrence, calendrier ou automatisme sanitaire.
