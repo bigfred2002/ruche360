@@ -1,5 +1,23 @@
 # Journal
 
+## 2026-07-12 - FIELD-TASK-DETAIL-ACTIONS-01
+
+- Ajout de raccourcis en haut de fiche tache vers la mise a jour et le contexte visite lorsqu'il existe.
+- Conservation de la fiche en lecture simple, sans notification, recurrence ni calendrier.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, notification, calendrier, IA active ou IoT actif n'a ete ajoute.
+
+## 2026-07-12 - FIELD-TASK-LIST-ACTIONS-01
+
+- Ajout d'une zone "Prochaine action" sur chaque carte de tache de `/tasks`.
+- Ajout de raccourcis explicites vers la fiche tache et la mise a jour de statut.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, notification, calendrier, IA active ou IoT actif n'a ete ajoute.
+
+## 2026-07-12 - FIELD-TASK-HERO-01
+
+- Recentrage du haut de `/tasks` sur les taches ouvertes, les priorites hautes et l'acces direct a la creation rapide.
+- Remplacement des compteurs secondaires par des indicateurs terrain plus actionnables.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, notification, calendrier, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-12 - FIELD-VISIT-DETAIL-ACTIONS-01
 
 - Ajout de raccourcis en haut de fiche visite vers l'ajout d'observation et la creation volontaire d'une tache de suivi.
