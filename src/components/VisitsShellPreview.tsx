@@ -93,12 +93,13 @@ export function VisitsShellPreview({
 }) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/visits");
-  const displayVisits = visits && visits.length > 0 ? visits : previewVisits;
-  const hasLiveVisits = Boolean(visits);
+  const displayVisits = visits ?? previewVisits;
+  const hasLiveVisits = visits !== null && visits !== undefined;
+  const hasNoVisits = hasLiveVisits && displayVisits.length === 0;
   const plannedCount = displayVisits.filter((visit) => visit.status === "PLANNED").length;
   const inProgressCount = displayVisits.filter((visit) => visit.status === "IN_PROGRESS").length;
   const completedCount = displayVisits.filter((visit) => visit.status === "COMPLETED").length;
-  const nextVisit = displayVisits[0];
+  const nextVisit = displayVisits[0] ?? null;
 
   return (
     <AppShell
@@ -130,7 +131,9 @@ export function VisitsShellPreview({
                 <p className="mt-3 text-3xl font-black">Prévu</p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
                   {hasLiveVisits
-                    ? "Données de développement lues depuis PostgreSQL."
+                    ? hasNoVisits
+                      ? "Base prête, aucune visite créée."
+                      : "Données de développement lues depuis PostgreSQL."
                     : "Route prête, sans visite réelle."}
                 </p>
               </div>
@@ -168,21 +171,22 @@ export function VisitsShellPreview({
                 <div>
                   <p className="section-kicker">Prochaine sortie</p>
                   <h2 className="mt-2 text-2xl font-black text-slate-950">
-                    {nextVisit.objective ?? "Visite à préparer"}
+                    {nextVisit?.objective ?? "Créer la première visite"}
                   </h2>
                 </div>
                 <StatusBadge
-                  label={labelForStatus(nextVisit.status)}
-                  tone={toneForStatus(nextVisit.status)}
+                  label={nextVisit ? labelForStatus(nextVisit.status) : "Aucune visite"}
+                  tone={nextVisit ? toneForStatus(nextVisit.status) : "preview"}
                 />
               </div>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                <DetailPill label="Date" value={formatVisitDate(nextVisit.visitedAt)} />
-                <DetailPill label="Rucher" value={nextVisit.apiaryId ?? "Non précisé"} />
-                <DetailPill label="Ruche" value={nextVisit.hiveId ?? "Non précisée"} />
+                <DetailPill label="Date" value={formatVisitDate(nextVisit?.visitedAt ?? null)} />
+                <DetailPill label="Rucher" value={nextVisit?.apiaryId ?? "À choisir"} />
+                <DetailPill label="Ruche" value={nextVisit?.hiveId ?? "À choisir"} />
               </div>
               <p className="mt-4 rounded-2xl border border-cream-300 bg-cream-50 p-4 text-sm font-bold leading-6 text-slate-800">
-                {nextVisit.followUpSummary ?? "Aucune suite indiquée."}
+                {nextVisit?.followUpSummary ??
+                  "Commence par choisir une ruche active dans le formulaire de visite rapide."}
               </p>
             </article>
 
@@ -216,35 +220,44 @@ export function VisitsShellPreview({
 
           <section className="grid gap-4 lg:grid-cols-[1fr_22rem]">
             <div className="space-y-4">
-              {displayVisits.map((visit) => (
-                <article className="surface-panel rounded-2xl p-5" key={visit.id}>
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                      <p className="section-kicker">{formatVisitDate(visit.visitedAt)}</p>
-                      <h2 className="mt-2 text-xl font-black text-slate-950">
-                        {visit.objective ?? "Visite sans objectif"}
-                      </h2>
+              {hasNoVisits ? (
+                <StatePanel
+                  detail="Choisis une ruche active, ajoute une observation courte, puis crée une tâche seulement si une suite est nécessaire."
+                  kind="empty"
+                  label="Aucune visite"
+                  title="La première visite peut rester très courte"
+                />
+              ) : (
+                displayVisits.map((visit) => (
+                  <article className="surface-panel rounded-2xl p-5" key={visit.id}>
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        <p className="section-kicker">{formatVisitDate(visit.visitedAt)}</p>
+                        <h2 className="mt-2 text-xl font-black text-slate-950">
+                          {visit.objective ?? "Visite sans objectif"}
+                        </h2>
+                      </div>
+                      <StatusBadge
+                        label={labelForStatus(visit.status)}
+                        tone={toneForStatus(visit.status)}
+                      />
                     </div>
-                    <StatusBadge
-                      label={labelForStatus(visit.status)}
-                      tone={toneForStatus(visit.status)}
-                    />
-                  </div>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    <DetailPill label="Rucher" value={visit.apiaryId ?? "Non précisé"} />
-                    <DetailPill label="Ruche" value={visit.hiveId ?? "Non précisée"} />
-                  </div>
-                  <p className="mt-4 rounded-2xl border border-cream-300 bg-cream-50 p-4 text-sm font-bold leading-6 text-slate-800">
-                    {visit.followUpSummary ?? "Aucune suite indiquée."}
-                  </p>
-                  <Link
-                    className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
-                    href={`/visits/${visit.id}`}
-                  >
-                    Ouvrir la fiche
-                  </Link>
-                </article>
-              ))}
+                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                      <DetailPill label="Rucher" value={visit.apiaryId ?? "Non précisé"} />
+                      <DetailPill label="Ruche" value={visit.hiveId ?? "Non précisée"} />
+                    </div>
+                    <p className="mt-4 rounded-2xl border border-cream-300 bg-cream-50 p-4 text-sm font-bold leading-6 text-slate-800">
+                      {visit.followUpSummary ?? "Aucune suite indiquée."}
+                    </p>
+                    <Link
+                      className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                      href={`/visits/${visit.id}`}
+                    >
+                      Ouvrir la fiche
+                    </Link>
+                  </article>
+                ))
+              )}
             </div>
 
             <aside className="surface-muted rounded-3xl p-5">

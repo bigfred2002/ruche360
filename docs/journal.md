@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-12 - FIELD-EMPTY-STATES-01
+
+- Distinction des listes vides reelles et des donnees de preview sur les pages visites et taches.
+- Ajout de messages d'etat vide guidant vers la premiere visite courte ou la premiere tache simple.
+- Conservation des previews uniquement quand la lecture de developpement est indisponible.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-12 - TASK-FOLLOWUP-FROM-VISIT-01
 
 - Ajout d'un formulaire explicite de creation de tache de suivi depuis la fiche visite.

@@ -86,14 +86,16 @@ export function TasksShellPreview({
 }) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/tasks");
-  const displayTasks = tasks && tasks.length > 0 ? tasks : previewTasks;
-  const hasLiveTasks = Boolean(tasks);
+  const displayTasks = tasks ?? previewTasks;
+  const hasLiveTasks = tasks !== null && tasks !== undefined;
+  const hasNoTasks = hasLiveTasks && displayTasks.length === 0;
   const todoCount = displayTasks.filter((task) => task.status === "TODO").length;
   const inProgressCount = displayTasks.filter((task) => task.status === "IN_PROGRESS").length;
   const doneCount = displayTasks.filter((task) => task.status === "DONE").length;
   const priorityTask =
     displayTasks.find((task) => task.priority === "URGENT" || task.priority === "HIGH") ??
-    displayTasks[0];
+    displayTasks[0] ??
+    null;
 
   return (
     <AppShell
@@ -125,7 +127,9 @@ export function TasksShellPreview({
                 <p className="mt-3 text-3xl font-black">Court</p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
                   {hasLiveTasks
-                    ? "Données de développement lues depuis PostgreSQL."
+                    ? hasNoTasks
+                      ? "Base prête, aucune tâche ouverte."
+                      : "Données de développement lues depuis PostgreSQL."
                     : "Une tâche reste une action simple."}
                 </p>
               </div>
@@ -163,20 +167,20 @@ export function TasksShellPreview({
                 <div>
                   <p className="section-kicker">À traiter d&apos;abord</p>
                   <h2 className="mt-2 text-2xl font-black text-slate-950">
-                    {priorityTask.title}
+                    {priorityTask?.title ?? "Créer la première action"}
                   </h2>
                 </div>
                 <StatusBadge
-                  label={labelForPriority(priorityTask.priority)}
-                  tone={toneForPriority(priorityTask.priority)}
+                  label={priorityTask ? labelForPriority(priorityTask.priority) : "Aucune tâche"}
+                  tone={priorityTask ? toneForPriority(priorityTask.priority) : "preview"}
                 />
               </div>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                <DetailPill label="Échéance" value={formatDueDate(priorityTask.dueAt)} />
-                <DetailPill label="Rucher" value={priorityTask.apiaryId ?? "Non précisé"} />
+                <DetailPill label="Échéance" value={formatDueDate(priorityTask?.dueAt ?? null)} />
+                <DetailPill label="Rucher" value={priorityTask?.apiaryId ?? "Optionnel"} />
                 <DetailPill
                   label="Assignée"
-                  value={priorityTask.assignedToMembershipId ?? "Non assignée"}
+                  value={priorityTask?.assignedToMembershipId ?? "Non assignée"}
                 />
               </div>
             </article>
@@ -204,39 +208,48 @@ export function TasksShellPreview({
 
           <section className="grid gap-4 lg:grid-cols-[1fr_22rem]">
             <div className="space-y-4">
-              {displayTasks.map((task) => (
-                <article className="surface-panel rounded-2xl p-5" key={task.id}>
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                      <p className="section-kicker">{formatDueDate(task.dueAt)}</p>
-                      <h2 className="mt-2 text-xl font-black text-slate-950">
-                        {task.title}
-                      </h2>
+              {hasNoTasks ? (
+                <StatePanel
+                  detail="Crée une tâche courte depuis cette page ou depuis une fiche visite lorsqu'une suite terrain apparaît."
+                  kind="empty"
+                  label="Aucune tâche"
+                  title="Le suivi commence par une action simple"
+                />
+              ) : (
+                displayTasks.map((task) => (
+                  <article className="surface-panel rounded-2xl p-5" key={task.id}>
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        <p className="section-kicker">{formatDueDate(task.dueAt)}</p>
+                        <h2 className="mt-2 text-xl font-black text-slate-950">
+                          {task.title}
+                        </h2>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <StatusBadge
+                          label={labelForStatus(task.status)}
+                          tone={toneForStatus(task.status)}
+                        />
+                        <StatusBadge
+                          label={labelForPriority(task.priority)}
+                          tone={toneForPriority(task.priority)}
+                        />
+                      </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <StatusBadge
-                        label={labelForStatus(task.status)}
-                        tone={toneForStatus(task.status)}
-                      />
-                      <StatusBadge
-                        label={labelForPriority(task.priority)}
-                        tone={toneForPriority(task.priority)}
-                      />
+                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                      <DetailPill label="Rucher" value={task.apiaryId ?? "Non précisé"} />
+                      <DetailPill label="Ruche" value={task.hiveId ?? "Non précisée"} />
+                      <DetailPill label="Assignée" value={task.assignedToMembershipId ?? "Non assignée"} />
                     </div>
-                  </div>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                    <DetailPill label="Rucher" value={task.apiaryId ?? "Non précisé"} />
-                    <DetailPill label="Ruche" value={task.hiveId ?? "Non précisée"} />
-                    <DetailPill label="Assignée" value={task.assignedToMembershipId ?? "Non assignée"} />
-                  </div>
-                  <Link
-                    className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
-                    href={`/tasks/${task.id}`}
-                  >
-                    Ouvrir la fiche
-                  </Link>
-                </article>
-              ))}
+                    <Link
+                      className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                      href={`/tasks/${task.id}`}
+                    >
+                      Ouvrir la fiche
+                    </Link>
+                  </article>
+                ))
+              )}
             </div>
 
             <aside className="surface-muted rounded-3xl p-5">
