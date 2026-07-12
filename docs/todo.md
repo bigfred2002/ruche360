@@ -133,6 +133,7 @@
 - [x] `TASKS-REAL-FLOW-01`: utiliser les ruches actives de l'organisation dans le formulaire de creation de tache, avec tache generale toujours possible.
 - [x] `TASK-DETAIL-SHELL-01`: ajouter une fiche tache en lecture seule, sans notification, recurrence, calendrier ou automatisme sanitaire.
 - [x] `CLASSIC-JOURNEY-REAL-01`: brancher le parcours classique sur les compteurs reels de developpement et orienter vers ruchers ou visites selon l'etat.
+- [x] `FIELD-JOURNEY-CHECKLIST-01`: ajouter une checklist de test dans le parcours classique pour valider ruche, visite, tache et materiel.
 - [x] `FIELD-DASHBOARD-FOCUS-01`: recentrer le cockpit sur l'etat terrain reel de developpement et la prochaine action, sans nouveau CRUD.
 - [x] `FIELD-ACTION-SHORTCUTS-01`: ajouter des acces rapides terrain depuis le cockpit vers ruchers, visites, taches et materiel.
 - [x] `FIELD-EMPTY-STATES-01`: distinguer les listes vides reelles des previews sur visites et taches, avec guidage terrain.

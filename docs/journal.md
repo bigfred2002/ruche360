@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-12 - FIELD-JOURNEY-CHECKLIST-01
+
+- Ajout d'une checklist de test dans `/journey` pour verifier le parcours ruche active, visite rapide, tache de suivi et materiel.
+- La checklist est calculee depuis les lectures de developpement existantes et ne cree aucune donnee automatiquement.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-12 - FIELD-EMPTY-STATES-01
 
 - Distinction des listes vides reelles et des donnees de preview sur les pages visites et taches.

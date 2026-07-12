@@ -57,8 +57,33 @@ export function ClassicJourneyPreview({
     equipment?.stocks.filter((stock) => stock.quantity > 0).length ?? 0;
   const hasLiveRead = Boolean(hives || visits || tasks || equipment);
   const hasActiveHive = activeHives.length > 0;
+  const hasOpenVisit = openVisits.length > 0;
+  const hasOpenTask = openTasks.length > 0;
+  const hasEquipmentReady = availableItems + stockedLines > 0;
   const primaryHref = hasActiveHive ? "/visits" : "/apiaries";
   const primaryLabel = hasActiveHive ? "Commencer la visite" : "Créer une ruche";
+  const checklist = [
+    {
+      done: hasActiveHive,
+      href: "/apiaries",
+      label: "Créer ou choisir une ruche active",
+    },
+    {
+      done: hasOpenVisit,
+      href: "/visits",
+      label: "Créer une visite rapide",
+    },
+    {
+      done: hasOpenTask,
+      href: "/tasks",
+      label: "Créer une tâche de suivi si nécessaire",
+    },
+    {
+      done: hasEquipmentReady,
+      href: "/equipment",
+      label: "Vérifier le matériel disponible",
+    },
+  ] as const;
   const journeySteps = [
     {
       detail: hasActiveHive
@@ -155,6 +180,52 @@ export function ClassicJourneyPreview({
               label="Matériel"
               value={String(availableItems + stockedLines)}
             />
+          </section>
+
+          <section className="surface-panel rounded-3xl p-5 sm:p-6">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="section-kicker">Checklist de test</p>
+                <h2 className="mt-2 text-2xl font-black text-slate-950">
+                  Valider le parcours sans se perdre
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
+                  Cette liste lit l&apos;état de développement et aide à tester
+                  l&apos;enchaînement principal. Elle ne crée rien automatiquement.
+                </p>
+              </div>
+              <StatusBadge
+                label={`${checklist.filter((item) => item.done).length}/${checklist.length}`}
+                tone={checklist.every((item) => item.done) ? "active" : "soon"}
+              />
+            </div>
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              {checklist.map((item, index) => (
+                <Link
+                  className="motion-card flex min-h-16 items-center gap-3 rounded-2xl border border-cream-300 bg-white p-4 shadow-field transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                  href={item.href}
+                  key={item.label}
+                >
+                  <span
+                    className={`grid size-10 shrink-0 place-items-center rounded-2xl text-xs font-black ring-1 ${
+                      item.done
+                        ? "bg-sage-100 text-forest-900 ring-sage-200"
+                        : "bg-amber-50 text-amber-900 ring-amber-200"
+                    }`}
+                  >
+                    {item.done ? "OK" : `0${index + 1}`}
+                  </span>
+                  <span>
+                    <span className="block text-sm font-black text-slate-950">
+                      {item.label}
+                    </span>
+                    <span className="mt-1 block text-xs font-bold uppercase tracking-wide text-slate-650">
+                      {item.done ? "Validé dans les données dev" : "À tester"}
+                    </span>
+                  </span>
+                </Link>
+              ))}
+            </div>
           </section>
 
           <ol className="grid gap-4">

@@ -33,6 +33,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `CLASSIC-JOURNEY-01` ajoute une route de demonstration qui relie cockpit, contexte rucher, visite, tache et materiel via les ecrans et donnees de developpement deja disponibles, sans nouvelle mutation ni authentification reelle.
 - `CLASSIC-JOURNEY-UX-01` simplifie ce parcours: la visite devient l'entree principale, la tache est une suite et le materiel reste optionnel; les limites de developpement sont repliees.
 - `CLASSIC-JOURNEY-REAL-01` branche `/journey` en lecture sur les ruches, visites, taches et materiel de developpement pour orienter le parcours selon l'etat reel, sans nouvelle mutation.
+- `FIELD-JOURNEY-CHECKLIST-01` ajoute dans `/journey` une checklist de test du parcours ruche, visite, tache et materiel, calculee depuis les donnees de developpement sans mutation automatique.
 - `VISITS-HIVE-FIRST-01` adopte la ruche comme point d'entree de visite: le rucher et la colonie active sont derives cote serveur pour les visites de terrain courantes.
 - `TASKS-HIVE-FIRST-01` simplifie les taches terrain: une ruche optionnelle derive le rucher et la colonie active, tandis qu'une tache generale reste sans contexte apicole.
 - `AGENT-WORKFLOW-COMMIT-GUARD-01` renforce la regle de flux: un lot doit etre committe, pousse, controle en PR et merge ou arbitre avant de demarrer le lot suivant.
