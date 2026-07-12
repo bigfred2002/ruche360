@@ -8,6 +8,7 @@ import {
 import { canEditVisit } from "./status";
 import { prisma } from "./prisma";
 import type {
+  VisitDetail,
   VisitObservationSummary,
   VisitStatus,
   VisitSummary,
@@ -80,6 +81,44 @@ export async function listVisits(
   });
 
   return visits.map(toVisitSummary);
+}
+
+export async function getVisitDetail(
+  context: VisitActionContext,
+  visitId: string,
+  db: VisitReader = prisma,
+): Promise<VisitDetail | null> {
+  assertCanReadVisits(context);
+
+  const visit = await db.visit.findFirst({
+    where: {
+      id: visitId,
+      organizationId: context.organizationId,
+      archivedAt: null,
+    },
+    include: {
+      apiary: true,
+      hive: true,
+      colony: true,
+      observations: {
+        orderBy: [{ createdAt: "asc" }],
+      },
+    },
+  });
+
+  if (!visit) {
+    return null;
+  }
+
+  return {
+    ...toVisitSummary(visit),
+    apiaryName: visit.apiary?.name ?? null,
+    hiveIdentifier: visit.hive?.fieldIdentifier ?? null,
+    colonyStatus: visit.colony?.status ?? null,
+    weatherSummary: visit.weatherSummary,
+    notes: visit.notes,
+    observations: visit.observations.map(toVisitObservationSummary),
+  };
 }
 
 export async function createVisit(
@@ -310,6 +349,7 @@ function toVisitObservationSummary(observation: {
   category: VisitObservationSummary["category"];
   label: string;
   value: string | null;
+  notes: string | null;
 }): VisitObservationSummary {
   return {
     id: observation.id,
@@ -318,5 +358,6 @@ function toVisitObservationSummary(observation: {
     category: observation.category,
     label: observation.label,
     value: observation.value,
+    notes: observation.notes,
   };
 }

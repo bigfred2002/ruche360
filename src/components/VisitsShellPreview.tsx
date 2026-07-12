@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { HiveSummary } from "@/features/apiary";
 import type { VisitStatus, VisitSummary } from "@/features/visits";
 
@@ -235,6 +237,12 @@ export function VisitsShellPreview({
                   <p className="mt-4 rounded-2xl border border-cream-300 bg-cream-50 p-4 text-sm font-bold leading-6 text-slate-800">
                     {visit.followUpSummary ?? "Aucune suite indiquée."}
                   </p>
+                  <Link
+                    className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                    href={`/visits/${visit.id}`}
+                  >
+                    Ouvrir la fiche
+                  </Link>
                 </article>
               ))}
             </div>

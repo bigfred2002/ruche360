@@ -252,6 +252,22 @@ Le lot utilise encore la session de developpement tant que `AUTH-SESSION-WEB-01`
 n'est pas implemente. Il ne cree pas d'authentification reelle, d'API publique,
 de prescription sanitaire, d'analyse IA ou de creation automatique de tache.
 
+## VISIT-DETAIL-SHELL-01
+
+`VISIT-DETAIL-SHELL-01` ajoute une fiche de lecture `/visits/[visitId]`.
+
+La fiche affiche:
+
+- le statut et la date;
+- l'objectif;
+- le rucher, la ruche et la colonie lies quand ils existent;
+- la meteo et les notes;
+- les observations courtes;
+- la suite prevue.
+
+La fiche reste en lecture seule. Elle ne cree pas de tache, ne modifie pas la
+visite, ne lance aucune analyse IA et ne produit aucune prescription sanitaire.
+
 3. `VISITS-FORMS-SHELL-01`
    - termine comme formulaires serveur de developpement limites;
    - aucun automatisme sanitaire.
