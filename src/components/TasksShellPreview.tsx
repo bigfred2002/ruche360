@@ -92,6 +92,11 @@ export function TasksShellPreview({
   const todoCount = displayTasks.filter((task) => task.status === "TODO").length;
   const inProgressCount = displayTasks.filter((task) => task.status === "IN_PROGRESS").length;
   const doneCount = displayTasks.filter((task) => task.status === "DONE").length;
+  const openCount = todoCount + inProgressCount;
+  const urgentCount = displayTasks.filter(
+    (task) => task.priority === "URGENT" || task.priority === "HIGH",
+  ).length;
+  const activeHivesCount = hives?.filter((hive) => hive.status === "ACTIVE").length ?? 0;
   const priorityTask =
     displayTasks.find((task) => task.priority === "URGENT" || task.priority === "HIGH") ??
     displayTasks[0] ??
@@ -116,20 +121,36 @@ export function TasksShellPreview({
                   Tâches
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Prioriser les actions, les rattacher au bon contexte et
-                  garder les suites visibles.
+                  Garde une liste courte: une action, un contexte, une suite
+                  claire. Pas de calendrier lourd.
                 </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <a
+                    className="inline-flex min-h-11 items-center rounded-2xl bg-slate-950 px-4 text-sm font-black text-white shadow-field transition hover:bg-amber-800 focus-ring"
+                    href="#task-quick-entry"
+                  >
+                    Créer une tâche
+                  </a>
+                  <Link
+                    className="inline-flex min-h-11 items-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                    href="/visits"
+                  >
+                    Voir les visites
+                  </Link>
+                </div>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
                 <p className="text-sm font-bold uppercase tracking-wide text-amber-100">
-                  Principe
+                  À traiter
                 </p>
-                <p className="mt-3 text-3xl font-black">Court</p>
+                <p className="mt-3 text-3xl font-black">
+                  {openCount} ouverte{openCount > 1 ? "s" : ""}
+                </p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
                   {hasLiveTasks
                     ? hasNoTasks
                       ? "Base prête, aucune tâche ouverte."
-                      : "Données de développement lues depuis PostgreSQL."
+                      : "Priorise, rattache si utile, puis clôture."
                     : "Une tâche reste une action simple."}
                 </p>
               </div>
@@ -145,19 +166,19 @@ export function TasksShellPreview({
 
           <section className="grid gap-4 md:grid-cols-3">
             <SummaryCard
-              detail="Actions courtes à préparer"
-              label="À faire"
-              value={String(todoCount)}
+              detail="À faire ou déjà engagées"
+              label="Ouvertes"
+              value={String(openCount)}
             />
             <SummaryCard
-              detail="Actions déjà engagées"
-              label="En cours"
-              value={String(inProgressCount)}
+              detail="Priorités hautes à ne pas diluer"
+              label="Prioritaires"
+              value={String(urgentCount)}
             />
             <SummaryCard
-              detail="Actions de la liste"
-              label="Terminées"
-              value={String(doneCount)}
+              detail="Ruches utilisables comme contexte"
+              label="Ruches actives"
+              value={String(activeHivesCount)}
             />
           </section>
 
@@ -354,7 +375,9 @@ export function TasksShellPreview({
             </div>
           </details>
 
-          <TasksFormsPreview hives={hives ?? null} tasks={tasks ?? null} />
+          <div id="task-quick-entry">
+            <TasksFormsPreview hives={hives ?? null} tasks={tasks ?? null} />
+          </div>
 
           <StatePanel
             detail="Formulaires limités au développement. Rappels, calendriers et notifications viendront plus tard."
