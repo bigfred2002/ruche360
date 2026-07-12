@@ -11,6 +11,7 @@ import {
   assignTask,
   createHiveFirstTask,
   createTask,
+  getTaskDetail,
   listTasks,
   updateTaskStatus,
   type AssignTaskInput,
@@ -25,6 +26,13 @@ export async function listTasksAction(context: TaskActionContext) {
 
 export async function listTasksForSessionAction(session: ApplicationSession) {
   return listTasks(createTaskActionContextFromSession(session));
+}
+
+export async function getTaskDetailForSessionAction(
+  session: ApplicationSession,
+  taskId: string,
+) {
+  return getTaskDetail(createTaskActionContextFromSession(session), taskId);
 }
 
 export async function createTaskAction(

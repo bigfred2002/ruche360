@@ -7,7 +7,7 @@ import {
 } from "./access";
 import { canEditTask } from "./status";
 import { prisma } from "./prisma";
-import type { TaskPriority, TaskStatus, TaskSummary } from "./types";
+import type { TaskDetail, TaskPriority, TaskStatus, TaskSummary } from "./types";
 import {
   normalizeOptionalDate,
   normalizeOptionalText,
@@ -72,6 +72,48 @@ export async function listTasks(
   });
 
   return tasks.map(toTaskSummary);
+}
+
+export async function getTaskDetail(
+  context: TaskActionContext,
+  taskId: string,
+  db: TaskReader = prisma,
+): Promise<TaskDetail | null> {
+  assertCanReadTasks(context);
+
+  const task = await db.task.findFirst({
+    where: {
+      id: taskId,
+      organizationId: context.organizationId,
+      archivedAt: null,
+    },
+    include: {
+      apiary: true,
+      hive: true,
+      colony: true,
+      visit: true,
+      assignedToMembership: {
+        include: {
+          user: true,
+        },
+      },
+    },
+  });
+
+  if (!task) {
+    return null;
+  }
+
+  return {
+    ...toTaskSummary(task),
+    description: task.description,
+    apiaryName: task.apiary?.name ?? null,
+    hiveIdentifier: task.hive?.fieldIdentifier ?? null,
+    colonyStatus: task.colony?.status ?? null,
+    visitObjective: task.visit?.objective ?? null,
+    visitStatus: task.visit?.status ?? null,
+    assignedToLabel: task.assignedToMembership?.user.name ?? null,
+  };
 }
 
 export async function createTask(

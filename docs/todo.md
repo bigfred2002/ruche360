@@ -129,6 +129,7 @@
 - [x] `VISITS-REAL-FLOW-01`: utiliser les ruches actives de l'organisation dans le formulaire de creation de visite.
 - [x] `VISIT-DETAIL-SHELL-01`: ajouter une fiche visite en lecture seule, sans edition, creation automatique de tache, IA ou prescription.
 - [x] `TASKS-REAL-FLOW-01`: utiliser les ruches actives de l'organisation dans le formulaire de creation de tache, avec tache generale toujours possible.
+- [x] `TASK-DETAIL-SHELL-01`: ajouter une fiche tache en lecture seule, sans notification, recurrence, calendrier ou automatisme sanitaire.
 - [x] `CLASSIC-JOURNEY-REAL-01`: brancher le parcours classique sur les compteurs reels de developpement et orienter vers ruchers ou visites selon l'etat.
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.

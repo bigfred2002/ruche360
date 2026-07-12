@@ -24,3 +24,13 @@ export type TaskSummary = {
   priority: TaskPriority;
   dueAt: Date | null;
 };
+
+export type TaskDetail = TaskSummary & {
+  apiaryName: string | null;
+  assignedToLabel: string | null;
+  colonyStatus: string | null;
+  description: string | null;
+  hiveIdentifier: string | null;
+  visitObjective: string | null;
+  visitStatus: string | null;
+};
