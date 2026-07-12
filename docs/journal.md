@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-12 - FIELD-VISIT-DETAIL-ACTIONS-01
+
+- Ajout de raccourcis en haut de fiche visite vers l'ajout d'observation et la creation volontaire d'une tache de suivi.
+- Ancrage de la zone de suivi pour rendre l'action plus accessible sur mobile.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-12 - FIELD-VISIT-LIST-ACTIONS-01
 
 - Ajout d'une zone "Prochaine action" sur chaque carte de visite de `/visits`.

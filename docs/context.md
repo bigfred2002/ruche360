@@ -50,6 +50,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `VISIT-OBSERVATION-PRESET-01` ajoute des observations rapides explicites sur la derniere visite modifiable pour reduire la saisie terrain, sans diagnostic automatique ni prescription.
 - `FIELD-VISIT-HERO-01` recentre le haut de `/visits` sur les visites ouvertes, les ruches actives et l'acces direct a la saisie rapide.
 - `FIELD-VISIT-LIST-ACTIONS-01` rend chaque carte de visite plus actionnable avec une prochaine action lisible et des raccourcis vers fiche ou saisie.
+- `FIELD-VISIT-DETAIL-ACTIONS-01` ajoute sur la fiche visite des raccourcis vers l'ajout d'observation et la creation volontaire de suite.
 - `TASK-FOLLOWUP-FROM-VISIT-01` ajoute dans la fiche visite une creation volontaire de tache de suivi, pre-remplie depuis les suites de visite, sans automatisme ni prescription.
 - `TASKS-REAL-FLOW-01` branche le formulaire de creation de tache sur les ruches actives de l'organisation tout en conservant les taches generales sans ruche.
 - `TASK-DETAIL-SHELL-01` ajoute une fiche de lecture tache pour consulter statut, priorite, echeance, assignation et contexte sans notification ni calendrier.

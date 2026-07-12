@@ -57,6 +57,20 @@ export function VisitDetailPreview({ visit }: VisitDetailPreviewProps) {
                   {visit.followUpSummary ??
                     "Relire la visite, ses observations et les suites prévues sans lancer d'automatisme."}
                 </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <Link
+                    className="inline-flex min-h-11 items-center rounded-2xl bg-slate-950 px-4 text-sm font-black text-white transition hover:bg-amber-800 focus-ring"
+                    href="/visits#visit-quick-entry"
+                  >
+                    Ajouter une observation
+                  </Link>
+                  <a
+                    className="inline-flex min-h-11 items-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                    href="#visit-follow-up-task"
+                  >
+                    Préparer une suite
+                  </a>
+                </div>
               </div>
               <div className="rounded-3xl border border-sage-200 bg-sage-50 p-5">
                 <p className="text-sm font-black uppercase text-forest-900">
@@ -114,6 +128,7 @@ export function VisitDetailPreview({ visit }: VisitDetailPreviewProps) {
               <form
                 action={createDevelopmentTaskFormAction}
                 className="mt-4 rounded-2xl border border-cream-300 bg-white p-4"
+                id="visit-follow-up-task"
               >
                 <input name="visitId" type="hidden" value={visit.id} />
                 <input name="hiveId" type="hidden" value={visit.hiveId ?? ""} />
