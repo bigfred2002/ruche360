@@ -128,6 +128,7 @@
 - [x] `APIARY-DETAIL-SHELL-01`: ajouter des fiches de lecture rucher et ruche, sans edition, suppression, GPS ou partage fin.
 - [x] `VISITS-REAL-FLOW-01`: utiliser les ruches actives de l'organisation dans le formulaire de creation de visite.
 - [x] `VISIT-DETAIL-SHELL-01`: ajouter une fiche visite en lecture seule, sans edition, creation automatique de tache, IA ou prescription.
+- [x] `VISIT-QUICK-ENTRY-01`: simplifier la saisie de visite autour de la ruche, de l'observation courte et de la suite a prevoir.
 - [x] `TASKS-REAL-FLOW-01`: utiliser les ruches actives de l'organisation dans le formulaire de creation de tache, avec tache generale toujours possible.
 - [x] `TASK-DETAIL-SHELL-01`: ajouter une fiche tache en lecture seule, sans notification, recurrence, calendrier ou automatisme sanitaire.
 - [x] `CLASSIC-JOURNEY-REAL-01`: brancher le parcours classique sur les compteurs reels de developpement et orienter vers ruchers ou visites selon l'etat.

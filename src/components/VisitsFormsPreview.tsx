@@ -59,113 +59,121 @@ export function VisitsFormsPreview({ hives, visits }: VisitsFormsPreviewProps) {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-3">
+      <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)]">
         <form
           action={createDevelopmentVisitFormAction}
-          className="rounded-2xl border border-cream-300 bg-white p-4"
+          className="rounded-2xl border border-cream-300 bg-white p-4 sm:p-5"
         >
           <FormHeader
             badge={canCreateVisit ? "Actif dev" : "Ruche requise"}
-            detail="Créer une note courte sur une ruche active de l'organisation."
+            detail="Choisir une ruche, noter l'essentiel, puis décider si une suite est nécessaire."
             permission="visits.write"
-            title="Nouvelle visite"
+            title="Visite rapide"
             tone={canCreateVisit ? "active" : "soon"}
           />
-          <div className="mt-4 space-y-3">
+          <div className="mt-4 rounded-2xl border border-sage-200 bg-sage-50 p-3 text-sm font-bold leading-6 text-forest-900">
+            La ruche suffit pour le terrain: le rucher et la colonie active sont
+            associés automatiquement quand ils existent.
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <HiveSelect disabled={!canCreateVisit} hives={activeHives} />
-            <p className="rounded-2xl border border-sage-200 bg-sage-50 p-3 text-sm font-bold leading-6 text-forest-900">
-              Le rucher et la colonie active sont associés automatiquement.
-            </p>
-            <Field label="Statut">
-              <select className={fieldClass} disabled={!canCreateVisit} name="status">
-                <option value="DRAFT">Brouillon</option>
-                <option value="PLANNED">Prévue</option>
-                <option value="IN_PROGRESS">En cours</option>
-              </select>
-            </Field>
-            <Field label="Date de visite">
-              <input className={fieldClass} disabled={!canCreateVisit} name="visitedAt" type="date" />
-            </Field>
             <Field label="Objectif">
               <input className={fieldClass} disabled={!canCreateVisit} name="objective" placeholder="Ex: contrôle rapide" />
             </Field>
-            <Field label="Météo observée">
-              <input className={fieldClass} disabled={!canCreateVisit} name="weatherSummary" placeholder="Ex: doux, vent faible" />
-            </Field>
-            <Field label="Force colonie">
-              <input className={fieldClass} disabled={!canCreateVisit} max="10" min="0" name="colonyStrength" type="number" />
-            </Field>
-            <Field label="Notes">
-              <textarea className={fieldClass} disabled={!canCreateVisit} name="notes" placeholder="Observation courte" rows={3} />
+            <Field label="Observation rapide">
+              <textarea className={fieldClass} disabled={!canCreateVisit} name="notes" placeholder="Ex: activité correcte, réserves à revoir" rows={4} />
             </Field>
             <Field label="Suite à prévoir">
-              <textarea className={fieldClass} disabled={!canCreateVisit} name="followUpSummary" placeholder="Prochaine action ou vigilance" rows={3} />
+              <textarea className={fieldClass} disabled={!canCreateVisit} name="followUpSummary" placeholder="Ex: repasser sous 7 jours" rows={4} />
             </Field>
           </div>
+          <details className="mt-4 rounded-2xl border border-cream-300 bg-cream-50">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-black text-slate-800 focus-ring [&::-webkit-details-marker]:hidden">
+              Détails optionnels
+              <span className="text-xs uppercase text-amber-800">Ouvrir</span>
+            </summary>
+            <div className="grid gap-3 border-t border-cream-300 p-4 sm:grid-cols-3">
+              <Field label="Statut">
+                <select className={fieldClass} disabled={!canCreateVisit} name="status">
+                  <option value="DRAFT">Brouillon</option>
+                  <option value="PLANNED">Prévue</option>
+                  <option value="IN_PROGRESS">En cours</option>
+                </select>
+              </Field>
+              <Field label="Date">
+                <input className={fieldClass} disabled={!canCreateVisit} name="visitedAt" type="date" />
+              </Field>
+              <Field label="Météo">
+                <input className={fieldClass} disabled={!canCreateVisit} name="weatherSummary" placeholder="Ex: doux" />
+              </Field>
+              <Field label="Force colonie">
+                <input className={fieldClass} disabled={!canCreateVisit} max="10" min="0" name="colonyStrength" type="number" />
+              </Field>
+            </div>
+          </details>
           <SubmitButton disabled={!canCreateVisit} label="Créer la visite" />
         </form>
 
-        <form
-          action={addDevelopmentVisitObservationFormAction}
-          className="rounded-2xl border border-cream-300 bg-white p-4"
-        >
-          <FormHeader
-            badge={canUpdateExisting ? "Actif dev" : "Visite requise"}
-            detail="Ajouter une observation courte à une visite encore modifiable."
-            permission="visits.write"
-            title="Observation"
-            tone={canUpdateExisting ? "active" : "soon"}
-          />
-          <div className="mt-4 space-y-3">
-            <VisitSelect disabled={!canUpdateExisting} visits={editableVisits} />
-            <Field label="Catégorie">
-              <select className={fieldClass} disabled={!canUpdateExisting} name="category" required>
-                <option value="COLONY">Colonie</option>
-                <option value="RESERVES">Réserves</option>
-                <option value="HIVE">Ruche</option>
-                <option value="HEALTH">Sanitaire</option>
-                <option value="ACTION">Action</option>
-                <option value="FOLLOW_UP">Suite</option>
-                <option value="NOTE">Note</option>
-              </select>
-            </Field>
-            <Field label="Libellé">
-              <input className={fieldClass} disabled={!canUpdateExisting} name="label" placeholder="Ex: réserves correctes" required />
-            </Field>
-            <Field label="Valeur">
-              <input className={fieldClass} disabled={!canUpdateExisting} name="value" placeholder="Ex: 6 cadres" />
-            </Field>
-            <Field label="Notes">
-              <textarea className={fieldClass} disabled={!canUpdateExisting} name="notes" placeholder="Complément court" rows={3} />
-            </Field>
-          </div>
-          <SubmitButton disabled={!canUpdateExisting} label="Ajouter l'observation" />
-        </form>
+        <div className="space-y-4">
+          <form
+            action={addDevelopmentVisitObservationFormAction}
+            className="rounded-2xl border border-cream-300 bg-white p-4"
+          >
+            <FormHeader
+              badge={canUpdateExisting ? "Actif dev" : "Visite requise"}
+              detail="Compléter une visite déjà ouverte."
+              permission="visits.write"
+              title="Observation"
+              tone={canUpdateExisting ? "active" : "soon"}
+            />
+            <div className="mt-4 space-y-3">
+              <VisitSelect disabled={!canUpdateExisting} visits={editableVisits} />
+              <Field label="Catégorie">
+                <select className={fieldClass} disabled={!canUpdateExisting} name="category" required>
+                  <option value="NOTE">Note</option>
+                  <option value="RESERVES">Réserves</option>
+                  <option value="HIVE">Ruche</option>
+                  <option value="HEALTH">Sanitaire</option>
+                  <option value="ACTION">Action</option>
+                  <option value="FOLLOW_UP">Suite</option>
+                  <option value="COLONY">Colonie</option>
+                </select>
+              </Field>
+              <Field label="Libellé">
+                <input className={fieldClass} disabled={!canUpdateExisting} name="label" placeholder="Ex: réserves correctes" required />
+              </Field>
+              <Field label="Notes">
+                <textarea className={fieldClass} disabled={!canUpdateExisting} name="notes" placeholder="Complément court" rows={3} />
+              </Field>
+            </div>
+            <SubmitButton disabled={!canUpdateExisting} label="Ajouter" />
+          </form>
 
-        <form
-          action={updateDevelopmentVisitStatusFormAction}
-          className="rounded-2xl border border-cream-300 bg-white p-4"
-        >
-          <FormHeader
-            badge={canUpdateExisting ? "Actif dev" : "Visite requise"}
-            detail="Changer le statut sans déclencher de diagnostic ou de tâche."
-            permission="visits.write"
-            title="Statut"
-            tone={canUpdateExisting ? "active" : "soon"}
-          />
-          <div className="mt-4 space-y-3">
-            <VisitSelect disabled={!canUpdateExisting} visits={editableVisits} />
-            <Field label="Nouveau statut">
-              <select className={fieldClass} disabled={!canUpdateExisting} name="status" required>
-                <option value="PLANNED">Prévue</option>
-                <option value="IN_PROGRESS">En cours</option>
-                <option value="COMPLETED">Terminée</option>
-                <option value="CANCELLED">Annulée</option>
-              </select>
-            </Field>
-          </div>
-          <SubmitButton disabled={!canUpdateExisting} label="Mettre à jour" />
-        </form>
+          <form
+            action={updateDevelopmentVisitStatusFormAction}
+            className="rounded-2xl border border-cream-300 bg-white p-4"
+          >
+            <FormHeader
+              badge={canUpdateExisting ? "Actif dev" : "Visite requise"}
+              detail="Fermer ou reprendre une visite, sans diagnostic automatique."
+              permission="visits.write"
+              title="Statut"
+              tone={canUpdateExisting ? "active" : "soon"}
+            />
+            <div className="mt-4 space-y-3">
+              <VisitSelect disabled={!canUpdateExisting} visits={editableVisits} />
+              <Field label="Nouveau statut">
+                <select className={fieldClass} disabled={!canUpdateExisting} name="status" required>
+                  <option value="IN_PROGRESS">En cours</option>
+                  <option value="COMPLETED">Terminée</option>
+                  <option value="PLANNED">Prévue</option>
+                  <option value="CANCELLED">Annulée</option>
+                </select>
+              </Field>
+            </div>
+            <SubmitButton disabled={!canUpdateExisting} label="Mettre à jour" />
+          </form>
+        </div>
       </div>
     </section>
   );

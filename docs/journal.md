@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-12 - VISIT-QUICK-ENTRY-01
+
+- Simplification du formulaire de creation de visite autour de la ruche, de l'objectif, de l'observation courte et de la suite a prevoir.
+- Les champs statut, date, meteo et force colonie passent en details optionnels replies.
+- Les formulaires observation et statut restent disponibles comme actions secondaires de developpement.
+- Aucun schema Prisma, migration, dependance, authentification reelle, API publique, IA active, IoT actif ou prescription sanitaire n'a ete ajoute.
+
 ## 2026-07-12 - FIELD-ACTION-SHORTCUTS-01
 
 - Ajout d'une zone d'acces rapides dans le cockpit vers ruchers/ruches, visites, taches et materiel.
