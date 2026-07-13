@@ -1,5 +1,11 @@
 # Journal
 
+## 2026-07-13 - FIELD-APIARY-HERO-01
+
+- Recentrage du haut de `/apiaries` sur les ruchers actifs, les ruches actives et les ruches au stock ou en maintenance.
+- Ajout d'une prochaine action terrain pour guider l'utilisateur vers la creation du premier rucher, la creation d'une ruche ou l'ouverture d'une ruche active.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, partage fin, GPS, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-12 - FIELD-TASK-DETAIL-ACTIONS-01
 
 - Ajout de raccourcis en haut de fiche tache vers la mise a jour et le contexte visite lorsqu'il existe.

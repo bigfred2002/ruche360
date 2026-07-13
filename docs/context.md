@@ -40,6 +40,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `FIELD-TASK-HERO-01` recentre le haut de `/tasks` sur les taches ouvertes, les priorites et l'acces direct a la creation rapide.
 - `FIELD-TASK-LIST-ACTIONS-01` rend chaque carte de tache plus actionnable avec une prochaine action lisible et des raccourcis vers fiche ou mise a jour.
 - `FIELD-TASK-DETAIL-ACTIONS-01` ajoute sur la fiche tache des raccourcis vers la mise a jour et le contexte visite quand il existe.
+- `FIELD-APIARY-HERO-01` recentre le haut de `/apiaries` sur les ruchers actifs, ruches actives, ruches au stock ou en maintenance et la prochaine action terrain.
 - `AGENT-WORKFLOW-COMMIT-GUARD-01` renforce la regle de flux: un lot doit etre committe, pousse, controle en PR et merge ou arbitre avant de demarrer le lot suivant.
 - `PLATFORM-ADMIN-00` reserve l'administration plateforme a l'exploitation technique future, separee de l'administration d'organisation et dependante d'une authentification reelle, de roles plateforme et d'une architecture d'hebergement validee.
 - `DEPLOY-PROD-ARCHITECTURE-00` retient une architecture de production Docker-first avec un seul point d'entree HTTPS, PostgreSQL prive, secrets hors Git, sauvegardes chiffrees hors hote et choix tunnel/reverse proxy selon beta Synology ou VPS.

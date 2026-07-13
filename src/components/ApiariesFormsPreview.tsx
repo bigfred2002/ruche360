@@ -42,6 +42,16 @@ export function ApiariesFormsPreview({
   );
   const safeApiaries = apiaries ?? [];
   const safeHives = hives ?? [];
+  const activeApiaries = safeApiaries.filter((apiary) => apiary.status === "ACTIVE");
+  const activeHives = safeHives.filter((hive) => hive.status === "ACTIVE");
+  const storedHives = safeHives.filter((hive) => hive.status === "STORED");
+  const maintenanceHives = safeHives.filter((hive) => hive.status === "MAINTENANCE");
+  const nextAction =
+    activeHives.length > 0
+      ? "Ouvrir une ruche active avant la visite"
+      : activeApiaries.length > 0
+        ? "Créer une ruche sur un rucher"
+        : "Créer le premier rucher";
 
   return (
     <AppShell
@@ -59,23 +69,29 @@ export function ApiariesFormsPreview({
               <div>
                 <p className="section-kicker">Ruchers et ruches</p>
                 <h1 className="mt-2 text-3xl font-black leading-tight text-slate-950 sm:text-4xl">
-                  Sites apicoles
+                  Préparer le terrain
                 </h1>
                 <p className="mt-3 max-w-2xl text-base leading-7 text-slate-700">
-                  Créer un rucher et rattacher une ruche suffit pour tester le
-                  premier parcours terrain: visite, tâche et suivi léger.
+                  Le rucher donne le lieu. La ruche porte l&apos;action: visite,
+                  tâche ou matériel à prévoir.
                 </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  <HeroMetric label="Ruchers actifs" value={activeApiaries.length} />
+                  <HeroMetric label="Ruches actives" value={activeHives.length} />
+                  <HeroMetric label="Stock / atelier" value={storedHives.length + maintenanceHives.length} />
+                </div>
               </div>
               <div className="rounded-3xl border border-sage-200 bg-sage-50 p-5">
                 <p className="text-sm font-black uppercase text-forest-900">
-                  Inventaire courant
+                  Prochaine action
                 </p>
-                <p className="mt-2 text-2xl font-black text-slate-950">
-                  {safeApiaries.length} rucher(s)
+                <p className="mt-2 text-2xl font-black leading-tight text-slate-950">
+                  {nextAction}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-field-muted">
                   {safeHives.length} ruche(s) enregistrée(s), dont{" "}
-                  {safeHives.filter((hive) => hive.status === "ACTIVE").length} active(s).
+                  {activeHives.length} active(s). Les ruches au stock ou en
+                  maintenance restent visibles sans alourdir les visites.
                 </p>
               </div>
             </div>
@@ -262,6 +278,15 @@ function Metric({ label, value }: { label: string; value: number }) {
     <div className="rounded-2xl border border-cream-300 bg-cream-50 p-3">
       <p className="text-xs font-black uppercase text-slate-600">{label}</p>
       <p className="mt-1 text-xl font-black text-slate-950">{value}</p>
+    </div>
+  );
+}
+
+function HeroMetric({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-2xl border border-cream-300 bg-white/80 p-3">
+      <p className="text-xs font-black uppercase text-slate-600">{label}</p>
+      <p className="mt-1 text-2xl font-black text-slate-950">{value}</p>
     </div>
   );
 }
