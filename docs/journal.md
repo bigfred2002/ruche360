@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-13 - FIELD-HIVE-DETAIL-ACTIONS-01
+
+- Ajout de raccourcis sur les fiches rucher vers visite, tache, materiel et mouvements.
+- Ajout de raccourcis sur les fiches ruche vers visite, tache, rucher et materiel.
+- Les raccourcis restent de simples liens vers les routes existantes, sans pre-remplissage automatique ni nouvelle mutation.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, partage fin, GPS, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-13 - FIELD-APIARY-LIST-ACTIONS-01
 
 - Ajout d'une zone "Prochaine action" sur chaque carte rucher de `/apiaries`.

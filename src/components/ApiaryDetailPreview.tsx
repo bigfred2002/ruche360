@@ -65,6 +65,25 @@ export function ApiaryDetailPreview({ apiary }: ApiaryDetailPreviewProps) {
           </section>
 
           <section className="grid gap-3 sm:grid-cols-3">
+            <QuickLink
+              detail="Préparer une observation courte"
+              href="/visits"
+              label="Visite"
+              tone="primary"
+            />
+            <QuickLink
+              detail="Garder une suite visible"
+              href="/tasks"
+              label="Tâche"
+            />
+            <QuickLink
+              detail="Vérifier caisse et outils"
+              href="/equipment"
+              label="Matériel"
+            />
+          </section>
+
+          <section className="grid gap-3 sm:grid-cols-3">
             <MetricCard label="Actives" value={activeHives.length} />
             <MetricCard label="Au stock" value={storedHives.length} />
             <MetricCard label="Maintenance" value={maintenanceHives.length} />
@@ -97,12 +116,20 @@ export function ApiaryDetailPreview({ apiary }: ApiaryDetailPreviewProps) {
                 Ouvrir une ruche active pour préparer une visite ou vérifier son
                 état courant.
               </p>
-              <Link
-                className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl bg-forest-900 px-4 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
-                href="/visits"
-              >
-                Aller aux visites
-              </Link>
+              <div className="mt-4 grid gap-2">
+                <Link
+                  className="inline-flex min-h-11 w-full items-center justify-center rounded-2xl bg-forest-900 px-4 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
+                  href="/visits"
+                >
+                  Aller aux visites
+                </Link>
+                <Link
+                  className="inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 focus-ring"
+                  href="/transhumance"
+                >
+                  Voir mouvements
+                </Link>
+              </div>
             </aside>
           </section>
 
@@ -184,6 +211,33 @@ function MetricPill({ label, value }: { label: string; value: number }) {
       <p className="text-xs font-black uppercase text-slate-600">{label}</p>
       <p className="mt-1 text-xl font-black text-slate-950">{value}</p>
     </div>
+  );
+}
+
+function QuickLink({
+  detail,
+  href,
+  label,
+  tone = "secondary",
+}: {
+  detail: string;
+  href: string;
+  label: string;
+  tone?: "primary" | "secondary";
+}) {
+  const className =
+    tone === "primary"
+      ? "border-forest-900 bg-forest-900 text-white hover:bg-forest-800"
+      : "border-cream-300 bg-white text-slate-800 hover:border-amber-300";
+
+  return (
+    <Link
+      className={`min-h-16 rounded-2xl border p-4 transition hover:shadow-field focus-ring ${className}`}
+      href={href}
+    >
+      <span className="block text-sm font-black">{label}</span>
+      <span className="mt-1 block text-xs font-bold opacity-80">{detail}</span>
+    </Link>
   );
 }
 

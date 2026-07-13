@@ -62,6 +62,25 @@ export function HiveDetailPreview({ hive }: HiveDetailPreviewProps) {
             </div>
           </section>
 
+          <section className="grid gap-3 sm:grid-cols-3">
+            <QuickLink
+              detail="Noter une observation"
+              href="/visits"
+              label="Visite"
+              tone="primary"
+            />
+            <QuickLink
+              detail="Prévoir une suite"
+              href="/tasks"
+              label="Tâche"
+            />
+            <QuickLink
+              detail={hive.apiaryName ?? "Revenir à la liste"}
+              href={hive.apiaryId ? `/apiaries/${hive.apiaryId}` : "/apiaries"}
+              label="Rucher"
+            />
+          </section>
+
           <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <article className="surface-panel rounded-3xl p-5 sm:p-6">
               <p className="section-kicker">Contexte</p>
@@ -95,6 +114,12 @@ export function HiveDetailPreview({ hive }: HiveDetailPreviewProps) {
                   href="/tasks"
                 >
                   Voir les tâches
+                </Link>
+                <Link
+                  className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 focus-ring"
+                  href="/equipment"
+                >
+                  Vérifier matériel
                 </Link>
               </div>
             </aside>
@@ -161,6 +186,33 @@ function InfoBlock({ label, value }: { label: string; value: string }) {
       <p className="text-xs font-black uppercase text-amber-800">{label}</p>
       <p className="mt-2 text-sm font-bold leading-6 text-slate-800">{value}</p>
     </div>
+  );
+}
+
+function QuickLink({
+  detail,
+  href,
+  label,
+  tone = "secondary",
+}: {
+  detail: string;
+  href: string;
+  label: string;
+  tone?: "primary" | "secondary";
+}) {
+  const className =
+    tone === "primary"
+      ? "border-forest-900 bg-forest-900 text-white hover:bg-forest-800"
+      : "border-cream-300 bg-white text-slate-800 hover:border-amber-300";
+
+  return (
+    <Link
+      className={`min-h-16 rounded-2xl border p-4 transition hover:shadow-field focus-ring ${className}`}
+      href={href}
+    >
+      <span className="block text-sm font-black">{label}</span>
+      <span className="mt-1 block text-xs font-bold opacity-80">{detail}</span>
+    </Link>
   );
 }
 

@@ -126,6 +126,7 @@
 - [x] `FIELD-TASK-DETAIL-ACTIONS-01`: ajouter des raccourcis de fiche tache vers mise a jour et contexte visite.
 - [x] `FIELD-APIARY-HERO-01`: recentrer le haut de `/apiaries` sur les ruchers actifs, les ruches actives et la prochaine action terrain.
 - [x] `FIELD-APIARY-LIST-ACTIONS-01`: rendre les cartes rucher et ruche plus actionnables sans surcharger le premier écran mobile.
+- [x] `FIELD-HIVE-DETAIL-ACTIONS-01`: ajouter des raccourcis terrain sur les fiches rucher et ruche, sans nouvelle mutation.
 - [x] `EQUIPMENT-UX-FLOW-01`: rendre la page materiel plus orientee preparation et maintenance, sans achat ni stock avance.
 - [x] `CLASSIC-JOURNEY-01`: relier les ecrans de developpement dans un essai terrain guide, sans ajouter de logique metier ou de donnee.
 - [x] `CLASSIC-JOURNEY-UX-01`: reduire le parcours de demonstration a visite, tache et materiel optionnel, avec divulgation progressive des limites.
