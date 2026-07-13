@@ -1,5 +1,26 @@
 # Journal
 
+## 2026-07-13 - FIELD-EQUIPMENT-FORMS-FOCUS-01
+
+- Repli des formulaires materiel de developpement derriere une section native `details`.
+- Ajout de trois reperes courts pour expliquer le flux type, stock et item sans saturer le premier ecran.
+- Conservation des actions serveur existantes, sans achat, prix, stock avance, authentification reelle ou API publique.
+- Aucun schema Prisma, migration, dependance, IA active ou IoT actif n'a ete ajoute.
+
+## 2026-07-13 - FIELD-EQUIPMENT-LIST-ACTIONS-01
+
+- Ajout d'une zone "Prochaine action" sur les cartes de stock et d'item de `/equipment`.
+- Ajout de raccourcis vers visites et taches pour relier le materiel au parcours terrain.
+- Les raccourcis restent de simples liens vers les routes existantes, sans ajustement de quantite, achat, prix ou automatisme.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
+## 2026-07-13 - FIELD-EQUIPMENT-HERO-01
+
+- Recentrage du haut de `/equipment` sur la preparation de caisse terrain.
+- Ajout d'indicateurs pret, a nettoyer et maintenance, avec une prochaine action calculee depuis l'inventaire de developpement.
+- Conservation d'une approche volontairement sobre: aucun achat, prix, stock avance, comptabilite ou suppression.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-13 - FIELD-HIVE-DETAIL-ACTIONS-01
 
 - Ajout de raccourcis sur les fiches rucher vers visite, tache, materiel et mouvements.

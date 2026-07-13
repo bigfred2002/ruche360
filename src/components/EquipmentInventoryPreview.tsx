@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 import type { EquipmentInventorySnapshot } from "@/features/equipment/service";
 import type {
   EquipmentItemStatus,
   EquipmentItemSummary,
+  EquipmentStockSummary,
   EquipmentTrackingMode,
 } from "@/features/equipment/types";
 
@@ -32,6 +35,13 @@ type FieldKitItem = {
   label: string;
   status: string;
   tone: BadgeTone;
+};
+
+type EquipmentFieldState = {
+  maintenanceCount: number;
+  nextAction: string;
+  readyCount: number;
+  toCleanCount: number;
 };
 
 const fallbackSummaryCards = [
@@ -106,6 +116,7 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
   const maintenanceItems = inventory
     ? createLiveMaintenanceItems(inventory, typeById)
     : fallbackMaintenanceItems;
+  const fieldState = createFieldState(inventory);
   const fieldKitItems = createFieldKitItems(inventory, typeById);
 
   return (
@@ -124,20 +135,28 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
               <div>
                 <p className="section-kicker">Module matériel</p>
                 <h1 className="mt-2 text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
-                  Matériel
+                  Préparer la caisse
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Inventaire mobile-first pour lire les stocks, les emplacements
-                  et les points à traiter.
+                  Vérifier ce qui est prêt, ce qui revient sale et ce qui doit
+                  rester à l&apos;atelier avant de partir au rucher.
                 </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  <HeroMetric label="Prêt" value={fieldState.readyCount} />
+                  <HeroMetric label="À nettoyer" value={fieldState.toCleanCount} />
+                  <HeroMetric label="Maintenance" value={fieldState.maintenanceCount} />
+                </div>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
                 <p className="text-sm font-bold uppercase tracking-wide text-amber-100">
-                  Principe
+                  Prochaine action
                 </p>
-                <p className="mt-3 text-3xl font-black">Sobre</p>
+                <p className="mt-3 text-3xl font-black leading-tight">
+                  {fieldState.nextAction}
+                </p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
-                  Quantités pour consommables, items pour le durable.
+                  Une lecture courte pour préparer la visite sans transformer le
+                  matériel en comptabilité.
                 </p>
               </div>
             </div>
@@ -206,6 +225,13 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                       <p className="mt-2 text-sm font-bold text-field-muted">
                         {stock.locationLabel ?? "Emplacement non précisé"}
                       </p>
+                      <NextActionBlock detail={nextActionForStock(stock)} />
+                      <Link
+                        className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
+                        href="/visits"
+                      >
+                        Préparer visite
+                      </Link>
                     </article>
                   );
                 })}
@@ -237,6 +263,21 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                       <p className="mt-2 text-sm font-bold text-slate-800">
                         {item.locationLabel ?? "Emplacement non précisé"}
                       </p>
+                      <NextActionBlock detail={nextActionForItem(item)} />
+                      <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                        <Link
+                          className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
+                          href="/tasks"
+                        >
+                          Tâche
+                        </Link>
+                        <Link
+                          className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-forest-900 px-4 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
+                          href="/visits"
+                        >
+                          Visite
+                        </Link>
+                      </div>
                     </article>
                   );
                 })}
@@ -474,6 +515,42 @@ function createLiveMaintenanceItems(
   return items.length > 0 ? items : ["Aucun point de maintenance dans le seed actuel"];
 }
 
+function createFieldState(inventory: EquipmentInventorySnapshot | null): EquipmentFieldState {
+  if (!inventory) {
+    return {
+      maintenanceCount: 4,
+      nextAction: "Contrôler la caisse",
+      readyCount: 126,
+      toCleanCount: 18,
+    };
+  }
+
+  const readyItems = inventory.items.filter(
+    (item) => item.status === "AVAILABLE" || item.status === "IN_USE",
+  ).length;
+  const stockQuantity = inventory.stocks.reduce(
+    (total, stock) => total + stock.quantity,
+    0,
+  );
+  const toCleanCount = inventory.items.filter((item) => item.status === "TO_CLEAN").length;
+  const maintenanceCount = inventory.items.filter(
+    (item) => item.status === "MAINTENANCE" || item.status === "LOST",
+  ).length;
+  const nextAction =
+    maintenanceCount > 0
+      ? "Traiter l'atelier"
+      : toCleanCount > 0
+        ? "Nettoyer au retour"
+        : "Préparer la visite";
+
+  return {
+    maintenanceCount,
+    nextAction,
+    readyCount: readyItems + Math.round(stockQuantity),
+    toCleanCount,
+  };
+}
+
 function createFieldKitItems(
   inventory: EquipmentInventorySnapshot | null,
   typeById: Map<string, EquipmentInventorySnapshot["types"][number]>,
@@ -512,6 +589,51 @@ function createFieldKitItems(
       tone: toneForItemStatus(item),
     };
   });
+}
+
+function HeroMetric({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-2xl border border-cream-300 bg-white/80 p-3">
+      <p className="text-xs font-black uppercase text-slate-600">{label}</p>
+      <p className="mt-1 text-2xl font-black text-slate-950">{value}</p>
+    </div>
+  );
+}
+
+function NextActionBlock({ detail }: { detail: string }) {
+  return (
+    <div className="mt-4 rounded-2xl bg-cream-50 p-3">
+      <p className="text-xs font-black uppercase text-amber-800">
+        Prochaine action
+      </p>
+      <p className="mt-1 text-sm font-bold leading-6 text-slate-800">{detail}</p>
+    </div>
+  );
+}
+
+function nextActionForStock(stock: EquipmentStockSummary) {
+  if (stock.quantity <= 0) {
+    return "Vérifier si le stock doit être archivé plus tard.";
+  }
+
+  if (stock.quantity < 5) {
+    return "Contrôler la quantité avant la prochaine sortie.";
+  }
+
+  return "Préparer la quantité utile pour la visite.";
+}
+
+function nextActionForItem(item: EquipmentItemSummary) {
+  const actions = {
+    AVAILABLE: "Mettre dans la caisse si la visite le demande.",
+    IN_USE: "Confirmer le retour après la sortie.",
+    TO_CLEAN: "Nettoyer avant de le remettre disponible.",
+    MAINTENANCE: "Créer une tâche de réparation si besoin.",
+    RETIRED: "Conserver l'historique, ne pas remettre en service.",
+    LOST: "Vérifier l'emplacement avant remplacement.",
+  } satisfies Record<EquipmentItemStatus, string>;
+
+  return actions[item.status];
 }
 
 function formatQuantity(quantity: number) {
