@@ -34,6 +34,13 @@ type FieldKitItem = {
   tone: BadgeTone;
 };
 
+type EquipmentFieldState = {
+  maintenanceCount: number;
+  nextAction: string;
+  readyCount: number;
+  toCleanCount: number;
+};
+
 const fallbackSummaryCards = [
   {
     label: "Disponible",
@@ -106,6 +113,7 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
   const maintenanceItems = inventory
     ? createLiveMaintenanceItems(inventory, typeById)
     : fallbackMaintenanceItems;
+  const fieldState = createFieldState(inventory);
   const fieldKitItems = createFieldKitItems(inventory, typeById);
 
   return (
@@ -124,20 +132,28 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
               <div>
                 <p className="section-kicker">Module matériel</p>
                 <h1 className="mt-2 text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
-                  Matériel
+                  Préparer la caisse
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Inventaire mobile-first pour lire les stocks, les emplacements
-                  et les points à traiter.
+                  Vérifier ce qui est prêt, ce qui revient sale et ce qui doit
+                  rester à l&apos;atelier avant de partir au rucher.
                 </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  <HeroMetric label="Prêt" value={fieldState.readyCount} />
+                  <HeroMetric label="À nettoyer" value={fieldState.toCleanCount} />
+                  <HeroMetric label="Maintenance" value={fieldState.maintenanceCount} />
+                </div>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
                 <p className="text-sm font-bold uppercase tracking-wide text-amber-100">
-                  Principe
+                  Prochaine action
                 </p>
-                <p className="mt-3 text-3xl font-black">Sobre</p>
+                <p className="mt-3 text-3xl font-black leading-tight">
+                  {fieldState.nextAction}
+                </p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
-                  Quantités pour consommables, items pour le durable.
+                  Une lecture courte pour préparer la visite sans transformer le
+                  matériel en comptabilité.
                 </p>
               </div>
             </div>
@@ -474,6 +490,42 @@ function createLiveMaintenanceItems(
   return items.length > 0 ? items : ["Aucun point de maintenance dans le seed actuel"];
 }
 
+function createFieldState(inventory: EquipmentInventorySnapshot | null): EquipmentFieldState {
+  if (!inventory) {
+    return {
+      maintenanceCount: 4,
+      nextAction: "Contrôler la caisse",
+      readyCount: 126,
+      toCleanCount: 18,
+    };
+  }
+
+  const readyItems = inventory.items.filter(
+    (item) => item.status === "AVAILABLE" || item.status === "IN_USE",
+  ).length;
+  const stockQuantity = inventory.stocks.reduce(
+    (total, stock) => total + stock.quantity,
+    0,
+  );
+  const toCleanCount = inventory.items.filter((item) => item.status === "TO_CLEAN").length;
+  const maintenanceCount = inventory.items.filter(
+    (item) => item.status === "MAINTENANCE" || item.status === "LOST",
+  ).length;
+  const nextAction =
+    maintenanceCount > 0
+      ? "Traiter l'atelier"
+      : toCleanCount > 0
+        ? "Nettoyer au retour"
+        : "Préparer la visite";
+
+  return {
+    maintenanceCount,
+    nextAction,
+    readyCount: readyItems + Math.round(stockQuantity),
+    toCleanCount,
+  };
+}
+
 function createFieldKitItems(
   inventory: EquipmentInventorySnapshot | null,
   typeById: Map<string, EquipmentInventorySnapshot["types"][number]>,
@@ -512,6 +564,15 @@ function createFieldKitItems(
       tone: toneForItemStatus(item),
     };
   });
+}
+
+function HeroMetric({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-2xl border border-cream-300 bg-white/80 p-3">
+      <p className="text-xs font-black uppercase text-slate-600">{label}</p>
+      <p className="mt-1 text-2xl font-black text-slate-950">{value}</p>
+    </div>
+  );
 }
 
 function formatQuantity(quantity: number) {

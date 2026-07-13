@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-13 - FIELD-EQUIPMENT-HERO-01
+
+- Recentrage du haut de `/equipment` sur la preparation de caisse terrain.
+- Ajout d'indicateurs pret, a nettoyer et maintenance, avec une prochaine action calculee depuis l'inventaire de developpement.
+- Conservation d'une approche volontairement sobre: aucun achat, prix, stock avance, comptabilite ou suppression.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-13 - FIELD-HIVE-DETAIL-ACTIONS-01
 
 - Ajout de raccourcis sur les fiches rucher vers visite, tache, materiel et mouvements.
