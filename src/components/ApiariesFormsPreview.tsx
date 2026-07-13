@@ -42,6 +42,16 @@ export function ApiariesFormsPreview({
   );
   const safeApiaries = apiaries ?? [];
   const safeHives = hives ?? [];
+  const activeApiaries = safeApiaries.filter((apiary) => apiary.status === "ACTIVE");
+  const activeHives = safeHives.filter((hive) => hive.status === "ACTIVE");
+  const storedHives = safeHives.filter((hive) => hive.status === "STORED");
+  const maintenanceHives = safeHives.filter((hive) => hive.status === "MAINTENANCE");
+  const nextAction =
+    activeHives.length > 0
+      ? "Ouvrir une ruche active avant la visite"
+      : activeApiaries.length > 0
+        ? "Créer une ruche sur un rucher"
+        : "Créer le premier rucher";
 
   return (
     <AppShell
@@ -59,23 +69,29 @@ export function ApiariesFormsPreview({
               <div>
                 <p className="section-kicker">Ruchers et ruches</p>
                 <h1 className="mt-2 text-3xl font-black leading-tight text-slate-950 sm:text-4xl">
-                  Sites apicoles
+                  Préparer le terrain
                 </h1>
                 <p className="mt-3 max-w-2xl text-base leading-7 text-slate-700">
-                  Créer un rucher et rattacher une ruche suffit pour tester le
-                  premier parcours terrain: visite, tâche et suivi léger.
+                  Le rucher donne le lieu. La ruche porte l&apos;action: visite,
+                  tâche ou matériel à prévoir.
                 </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  <HeroMetric label="Ruchers actifs" value={activeApiaries.length} />
+                  <HeroMetric label="Ruches actives" value={activeHives.length} />
+                  <HeroMetric label="Stock / atelier" value={storedHives.length + maintenanceHives.length} />
+                </div>
               </div>
               <div className="rounded-3xl border border-sage-200 bg-sage-50 p-5">
                 <p className="text-sm font-black uppercase text-forest-900">
-                  Inventaire courant
+                  Prochaine action
                 </p>
-                <p className="mt-2 text-2xl font-black text-slate-950">
-                  {safeApiaries.length} rucher(s)
+                <p className="mt-2 text-2xl font-black leading-tight text-slate-950">
+                  {nextAction}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-field-muted">
                   {safeHives.length} ruche(s) enregistrée(s), dont{" "}
-                  {safeHives.filter((hive) => hive.status === "ACTIVE").length} active(s).
+                  {activeHives.length} active(s). Les ruches au stock ou en
+                  maintenance restent visibles sans alourdir les visites.
                 </p>
               </div>
             </div>
@@ -124,12 +140,28 @@ export function ApiariesFormsPreview({
                       <Metric label="Ruches" value={apiary.hiveCount} />
                       <Metric label="Actives" value={apiary.activeHiveCount} />
                     </div>
-                    <Link
-                      className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
-                      href={`/apiaries/${apiary.id}`}
-                    >
-                      Ouvrir la fiche
-                    </Link>
+                    <div className="mt-4 rounded-2xl bg-cream-50 p-3">
+                      <p className="text-xs font-black uppercase text-amber-800">
+                        Prochaine action
+                      </p>
+                      <p className="mt-1 text-sm font-bold leading-6 text-slate-800">
+                        {nextActionForApiary(apiary)}
+                      </p>
+                    </div>
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                      <Link
+                        className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
+                        href={`/apiaries/${apiary.id}`}
+                      >
+                        Ouvrir
+                      </Link>
+                      <Link
+                        className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-forest-900 px-4 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
+                        href="/visits"
+                      >
+                        Visite
+                      </Link>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -143,6 +175,51 @@ export function ApiariesFormsPreview({
                     title="Le terrain attend son premier site"
                   />
                 </div>
+              ) : null}
+
+              {safeHives.length > 0 ? (
+                <details className="mt-5 rounded-2xl border border-cream-300 bg-cream-50 p-4">
+                  <summary className="cursor-pointer text-sm font-black text-slate-900 focus-ring">
+                    Ruches à ouvrir ({safeHives.length})
+                  </summary>
+                  <div className="mt-4 grid gap-3 md:grid-cols-2">
+                    {safeHives.map((hive) => (
+                      <article
+                        className="rounded-2xl border border-cream-300 bg-white p-4"
+                        key={hive.id}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <h3 className="text-base font-black text-slate-950">
+                              {hive.fieldIdentifier}
+                            </h3>
+                            <p className="mt-1 text-sm leading-6 text-field-muted">
+                              {hive.hiveType ?? "Type non précisé"}
+                            </p>
+                          </div>
+                          <StatusBadge
+                            label={labelForHiveStatus(hive.status)}
+                            tone={toneForHiveStatus(hive.status)}
+                          />
+                        </div>
+                        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                          <Link
+                            className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
+                            href={`/hives/${hive.id}`}
+                          >
+                            Fiche
+                          </Link>
+                          <Link
+                            className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-amber-700 px-4 text-sm font-black text-white transition hover:bg-amber-800 focus-ring"
+                            href="/tasks"
+                          >
+                            Tâche
+                          </Link>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </details>
               ) : null}
             </div>
 
@@ -266,6 +343,15 @@ function Metric({ label, value }: { label: string; value: number }) {
   );
 }
 
+function HeroMetric({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-2xl border border-cream-300 bg-white/80 p-3">
+      <p className="text-xs font-black uppercase text-slate-600">{label}</p>
+      <p className="mt-1 text-2xl font-black text-slate-950">{value}</p>
+    </div>
+  );
+}
+
 function SubmitButton({ disabled, label }: { disabled: boolean; label: string }) {
   return (
     <button
@@ -286,4 +372,35 @@ function labelForApiaryStatus(status: ApiarySummary["status"]) {
   } satisfies Record<ApiarySummary["status"], string>;
 
   return labels[status];
+}
+
+function labelForHiveStatus(status: HiveSummary["status"]) {
+  const labels = {
+    ACTIVE: "Active",
+    STORED: "Au stock",
+    MAINTENANCE: "Maintenance",
+    ARCHIVED: "Archivée",
+  } satisfies Record<HiveSummary["status"], string>;
+
+  return labels[status];
+}
+
+function toneForHiveStatus(status: HiveSummary["status"]): "active" | "preview" {
+  if (status === "ACTIVE") {
+    return "active";
+  }
+
+  return "preview";
+}
+
+function nextActionForApiary(apiary: ApiarySummary) {
+  if (apiary.activeHiveCount > 0) {
+    return "Choisir une ruche active pour une visite courte.";
+  }
+
+  if (apiary.hiveCount > 0) {
+    return "Vérifier les ruches au stock ou en maintenance.";
+  }
+
+  return "Ajouter une première ruche sur ce site.";
 }
