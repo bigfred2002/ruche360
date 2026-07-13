@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-13 - FIELD-APIARY-LIST-ACTIONS-01
+
+- Ajout d'une zone "Prochaine action" sur chaque carte rucher de `/apiaries`.
+- Ajout de raccourcis vers la fiche rucher, les visites, la fiche ruche et les taches.
+- La liste des ruches est repliee pour garder une charge de lecture mobile raisonnable.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, partage fin, GPS, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-13 - FIELD-APIARY-HERO-01
 
 - Recentrage du haut de `/apiaries` sur les ruchers actifs, les ruches actives et les ruches au stock ou en maintenance.

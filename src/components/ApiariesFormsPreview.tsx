@@ -140,12 +140,28 @@ export function ApiariesFormsPreview({
                       <Metric label="Ruches" value={apiary.hiveCount} />
                       <Metric label="Actives" value={apiary.activeHiveCount} />
                     </div>
-                    <Link
-                      className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
-                      href={`/apiaries/${apiary.id}`}
-                    >
-                      Ouvrir la fiche
-                    </Link>
+                    <div className="mt-4 rounded-2xl bg-cream-50 p-3">
+                      <p className="text-xs font-black uppercase text-amber-800">
+                        Prochaine action
+                      </p>
+                      <p className="mt-1 text-sm font-bold leading-6 text-slate-800">
+                        {nextActionForApiary(apiary)}
+                      </p>
+                    </div>
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                      <Link
+                        className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
+                        href={`/apiaries/${apiary.id}`}
+                      >
+                        Ouvrir
+                      </Link>
+                      <Link
+                        className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-forest-900 px-4 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
+                        href="/visits"
+                      >
+                        Visite
+                      </Link>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -159,6 +175,51 @@ export function ApiariesFormsPreview({
                     title="Le terrain attend son premier site"
                   />
                 </div>
+              ) : null}
+
+              {safeHives.length > 0 ? (
+                <details className="mt-5 rounded-2xl border border-cream-300 bg-cream-50 p-4">
+                  <summary className="cursor-pointer text-sm font-black text-slate-900 focus-ring">
+                    Ruches à ouvrir ({safeHives.length})
+                  </summary>
+                  <div className="mt-4 grid gap-3 md:grid-cols-2">
+                    {safeHives.map((hive) => (
+                      <article
+                        className="rounded-2xl border border-cream-300 bg-white p-4"
+                        key={hive.id}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <h3 className="text-base font-black text-slate-950">
+                              {hive.fieldIdentifier}
+                            </h3>
+                            <p className="mt-1 text-sm leading-6 text-field-muted">
+                              {hive.hiveType ?? "Type non précisé"}
+                            </p>
+                          </div>
+                          <StatusBadge
+                            label={labelForHiveStatus(hive.status)}
+                            tone={toneForHiveStatus(hive.status)}
+                          />
+                        </div>
+                        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                          <Link
+                            className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
+                            href={`/hives/${hive.id}`}
+                          >
+                            Fiche
+                          </Link>
+                          <Link
+                            className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-amber-700 px-4 text-sm font-black text-white transition hover:bg-amber-800 focus-ring"
+                            href="/tasks"
+                          >
+                            Tâche
+                          </Link>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </details>
               ) : null}
             </div>
 
@@ -311,4 +372,35 @@ function labelForApiaryStatus(status: ApiarySummary["status"]) {
   } satisfies Record<ApiarySummary["status"], string>;
 
   return labels[status];
+}
+
+function labelForHiveStatus(status: HiveSummary["status"]) {
+  const labels = {
+    ACTIVE: "Active",
+    STORED: "Au stock",
+    MAINTENANCE: "Maintenance",
+    ARCHIVED: "Archivée",
+  } satisfies Record<HiveSummary["status"], string>;
+
+  return labels[status];
+}
+
+function toneForHiveStatus(status: HiveSummary["status"]): "active" | "preview" {
+  if (status === "ACTIVE") {
+    return "active";
+  }
+
+  return "preview";
+}
+
+function nextActionForApiary(apiary: ApiarySummary) {
+  if (apiary.activeHiveCount > 0) {
+    return "Choisir une ruche active pour une visite courte.";
+  }
+
+  if (apiary.hiveCount > 0) {
+    return "Vérifier les ruches au stock ou en maintenance.";
+  }
+
+  return "Ajouter une première ruche sur ce site.";
 }
