@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-13 - FIELD-EQUIPMENT-FORMS-FOCUS-01
+
+- Repli des formulaires materiel de developpement derriere une section native `details`.
+- Ajout de trois reperes courts pour expliquer le flux type, stock et item sans saturer le premier ecran.
+- Conservation des actions serveur existantes, sans achat, prix, stock avance, authentification reelle ou API publique.
+- Aucun schema Prisma, migration, dependance, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-13 - FIELD-EQUIPMENT-LIST-ACTIONS-01
 
 - Ajout d'une zone "Prochaine action" sur les cartes de stock et d'item de `/equipment`.

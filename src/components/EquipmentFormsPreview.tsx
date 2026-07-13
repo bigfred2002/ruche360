@@ -38,13 +38,11 @@ export function EquipmentFormsPreview({ inventory }: EquipmentFormsPreviewProps)
         <div>
           <p className="section-kicker">Formulaires développement</p>
           <h2 className="mt-2 text-2xl font-black text-slate-950">
-            Actions matériel contrôlées
+            Ajouter sans alourdir
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
-            Ces formulaires utilisent la session de développement et les
-            commandes serveur déjà cadrées. Ils servent au développement local:
-            pas d&apos;authentification réelle, pas d&apos;API publique et pas de
-            donnée personnelle.
+            Les actions existent pour tester le développement local. Le terrain
+            reste d&apos;abord une lecture rapide: prêt, à nettoyer, maintenance.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -53,7 +51,23 @@ export function EquipmentFormsPreview({ inventory }: EquipmentFormsPreviewProps)
         </div>
       </div>
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-3">
+      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+        <ActionHint label="1. Type" value="Décrire ce qui existe" />
+        <ActionHint label="2. Stock" value="Quantité et lieu" />
+        <ActionHint label="3. Item" value="Équipement durable" />
+      </div>
+
+      <details className="mt-5 rounded-2xl border border-cream-300 bg-cream-50 p-4">
+        <summary className="cursor-pointer text-sm font-black text-slate-900 focus-ring">
+          Ouvrir les formulaires de développement
+        </summary>
+        <p className="mt-3 text-sm font-bold leading-6 text-field-muted">
+          Ces formulaires utilisent la session de développement et les commandes
+          serveur déjà cadrées. Ils ne créent pas d&apos;authentification réelle,
+          d&apos;API publique, d&apos;achat, de prix ou de donnée personnelle.
+        </p>
+
+        <div className="mt-5 grid gap-4 lg:grid-cols-3">
         <form
           action={createDevelopmentEquipmentTypeFormAction}
           className="rounded-2xl border border-cream-300 bg-white p-4"
@@ -167,8 +181,18 @@ export function EquipmentFormsPreview({ inventory }: EquipmentFormsPreviewProps)
           </div>
           <SubmitButton disabled={!canCreateItem} label="Créer l'item" />
         </form>
-      </div>
+        </div>
+      </details>
     </section>
+  );
+}
+
+function ActionHint({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-cream-300 bg-white p-3">
+      <p className="text-xs font-black uppercase text-amber-800">{label}</p>
+      <p className="mt-1 text-sm font-bold text-slate-800">{value}</p>
+    </div>
   );
 }
 

@@ -129,6 +129,7 @@
 - [x] `FIELD-HIVE-DETAIL-ACTIONS-01`: ajouter des raccourcis terrain sur les fiches rucher et ruche, sans nouvelle mutation.
 - [x] `FIELD-EQUIPMENT-HERO-01`: recentrer le haut de `/equipment` sur la preparation de caisse et la prochaine action.
 - [x] `FIELD-EQUIPMENT-LIST-ACTIONS-01`: rendre les cartes stock et item plus actionnables avec des raccourcis vers visites et taches.
+- [x] `FIELD-EQUIPMENT-FORMS-FOCUS-01`: replier les formulaires materiel de developpement pour alleger la lecture terrain.
 - [x] `EQUIPMENT-UX-FLOW-01`: rendre la page materiel plus orientee preparation et maintenance, sans achat ni stock avance.
 - [x] `CLASSIC-JOURNEY-01`: relier les ecrans de developpement dans un essai terrain guide, sans ajouter de logique metier ou de donnee.
 - [x] `CLASSIC-JOURNEY-UX-01`: reduire le parcours de demonstration a visite, tache et materiel optionnel, avec divulgation progressive des limites.
