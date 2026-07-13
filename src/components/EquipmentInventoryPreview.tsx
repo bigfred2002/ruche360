@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 import type { EquipmentInventorySnapshot } from "@/features/equipment/service";
 import type {
   EquipmentItemStatus,
   EquipmentItemSummary,
+  EquipmentStockSummary,
   EquipmentTrackingMode,
 } from "@/features/equipment/types";
 
@@ -222,6 +225,13 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                       <p className="mt-2 text-sm font-bold text-field-muted">
                         {stock.locationLabel ?? "Emplacement non précisé"}
                       </p>
+                      <NextActionBlock detail={nextActionForStock(stock)} />
+                      <Link
+                        className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
+                        href="/visits"
+                      >
+                        Préparer visite
+                      </Link>
                     </article>
                   );
                 })}
@@ -253,6 +263,21 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
                       <p className="mt-2 text-sm font-bold text-slate-800">
                         {item.locationLabel ?? "Emplacement non précisé"}
                       </p>
+                      <NextActionBlock detail={nextActionForItem(item)} />
+                      <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                        <Link
+                          className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-cream-50 px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 hover:bg-white focus-ring"
+                          href="/tasks"
+                        >
+                          Tâche
+                        </Link>
+                        <Link
+                          className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-forest-900 px-4 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
+                          href="/visits"
+                        >
+                          Visite
+                        </Link>
+                      </div>
                     </article>
                   );
                 })}
@@ -573,6 +598,42 @@ function HeroMetric({ label, value }: { label: string; value: number }) {
       <p className="mt-1 text-2xl font-black text-slate-950">{value}</p>
     </div>
   );
+}
+
+function NextActionBlock({ detail }: { detail: string }) {
+  return (
+    <div className="mt-4 rounded-2xl bg-cream-50 p-3">
+      <p className="text-xs font-black uppercase text-amber-800">
+        Prochaine action
+      </p>
+      <p className="mt-1 text-sm font-bold leading-6 text-slate-800">{detail}</p>
+    </div>
+  );
+}
+
+function nextActionForStock(stock: EquipmentStockSummary) {
+  if (stock.quantity <= 0) {
+    return "Vérifier si le stock doit être archivé plus tard.";
+  }
+
+  if (stock.quantity < 5) {
+    return "Contrôler la quantité avant la prochaine sortie.";
+  }
+
+  return "Préparer la quantité utile pour la visite.";
+}
+
+function nextActionForItem(item: EquipmentItemSummary) {
+  const actions = {
+    AVAILABLE: "Mettre dans la caisse si la visite le demande.",
+    IN_USE: "Confirmer le retour après la sortie.",
+    TO_CLEAN: "Nettoyer avant de le remettre disponible.",
+    MAINTENANCE: "Créer une tâche de réparation si besoin.",
+    RETIRED: "Conserver l'historique, ne pas remettre en service.",
+    LOST: "Vérifier l'emplacement avant remplacement.",
+  } satisfies Record<EquipmentItemStatus, string>;
+
+  return actions[item.status];
 }
 
 function formatQuantity(quantity: number) {

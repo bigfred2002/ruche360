@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-13 - FIELD-EQUIPMENT-LIST-ACTIONS-01
+
+- Ajout d'une zone "Prochaine action" sur les cartes de stock et d'item de `/equipment`.
+- Ajout de raccourcis vers visites et taches pour relier le materiel au parcours terrain.
+- Les raccourcis restent de simples liens vers les routes existantes, sans ajustement de quantite, achat, prix ou automatisme.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-13 - FIELD-EQUIPMENT-HERO-01
 
 - Recentrage du haut de `/equipment` sur la preparation de caisse terrain.
