@@ -216,6 +216,7 @@ Le dépôt étant public, le workflow local est limité à `workflow_dispatch`. 
 - [Gouvernance lots et sprints](docs/sprint-governance.md)
 - [Modules](docs/modules.md)
 - [Module matériel](docs/equipment.md)
+- [QA opérationnelle terrain](docs/operational-qa.md)
 - [Modules dynamiques](docs/dynamic-modules.md)
 - [Partage de rucher et transhumance](docs/apiary-sharing-transhumance.md)
 - [Rôles et permissions](docs/roles-permissions.md)

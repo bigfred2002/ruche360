@@ -5,6 +5,7 @@ import type {
   EquipmentItemSummary,
   EquipmentStockSummary,
 } from "@/features/equipment";
+import type { HiveMovementSummary } from "@/features/hive-movements";
 import type { TaskSummary } from "@/features/tasks";
 import type { VisitSummary } from "@/features/visits";
 
@@ -20,6 +21,7 @@ type EquipmentSnapshot = {
 type ClassicJourneyPreviewProps = {
   equipment?: EquipmentSnapshot | null;
   hives?: HiveSummary[] | null;
+  movements?: HiveMovementSummary[] | null;
   tasks?: TaskSummary[] | null;
   visits?: VisitSummary[] | null;
 };
@@ -34,18 +36,21 @@ const localQaCommands = [
   "make seed-dev",
   "docker compose up -d app",
   "curl -I http://localhost:3000/journey",
+  "curl -I http://localhost:3000/transhumance",
 ] as const;
 
 const localQaChecks = [
-  "La checklist affiche au moins une ruche active.",
-  "Une visite rapide peut être créée depuis une ruche.",
+  "La checklist relie ruche, visite, tâche, matériel et transhumance.",
+  "Une visite rapide peut être créée depuis une ruche active.",
   "Une fiche visite propose une tâche de suivi volontaire.",
-  "Les pages visites et tâches affichent un état vide utile si la liste est vide.",
+  "La transhumance reste un suivi manuel sans GPS actif.",
+  "Les listes vides guident vers la première action utile.",
 ] as const;
 
 export function ClassicJourneyPreview({
   equipment,
   hives,
+  movements,
   tasks,
   visits,
 }: ClassicJourneyPreviewProps) {
@@ -64,15 +69,21 @@ export function ClassicJourneyPreview({
       (task) =>
         task.status === "TODO" || task.status === "IN_PROGRESS",
     ) ?? [];
+  const activeMovements =
+    movements?.filter(
+      (movement) =>
+        movement.status === "PLANNED" || movement.status === "IN_PROGRESS",
+    ) ?? [];
   const availableItems =
     equipment?.items.filter((item) => item.status === "AVAILABLE").length ?? 0;
   const stockedLines =
     equipment?.stocks.filter((stock) => stock.quantity > 0).length ?? 0;
-  const hasLiveRead = Boolean(hives || visits || tasks || equipment);
+  const hasLiveRead = Boolean(hives || visits || tasks || equipment || movements);
   const hasActiveHive = activeHives.length > 0;
   const hasOpenVisit = openVisits.length > 0;
   const hasOpenTask = openTasks.length > 0;
   const hasEquipmentReady = availableItems + stockedLines > 0;
+  const hasMovementReady = activeMovements.length > 0;
   const primaryHref = hasActiveHive ? "/visits" : "/apiaries";
   const primaryLabel = hasActiveHive ? "Commencer la visite" : "Créer une ruche";
   const checklist = [
@@ -95,6 +106,11 @@ export function ClassicJourneyPreview({
       done: hasEquipmentReady,
       href: "/equipment",
       label: "Vérifier le matériel disponible",
+    },
+    {
+      done: hasMovementReady,
+      href: "/transhumance",
+      label: "Ouvrir les mouvements si déplacement prévu",
     },
   ] as const;
   const journeySteps = [
@@ -139,6 +155,16 @@ export function ClassicJourneyPreview({
       title: "Vérifier si nécessaire",
       tone: "soon",
     },
+    {
+      detail:
+        "Préparer ou suivre un déplacement de ruches uniquement quand la sortie le demande, sans GPS actif.",
+      href: "/transhumance",
+      label: "Voir les mouvements",
+      metric: `${activeMovements.length} actif${activeMovements.length > 1 ? "s" : ""}`,
+      number: "05",
+      title: "Déplacer si besoin",
+      tone: activeMovements.length > 0 ? "amber" : "preview",
+    },
   ] as const;
 
   return (
@@ -172,7 +198,7 @@ export function ClassicJourneyPreview({
             </Link>
           </section>
 
-          <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             <ReadinessCard
               detail="Ruches actives"
               label="Contexte"
@@ -192,6 +218,11 @@ export function ClassicJourneyPreview({
               detail="Matériel disponible ou stocké"
               label="Matériel"
               value={String(availableItems + stockedLines)}
+            />
+            <ReadinessCard
+              detail="Mouvements prévus ou en cours"
+              label="Transhumance"
+              value={String(activeMovements.length)}
             />
           </section>
 
