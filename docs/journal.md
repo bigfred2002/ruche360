@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - FIELD-COCKPIT-DECLUTTER-BUNDLE-01
+
+- Repli des compteurs, acces rapides et liens de focus du cockpit derriere une vue detaillee.
+- Conservation du premier ecran mobile autour du hero, de la prochaine action et du guide de premier demarrage.
+- Les cinq flux terrain restent accessibles sans ajouter de navigation, donnees ou action metier.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou GPS actif n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-FIRST-RUN-BUNDLE-01
 
 - Ajout d'un composant `FirstRunGuide` pour guider le premier demarrage: rucher, ruche active, visite courte, tache volontaire et options terrain.

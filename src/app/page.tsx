@@ -312,93 +312,102 @@ export default async function Home() {
               openVisitCount={openVisits.length}
             />
 
-            <section className="rounded-3xl border border-cream-300 bg-cream-50 p-4 shadow-field sm:p-5">
-              <div className="flex flex-wrap items-end justify-between gap-3">
-                <div>
-                  <p className="text-sm font-black uppercase tracking-wide text-amber-800">
-                    Accès rapides
-                  </p>
-                  <h2 className="mt-1 text-2xl font-black text-slate-950">
-                    Aller au bon écran sans chercher.
-                  </h2>
-                </div>
-                <StatusBadge label="Liens terrain" tone="preview" />
-              </div>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-                {quickShortcuts.map((shortcut) => (
-                  <QuickShortcutCard
-                    key={shortcut.href}
-                    shortcut={shortcut}
+            <ProgressiveDisclosure
+              badge="5 flux"
+              description="Les compteurs et raccourcis restent disponibles, mais ne prennent plus tout le premier écran mobile."
+              eyebrow="Vue détaillée"
+              title="Ouvrir les détails terrain"
+            >
+              <div className="space-y-5">
+                <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+                  <DashboardCard
+                    accent="forest"
+                    detail={`${activeApiaries.length} site(s) actif(s) suivis dans l'organisation de developpement.`}
+                    icon="R"
+                    metric={String(activeHives.length)}
+                    status="Terrain"
+                    statusTone="active"
+                    title="Ruches actives"
                   />
-                ))}
+                  <DashboardCard
+                    accent="amber"
+                    detail={
+                      nextVisit
+                        ? `${formatVisitDate(nextVisit.visitedAt)} · ${nextVisit.objective ?? "objectif a preciser"}`
+                        : "Aucune visite creee pour le moment."
+                    }
+                    icon="V"
+                    metric={String(openVisits.length)}
+                    status="Ouvertes"
+                    statusTone={openVisits.length > 0 ? "amber" : "muted"}
+                    title="Visites"
+                  />
+                  <DashboardCard
+                    accent={urgentTasks.length > 0 ? "red" : "sage"}
+                    detail={
+                      nextTask
+                        ? `${nextTask.priority.toLowerCase()} · ${nextTask.title}`
+                        : "Aucune tache ouverte a traiter."
+                    }
+                    icon="T"
+                    metric={String(openTasks.length)}
+                    status={urgentTasks.length > 0 ? "Priorite" : "Stable"}
+                    statusTone={urgentTasks.length > 0 ? "alert" : "active"}
+                    title="Taches"
+                  />
+                  <DashboardCard
+                    accent={equipmentToClean.length > 0 ? "red" : "slate"}
+                    detail={`${equipment.types.length} type(s), ${equipment.items.length} item(s), ${equipment.stocks.length} stock(s).`}
+                    icon="M"
+                    metric={String(equipmentToClean.length)}
+                    status="A nettoyer"
+                    statusTone={equipmentToClean.length > 0 ? "alert" : "muted"}
+                    title="Materiel"
+                  />
+                  <DashboardCard
+                    accent={activeMovements.length > 0 ? "amber" : "sage"}
+                    detail={
+                      nextMovement
+                        ? `${nextMovement.items.length} ruche(s) · ${labelForMovementStatus(nextMovement.status)}`
+                        : "Aucun mouvement actif a suivre."
+                    }
+                    icon="Tr"
+                    metric={String(activeMovements.length)}
+                    status="Mouvements"
+                    statusTone={activeMovements.length > 0 ? "amber" : "muted"}
+                    title="Transhumance"
+                  />
+                </section>
+
+                <section className="rounded-3xl border border-cream-300 bg-cream-50 p-4 sm:p-5">
+                  <div className="flex flex-wrap items-end justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-black uppercase tracking-wide text-amber-800">
+                        Accès rapides
+                      </p>
+                      <h3 className="mt-1 text-xl font-black text-slate-950">
+                        Aller au bon écran sans chercher.
+                      </h3>
+                    </div>
+                    <StatusBadge label="Liens terrain" tone="preview" />
+                  </div>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+                    {quickShortcuts.map((shortcut) => (
+                      <QuickShortcutCard
+                        key={shortcut.href}
+                        shortcut={shortcut}
+                      />
+                    ))}
+                  </div>
+                </section>
+
+                <section className="grid gap-4 lg:grid-cols-4">
+                  {focusLinks.map((action) => (
+                    <FocusAction action={action} key={action.href} />
+                  ))}
+                </section>
               </div>
-            </section>
-
-            <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
-              <DashboardCard
-                accent="forest"
-                detail={`${activeApiaries.length} site(s) actif(s) suivis dans l'organisation de developpement.`}
-                icon="R"
-                metric={String(activeHives.length)}
-                status="Terrain"
-                statusTone="active"
-                title="Ruches actives"
-              />
-              <DashboardCard
-                accent="amber"
-                detail={
-                  nextVisit
-                    ? `${formatVisitDate(nextVisit.visitedAt)} · ${nextVisit.objective ?? "objectif a preciser"}`
-                    : "Aucune visite creee pour le moment."
-                }
-                icon="V"
-                metric={String(openVisits.length)}
-                status="Ouvertes"
-                statusTone={openVisits.length > 0 ? "amber" : "muted"}
-                title="Visites"
-              />
-              <DashboardCard
-                accent={urgentTasks.length > 0 ? "red" : "sage"}
-                detail={
-                  nextTask
-                    ? `${nextTask.priority.toLowerCase()} · ${nextTask.title}`
-                    : "Aucune tache ouverte a traiter."
-                }
-                icon="T"
-                metric={String(openTasks.length)}
-                status={urgentTasks.length > 0 ? "Priorite" : "Stable"}
-                statusTone={urgentTasks.length > 0 ? "alert" : "active"}
-                title="Taches"
-              />
-              <DashboardCard
-                accent={equipmentToClean.length > 0 ? "red" : "slate"}
-                detail={`${equipment.types.length} type(s), ${equipment.items.length} item(s), ${equipment.stocks.length} stock(s).`}
-                icon="M"
-                metric={String(equipmentToClean.length)}
-                status="A nettoyer"
-                statusTone={equipmentToClean.length > 0 ? "alert" : "muted"}
-                title="Materiel"
-              />
-              <DashboardCard
-                accent={activeMovements.length > 0 ? "amber" : "sage"}
-                detail={
-                  nextMovement
-                    ? `${nextMovement.items.length} ruche(s) · ${labelForMovementStatus(nextMovement.status)}`
-                    : "Aucun mouvement actif a suivre."
-                }
-                icon="Tr"
-                metric={String(activeMovements.length)}
-                status="Mouvements"
-                statusTone={activeMovements.length > 0 ? "amber" : "muted"}
-                title="Transhumance"
-              />
-            </section>
-
-            <section className="grid gap-4 lg:grid-cols-4">
-              {focusLinks.map((action) => (
-                <FocusAction action={action} key={action.href} />
-              ))}
-            </section>
+            </ProgressiveDisclosure>
 
             <ProgressiveDisclosure
               badge="Ouvrir"
