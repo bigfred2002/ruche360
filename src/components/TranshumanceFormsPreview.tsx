@@ -99,7 +99,7 @@ export function TranshumanceFormsPreview({ movements }: TranshumanceFormsPreview
           />
           <div className="mt-4 space-y-3">
             <Field label="Rucher source">
-              <select className={fieldClass} name="sourceApiaryId">
+              <select className={fieldClass} disabled={!canWrite} name="sourceApiaryId">
                 <option value="">Non précisé</option>
                 {apiaryOptions.map((apiary) => (
                   <option key={apiary.id} value={apiary.id}>
@@ -109,7 +109,7 @@ export function TranshumanceFormsPreview({ movements }: TranshumanceFormsPreview
               </select>
             </Field>
             <Field label="Rucher destination">
-              <select className={fieldClass} name="destinationApiaryId" required>
+              <select className={fieldClass} disabled={!canWrite} name="destinationApiaryId" required>
                 {apiaryOptions.map((apiary) => (
                   <option key={apiary.id} value={apiary.id}>
                     {apiary.label}
@@ -118,23 +118,25 @@ export function TranshumanceFormsPreview({ movements }: TranshumanceFormsPreview
               </select>
             </Field>
             <Field label="Date de départ">
-              <input className={fieldClass} name="departureDate" required type="date" />
-            </Field>
-            <Field label="Motif">
-              <select className={fieldClass} name="reason">
-                <option value="HONEY_FLOW">Miellée</option>
-                <option value="POLLINATION">Pollinisation</option>
-                <option value="WINTERING">Hivernage</option>
-                <option value="EMERGENCY">Urgence</option>
-                <option value="HEALTH">Sanitaire</option>
-                <option value="GROUPING">Regroupement</option>
-                <option value="OTHER">Autre</option>
-              </select>
+              <input className={fieldClass} disabled={!canWrite} name="departureDate" required type="date" />
             </Field>
             <HiveCheckboxes disabled={!canWrite} />
-            <Field label="Notes">
-              <textarea className={fieldClass} name="notes" placeholder="Préparation, contrainte ou rappel" rows={3} />
-            </Field>
+            <OptionalFields title="Détails mouvement">
+              <Field label="Motif">
+                <select className={fieldClass} disabled={!canWrite} name="reason">
+                  <option value="HONEY_FLOW">Miellée</option>
+                  <option value="POLLINATION">Pollinisation</option>
+                  <option value="WINTERING">Hivernage</option>
+                  <option value="EMERGENCY">Urgence</option>
+                  <option value="HEALTH">Sanitaire</option>
+                  <option value="GROUPING">Regroupement</option>
+                  <option value="OTHER">Autre</option>
+                </select>
+              </Field>
+              <Field label="Notes">
+                <textarea className={fieldClass} disabled={!canWrite} name="notes" placeholder="Préparation, contrainte ou rappel" rows={3} />
+              </Field>
+            </OptionalFields>
           </div>
           <SubmitButton disabled={!canWrite} label="Créer le mouvement" />
         </form>
@@ -153,9 +155,11 @@ export function TranshumanceFormsPreview({ movements }: TranshumanceFormsPreview
           <div className="mt-4 space-y-3">
             <MovementSelect disabled={!canUpdateExisting} movements={editableMovements} />
             <HiveCheckboxes disabled={!canUpdateExisting} />
-            <Field label="Notes">
-              <textarea className={fieldClass} name="notes" placeholder="Pourquoi ajouter ces ruches ?" rows={3} />
-            </Field>
+            <OptionalFields title="Détails d'ajout">
+              <Field label="Notes">
+                <textarea className={fieldClass} disabled={!canUpdateExisting} name="notes" placeholder="Pourquoi ajouter ces ruches ?" rows={3} />
+              </Field>
+            </OptionalFields>
           </div>
           <SubmitButton disabled={!canUpdateExisting} label="Ajouter au mouvement" />
         </form>
@@ -185,9 +189,11 @@ export function TranshumanceFormsPreview({ movements }: TranshumanceFormsPreview
             <Field label="Date d'arrivée">
               <input className={fieldClass} disabled={!canUpdateExisting} name="arrivalDate" type="date" />
             </Field>
-            <Field label="Notes">
-              <textarea className={fieldClass} name="notes" placeholder="Confirmation terrain ou raison d'annulation" rows={3} />
-            </Field>
+            <OptionalFields title="Détails de clôture">
+              <Field label="Notes">
+                <textarea className={fieldClass} disabled={!canUpdateExisting} name="notes" placeholder="Confirmation terrain ou raison d'annulation" rows={3} />
+              </Field>
+            </OptionalFields>
           </div>
           <SubmitButton disabled={!canUpdateExisting} label="Mettre à jour" />
         </form>
@@ -203,6 +209,26 @@ function ActionHint({ label, value }: { label: string; value: string }) {
       <p className="text-xs font-black uppercase text-amber-800">{label}</p>
       <p className="mt-1 text-sm font-bold text-slate-800">{value}</p>
     </div>
+  );
+}
+
+function OptionalFields({
+  children,
+  title,
+}: {
+  children: ReactNode;
+  title: string;
+}) {
+  return (
+    <details className="rounded-2xl border border-cream-300 bg-cream-50">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-sm font-black text-slate-800 focus-ring [&::-webkit-details-marker]:hidden">
+        {title}
+        <span className="text-xs uppercase text-amber-800">Ouvrir</span>
+      </summary>
+      <div className="space-y-3 border-t border-cream-300 p-3">
+        {children}
+      </div>
+    </details>
   );
 }
 

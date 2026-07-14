@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - FIELD-FORM-SIMPLIFICATION-BUNDLE-01
+
+- Simplification des formulaires de developpement pour ruchers, ruches, visites, taches, materiel et transhumance.
+- Conservation des champs essentiels au premier niveau et repli des details avances dans des sections `details`.
+- Les actions serveur existantes restent inchangées et aucune creation automatique n'est ajoutee.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou GPS actif n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-COCKPIT-DECLUTTER-BUNDLE-01
 
 - Repli des compteurs, acces rapides et liens de focus du cockpit derriere une vue detaillee.

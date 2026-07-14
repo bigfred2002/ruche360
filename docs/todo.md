@@ -159,6 +159,7 @@
 - [x] `OPERATIONAL-QA-BUNDLE-01`: aligner `/journey` et la documentation QA sur les flux terrain actuels.
 - [x] `FIELD-FIRST-RUN-BUNDLE-01`: guider le premier demarrage depuis cockpit, parcours classique et ruchers.
 - [x] `FIELD-COCKPIT-DECLUTTER-BUNDLE-01`: replier les details du cockpit pour garder le premier ecran mobile lisible.
+- [x] `FIELD-FORM-SIMPLIFICATION-BUNDLE-01`: simplifier les formulaires terrain avec details avances replies.
 - [x] `FIELD-EMPTY-STATES-01`: distinguer les listes vides reelles des previews sur visites et taches, avec guidage terrain.
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.

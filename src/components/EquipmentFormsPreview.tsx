@@ -81,24 +81,26 @@ export function EquipmentFormsPreview({ inventory }: EquipmentFormsPreviewProps)
           />
           <div className="mt-4 space-y-3">
             <Field label="Nom">
-              <input className={fieldClass} name="name" placeholder="Ex: Seau alimentaire" required />
+              <input className={fieldClass} disabled={!canManage} name="name" placeholder="Ex: Seau alimentaire" required />
             </Field>
             <Field label="Catégorie">
-              <input className={fieldClass} name="category" placeholder="Ex: Récolte" required />
+              <input className={fieldClass} disabled={!canManage} name="category" placeholder="Ex: Récolte" required />
             </Field>
-            <Field label="Mode de suivi">
-              <select className={fieldClass} name="trackingMode" required>
-                <option value="QUANTITY">Quantité</option>
-                <option value="INDIVIDUAL">Individuel</option>
-                <option value="HYBRID">Hybride</option>
-              </select>
-            </Field>
-            <Field label="Unité par défaut">
-              <input className={fieldClass} name="defaultUnit" placeholder="Ex: pièce" />
-            </Field>
-            <Field label="Notes">
-              <textarea className={fieldClass} name="notes" placeholder="Usage, limites ou rangement" rows={3} />
-            </Field>
+            <OptionalFields title="Détails catalogue">
+              <Field label="Mode de suivi">
+                <select className={fieldClass} disabled={!canManage} name="trackingMode" required>
+                  <option value="QUANTITY">Quantité</option>
+                  <option value="INDIVIDUAL">Individuel</option>
+                  <option value="HYBRID">Hybride</option>
+                </select>
+              </Field>
+              <Field label="Unité par défaut">
+                <input className={fieldClass} disabled={!canManage} name="defaultUnit" placeholder="Ex: pièce" />
+              </Field>
+              <Field label="Notes">
+                <textarea className={fieldClass} disabled={!canManage} name="notes" placeholder="Usage, limites ou rangement" rows={3} />
+              </Field>
+            </OptionalFields>
           </div>
           <SubmitButton disabled={!canManage} label="Créer le type" />
         </form>
@@ -125,17 +127,19 @@ export function EquipmentFormsPreview({ inventory }: EquipmentFormsPreviewProps)
               </select>
             </Field>
             <Field label="Quantité">
-              <input className={fieldClass} min="0.001" name="quantity" required step="0.001" type="number" />
+              <input className={fieldClass} disabled={!canCreateStock} min="0.001" name="quantity" required step="0.001" type="number" />
             </Field>
             <Field label="Unité">
-              <input className={fieldClass} name="unit" placeholder="Ex: cadre" required />
+              <input className={fieldClass} disabled={!canCreateStock} name="unit" placeholder="Ex: cadre" required />
             </Field>
-            <Field label="Emplacement">
-              <input className={fieldClass} name="locationLabel" placeholder="Ex: Local matériel" />
-            </Field>
-            <Field label="Notes">
-              <textarea className={fieldClass} name="notes" placeholder="Contexte de l'ajout" rows={3} />
-            </Field>
+            <OptionalFields title="Détails stock">
+              <Field label="Emplacement">
+                <input className={fieldClass} disabled={!canCreateStock} name="locationLabel" placeholder="Ex: Local matériel" />
+              </Field>
+              <Field label="Notes">
+                <textarea className={fieldClass} disabled={!canCreateStock} name="notes" placeholder="Contexte de l'ajout" rows={3} />
+              </Field>
+            </OptionalFields>
           </div>
           <SubmitButton disabled={!canCreateStock} label="Ajouter le stock" />
         </form>
@@ -162,22 +166,24 @@ export function EquipmentFormsPreview({ inventory }: EquipmentFormsPreviewProps)
               </select>
             </Field>
             <Field label="Identifiant terrain">
-              <input className={fieldClass} name="fieldIdentifier" placeholder="Ex: DEV-OUTIL-002" required />
+              <input className={fieldClass} disabled={!canCreateItem} name="fieldIdentifier" placeholder="Ex: DEV-OUTIL-002" required />
             </Field>
-            <Field label="Statut">
-              <select className={fieldClass} name="status">
-                <option value="AVAILABLE">Disponible</option>
-                <option value="IN_USE">En tournée</option>
-                <option value="TO_CLEAN">À nettoyer</option>
-                <option value="MAINTENANCE">Maintenance</option>
-              </select>
-            </Field>
-            <Field label="Localisation">
-              <input className={fieldClass} name="locationLabel" placeholder="Ex: Caisse visite" />
-            </Field>
-            <Field label="Notes">
-              <textarea className={fieldClass} name="notes" placeholder="Marque, état ou rappel terrain" rows={3} />
-            </Field>
+            <OptionalFields title="Détails item">
+              <Field label="Statut">
+                <select className={fieldClass} disabled={!canCreateItem} name="status">
+                  <option value="AVAILABLE">Disponible</option>
+                  <option value="IN_USE">En tournée</option>
+                  <option value="TO_CLEAN">À nettoyer</option>
+                  <option value="MAINTENANCE">Maintenance</option>
+                </select>
+              </Field>
+              <Field label="Localisation">
+                <input className={fieldClass} disabled={!canCreateItem} name="locationLabel" placeholder="Ex: Caisse visite" />
+              </Field>
+              <Field label="Notes">
+                <textarea className={fieldClass} disabled={!canCreateItem} name="notes" placeholder="Marque, état ou rappel terrain" rows={3} />
+              </Field>
+            </OptionalFields>
           </div>
           <SubmitButton disabled={!canCreateItem} label="Créer l'item" />
         </form>
@@ -229,6 +235,26 @@ function Field({ children, label }: { children: ReactNode; label: string }) {
       <span className={labelClass}>{label}</span>
       {children}
     </label>
+  );
+}
+
+function OptionalFields({
+  children,
+  title,
+}: {
+  children: ReactNode;
+  title: string;
+}) {
+  return (
+    <details className="rounded-2xl border border-cream-300 bg-cream-50">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-sm font-black text-slate-800 focus-ring [&::-webkit-details-marker]:hidden">
+        {title}
+        <span className="text-xs uppercase text-amber-800">Ouvrir</span>
+      </summary>
+      <div className="space-y-3 border-t border-cream-300 p-3">
+        {children}
+      </div>
+    </details>
   );
 }
 
