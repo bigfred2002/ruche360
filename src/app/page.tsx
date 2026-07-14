@@ -17,6 +17,8 @@ import { isTaskClosed } from "@/features/tasks/status";
 import { listTasksForSessionAction } from "@/features/tasks/actions";
 import { listEquipmentInventoryForSessionAction } from "@/features/equipment/actions";
 import { shouldCleanEquipmentItem } from "@/features/equipment/status";
+import { listHiveMovementsForSessionAction } from "@/features/hive-movements/actions";
+import type { HiveMovementStatus } from "@/features/hive-movements/types";
 
 export const dynamic = "force-dynamic";
 
@@ -125,15 +127,27 @@ function formatVisitDate(date: Date | null) {
   }).format(date);
 }
 
+function labelForMovementStatus(status: HiveMovementStatus) {
+  const labels = {
+    PLANNED: "prévu",
+    IN_PROGRESS: "en cours",
+    COMPLETED: "terminé",
+    CANCELLED: "annulé",
+  } satisfies Record<HiveMovementStatus, string>;
+
+  return labels[status];
+}
+
 export default async function Home() {
   const session = createDevelopmentApplicationSession();
 
-  const [apiaries, hives, visits, tasks, equipment] = await Promise.all([
+  const [apiaries, hives, visits, tasks, equipment, movements] = await Promise.all([
     listApiariesForSessionAction(session),
     listHivesForSessionAction(session),
     listVisitsForSessionAction(session),
     listTasksForSessionAction(session),
     listEquipmentInventoryForSessionAction(session),
+    listHiveMovementsForSessionAction(session),
   ]);
 
   const activeApiaries = apiaries.filter((apiary) => apiary.status === "ACTIVE");
@@ -142,8 +156,12 @@ export default async function Home() {
   const openTasks = tasks.filter((task) => !isTaskClosed(task.status));
   const urgentTasks = openTasks.filter((task) => task.priority === "URGENT" || task.priority === "HIGH");
   const equipmentToClean = equipment.items.filter(shouldCleanEquipmentItem);
+  const activeMovements = movements.filter(
+    (movement) => movement.status === "PLANNED" || movement.status === "IN_PROGRESS",
+  );
   const nextVisit = openVisits[0] ?? visits[0] ?? null;
   const nextTask = urgentTasks[0] ?? openTasks[0] ?? null;
+  const nextMovement = activeMovements[0] ?? null;
 
   const primaryAction =
     activeHives.length > 0
@@ -228,7 +246,7 @@ export default async function Home() {
                 </h1>
                 <p className="mt-3 max-w-2xl text-lg leading-8 text-slate-700">
                   Une vue courte pour savoir quoi faire maintenant: ruches
-                  actives, visites ouvertes, taches a traiter et materiel a
+                  actives, visites ouvertes, taches, materiel et mouvements a
                   verifier.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
@@ -259,8 +277,8 @@ export default async function Home() {
                 <div className="relative flex h-full min-h-72 flex-col justify-end p-5">
                   <StatusBadge label="Lisible dehors" tone="amber" />
                   <p className="mt-4 text-2xl font-black leading-tight">
-                    {activeApiaries.length} rucher(s), {activeHives.length} ruche(s)
-                    active(s)
+                    {activeApiaries.length} rucher(s), {activeHives.length} ruche(s),
+                    {activeMovements.length} mouvement(s)
                   </p>
                   <p className="mt-2 text-sm leading-6 text-cream-50">
                     Les modules futurs restent ranges dans le catalogue.
@@ -291,7 +309,7 @@ export default async function Home() {
               </div>
             </section>
 
-            <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
               <DashboardCard
                 accent="forest"
                 detail={`${activeApiaries.length} site(s) actif(s) suivis dans l'organisation de developpement.`}
@@ -335,6 +353,19 @@ export default async function Home() {
                 status="A nettoyer"
                 statusTone={equipmentToClean.length > 0 ? "alert" : "muted"}
                 title="Materiel"
+              />
+              <DashboardCard
+                accent={activeMovements.length > 0 ? "amber" : "sage"}
+                detail={
+                  nextMovement
+                    ? `${nextMovement.items.length} ruche(s) · ${labelForMovementStatus(nextMovement.status)}`
+                    : "Aucun mouvement actif a suivre."
+                }
+                icon="Tr"
+                metric={String(activeMovements.length)}
+                status="Mouvements"
+                statusTone={activeMovements.length > 0 ? "amber" : "muted"}
+                title="Transhumance"
               />
             </section>
 

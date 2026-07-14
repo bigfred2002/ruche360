@@ -129,6 +129,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `TASKS-UX-FLOW-01` oriente `/tasks` vers le triage terrain avec une tache prioritaire, trois gestes simples et les details de conception replies.
 - `EQUIPMENT-UX-FLOW-01` oriente `/equipment` vers la preparation de caisse terrain et les points de maintenance, sans achats, prix ou stock avance.
 - `FIELD-DASHBOARD-FOCUS-01` recentre `/` sur une synthese terrain courte branchee en lecture sur les donnees de developpement: ruches actives, visites ouvertes, taches ouvertes et materiel a nettoyer.
+- `FIELD-DASHBOARD-SUMMARY-01` ajoute la transhumance dans la synthese du cockpit pour aligner `/` avec les flux ruchers, visites, taches, materiel et mouvements.
 - `FIELD-ACTION-SHORTCUTS-01` ajoute dans `/` des acces rapides vers ruchers/ruches, visites, taches et materiel pour reduire le nombre de choix avant une action terrain.
 - `FIELD-EMPTY-STATES-01` distingue les listes vides reelles des donnees de preview sur `/visits` et `/tasks`, afin de guider l'utilisateur vers la premiere visite ou la premiere tache.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.

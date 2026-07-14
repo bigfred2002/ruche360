@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - FIELD-DASHBOARD-SUMMARY-01
+
+- Ajout des mouvements de ruches actifs dans la synthese du cockpit.
+- Le cockpit affiche maintenant ruchers, ruches, visites, taches, materiel et transhumance comme signaux terrain coherents.
+- La transhumance reste une lecture de developpement sans GPS actif, logistique lourde, IA ou IoT.
+- Aucun schema Prisma, migration, dependance, auth reelle ou API publique n'a ete ajoute.
+
 ## 2026-07-13 - FIELD-EQUIPMENT-FORMS-FOCUS-01
 
 - Repli des formulaires materiel de developpement derriere une section native `details`.
