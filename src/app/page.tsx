@@ -17,6 +17,8 @@ import { isTaskClosed } from "@/features/tasks/status";
 import { listTasksForSessionAction } from "@/features/tasks/actions";
 import { listEquipmentInventoryForSessionAction } from "@/features/equipment/actions";
 import { shouldCleanEquipmentItem } from "@/features/equipment/status";
+import { listHiveMovementsForSessionAction } from "@/features/hive-movements/actions";
+import type { HiveMovementStatus } from "@/features/hive-movements/types";
 
 export const dynamic = "force-dynamic";
 
@@ -125,15 +127,27 @@ function formatVisitDate(date: Date | null) {
   }).format(date);
 }
 
+function labelForMovementStatus(status: HiveMovementStatus) {
+  const labels = {
+    PLANNED: "prévu",
+    IN_PROGRESS: "en cours",
+    COMPLETED: "terminé",
+    CANCELLED: "annulé",
+  } satisfies Record<HiveMovementStatus, string>;
+
+  return labels[status];
+}
+
 export default async function Home() {
   const session = createDevelopmentApplicationSession();
 
-  const [apiaries, hives, visits, tasks, equipment] = await Promise.all([
+  const [apiaries, hives, visits, tasks, equipment, movements] = await Promise.all([
     listApiariesForSessionAction(session),
     listHivesForSessionAction(session),
     listVisitsForSessionAction(session),
     listTasksForSessionAction(session),
     listEquipmentInventoryForSessionAction(session),
+    listHiveMovementsForSessionAction(session),
   ]);
 
   const activeApiaries = apiaries.filter((apiary) => apiary.status === "ACTIVE");
@@ -142,8 +156,12 @@ export default async function Home() {
   const openTasks = tasks.filter((task) => !isTaskClosed(task.status));
   const urgentTasks = openTasks.filter((task) => task.priority === "URGENT" || task.priority === "HIGH");
   const equipmentToClean = equipment.items.filter(shouldCleanEquipmentItem);
+  const activeMovements = movements.filter(
+    (movement) => movement.status === "PLANNED" || movement.status === "IN_PROGRESS",
+  );
   const nextVisit = openVisits[0] ?? visits[0] ?? null;
   const nextTask = urgentTasks[0] ?? openTasks[0] ?? null;
+  const nextMovement = activeMovements[0] ?? null;
 
   const primaryAction =
     activeHives.length > 0
@@ -179,6 +197,14 @@ export default async function Home() {
       label: "Materiel",
       title: "Verifier le sac de visite",
     },
+    {
+      detail: nextMovement
+        ? `${nextMovement.items.length} ruche(s) a suivre.`
+        : "Aucun deplacement actif, mais le suivi reste disponible.",
+      href: "/transhumance",
+      label: "Mouvement",
+      title: "Voir transhumance",
+    },
   ];
 
   const quickShortcuts: QuickShortcut[] = [
@@ -210,6 +236,13 @@ export default async function Home() {
       label: "Préparation",
       title: "Matériel",
     },
+    {
+      detail: "Suivre les mouvements de ruches.",
+      href: "/transhumance",
+      icon: "Tr",
+      label: "Déplacement",
+      title: "Transhumance",
+    },
   ];
 
   return (
@@ -228,7 +261,7 @@ export default async function Home() {
                 </h1>
                 <p className="mt-3 max-w-2xl text-lg leading-8 text-slate-700">
                   Une vue courte pour savoir quoi faire maintenant: ruches
-                  actives, visites ouvertes, taches a traiter et materiel a
+                  actives, visites ouvertes, taches, materiel et mouvements a
                   verifier.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
@@ -259,8 +292,8 @@ export default async function Home() {
                 <div className="relative flex h-full min-h-72 flex-col justify-end p-5">
                   <StatusBadge label="Lisible dehors" tone="amber" />
                   <p className="mt-4 text-2xl font-black leading-tight">
-                    {activeApiaries.length} rucher(s), {activeHives.length} ruche(s)
-                    active(s)
+                    {activeApiaries.length} rucher(s), {activeHives.length} ruche(s),
+                    {activeMovements.length} mouvement(s)
                   </p>
                   <p className="mt-2 text-sm leading-6 text-cream-50">
                     Les modules futurs restent ranges dans le catalogue.
@@ -281,7 +314,7 @@ export default async function Home() {
                 </div>
                 <StatusBadge label="Liens terrain" tone="preview" />
               </div>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
                 {quickShortcuts.map((shortcut) => (
                   <QuickShortcutCard
                     key={shortcut.href}
@@ -291,7 +324,7 @@ export default async function Home() {
               </div>
             </section>
 
-            <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
               <DashboardCard
                 accent="forest"
                 detail={`${activeApiaries.length} site(s) actif(s) suivis dans l'organisation de developpement.`}
@@ -336,9 +369,22 @@ export default async function Home() {
                 statusTone={equipmentToClean.length > 0 ? "alert" : "muted"}
                 title="Materiel"
               />
+              <DashboardCard
+                accent={activeMovements.length > 0 ? "amber" : "sage"}
+                detail={
+                  nextMovement
+                    ? `${nextMovement.items.length} ruche(s) · ${labelForMovementStatus(nextMovement.status)}`
+                    : "Aucun mouvement actif a suivre."
+                }
+                icon="Tr"
+                metric={String(activeMovements.length)}
+                status="Mouvements"
+                statusTone={activeMovements.length > 0 ? "amber" : "muted"}
+                title="Transhumance"
+              />
             </section>
 
-            <section className="grid gap-4 lg:grid-cols-3">
+            <section className="grid gap-4 lg:grid-cols-4">
               {focusLinks.map((action) => (
                 <FocusAction action={action} key={action.href} />
               ))}
@@ -391,16 +437,31 @@ export default async function Home() {
           <aside className="hidden space-y-5 xl:block">
             <section className="rounded-3xl border border-cream-300 bg-cream-200 p-5 shadow-field">
               <p className="text-sm font-black uppercase tracking-wide text-amber-800">
-                Priorite UX
+                Cohérence terrain
               </p>
               <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">
-                Le cockpit ne doit plus faire catalogue.
+                Un cockpit, cinq flux.
               </h2>
               <p className="mt-3 text-sm leading-6 text-slate-650">
-                Les modules optionnels, IA, IoT et ecrans de conception restent
-                accessibles ailleurs. Ici, on privilegie la prochaine action
-                terrain.
+                Ruchers, visites, taches, materiel et transhumance restent
+                relies sans transformer la page d&apos;accueil en back-office.
               </p>
+              <div className="mt-4 space-y-2">
+                {[
+                  "Ruche comme point d'entree",
+                  "Visite pour observer",
+                  "Tache pour suivre",
+                  "Materiel pour preparer",
+                  "Transhumance pour deplacer",
+                ].map((item) => (
+                  <div
+                    className="rounded-2xl border border-cream-300 bg-white px-3 py-2 text-sm font-bold text-slate-800"
+                    key={item}
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
             </section>
 
             <section className="overflow-hidden rounded-3xl bg-gradient-amber p-6 text-white shadow-amber">
@@ -414,12 +475,18 @@ export default async function Home() {
                 Modules futurs
               </p>
               <h2 className="mt-3 text-2xl font-black leading-tight">
-                Affiches comme reperes, pas comme actions.
+                Ranges dans le catalogue.
               </h2>
               <p className="mt-3 text-sm leading-6 text-amber-50">
-                Balance, meteo, camera, capteurs et IA restent non actifs tant
-                que leurs lots dedies ne sont pas ouverts.
+                Balance, meteo, camera, capteurs et IA restent non actifs et ne
+                prennent pas la place des gestes terrain quotidiens.
               </p>
+              <Link
+                className="mt-4 inline-flex min-h-11 items-center rounded-2xl border border-white/30 bg-white/10 px-4 text-sm font-black text-white transition hover:bg-white/20 focus-ring"
+                href="/modules"
+              >
+                Voir le catalogue
+              </Link>
             </section>
           </aside>
         </section>

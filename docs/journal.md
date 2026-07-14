@@ -1,5 +1,26 @@
 # Journal
 
+## 2026-07-14 - FIELD-DASHBOARD-SUPPORT-01
+
+- Transformation du panneau desktop du cockpit en rappel des cinq flux terrain: ruche, visite, tache, materiel et transhumance.
+- Les modules futurs restent renvoyes vers `/modules` et ne deviennent pas des actions de premier niveau.
+- Conservation d'une page d'accueil orientee prochaine action, sans back-office, GPS actif, IA ou IoT.
+- Aucun schema Prisma, migration, dependance, auth reelle ou API publique n'a ete ajoute.
+
+## 2026-07-14 - FIELD-DASHBOARD-SHORTCUTS-01
+
+- Ajout de la transhumance dans les acces rapides du cockpit.
+- Ajout d'une action de focus vers `/transhumance` pour garder les mouvements avec les autres flux terrain.
+- Les raccourcis restent de simples liens vers les routes existantes, sans GPS actif, automatisme ou nouveau CRUD.
+- Aucun schema Prisma, migration, dependance, auth reelle ou API publique n'a ete ajoute.
+
+## 2026-07-14 - FIELD-DASHBOARD-SUMMARY-01
+
+- Ajout des mouvements de ruches actifs dans la synthese du cockpit.
+- Le cockpit affiche maintenant ruchers, ruches, visites, taches, materiel et transhumance comme signaux terrain coherents.
+- La transhumance reste une lecture de developpement sans GPS actif, logistique lourde, IA ou IoT.
+- Aucun schema Prisma, migration, dependance, auth reelle ou API publique n'a ete ajoute.
+
 ## 2026-07-13 - FIELD-EQUIPMENT-FORMS-FOCUS-01
 
 - Repli des formulaires materiel de developpement derriere une section native `details`.
