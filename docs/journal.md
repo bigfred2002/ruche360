@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - FIELD-FIRST-RUN-BUNDLE-01
+
+- Ajout d'un composant `FirstRunGuide` pour guider le premier demarrage: rucher, ruche active, visite courte, tache volontaire et options terrain.
+- Branchement du guide dans le cockpit, `/journey` et `/apiaries` pour reduire l'hesitation quand les donnees sont absentes ou incompletes.
+- Le guide renvoie uniquement vers des routes et formulaires existants, sans creation automatique, auth reelle, GPS actif, IA ou IoT.
+- Aucun schema Prisma, migration, dependance, API publique ou module metier supplementaire n'a ete ajoute.
+
 ## 2026-07-14 - OPERATIONAL-QA-BUNDLE-01
 
 - Alignement de `/journey` avec les cinq flux terrain actuels: ruchers/ruches, visites, taches, materiel et transhumance.
