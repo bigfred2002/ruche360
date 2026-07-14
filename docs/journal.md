@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - FIELD-EMPTY-START-BUNDLE-01
+
+- Ajout d'un panneau `FieldEmptyStart` pour transformer les etats vides de terrain en prochaine action claire.
+- Branchement sur cockpit, ruchers, visites, taches, materiel et transhumance.
+- Les etats vides guident vers les routes et formulaires existants sans creer automatiquement de donnees.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou GPS actif n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-FORM-SIMPLIFICATION-BUNDLE-01
 
 - Simplification des formulaires de developpement pour ruchers, ruches, visites, taches, materiel et transhumance.

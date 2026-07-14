@@ -6,6 +6,7 @@ import { AppShell } from "@/components/AppShell";
 import { createAppNavigation } from "@/components/appNavigation";
 import { DashboardCard } from "@/components/DashboardCard";
 import { DecorativeImage } from "@/components/DecorativeImage";
+import { FieldEmptyStart } from "@/components/FieldEmptyStart";
 import { FirstRunGuide } from "@/components/FirstRunGuide";
 import { ResponsiveWorkflowsPreview } from "@/components/ResponsiveWorkflowsPreview";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -311,6 +312,17 @@ export default async function Home() {
               openTaskCount={openTasks.length}
               openVisitCount={openVisits.length}
             />
+
+            {activeApiaries.length === 0 ? (
+              <FieldEmptyStart
+                actionHref="/apiaries"
+                actionLabel="Créer le premier rucher"
+                detail="Une base neuve démarre par un site apicole, puis une ruche active. Le reste du parcours peut attendre."
+                secondaryHref="/journey"
+                secondaryLabel="Voir le parcours"
+                title="Aucun rucher actif pour commencer"
+              />
+            ) : null}
 
             <ProgressiveDisclosure
               badge="5 flux"

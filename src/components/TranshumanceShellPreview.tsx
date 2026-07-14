@@ -12,6 +12,7 @@ import type {
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { DecorativeImage } from "./DecorativeImage";
+import { FieldEmptyStart } from "./FieldEmptyStart";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 import { TranshumanceFormsPreview } from "./TranshumanceFormsPreview";
@@ -67,6 +68,7 @@ export function TranshumanceShellPreview({
     createAppNavigation("/transhumance");
   const displayMovements = movements && movements.length > 0 ? movements : previewMovements;
   const hasLiveMovements = Boolean(movements);
+  const hasNoMovements = hasLiveMovements && movements?.length === 0;
   const currentApiaryId = getCurrentApiaryIdFromMovements(
     "dev-apiary-home",
     displayMovements,
@@ -144,7 +146,17 @@ export function TranshumanceShellPreview({
 
           <section className="grid gap-4 lg:grid-cols-[1fr_20rem]">
             <div className="space-y-4">
-              {sortedMovements.map((movement) => (
+              {hasNoMovements ? (
+                <FieldEmptyStart
+                  actionHref="#transhumance-quick-entry"
+                  actionLabel="Préparer un mouvement"
+                  detail="Crée seulement un mouvement si des ruches doivent changer de site. La position reste déclarative, sans GPS actif."
+                  secondaryHref="/apiaries"
+                  secondaryLabel="Voir les ruchers"
+                  title="Aucun déplacement prévu"
+                />
+              ) : (
+                sortedMovements.map((movement) => (
                 <article
                   className="surface-panel rounded-2xl p-5"
                   key={movement.id}
@@ -201,7 +213,8 @@ export function TranshumanceShellPreview({
                     <ActionLink href="/visits" label="Visite" tone="primary" />
                   </div>
                 </article>
-              ))}
+                ))
+              )}
             </div>
 
             <aside className="surface-muted rounded-3xl p-5">
@@ -225,7 +238,9 @@ export function TranshumanceShellPreview({
             </aside>
           </section>
 
-          <TranshumanceFormsPreview movements={movements ?? null} />
+          <div id="transhumance-quick-entry">
+            <TranshumanceFormsPreview movements={movements ?? null} />
+          </div>
 
           <StatePanel
             detail="Formulaires limités au développement. Les vrais comptes viendront avec l'authentification."
