@@ -155,6 +155,7 @@
 - [x] `FIELD-DASHBOARD-SUPPORT-01`: clarifier le support desktop du cockpit et renvoyer les modules futurs vers le catalogue.
 - [x] `FIELD-TRANSHUMANCE-HERO-01`: recentrer `/transhumance` sur les mouvements a preparer, en cours et la prochaine action.
 - [x] `FIELD-TRANSHUMANCE-LIST-ACTIONS-01`: rendre les cartes de mouvement plus actionnables avec raccourcis terrain.
+- [x] `FIELD-TRANSHUMANCE-FORMS-FOCUS-01`: replier les formulaires transhumance de developpement pour alleger la page.
 - [x] `FIELD-EMPTY-STATES-01`: distinguer les listes vides reelles des previews sur visites et taches, avec guidage terrain.
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.

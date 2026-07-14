@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - FIELD-TRANSHUMANCE-FORMS-FOCUS-01
+
+- Repli des formulaires transhumance de developpement derriere une section native `details`.
+- Ajout de trois reperes courts: prevoir, ajuster et cloturer un mouvement.
+- Conservation des actions existantes sans API publique, authentification reelle, GPS actif ou logistique avancee.
+- Aucun schema Prisma, migration, dependance, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-TRANSHUMANCE-LIST-ACTIONS-01
 
 - Ajout d'une zone "Prochaine action" sur les cartes de mouvement de `/transhumance`.
