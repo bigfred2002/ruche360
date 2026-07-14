@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - FIELD-DASHBOARD-SHORTCUTS-01
+
+- Ajout de la transhumance dans les acces rapides du cockpit.
+- Ajout d'une action de focus vers `/transhumance` pour garder les mouvements avec les autres flux terrain.
+- Les raccourcis restent de simples liens vers les routes existantes, sans GPS actif, automatisme ou nouveau CRUD.
+- Aucun schema Prisma, migration, dependance, auth reelle ou API publique n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-DASHBOARD-SUMMARY-01
 
 - Ajout des mouvements de ruches actifs dans la synthese du cockpit.

@@ -197,6 +197,14 @@ export default async function Home() {
       label: "Materiel",
       title: "Verifier le sac de visite",
     },
+    {
+      detail: nextMovement
+        ? `${nextMovement.items.length} ruche(s) a suivre.`
+        : "Aucun deplacement actif, mais le suivi reste disponible.",
+      href: "/transhumance",
+      label: "Mouvement",
+      title: "Voir transhumance",
+    },
   ];
 
   const quickShortcuts: QuickShortcut[] = [
@@ -227,6 +235,13 @@ export default async function Home() {
       icon: "Ma",
       label: "Préparation",
       title: "Matériel",
+    },
+    {
+      detail: "Suivre les mouvements de ruches.",
+      href: "/transhumance",
+      icon: "Tr",
+      label: "Déplacement",
+      title: "Transhumance",
     },
   ];
 
@@ -299,7 +314,7 @@ export default async function Home() {
                 </div>
                 <StatusBadge label="Liens terrain" tone="preview" />
               </div>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
                 {quickShortcuts.map((shortcut) => (
                   <QuickShortcutCard
                     key={shortcut.href}
@@ -369,7 +384,7 @@ export default async function Home() {
               />
             </section>
 
-            <section className="grid gap-4 lg:grid-cols-3">
+            <section className="grid gap-4 lg:grid-cols-4">
               {focusLinks.map((action) => (
                 <FocusAction action={action} key={action.href} />
               ))}
