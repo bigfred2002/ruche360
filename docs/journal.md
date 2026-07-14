@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - FIELD-DASHBOARD-SUPPORT-01
+
+- Transformation du panneau desktop du cockpit en rappel des cinq flux terrain: ruche, visite, tache, materiel et transhumance.
+- Les modules futurs restent renvoyes vers `/modules` et ne deviennent pas des actions de premier niveau.
+- Conservation d'une page d'accueil orientee prochaine action, sans back-office, GPS actif, IA ou IoT.
+- Aucun schema Prisma, migration, dependance, auth reelle ou API publique n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-DASHBOARD-SHORTCUTS-01
 
 - Ajout de la transhumance dans les acces rapides du cockpit.

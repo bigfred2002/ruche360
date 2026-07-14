@@ -437,16 +437,31 @@ export default async function Home() {
           <aside className="hidden space-y-5 xl:block">
             <section className="rounded-3xl border border-cream-300 bg-cream-200 p-5 shadow-field">
               <p className="text-sm font-black uppercase tracking-wide text-amber-800">
-                Priorite UX
+                Cohérence terrain
               </p>
               <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">
-                Le cockpit ne doit plus faire catalogue.
+                Un cockpit, cinq flux.
               </h2>
               <p className="mt-3 text-sm leading-6 text-slate-650">
-                Les modules optionnels, IA, IoT et ecrans de conception restent
-                accessibles ailleurs. Ici, on privilegie la prochaine action
-                terrain.
+                Ruchers, visites, taches, materiel et transhumance restent
+                relies sans transformer la page d'accueil en back-office.
               </p>
+              <div className="mt-4 space-y-2">
+                {[
+                  "Ruche comme point d'entree",
+                  "Visite pour observer",
+                  "Tache pour suivre",
+                  "Materiel pour preparer",
+                  "Transhumance pour deplacer",
+                ].map((item) => (
+                  <div
+                    className="rounded-2xl border border-cream-300 bg-white px-3 py-2 text-sm font-bold text-slate-800"
+                    key={item}
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
             </section>
 
             <section className="overflow-hidden rounded-3xl bg-gradient-amber p-6 text-white shadow-amber">
@@ -460,12 +475,18 @@ export default async function Home() {
                 Modules futurs
               </p>
               <h2 className="mt-3 text-2xl font-black leading-tight">
-                Affiches comme reperes, pas comme actions.
+                Ranges dans le catalogue.
               </h2>
               <p className="mt-3 text-sm leading-6 text-amber-50">
-                Balance, meteo, camera, capteurs et IA restent non actifs tant
-                que leurs lots dedies ne sont pas ouverts.
+                Balance, meteo, camera, capteurs et IA restent non actifs et ne
+                prennent pas la place des gestes terrain quotidiens.
               </p>
+              <Link
+                className="mt-4 inline-flex min-h-11 items-center rounded-2xl border border-white/30 bg-white/10 px-4 text-sm font-black text-white transition hover:bg-white/20 focus-ring"
+                href="/modules"
+              >
+                Voir le catalogue
+              </Link>
             </section>
           </aside>
         </section>

@@ -152,6 +152,7 @@
 - [x] `FIELD-DASHBOARD-SUMMARY-01`: aligner la synthese du cockpit avec ruchers, visites, taches, materiel et transhumance.
 - [x] `FIELD-ACTION-SHORTCUTS-01`: ajouter des acces rapides terrain depuis le cockpit vers ruchers, visites, taches et materiel.
 - [x] `FIELD-DASHBOARD-SHORTCUTS-01`: ajouter la transhumance aux raccourcis terrain du cockpit.
+- [x] `FIELD-DASHBOARD-SUPPORT-01`: clarifier le support desktop du cockpit et renvoyer les modules futurs vers le catalogue.
 - [x] `FIELD-EMPTY-STATES-01`: distinguer les listes vides reelles des previews sur visites et taches, avec guidage terrain.
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
 - [x] `VISITS-00`: cadrer le modele visite avant schema executable.
