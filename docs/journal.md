@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - OPERATIONAL-QA-BUNDLE-01
+
+- Alignement de `/journey` avec les cinq flux terrain actuels: ruchers/ruches, visites, taches, materiel et transhumance.
+- Ajout d'une documentation de QA operationnelle pour valider le parcours classique avec Docker Compose et des points de controle UX.
+- La transhumance reste un suivi manuel sans GPS actif, IA, IoT, notification ou automatisme.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique ou module metier supplementaire n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-TRANSHUMANCE-FORMS-FOCUS-01
 
 - Repli des formulaires transhumance de developpement derriere une section native `details`.
