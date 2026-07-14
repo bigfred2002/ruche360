@@ -262,9 +262,11 @@ export function ApiariesFormsPreview({
                     <Field label="Emplacement">
                       <input className={fieldClass} disabled={!canWrite} name="locationDescription" placeholder="Ex: Verger nord, entrée par le chemin" />
                     </Field>
-                    <Field label="Notes d'accès">
-                      <textarea className={fieldClass} disabled={!canWrite} name="accessNotes" rows={3} />
-                    </Field>
+                    <OptionalFields title="Détails d'accès">
+                      <Field label="Notes d'accès">
+                        <textarea className={fieldClass} disabled={!canWrite} name="accessNotes" rows={3} />
+                      </Field>
+                    </OptionalFields>
                   </div>
                   <SubmitButton disabled={!canWrite} label="Créer le rucher" />
                 </form>
@@ -292,16 +294,18 @@ export function ApiariesFormsPreview({
                         ))}
                       </select>
                     </Field>
-                    <Field label="Type">
-                      <input className={fieldClass} disabled={!canWrite} name="hiveType" placeholder="Ex: Dadant 10 cadres" />
-                    </Field>
-                    <Field label="Statut">
-                      <select className={fieldClass} disabled={!canWrite} name="status">
-                        <option value="ACTIVE">Active</option>
-                        <option value="STORED">Au stock</option>
-                        <option value="MAINTENANCE">En réparation</option>
-                      </select>
-                    </Field>
+                    <OptionalFields title="Détails ruche">
+                      <Field label="Type">
+                        <input className={fieldClass} disabled={!canWrite} name="hiveType" placeholder="Ex: Dadant 10 cadres" />
+                      </Field>
+                      <Field label="Statut">
+                        <select className={fieldClass} disabled={!canWrite} name="status">
+                          <option value="ACTIVE">Active</option>
+                          <option value="STORED">Au stock</option>
+                          <option value="MAINTENANCE">En réparation</option>
+                        </select>
+                      </Field>
+                    </OptionalFields>
                   </div>
                   <SubmitButton disabled={!canWrite} label="Créer la ruche" />
                 </form>
@@ -320,6 +324,26 @@ function Field({ children, label }: { children: ReactNode; label: string }) {
       <span className={labelClass}>{label}</span>
       {children}
     </label>
+  );
+}
+
+function OptionalFields({
+  children,
+  title,
+}: {
+  children: ReactNode;
+  title: string;
+}) {
+  return (
+    <details className="rounded-2xl border border-cream-300 bg-cream-50">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-sm font-black text-slate-800 focus-ring [&::-webkit-details-marker]:hidden">
+        {title}
+        <span className="text-xs uppercase text-amber-800">Ouvrir</span>
+      </summary>
+      <div className="space-y-3 border-t border-cream-300 p-3">
+        {children}
+      </div>
+    </details>
   );
 }
 

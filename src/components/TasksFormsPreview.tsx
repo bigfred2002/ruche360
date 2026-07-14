@@ -82,32 +82,34 @@ export function TasksFormsPreview({ hives, tasks }: TasksFormsPreviewProps) {
             <Field label="Titre">
               <input className={fieldClass} disabled={!canWrite} name="title" placeholder="Ex: contrôler les réserves" required />
             </Field>
-            <Field label="Description">
-              <textarea className={fieldClass} disabled={!canWrite} name="description" placeholder="Note courte, sans donnée sensible inutile" rows={3} />
-            </Field>
             <HiveSelect disabled={!canWrite} hives={activeHives} />
             <p className="rounded-2xl border border-sage-200 bg-sage-50 p-3 text-sm font-bold leading-6 text-forest-900">
               Une ruche active renseigne automatiquement son rucher et sa
               colonie active. Sans ruche, la tâche reste générale.
             </p>
-            <Field label="Statut">
-              <select className={fieldClass} disabled={!canWrite} name="status">
-                <option value="TODO">À faire</option>
-                <option value="IN_PROGRESS">En cours</option>
-                <option value="CANCELLED">Annulée</option>
-              </select>
-            </Field>
-            <Field label="Priorité">
-              <select className={fieldClass} disabled={!canWrite} name="priority">
-                <option value="LOW">Basse</option>
-                <option value="NORMAL">Normale</option>
-                <option value="HIGH">Haute</option>
-                <option value="URGENT">Urgente</option>
-              </select>
-            </Field>
-            <Field label="Échéance">
-              <input className={fieldClass} disabled={!canWrite} name="dueAt" type="date" />
-            </Field>
+            <OptionalFields title="Détails optionnels">
+              <Field label="Description">
+                <textarea className={fieldClass} disabled={!canWrite} name="description" placeholder="Note courte, sans donnée sensible inutile" rows={3} />
+              </Field>
+              <Field label="Statut">
+                <select className={fieldClass} disabled={!canWrite} name="status">
+                  <option value="TODO">À faire</option>
+                  <option value="IN_PROGRESS">En cours</option>
+                  <option value="CANCELLED">Annulée</option>
+                </select>
+              </Field>
+              <Field label="Priorité">
+                <select className={fieldClass} disabled={!canWrite} name="priority">
+                  <option value="LOW">Basse</option>
+                  <option value="NORMAL">Normale</option>
+                  <option value="HIGH">Haute</option>
+                  <option value="URGENT">Urgente</option>
+                </select>
+              </Field>
+              <Field label="Échéance">
+                <input className={fieldClass} disabled={!canWrite} name="dueAt" type="date" />
+              </Field>
+            </OptionalFields>
           </div>
           <SubmitButton disabled={!canWrite} label="Créer la tâche" />
         </form>
@@ -195,6 +197,26 @@ function formatHiveOptionLabel(hive: HiveSummary) {
   const type = hive.hiveType ? ` · ${hive.hiveType}` : "";
 
   return `${hive.fieldIdentifier}${type}`;
+}
+
+function OptionalFields({
+  children,
+  title,
+}: {
+  children: ReactNode;
+  title: string;
+}) {
+  return (
+    <details className="rounded-2xl border border-cream-300 bg-cream-50">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-sm font-black text-slate-800 focus-ring [&::-webkit-details-marker]:hidden">
+        {title}
+        <span className="text-xs uppercase text-amber-800">Ouvrir</span>
+      </summary>
+      <div className="space-y-3 border-t border-cream-300 p-3">
+        {children}
+      </div>
+    </details>
+  );
 }
 
 function MemberSelect({

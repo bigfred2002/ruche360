@@ -116,9 +116,6 @@ export function VisitsFormsPreview({ hives, visits }: VisitsFormsPreviewProps) {
             <Field label="Observation rapide">
               <textarea className={fieldClass} disabled={!canCreateVisit} name="notes" placeholder="Ex: activité correcte, réserves à revoir" rows={4} />
             </Field>
-            <Field label="Suite à prévoir">
-              <textarea className={fieldClass} disabled={!canCreateVisit} name="followUpSummary" placeholder="Ex: repasser sous 7 jours" rows={4} />
-            </Field>
           </div>
           <details className="mt-4 rounded-2xl border border-cream-300 bg-cream-50">
             <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-black text-slate-800 focus-ring [&::-webkit-details-marker]:hidden">
@@ -126,6 +123,9 @@ export function VisitsFormsPreview({ hives, visits }: VisitsFormsPreviewProps) {
               <span className="text-xs uppercase text-amber-800">Ouvrir</span>
             </summary>
             <div className="grid gap-3 border-t border-cream-300 p-4 sm:grid-cols-3">
+              <Field label="Suite à prévoir">
+                <textarea className={fieldClass} disabled={!canCreateVisit} name="followUpSummary" placeholder="Ex: repasser sous 7 jours" rows={3} />
+              </Field>
               <Field label="Statut">
                 <select className={fieldClass} disabled={!canCreateVisit} name="status">
                   <option value="DRAFT">Brouillon</option>
