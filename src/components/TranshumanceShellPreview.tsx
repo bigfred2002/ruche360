@@ -2,6 +2,7 @@ import {
   getCurrentApiaryIdFromMovements,
   sortHiveMovementsByDeparture,
 } from "@/features/hive-movements";
+import Link from "next/link";
 import type {
   HiveMovementReason,
   HiveMovementStatus,
@@ -186,6 +187,19 @@ export function TranshumanceShellPreview({
                       ))}
                     </div>
                   </div>
+                  <div className="mt-4 rounded-2xl bg-cream-50 p-3">
+                    <p className="text-xs font-black uppercase text-amber-800">
+                      Prochaine action
+                    </p>
+                    <p className="mt-1 text-sm font-bold leading-6 text-slate-800">
+                      {nextActionDetailForMovement(movement)}
+                    </p>
+                  </div>
+                  <div className="mt-4 grid gap-2 sm:grid-cols-3">
+                    <ActionLink href="/apiaries" label="Ruchers" />
+                    <ActionLink href="/tasks" label="Tâche" />
+                    <ActionLink href="/visits" label="Visite" tone="primary" />
+                  </div>
                 </article>
               ))}
             </div>
@@ -264,6 +278,30 @@ function DetailPill({ label, value }: { label: string; value: string }) {
   );
 }
 
+function ActionLink({
+  href,
+  label,
+  tone = "secondary",
+}: {
+  href: string;
+  label: string;
+  tone?: "primary" | "secondary";
+}) {
+  const className =
+    tone === "primary"
+      ? "bg-forest-900 text-white hover:bg-forest-800"
+      : "border border-cream-300 bg-white text-slate-800 hover:border-amber-300";
+
+  return (
+    <Link
+      className={`inline-flex min-h-11 items-center justify-center rounded-2xl px-4 text-sm font-black transition focus-ring ${className}`}
+      href={href}
+    >
+      {label}
+    </Link>
+  );
+}
+
 function labelForApiary(apiaryId: string | null | undefined) {
   if (!apiaryId) {
     return "Rucher non précisé";
@@ -311,6 +349,22 @@ function nextActionForMovement(movement: HiveMovementSummary) {
   }
 
   return "Vérifier l'annulation";
+}
+
+function nextActionDetailForMovement(movement: HiveMovementSummary) {
+  if (movement.status === "PLANNED") {
+    return "Vérifier ruches, sangles, aération et destination avant le départ.";
+  }
+
+  if (movement.status === "IN_PROGRESS") {
+    return "Confirmer l'arrivée et clôturer le mouvement quand les ruches sont posées.";
+  }
+
+  if (movement.status === "COMPLETED") {
+    return "Relire l'historique avant de créer une visite de contrôle si besoin.";
+  }
+
+  return "Conserver l'annulation dans l'historique sans déplacer les ruches.";
 }
 
 function toneForStatus(status: HiveMovementStatus) {

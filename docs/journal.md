@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-14 - FIELD-TRANSHUMANCE-LIST-ACTIONS-01
+
+- Ajout d'une zone "Prochaine action" sur les cartes de mouvement de `/transhumance`.
+- Ajout de raccourcis vers ruchers, taches et visites pour relier les deplacements au parcours terrain.
+- Les raccourcis restent de simples liens vers les routes existantes, sans pre-remplissage, GPS actif ou automatisme.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-TRANSHUMANCE-HERO-01
 
 - Recentrage du haut de `/transhumance` sur les mouvements a preparer, les mouvements en cours et les ruches concernees.
