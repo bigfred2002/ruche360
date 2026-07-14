@@ -12,6 +12,7 @@ import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { DecorativeImage } from "./DecorativeImage";
 import { EquipmentFormsPreview } from "./EquipmentFormsPreview";
+import { FieldEmptyStart } from "./FieldEmptyStart";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 import { visualAssets } from "./visualAssets";
@@ -118,6 +119,12 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
     : fallbackMaintenanceItems;
   const fieldState = createFieldState(inventory);
   const fieldKitItems = createFieldKitItems(inventory, typeById);
+  const hasEmptyLiveInventory =
+    Boolean(inventory) &&
+    (inventory?.types.length ?? 0) +
+      (inventory?.items.length ?? 0) +
+      (inventory?.stocks.length ?? 0) ===
+      0;
 
   return (
     <AppShell
@@ -409,7 +416,20 @@ export function EquipmentInventoryPreview({ inventory }: EquipmentInventoryPrevi
             </aside>
           </section>
 
-          <EquipmentFormsPreview inventory={inventory} />
+          {hasEmptyLiveInventory ? (
+            <FieldEmptyStart
+              actionHref="#equipment-quick-entry"
+              actionLabel="Créer un type"
+              detail="Commence par un type de matériel, puis ajoute un stock ou un item. Les achats, prix et fournisseurs peuvent attendre."
+              secondaryHref="/journey"
+              secondaryLabel="Voir le parcours"
+              title="Aucun matériel suivi pour le moment"
+            />
+          ) : null}
+
+          <div id="equipment-quick-entry">
+            <EquipmentFormsPreview inventory={inventory} />
+          </div>
 
           <StatePanel
             detail="Données de seed et formulaires de développement. Pas de suppression, achat, prix ou compte réel."

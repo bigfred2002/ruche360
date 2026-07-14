@@ -6,6 +6,7 @@ import type { HiveSummary } from "@/features/apiary";
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { DecorativeImage } from "./DecorativeImage";
+import { FieldEmptyStart } from "./FieldEmptyStart";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 import { TasksFormsPreview } from "./TasksFormsPreview";
@@ -229,10 +230,12 @@ export function TasksShellPreview({
           <section className="grid gap-4 lg:grid-cols-[1fr_22rem]">
             <div className="space-y-4">
               {hasNoTasks ? (
-                <StatePanel
-                  detail="Crée une tâche courte depuis cette page ou depuis une fiche visite lorsqu'une suite terrain apparaît."
-                  kind="empty"
-                  label="Aucune tâche"
+                <FieldEmptyStart
+                  actionHref="#task-quick-entry"
+                  actionLabel="Créer une tâche"
+                  detail="Crée une action courte depuis cette page ou depuis une fiche visite lorsqu'une suite terrain apparaît."
+                  secondaryHref="/visits"
+                  secondaryLabel="Ouvrir les visites"
                   title="Le suivi commence par une action simple"
                 />
               ) : (

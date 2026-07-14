@@ -6,6 +6,7 @@ import type { VisitStatus, VisitSummary } from "@/features/visits";
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { DecorativeImage } from "./DecorativeImage";
+import { FieldEmptyStart } from "./FieldEmptyStart";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 import { VisitsFormsPreview } from "./VisitsFormsPreview";
@@ -239,10 +240,12 @@ export function VisitsShellPreview({
           <section className="grid gap-4 lg:grid-cols-[1fr_22rem]">
             <div className="space-y-4">
               {hasNoVisits ? (
-                <StatePanel
+                <FieldEmptyStart
+                  actionHref="#visit-quick-entry"
+                  actionLabel="Créer une visite"
                   detail="Choisis une ruche active, ajoute une observation courte, puis crée une tâche seulement si une suite est nécessaire."
-                  kind="empty"
-                  label="Aucune visite"
+                  secondaryHref="/apiaries"
+                  secondaryLabel="Créer une ruche"
                   title="La première visite peut rester très courte"
                 />
               ) : (

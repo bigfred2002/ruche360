@@ -14,8 +14,8 @@ import type { ApiarySummary, HiveSummary } from "@/features/apiary/types";
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { DecorativeImage } from "./DecorativeImage";
+import { FieldEmptyStart } from "./FieldEmptyStart";
 import { FirstRunGuide } from "./FirstRunGuide";
-import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 import { visualAssets } from "./visualAssets";
 
@@ -175,10 +175,10 @@ export function ApiariesFormsPreview({
 
               {safeApiaries.length === 0 ? (
                 <div className="mt-5">
-                  <StatePanel
-                    detail="Ajoute un premier rucher pour rattacher ensuite une ruche et tester les visites."
-                    kind="empty"
-                    label="Aucun rucher"
+                  <FieldEmptyStart
+                    actionHref="#apiary-quick-entry"
+                    actionLabel="Créer le rucher"
+                    detail="Ajoute un site apicole, puis une ruche active. Pas besoin de GPS ou de coordonnées précises pour tester le parcours."
                     title="Le terrain attend son premier site"
                   />
                 </div>
@@ -230,7 +230,7 @@ export function ApiariesFormsPreview({
               ) : null}
             </div>
 
-            <section className="surface-panel rounded-3xl p-5 sm:p-6">
+            <section className="surface-panel rounded-3xl p-5 sm:p-6" id="apiary-quick-entry">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <p className="section-kicker">Formulaires développement</p>
