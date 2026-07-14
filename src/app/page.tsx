@@ -6,6 +6,7 @@ import { AppShell } from "@/components/AppShell";
 import { createAppNavigation } from "@/components/appNavigation";
 import { DashboardCard } from "@/components/DashboardCard";
 import { DecorativeImage } from "@/components/DecorativeImage";
+import { FirstRunGuide } from "@/components/FirstRunGuide";
 import { ResponsiveWorkflowsPreview } from "@/components/ResponsiveWorkflowsPreview";
 import { StatusBadge } from "@/components/StatusBadge";
 import { visualAssets } from "@/components/visualAssets";
@@ -301,6 +302,15 @@ export default async function Home() {
                 </div>
               </article>
             </section>
+
+            <FirstRunGuide
+              activeApiaryCount={activeApiaries.length}
+              activeHiveCount={activeHives.length}
+              activeMovementCount={activeMovements.length}
+              equipmentReadyCount={equipment.items.length + equipment.stocks.length}
+              openTaskCount={openTasks.length}
+              openVisitCount={openVisits.length}
+            />
 
             <section className="rounded-3xl border border-cream-300 bg-cream-50 p-4 shadow-field sm:p-5">
               <div className="flex flex-wrap items-end justify-between gap-3">

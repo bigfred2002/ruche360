@@ -137,6 +137,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `FIELD-TRANSHUMANCE-LIST-ACTIONS-01` rend les cartes de mouvement plus actionnables avec prochaine action et raccourcis vers ruchers, taches et visites.
 - `FIELD-TRANSHUMANCE-FORMS-FOCUS-01` replie les formulaires de developpement transhumance pour garder la page orientee lecture et action terrain.
 - `OPERATIONAL-QA-BUNDLE-01` aligne `/journey` et la documentation de validation sur les cinq flux terrain actuels: ruchers/ruches, visites, taches, materiel et transhumance.
+- `FIELD-FIRST-RUN-BUNDLE-01` ajoute un guide de premier demarrage reutilisable sur le cockpit, le parcours classique et les ruchers pour guider rucher, ruche active, visite courte et tache volontaire.
 - `FIELD-EMPTY-STATES-01` distingue les listes vides reelles des donnees de preview sur `/visits` et `/tasks`, afin de guider l'utilisateur vers la premiere visite ou la premiere tache.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.

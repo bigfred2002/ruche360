@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { HiveSummary } from "@/features/apiary";
+import type { ApiarySummary, HiveSummary } from "@/features/apiary";
 import type {
   EquipmentItemSummary,
   EquipmentStockSummary,
@@ -11,6 +11,7 @@ import type { VisitSummary } from "@/features/visits";
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { FirstRunGuide } from "./FirstRunGuide";
 import { StatusBadge } from "./StatusBadge";
 
 type EquipmentSnapshot = {
@@ -19,6 +20,7 @@ type EquipmentSnapshot = {
 };
 
 type ClassicJourneyPreviewProps = {
+  apiaries?: ApiarySummary[] | null;
   equipment?: EquipmentSnapshot | null;
   hives?: HiveSummary[] | null;
   movements?: HiveMovementSummary[] | null;
@@ -48,6 +50,7 @@ const localQaChecks = [
 ] as const;
 
 export function ClassicJourneyPreview({
+  apiaries,
   equipment,
   hives,
   movements,
@@ -56,6 +59,8 @@ export function ClassicJourneyPreview({
 }: ClassicJourneyPreviewProps) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/journey");
+  const activeApiaries =
+    apiaries?.filter((apiary) => apiary.status === "ACTIVE") ?? [];
   const activeHives = hives?.filter((hive) => hive.status === "ACTIVE") ?? [];
   const openVisits =
     visits?.filter(
@@ -78,7 +83,7 @@ export function ClassicJourneyPreview({
     equipment?.items.filter((item) => item.status === "AVAILABLE").length ?? 0;
   const stockedLines =
     equipment?.stocks.filter((stock) => stock.quantity > 0).length ?? 0;
-  const hasLiveRead = Boolean(hives || visits || tasks || equipment || movements);
+  const hasLiveRead = Boolean(apiaries || hives || visits || tasks || equipment || movements);
   const hasActiveHive = activeHives.length > 0;
   const hasOpenVisit = openVisits.length > 0;
   const hasOpenTask = openTasks.length > 0;
@@ -197,6 +202,16 @@ export function ClassicJourneyPreview({
               {primaryLabel}
             </Link>
           </section>
+
+          <FirstRunGuide
+            activeApiaryCount={activeApiaries.length}
+            activeHiveCount={activeHives.length}
+            activeMovementCount={activeMovements.length}
+            compact
+            equipmentReadyCount={availableItems + stockedLines}
+            openTaskCount={openTasks.length}
+            openVisitCount={openVisits.length}
+          />
 
           <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             <ReadinessCard

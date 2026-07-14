@@ -14,6 +14,7 @@ import type { ApiarySummary, HiveSummary } from "@/features/apiary/types";
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { DecorativeImage } from "./DecorativeImage";
+import { FirstRunGuide } from "./FirstRunGuide";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 import { visualAssets } from "./visualAssets";
@@ -102,6 +103,12 @@ export function ApiariesFormsPreview({
               src={visualAssets.apiaries.src}
             />
           </section>
+
+          <FirstRunGuide
+            activeApiaryCount={activeApiaries.length}
+            activeHiveCount={activeHives.length}
+            compact
+          />
 
           <section className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_26rem]">
             <div className="surface-panel rounded-3xl p-5 sm:p-6">
