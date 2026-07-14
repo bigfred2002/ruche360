@@ -1,5 +1,26 @@
 # Journal
 
+## 2026-07-14 - FIELD-TRANSHUMANCE-FORMS-FOCUS-01
+
+- Repli des formulaires transhumance de developpement derriere une section native `details`.
+- Ajout de trois reperes courts: prevoir, ajuster et cloturer un mouvement.
+- Conservation des actions existantes sans API publique, authentification reelle, GPS actif ou logistique avancee.
+- Aucun schema Prisma, migration, dependance, IA active ou IoT actif n'a ete ajoute.
+
+## 2026-07-14 - FIELD-TRANSHUMANCE-LIST-ACTIONS-01
+
+- Ajout d'une zone "Prochaine action" sur les cartes de mouvement de `/transhumance`.
+- Ajout de raccourcis vers ruchers, taches et visites pour relier les deplacements au parcours terrain.
+- Les raccourcis restent de simples liens vers les routes existantes, sans pre-remplissage, GPS actif ou automatisme.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
+## 2026-07-14 - FIELD-TRANSHUMANCE-HERO-01
+
+- Recentrage du haut de `/transhumance` sur les mouvements a preparer, les mouvements en cours et les ruches concernees.
+- Ajout d'une prochaine action selon le statut du mouvement: preparer le depart, confirmer l'arrivee ou relire l'historique.
+- La position affichee reste deduite des mouvements termines, sans GPS actif ni logistique lourde.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-DASHBOARD-SUPPORT-01
 
 - Transformation du panneau desktop du cockpit en rappel des cinq flux terrain: ruche, visite, tache, materiel et transhumance.

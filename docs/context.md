@@ -133,6 +133,9 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `FIELD-ACTION-SHORTCUTS-01` ajoute dans `/` des acces rapides vers ruchers/ruches, visites, taches et materiel pour reduire le nombre de choix avant une action terrain.
 - `FIELD-DASHBOARD-SHORTCUTS-01` etend les raccourcis cockpit a la transhumance pour garder un acces direct aux flux terrain principaux.
 - `FIELD-DASHBOARD-SUPPORT-01` transforme le support desktop du cockpit en rappel des cinq flux terrain et renvoie les modules futurs vers le catalogue.
+- `FIELD-TRANSHUMANCE-HERO-01` recentre `/transhumance` sur les mouvements a preparer ou en cours, les ruches concernees et la prochaine action sans GPS actif.
+- `FIELD-TRANSHUMANCE-LIST-ACTIONS-01` rend les cartes de mouvement plus actionnables avec prochaine action et raccourcis vers ruchers, taches et visites.
+- `FIELD-TRANSHUMANCE-FORMS-FOCUS-01` replie les formulaires de developpement transhumance pour garder la page orientee lecture et action terrain.
 - `FIELD-EMPTY-STATES-01` distingue les listes vides reelles des donnees de preview sur `/visits` et `/tasks`, afin de guider l'utilisateur vers la premiere visite ou la premiere tache.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.

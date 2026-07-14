@@ -2,6 +2,7 @@ import {
   getCurrentApiaryIdFromMovements,
   sortHiveMovementsByDeparture,
 } from "@/features/hive-movements";
+import Link from "next/link";
 import type {
   HiveMovementReason,
   HiveMovementStatus,
@@ -72,10 +73,18 @@ export function TranshumanceShellPreview({
   );
   const sortedMovements = sortHiveMovementsByDeparture(displayMovements);
   const plannedCount = displayMovements.filter((movement) => movement.status === "PLANNED").length;
+  const inProgressCount = displayMovements.filter((movement) => movement.status === "IN_PROGRESS").length;
   const completedCount = displayMovements.filter((movement) => movement.status === "COMPLETED").length;
+  const activeMovements = displayMovements.filter(
+    (movement) => movement.status === "PLANNED" || movement.status === "IN_PROGRESS",
+  );
   const hiveCount = new Set(
     displayMovements.flatMap((movement) => movement.items.map((item) => item.hiveId)),
   ).size;
+  const nextMovement = activeMovements[0] ?? sortedMovements[0] ?? null;
+  const nextAction = nextMovement
+    ? nextActionForMovement(nextMovement)
+    : "Préparer un premier mouvement";
 
   return (
     <AppShell
@@ -93,22 +102,28 @@ export function TranshumanceShellPreview({
               <div>
                 <p className="section-kicker">Module transhumance</p>
                 <h1 className="mt-2 text-4xl font-black leading-tight text-slate-950 sm:text-5xl">
-                  Transhumance
+                  Mouvements de ruches
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg leading-8 text-slate-700">
-                  Suivre les mouvements de ruches entre sites. Le rucher reste
-                  fixe; seules les ruches se déplacent.
+                  Préparer, suivre et clôturer les déplacements sans transformer
+                  le rucher en objet mobile. Ici, seules les ruches bougent.
                 </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  <HeroMetric label="À préparer" value={plannedCount} />
+                  <HeroMetric label="En cours" value={inProgressCount} />
+                  <HeroMetric label="Ruches" value={hiveCount} />
+                </div>
               </div>
               <div className="rounded-3xl bg-gradient-amber p-5 text-white shadow-amber">
                 <p className="text-sm font-bold uppercase tracking-wide text-amber-100">
-                  Position déduite
+                  Prochaine action
                 </p>
-                <p className="mt-3 text-2xl font-black">
-                  {labelForApiary(currentApiaryId)}
+                <p className="mt-3 text-2xl font-black leading-tight">
+                  {nextAction}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-amber-50">
-                  Calculé depuis les mouvements terminés, sans GPS actif.
+                  Position actuelle estimée: {labelForApiary(currentApiaryId)}.
+                  Calcul sans GPS actif.
                 </p>
               </div>
             </div>
@@ -172,6 +187,19 @@ export function TranshumanceShellPreview({
                       ))}
                     </div>
                   </div>
+                  <div className="mt-4 rounded-2xl bg-cream-50 p-3">
+                    <p className="text-xs font-black uppercase text-amber-800">
+                      Prochaine action
+                    </p>
+                    <p className="mt-1 text-sm font-bold leading-6 text-slate-800">
+                      {nextActionDetailForMovement(movement)}
+                    </p>
+                  </div>
+                  <div className="mt-4 grid gap-2 sm:grid-cols-3">
+                    <ActionLink href="/apiaries" label="Ruchers" />
+                    <ActionLink href="/tasks" label="Tâche" />
+                    <ActionLink href="/visits" label="Visite" tone="primary" />
+                  </div>
                 </article>
               ))}
             </div>
@@ -232,12 +260,45 @@ function SummaryCard({
   );
 }
 
+function HeroMetric({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-2xl border border-cream-300 bg-white/80 p-3">
+      <p className="text-xs font-black uppercase text-slate-600">{label}</p>
+      <p className="mt-1 text-2xl font-black text-slate-950">{value}</p>
+    </div>
+  );
+}
+
 function DetailPill({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-cream-300 bg-white p-3">
       <p className="text-xs font-black uppercase text-amber-800">{label}</p>
       <p className="mt-1 text-sm font-bold text-slate-800">{value}</p>
     </div>
+  );
+}
+
+function ActionLink({
+  href,
+  label,
+  tone = "secondary",
+}: {
+  href: string;
+  label: string;
+  tone?: "primary" | "secondary";
+}) {
+  const className =
+    tone === "primary"
+      ? "bg-forest-900 text-white hover:bg-forest-800"
+      : "border border-cream-300 bg-white text-slate-800 hover:border-amber-300";
+
+  return (
+    <Link
+      className={`inline-flex min-h-11 items-center justify-center rounded-2xl px-4 text-sm font-black transition focus-ring ${className}`}
+      href={href}
+    >
+      {label}
+    </Link>
   );
 }
 
@@ -272,6 +333,38 @@ function labelForStatus(status: HiveMovementStatus) {
   } satisfies Record<HiveMovementStatus, string>;
 
   return labels[status];
+}
+
+function nextActionForMovement(movement: HiveMovementSummary) {
+  if (movement.status === "PLANNED") {
+    return "Préparer le départ";
+  }
+
+  if (movement.status === "IN_PROGRESS") {
+    return "Confirmer l'arrivée";
+  }
+
+  if (movement.status === "COMPLETED") {
+    return "Relire l'historique";
+  }
+
+  return "Vérifier l'annulation";
+}
+
+function nextActionDetailForMovement(movement: HiveMovementSummary) {
+  if (movement.status === "PLANNED") {
+    return "Vérifier ruches, sangles, aération et destination avant le départ.";
+  }
+
+  if (movement.status === "IN_PROGRESS") {
+    return "Confirmer l'arrivée et clôturer le mouvement quand les ruches sont posées.";
+  }
+
+  if (movement.status === "COMPLETED") {
+    return "Relire l'historique avant de créer une visite de contrôle si besoin.";
+  }
+
+  return "Conserver l'annulation dans l'historique sans déplacer les ruches.";
 }
 
 function toneForStatus(status: HiveMovementStatus) {
