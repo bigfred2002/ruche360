@@ -444,7 +444,7 @@ export default async function Home() {
               </h2>
               <p className="mt-3 text-sm leading-6 text-slate-650">
                 Ruchers, visites, taches, materiel et transhumance restent
-                relies sans transformer la page d'accueil en back-office.
+                relies sans transformer la page d&apos;accueil en back-office.
               </p>
               <div className="mt-4 space-y-2">
                 {[
