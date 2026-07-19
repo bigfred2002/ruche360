@@ -9,6 +9,7 @@ import type { VisitDetail, VisitObservationCategory, VisitStatus } from "@/featu
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DetailCoherencePanel } from "./DetailCoherencePanel";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 
@@ -100,31 +101,21 @@ export function VisitDetailPreview({ visit }: VisitDetailPreviewProps) {
               </div>
             </article>
 
-            <aside className="surface-muted rounded-3xl p-5">
-              <p className="section-kicker">Suite</p>
-              <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Garder le fil
-              </h2>
-              <p className="mt-3 text-sm font-bold leading-6 text-field-muted">
-                La visite reste l&apos;historique. Les tâches portent les suites à ne
-                pas oublier.
-              </p>
-              <div className="mt-4 grid gap-2">
-                {visit.hiveId ? (
-                  <Link
-                    className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 focus-ring"
-                    href={`/hives/${visit.hiveId}`}
-                  >
-                    Voir la ruche
-                  </Link>
-                ) : null}
-                <Link
-                  className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-forest-900 px-4 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
-                  href="/tasks"
-                >
-                  Voir les tâches
-                </Link>
-              </div>
+            <DetailCoherencePanel
+              kicker="Suite"
+              links={[
+                { href: "/tasks", label: "Voir les tâches", tone: "primary" },
+                ...(visit.hiveId
+                  ? [{ href: `/hives/${visit.hiveId}`, label: "Voir la ruche" }]
+                  : []),
+              ]}
+              limits={[
+                "La tâche de suivi reste volontaire: rien n'est généré automatiquement.",
+                "Aucune IA, prescription sanitaire ou notification n'est active.",
+              ]}
+              nextAction="Relire les observations, puis créer une tâche de suivi uniquement si une action doit rester visible."
+              title="Garder le fil"
+            >
               <form
                 action={createDevelopmentTaskFormAction}
                 className="mt-4 rounded-2xl border border-cream-300 bg-white p-4"
@@ -171,7 +162,7 @@ export function VisitDetailPreview({ visit }: VisitDetailPreviewProps) {
                   la visite.
                 </p>
               </form>
-            </aside>
+            </DetailCoherencePanel>
           </section>
 
           <section className="surface-panel rounded-3xl p-5 sm:p-6">

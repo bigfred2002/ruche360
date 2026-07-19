@@ -4,6 +4,7 @@ import type { HiveDetail } from "@/features/apiary";
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DetailCoherencePanel } from "./DetailCoherencePanel";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 
@@ -93,36 +94,20 @@ export function HiveDetailPreview({ hive }: HiveDetailPreviewProps) {
               </div>
             </article>
 
-            <aside className="surface-muted rounded-3xl p-5">
-              <p className="section-kicker">Suite terrain</p>
-              <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Garder simple
-              </h2>
-              <p className="mt-3 text-sm font-bold leading-6 text-field-muted">
-                La visite reste le bon endroit pour noter l&apos;observation. La tâche
-                sert seulement à garder une suite visible.
-              </p>
-              <div className="mt-4 grid gap-2">
-                <Link
-                  className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-forest-900 px-4 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
-                  href="/visits"
-                >
-                  Ouvrir les visites
-                </Link>
-                <Link
-                  className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 focus-ring"
-                  href="/tasks"
-                >
-                  Voir les tâches
-                </Link>
-                <Link
-                  className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 focus-ring"
-                  href="/equipment"
-                >
-                  Vérifier matériel
-                </Link>
-              </div>
-            </aside>
+            <DetailCoherencePanel
+              kicker="Suite terrain"
+              links={[
+                { href: "/visits", label: "Ouvrir les visites", tone: "primary" },
+                { href: "/tasks", label: "Voir les tâches" },
+                { href: "/equipment", label: "Vérifier matériel" },
+              ]}
+              limits={[
+                "Une ruche contient au plus une colonie active dans le parcours courant.",
+                "Aucun diagnostic sanitaire ou automatisme de suivi n'est déclenché ici.",
+              ]}
+              nextAction="Noter l'observation dans une visite, puis créer une tâche seulement si une suite est nécessaire."
+              title="Garder simple"
+            />
           </section>
 
           <section className="surface-panel rounded-3xl p-5 sm:p-6">

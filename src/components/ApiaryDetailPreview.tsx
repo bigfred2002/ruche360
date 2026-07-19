@@ -4,6 +4,7 @@ import type { ApiaryDetail } from "@/features/apiary";
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DetailCoherencePanel } from "./DetailCoherencePanel";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 
@@ -107,30 +108,20 @@ export function ApiaryDetailPreview({ apiary }: ApiaryDetailPreviewProps) {
               </div>
             </article>
 
-            <aside className="surface-muted rounded-3xl p-5">
-              <p className="section-kicker">Suite simple</p>
-              <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Prochain geste
-              </h2>
-              <p className="mt-3 text-sm font-bold leading-6 text-field-muted">
-                Ouvrir une ruche active pour préparer une visite ou vérifier son
-                état courant.
-              </p>
-              <div className="mt-4 grid gap-2">
-                <Link
-                  className="inline-flex min-h-11 w-full items-center justify-center rounded-2xl bg-forest-900 px-4 text-sm font-black text-white transition hover:bg-forest-800 focus-ring"
-                  href="/visits"
-                >
-                  Aller aux visites
-                </Link>
-                <Link
-                  className="inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 focus-ring"
-                  href="/transhumance"
-                >
-                  Voir mouvements
-                </Link>
-              </div>
-            </aside>
+            <DetailCoherencePanel
+              kicker="Suite simple"
+              links={[
+                { href: "/visits", label: "Aller aux visites", tone: "primary" },
+                { href: "/transhumance", label: "Voir mouvements" },
+                { href: "/equipment", label: "Vérifier matériel" },
+              ]}
+              limits={[
+                "Pas de GPS actif ni de partage fin par rucher dans cette fiche.",
+                "Le rucher reste le site; les ruches portent les mouvements.",
+              ]}
+              nextAction="Ouvrir une ruche active pour préparer une visite ou vérifier son état courant."
+              title="Prochain geste"
+            />
           </section>
 
           <section className="surface-panel rounded-3xl p-5 sm:p-6">
