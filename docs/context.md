@@ -141,6 +141,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `FIELD-COCKPIT-DECLUTTER-BUNDLE-01` replie les compteurs, acces rapides et liens de focus du cockpit derriere une vue detaillee pour garder le premier ecran mobile centre sur la prochaine action.
 - `FIELD-FORM-SIMPLIFICATION-BUNDLE-01` simplifie les formulaires de developpement terrain: champs essentiels visibles, details avances replies, sans changer les actions serveur.
 - `FIELD-EMPTY-START-BUNDLE-01` harmonise les etats vides de demarrage avec un panneau actionnable sur cockpit, ruchers, visites, taches, materiel et transhumance.
+- `FIELD-DETAIL-COHERENCE-BUNDLE-01` harmonise les fiches detail rucher, ruche, visite et tache autour d'une meme logique: prochaine action, liens utiles et limites explicites.
 - `FIELD-EMPTY-STATES-01` distingue les listes vides reelles des donnees de preview sur `/visits` et `/tasks`, afin de guider l'utilisateur vers la premiere visite ou la premiere tache.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.

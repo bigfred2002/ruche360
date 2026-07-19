@@ -4,6 +4,7 @@ import type { TaskDetail, TaskPriority, TaskStatus } from "@/features/tasks";
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
+import { DetailCoherencePanel } from "./DetailCoherencePanel";
 import { StatusBadge } from "./StatusBadge";
 
 type TaskDetailPreviewProps = {
@@ -92,34 +93,28 @@ export function TaskDetailPreview({ task }: TaskDetailPreviewProps) {
               </div>
             </article>
 
-            <aside className="surface-muted rounded-3xl p-5">
-              <p className="section-kicker">Navigation</p>
-              <h2 className="mt-2 text-2xl font-black text-slate-950">
-                Revenir au terrain
-              </h2>
-              <p className="mt-3 text-sm font-bold leading-6 text-field-muted">
-                La tâche garde la suite visible. La visite et la ruche restent
-                les bons endroits pour relire le contexte.
-              </p>
-              <div className="mt-4 grid gap-2">
-                {task.visitId ? (
-                  <Link
-                    className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 focus-ring"
-                    href={`/visits/${task.visitId}`}
-                  >
-                    Voir la visite
-                  </Link>
-                ) : null}
-                {task.hiveId ? (
-                  <Link
-                    className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-cream-300 bg-white px-4 text-sm font-black text-slate-800 transition hover:border-amber-300 focus-ring"
-                    href={`/hives/${task.hiveId}`}
-                  >
-                    Voir la ruche
-                  </Link>
-                ) : null}
-              </div>
-            </aside>
+            <DetailCoherencePanel
+              kicker="Navigation"
+              links={[
+                {
+                  href: "/tasks#task-quick-entry",
+                  label: "Mettre à jour",
+                  tone: "primary",
+                },
+                ...(task.visitId
+                  ? [{ href: `/visits/${task.visitId}`, label: "Voir la visite" }]
+                  : []),
+                ...(task.hiveId
+                  ? [{ href: `/hives/${task.hiveId}`, label: "Voir la ruche" }]
+                  : []),
+              ]}
+              limits={[
+                "Pas de rappel, récurrence ou calendrier dans cette fiche.",
+                "La tâche ne remplace pas la visite: elle garde seulement la suite visible.",
+              ]}
+              nextAction="Mettre à jour le statut si l'action avance, puis revenir à la visite ou à la ruche pour relire le contexte."
+              title="Revenir au terrain"
+            />
           </section>
 
           <section className="surface-muted rounded-3xl p-5 sm:p-6">

@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-19 - FIELD-DETAIL-COHERENCE-BUNDLE-01
+
+- Ajout d'un panneau `DetailCoherencePanel` pour harmoniser les fiches detail terrain.
+- Branchement sur les fiches rucher, ruche, visite et tache avec prochaine action, liens utiles et limites.
+- Les fiches conservent leurs donnees et actions existantes sans nouvelle mutation ni automatisme.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou GPS actif n'a ete ajoute.
+
 ## 2026-07-14 - FIELD-EMPTY-START-BUNDLE-01
 
 - Ajout d'un panneau `FieldEmptyStart` pour transformer les etats vides de terrain en prochaine action claire.
