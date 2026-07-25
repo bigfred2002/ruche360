@@ -142,6 +142,7 @@ make lint
 make build-app
 make seed-dev
 make security-scan
+make secrets-scan
 ```
 
 Les commandes locales directes comme `pnpm install`, `node`, `npx prisma` ou `npx playwright` ne doivent pas être utilisées comme prérequis sur la machine hôte.

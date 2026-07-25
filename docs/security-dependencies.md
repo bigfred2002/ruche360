@@ -132,7 +132,8 @@ Le scan Gitleaks complète ce contrôle:
 make secrets-scan
 ```
 
-Il s'exécute dans Docker avec une image pinnee par digest et utilise `.gitleaks.toml`.
+Il s'exécute dans Docker avec une image locale reconstruite sur Alpine 3.23
+et utilise `.gitleaks.toml`.
 Les dossiers générés ou locaux (`.next`, `node_modules`, `.pnpm-store`, `stitch_exports`) sont exclus pour éviter les faux positifs et garder la CI rapide.
 
 ## Backlog Sécurité Proposé
@@ -191,6 +192,35 @@ Décision retenue:
 Pistes restantes:
 
 - éviter les faux positifs qui bloqueraient les lots normaux.
+
+### `SECURITY-CONTAINER-IMAGES-01`
+
+Traiter les alertes Docker Scout sur les images de développement.
+
+Décision retenue:
+
+- utiliser explicitement `node:22-alpine3.23` pour les images applicatives;
+- utiliser explicitement `postgres:16-alpine3.23` pour la base locale;
+- mettre à jour `npm` dans l'image Node vers `11.18.0` pour corriger les
+  dépendances transitives embarquées par l'outillage Node;
+- remplacer le transitif `brace-expansion` embarqué dans npm par `5.0.8`
+  tant que la version npm compatible Node 22 ne l'embarque pas directement;
+- remplacer l'exécution directe de l'image Gitleaks GHCR par une image locale
+  `rucher360-gitleaks:v8.30.1-alpine3.23`, construite depuis `Dockerfile.gitleaks`;
+- compiler Gitleaks depuis source en forçant `golang.org/x/crypto@v0.52.0`
+  tant que l'image officielle ou une release amont ne l'embarque pas;
+- conserver Gitleaks en Docker, sans installation locale, dépendance npm,
+  secret ou changement fonctionnel applicatif.
+
+Pistes restantes:
+
+- relancer Docker Scout sur les images reconstruites;
+- suivre l'image officielle PostgreSQL: `postgres:16-alpine3.23` reste signalee
+  par Docker Scout sur `golang.org/stdlib` dans sa provenance amont, sans
+  recommandation de remplacement disponible; ne pas changer de distribution
+  PostgreSQL sans lot infra dedie.
+- suivre les alertes liées aux images de build, qui peuvent différer de l'image
+  finale exécutée.
 
 ### `SECURITY-RUNNER-01`
 
