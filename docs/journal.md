@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-25 - SECURITY-DEPENDENCIES-FIX-01
+
+- Mise a jour de Next.js et `eslint-config-next` vers `16.2.11`.
+- Mise a jour de Prisma, `@prisma/client` et `@prisma/adapter-pg` vers `7.9.0`.
+- Ajout d'overrides pnpm pour corriger les vulnerabilites transitives `sharp`, `postcss`, `find-my-way` et `valibot`.
+- `pnpm audit --prod` ne signale plus de vulnerabilite connue.
+- Aucun schema Prisma, migration, dependance metier, auth reelle, API publique, IA active, IoT actif ou Docker n'a ete ajoute.
+
 ## 2026-07-19 - FIELD-DETAIL-COHERENCE-BUNDLE-01
 
 - Ajout d'un panneau `DetailCoherencePanel` pour harmoniser les fiches detail terrain.

@@ -137,6 +137,21 @@ Les dossiers générés ou locaux (`.next`, `node_modules`, `.pnpm-store`, `stit
 
 ## Backlog Sécurité Proposé
 
+### `SECURITY-DEPENDENCIES-FIX-01`
+
+Décision retenue:
+
+- monter `next` et `eslint-config-next` vers le patch `16.2.11`;
+- monter Prisma, `@prisma/client` et `@prisma/adapter-pg` vers `7.9.0`;
+- ajouter des overrides pnpm ciblés pour `sharp`, `postcss`, `find-my-way`
+  et `valibot`, afin de forcer les versions transitives corrigées;
+- conserver l'exception `minimumReleaseAgeExclude` générée pour `postcss@8.5.23`,
+  car elle correspond à un correctif de sécurité nécessaire au passage de
+  `pnpm audit --prod`.
+
+Ce lot ne change aucun modèle métier, écran, Dockerfile, workflow, secret ou
+comportement applicatif.
+
 ### `SECURITY-DEPENDENCIES-01`
 
 Traiter les alertes Dependabot ouvertes.

@@ -46,6 +46,7 @@
 
 - [x] Préparer le lot sécurité dépendances et alertes.
 - [x] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
+- [x] `SECURITY-DEPENDENCIES-FIX-01`: corriger l'audit production bloquant avec mises a jour Next/Prisma et overrides transitifs cibles.
 - [x] Durcir la CI dans `SECURITY-CI-01` si un contrôle fiable peut être ajouté sans ralentir les micro-lots.
 - [x] Évaluer un scanner de secrets dédié dans `SECURITY-SECRETS-01`.
 - [x] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
