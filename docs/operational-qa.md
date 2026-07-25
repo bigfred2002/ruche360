@@ -72,6 +72,35 @@ make secrets-scan
   actif.
 - Le matériel doit rester un appui terrain, pas une gestion commerciale.
 
+## Grille visuelle mobile et desktop
+
+### Mobile 390px
+
+- La navigation basse reste visible et ne masque pas l'action principale.
+- Le titre, les badges et les boutons tiennent dans leur surface.
+- Les commandes, URLs et libellés longs se replient sans provoquer de scroll
+  horizontal.
+- Les informations de debug, limites et QA avancée restent repliées.
+- La première action utile apparaît avant les listes détaillées.
+
+### Desktop 1280px
+
+- La sidebar reste disponible sans concurrencer le contenu principal.
+- Les cartes utilisent l'espace horizontal sans créer de lignes trop longues.
+- Les actions principales sont visibles au survol et accessibles au clavier.
+- Les modules optionnels ou futurs restent secondaires.
+- Les listes denses restent scannables par section, statut et prochaine action.
+
+### Critères ergonomiques appliqués
+
+- Guidage: chaque écran terrain doit indiquer la prochaine action possible.
+- Charge de travail: les détails de développement et la QA avancée restent
+  repliés.
+- Contrôle utilisateur: aucune donnée n'est créée automatiquement depuis une
+  carte, un badge ou un scénario de test.
+- Cohérence: mobile et desktop utilisent les mêmes statuts et les mêmes limites
+  produit.
+
 ## Scénarios manuels recommandés
 
 ### Premier rucher

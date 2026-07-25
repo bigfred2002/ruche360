@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-25 - FIELD-MOBILE-VISUAL-QA-01
+
+- Ajout dans `/journey` d'une grille de controle visuel repliee pour mobile 390px et desktop 1280px.
+- Correction de l'affichage des commandes QA locales pour eviter les debordements sur mobile.
+- Enrichissement de `docs/operational-qa.md` avec les criteres visuels mobile, desktop et ergonomiques.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou GPS actif n'a ete ajoute.
+
 ## 2026-07-25 - SECURITY-DEPENDENCIES-FIX-01
 
 - Mise a jour de Next.js et `eslint-config-next` vers `16.2.11`.

@@ -164,7 +164,7 @@
 - [x] `FIELD-EMPTY-START-BUNDLE-01`: harmoniser les etats vides de demarrage avec des actions directes.
 - [x] `FIELD-DETAIL-COHERENCE-BUNDLE-01`: harmoniser les fiches detail rucher, ruche, visite et tache autour d'une prochaine action et de limites explicites.
 - [x] `FIELD-QA-SCENARIOS-BUNDLE-01`: documenter et exposer les scenarios manuels de validation terrain apres les flux actuels.
-- [ ] `FIELD-MOBILE-VISUAL-QA-01`: verifier mobile 390px et desktop 1280px sur les flux terrain, puis corriger les ecarts visuels mineurs.
+- [x] `FIELD-MOBILE-VISUAL-QA-01`: verifier mobile 390px et desktop 1280px sur les flux terrain, puis corriger les ecarts visuels mineurs.
 - [ ] `FIELD-SEED-SCENARIOS-01`: enrichir les donnees fictives de developpement pour couvrir plusieurs cas terrain sans donnee personnelle.
 - [x] `FIELD-EMPTY-STATES-01`: distinguer les listes vides reelles des previews sur visites et taches, avec guidage terrain.
 - [x] `VISITS-SHELL-01`: remplacer `/visits` par un shell mobile-first dedie aux visites, sans CRUD.
