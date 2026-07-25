@@ -8,6 +8,13 @@
 - `pnpm audit --prod` ne signale plus de vulnerabilite connue.
 - Aucun schema Prisma, migration, dependance metier, auth reelle, API publique, IA active, IoT actif ou Docker n'a ete ajoute.
 
+## 2026-07-25 - FIELD-QA-SCENARIOS-BUNDLE-01
+
+- Ajout de scenarios manuels de validation terrain dans `/journey`.
+- Enrichissement de `docs/operational-qa.md` avec les parcours premier rucher, premiere visite, suite, materiel et transhumance.
+- Ajout de criteres d'echec bloquants pour eviter IA, GPS, IoT, prescription, action cachee ou donnee personnelle.
+- Aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou GPS actif n'a ete ajoute.
+
 ## 2026-07-19 - FIELD-DETAIL-COHERENCE-BUNDLE-01
 
 - Ajout d'un panneau `DetailCoherencePanel` pour harmoniser les fiches detail terrain.
