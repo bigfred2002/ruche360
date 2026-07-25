@@ -72,6 +72,57 @@ make secrets-scan
   actif.
 - Le matériel doit rester un appui terrain, pas une gestion commerciale.
 
+## Scénarios manuels recommandés
+
+### Premier rucher
+
+- Démarrer avec peu ou pas de données.
+- Créer un rucher, puis une ruche active.
+- Vérifier que le cockpit, `/journey` et `/apiaries` guident vers la prochaine
+  action sans afficher une impasse.
+- Résultat attendu: le parcours commence par le contexte terrain, pas par une
+  saisie de visite isolée.
+
+### Première visite
+
+- Ouvrir `/visits`.
+- Choisir une ruche active.
+- Saisir un objectif court et une observation simple.
+- Vérifier que le rucher et la colonie active restent dérivés du contexte ruche.
+- Résultat attendu: la visite reste courte, claire et orientée terrain.
+
+### Suite à traiter
+
+- Ouvrir une fiche visite.
+- Créer une tâche de suivi uniquement depuis l'action volontaire.
+- Vérifier que la tâche garde le lien vers la visite ou la ruche quand le
+  contexte existe.
+- Résultat attendu: aucune tâche n'est générée automatiquement.
+
+### Caisse de visite
+
+- Ouvrir `/equipment`.
+- Vérifier les items disponibles, à nettoyer ou en maintenance.
+- Contrôler que le matériel reste présenté comme un appui terrain.
+- Résultat attendu: pas d'achat, de prix, de fournisseur ou de comptabilité.
+
+### Déplacement simple
+
+- Ouvrir `/transhumance`.
+- Préparer ou relire un mouvement de ruches.
+- Vérifier que la clôture du mouvement reste explicite.
+- Résultat attendu: le rucher ne se déplace pas; seules les ruches portent
+  l'historique de mouvement, sans GPS actif.
+
+## Critères d'échec bloquants
+
+- Un écran suggère une IA, un GPS, un IoT ou une prescription sanitaire active.
+- Une action crée une donnée sans geste volontaire explicite.
+- Un module futur ou optionnel apparaît comme obligatoire dans le parcours
+  terrain.
+- Une page mobile introduit un scroll horizontal ou cache l'action principale.
+- Les données fictives ressemblent à des données personnelles ou réelles.
+
 ## Limites connues
 
 - La session utilisée reste une session de développement fictive.

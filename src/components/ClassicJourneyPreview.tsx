@@ -49,6 +49,39 @@ const localQaChecks = [
   "Les listes vides guident vers la première action utile.",
 ] as const;
 
+const manualQaScenarios = [
+  {
+    expected: "Le parcours propose d'abord de créer le contexte au lieu d'afficher une impasse.",
+    href: "/apiaries",
+    label: "Premier rucher",
+    steps: "Partir d'un espace vide, créer un rucher, puis vérifier le guidage vers la première ruche.",
+  },
+  {
+    expected: "La visite se fait depuis la ruche, avec rucher et colonie active dérivés.",
+    href: "/visits",
+    label: "Première visite",
+    steps: "Choisir une ruche active, saisir un objectif court et ajouter une observation simple.",
+  },
+  {
+    expected: "La tâche reste volontaire et ne ressemble pas à une prescription automatique.",
+    href: "/tasks",
+    label: "Suite à traiter",
+    steps: "Depuis une visite, créer une tâche de suivi uniquement si une action doit rester visible.",
+  },
+  {
+    expected: "Le matériel reste une aide terrain, sans achat, prix ou gestion commerciale.",
+    href: "/equipment",
+    label: "Caisse de visite",
+    steps: "Vérifier les items disponibles, à nettoyer ou en maintenance avant une sortie.",
+  },
+  {
+    expected: "Le déplacement reste manuel, sans GPS actif ni mise à jour cachée.",
+    href: "/transhumance",
+    label: "Déplacement simple",
+    steps: "Préparer un mouvement, contrôler les ruches concernées et clôturer explicitement.",
+  },
+] as const;
+
 export function ClassicJourneyPreview({
   apiaries,
   equipment,
@@ -362,6 +395,40 @@ export function ClassicJourneyPreview({
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+
+          <section className="surface-panel rounded-3xl p-5 sm:p-6">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="section-kicker">Scénarios terrain</p>
+                <h2 className="mt-2 text-2xl font-black text-slate-950">
+                  Tester comme un apiculteur
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-field-muted">
+                  Ces scénarios guident la revue manuelle. Ils décrivent le
+                  résultat attendu sans automatiser le parcours ni créer de
+                  donnée cachée.
+                </p>
+              </div>
+              <StatusBadge label="Manuel" tone="preview" />
+            </div>
+            <div className="mt-5 grid gap-3 lg:grid-cols-2">
+              {manualQaScenarios.map((scenario) => (
+                <Link
+                  className="motion-card rounded-2xl border border-cream-300 bg-white p-4 shadow-field transition hover:border-amber-300 hover:bg-cream-50 focus-ring"
+                  href={scenario.href}
+                  key={scenario.label}
+                >
+                  <span className="section-kicker">{scenario.label}</span>
+                  <span className="mt-2 block text-sm font-black leading-6 text-slate-950">
+                    {scenario.steps}
+                  </span>
+                  <span className="mt-3 block rounded-2xl bg-sage-50 p-3 text-xs font-bold leading-5 text-forest-900">
+                    Attendu: {scenario.expected}
+                  </span>
+                </Link>
+              ))}
             </div>
           </section>
 
