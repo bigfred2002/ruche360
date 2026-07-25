@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-25 - FIELD-SEED-SCENARIOS-01
+
+- Enrichissement du seed de developpement avec des scenarios fictifs pour ruches actives, au stock et en maintenance.
+- Ajout de visites ouvertes ou planifiees, d'observations courtes, de taches de suivi, de materiel a nettoyer ou reparer et d'un mouvement de transhumance manuel.
+- Activation explicite du module `transhumance` et de ses permissions dans le seed de developpement afin de couvrir le parcours terrain local.
+- Les donnees restent generiques, fictives et sans information personnelle; aucun schema Prisma, migration, dependance, auth reelle, API publique, IA active, IoT actif ou GPS actif n'a ete ajoute.
+
 ## 2026-07-25 - FIELD-MOBILE-VISUAL-QA-01
 
 - Ajout dans `/journey` d'une grille de controle visuel repliee pour mobile 390px et desktop 1280px.

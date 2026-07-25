@@ -103,6 +103,15 @@ make secrets-scan
 
 ## Scénarios manuels recommandés
 
+Après `make seed-dev`, la base locale contient volontairement plusieurs cas
+fictifs:
+
+- une ruche active avec visite en cours et observation courte;
+- une ruche faible avec visite planifiée et tâche urgente;
+- une ruche au stock et une ruche en maintenance, toutes deux sans colonie;
+- du matériel disponible, à nettoyer et en maintenance;
+- un mouvement de transhumance manuel en cours, sans GPS actif.
+
 ### Premier rucher
 
 - Démarrer avec peu ou pas de données.
