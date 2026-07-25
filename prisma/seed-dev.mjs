@@ -19,17 +19,30 @@ const ids = {
   apiaryHill: "dev-apiary-hill",
   hiveOne: "dev-hive-001",
   hiveTwo: "dev-hive-002",
+  hiveStored: "dev-hive-stored-001",
+  hiveMaintenance: "dev-hive-maintenance-001",
   colonyOne: "dev-colony-001",
   colonyTwo: "dev-colony-002",
+  visitOpen: "dev-visit-open-001",
+  visitObservationColony: "dev-visit-observation-colony-001",
+  visitObservationFollowUp: "dev-visit-observation-follow-up-001",
+  visitPlanned: "dev-visit-planned-001",
+  taskUrgent: "dev-task-urgent-001",
+  taskVisitFollowUp: "dev-task-follow-up-001",
+  taskEquipment: "dev-task-equipment-001",
   typeFrames: "dev-equipment-type-frames",
   typeSmoker: "dev-equipment-type-smoker",
   typeSuit: "dev-equipment-type-suit",
+  typeExtractor: "dev-equipment-type-extractor",
   stockFrames: "dev-equipment-stock-frames",
   itemSmoker: "dev-equipment-item-smoker",
   itemSuit: "dev-equipment-item-suit",
+  itemExtractor: "dev-equipment-item-extractor",
   eventFrames: "dev-equipment-event-frames",
   eventSmoker: "dev-equipment-event-smoker",
   eventSuit: "dev-equipment-event-suit",
+  eventExtractor: "dev-equipment-event-extractor",
+  movementCoteaux: "dev-hive-movement-coteaux-001",
 };
 
 const moduleDefinitions = [
@@ -48,6 +61,7 @@ const moduleDefinitions = [
   ["documents", "Documents", "DOCUMENTS"],
   ["harvests", "Récoltes simples", "BEEKEEPING"],
   ["equipment", "Matériel", "BEEKEEPING"],
+  ["transhumance", "Transhumance", "BEEKEEPING"],
 ];
 
 const permissionDefinitions = [
@@ -78,6 +92,9 @@ const permissionDefinitions = [
   ["equipment.read", "Lire le matériel"],
   ["equipment.write", "Modifier le matériel"],
   ["equipment.manage", "Administrer le matériel"],
+  ["transhumance.read", "Lire la transhumance"],
+  ["transhumance.write", "Modifier la transhumance"],
+  ["transhumance.manage", "Administrer la transhumance"],
 ];
 
 async function main() {
@@ -159,6 +176,7 @@ async function main() {
 
   await seedApiariesAndHives(organization.id);
   await seedEquipment(organization.id);
+  await seedFieldScenarios(organization.id, membership.id);
 
   console.log(
     `Seed développement OK: ${modules.length} modules, ${permissions.length} permissions, organisation ${organization.id}.`,
@@ -302,6 +320,54 @@ async function seedApiariesAndHives(organizationId) {
     where: {
       organizationId_fieldIdentifier: {
         organizationId,
+        fieldIdentifier: "DEV-STOCK-001",
+      },
+    },
+    update: {
+      id: ids.hiveStored,
+      apiaryId: null,
+      hiveType: "Dadant 10 cadres",
+      status: "STORED",
+      notes: "Ruche fictive au stock, sans colonie active.",
+    },
+    create: {
+      id: ids.hiveStored,
+      organizationId,
+      fieldIdentifier: "DEV-STOCK-001",
+      hiveType: "Dadant 10 cadres",
+      status: "STORED",
+      notes: "Ruche fictive au stock, sans colonie active.",
+    },
+  });
+
+  await prisma.hive.upsert({
+    where: {
+      organizationId_fieldIdentifier: {
+        organizationId,
+        fieldIdentifier: "DEV-REPAIR-001",
+      },
+    },
+    update: {
+      id: ids.hiveMaintenance,
+      apiaryId: null,
+      hiveType: "Ruchette",
+      status: "MAINTENANCE",
+      notes: "Ruche fictive en réparation, sans colonie active.",
+    },
+    create: {
+      id: ids.hiveMaintenance,
+      organizationId,
+      fieldIdentifier: "DEV-REPAIR-001",
+      hiveType: "Ruchette",
+      status: "MAINTENANCE",
+      notes: "Ruche fictive en réparation, sans colonie active.",
+    },
+  });
+
+  await prisma.hive.upsert({
+    where: {
+      organizationId_fieldIdentifier: {
+        organizationId,
         fieldIdentifier: "DEV-RU-002",
       },
     },
@@ -383,6 +449,32 @@ async function seedEquipment(organizationId) {
       trackingMode: "QUANTITY",
       defaultUnit: "cadre",
       status: "ACTIVE",
+    },
+  });
+
+  await prisma.equipmentType.upsert({
+    where: {
+      organizationId_name: {
+        organizationId,
+        name: "Extracteur manuel",
+      },
+    },
+    update: {
+      id: ids.typeExtractor,
+      category: "Récolte",
+      trackingMode: "INDIVIDUAL",
+      status: "ACTIVE",
+      notes: "Matériel fictif de récolte pour tester la maintenance.",
+    },
+    create: {
+      id: ids.typeExtractor,
+      organizationId,
+      code: "dev-extractor",
+      name: "Extracteur manuel",
+      category: "Récolte",
+      trackingMode: "INDIVIDUAL",
+      status: "ACTIVE",
+      notes: "Matériel fictif de récolte pour tester la maintenance.",
     },
   });
 
@@ -485,6 +577,32 @@ async function seedEquipment(organizationId) {
     where: {
       organizationId_fieldIdentifier: {
         organizationId,
+        fieldIdentifier: "DEV-EXT-001",
+      },
+    },
+    update: {
+      id: ids.itemExtractor,
+      equipmentTypeId: ids.typeExtractor,
+      apiaryId: null,
+      status: "MAINTENANCE",
+      locationLabel: "Atelier fictif",
+      notes: "Roulement à contrôler dans le scénario de développement.",
+    },
+    create: {
+      id: ids.itemExtractor,
+      organizationId,
+      equipmentTypeId: ids.typeExtractor,
+      fieldIdentifier: "DEV-EXT-001",
+      status: "MAINTENANCE",
+      locationLabel: "Atelier fictif",
+      notes: "Roulement à contrôler dans le scénario de développement.",
+    },
+  });
+
+  await prisma.equipmentItem.upsert({
+    where: {
+      organizationId_fieldIdentifier: {
+        organizationId,
         fieldIdentifier: "DEV-COM-001",
       },
     },
@@ -553,12 +671,263 @@ async function seedEquipment(organizationId) {
     },
     create: {
       id: ids.eventSuit,
-        organizationId,
+      organizationId,
       equipmentTypeId: ids.typeSuit,
       equipmentItemId: ids.itemSuit,
       eventType: "STATUS_CHANGED",
       targetLocation: "Vestiaire",
       notes: "Statut fictif à nettoyer.",
+    },
+  });
+
+  await prisma.equipmentEvent.upsert({
+    where: { id: ids.eventExtractor },
+    update: {
+      targetLocation: "Atelier fictif",
+      notes: "Maintenance fictive pour démonstration.",
+    },
+    create: {
+      id: ids.eventExtractor,
+      organizationId,
+      equipmentTypeId: ids.typeExtractor,
+      equipmentItemId: ids.itemExtractor,
+      eventType: "MAINTENANCE",
+      targetLocation: "Atelier fictif",
+      notes: "Maintenance fictive pour démonstration.",
+    },
+  });
+}
+
+async function seedFieldScenarios(organizationId, membershipId) {
+  await prisma.visit.upsert({
+    where: { id: ids.visitOpen },
+    update: {
+      apiaryId: ids.apiaryHome,
+      hiveId: ids.hiveOne,
+      colonyId: ids.colonyOne,
+      authorMembershipId: membershipId,
+      status: "IN_PROGRESS",
+      visitedAt: new Date("2026-05-14T08:30:00.000Z"),
+      objective: "Visite fictive de reprise de printemps",
+      weatherSummary: "Temps doux, vent faible, météo saisie manuellement.",
+      colonyStrength: 4,
+      notes: "Scénario local: contrôle rapide sans diagnostic automatique.",
+      followUpSummary: "Prévoir un passage court pour vérifier les réserves.",
+    },
+    create: {
+      id: ids.visitOpen,
+      organizationId,
+      apiaryId: ids.apiaryHome,
+      hiveId: ids.hiveOne,
+      colonyId: ids.colonyOne,
+      authorMembershipId: membershipId,
+      status: "IN_PROGRESS",
+      visitedAt: new Date("2026-05-14T08:30:00.000Z"),
+      objective: "Visite fictive de reprise de printemps",
+      weatherSummary: "Temps doux, vent faible, météo saisie manuellement.",
+      colonyStrength: 4,
+      notes: "Scénario local: contrôle rapide sans diagnostic automatique.",
+      followUpSummary: "Prévoir un passage court pour vérifier les réserves.",
+    },
+  });
+
+  await prisma.visit.upsert({
+    where: { id: ids.visitPlanned },
+    update: {
+      apiaryId: ids.apiaryHill,
+      hiveId: ids.hiveTwo,
+      colonyId: ids.colonyTwo,
+      authorMembershipId: membershipId,
+      status: "PLANNED",
+      visitedAt: new Date("2026-05-18T09:00:00.000Z"),
+      objective: "Visite fictive de contrôle d'une colonie faible",
+      weatherSummary: "À confirmer sur le terrain, sans météo connectée.",
+      colonyStrength: 2,
+      notes: "Scénario local: visite prévue pour tester les statuts.",
+      followUpSummary: "Comparer la force estimée avec la visite précédente.",
+    },
+    create: {
+      id: ids.visitPlanned,
+      organizationId,
+      apiaryId: ids.apiaryHill,
+      hiveId: ids.hiveTwo,
+      colonyId: ids.colonyTwo,
+      authorMembershipId: membershipId,
+      status: "PLANNED",
+      visitedAt: new Date("2026-05-18T09:00:00.000Z"),
+      objective: "Visite fictive de contrôle d'une colonie faible",
+      weatherSummary: "À confirmer sur le terrain, sans météo connectée.",
+      colonyStrength: 2,
+      notes: "Scénario local: visite prévue pour tester les statuts.",
+      followUpSummary: "Comparer la force estimée avec la visite précédente.",
+    },
+  });
+
+  await prisma.visitObservation.upsert({
+    where: { id: ids.visitObservationColony },
+    update: {
+      visitId: ids.visitOpen,
+      category: "COLONY",
+      label: "Activité régulière",
+      value: "Entrées et sorties visibles",
+      notes: "Observation fictive courte pour le parcours terrain.",
+    },
+    create: {
+      id: ids.visitObservationColony,
+      organizationId,
+      visitId: ids.visitOpen,
+      category: "COLONY",
+      label: "Activité régulière",
+      value: "Entrées et sorties visibles",
+      notes: "Observation fictive courte pour le parcours terrain.",
+    },
+  });
+
+  await prisma.visitObservation.upsert({
+    where: { id: ids.visitObservationFollowUp },
+    update: {
+      visitId: ids.visitOpen,
+      category: "FOLLOW_UP",
+      label: "Suite volontaire",
+      value: "Contrôle des réserves",
+      notes: "Aucune tâche automatique n'est créée par cette observation.",
+    },
+    create: {
+      id: ids.visitObservationFollowUp,
+      organizationId,
+      visitId: ids.visitOpen,
+      category: "FOLLOW_UP",
+      label: "Suite volontaire",
+      value: "Contrôle des réserves",
+      notes: "Aucune tâche automatique n'est créée par cette observation.",
+    },
+  });
+
+  await prisma.task.upsert({
+    where: { id: ids.taskUrgent },
+    update: {
+      apiaryId: ids.apiaryHill,
+      hiveId: ids.hiveTwo,
+      colonyId: ids.colonyTwo,
+      createdByMembershipId: membershipId,
+      assignedToMembershipId: membershipId,
+      title: "Vérifier la colonie faible",
+      description: "Tâche fictive urgente pour tester les priorités terrain.",
+      status: "TODO",
+      priority: "URGENT",
+      dueAt: new Date("2026-05-19T12:00:00.000Z"),
+    },
+    create: {
+      id: ids.taskUrgent,
+      organizationId,
+      apiaryId: ids.apiaryHill,
+      hiveId: ids.hiveTwo,
+      colonyId: ids.colonyTwo,
+      createdByMembershipId: membershipId,
+      assignedToMembershipId: membershipId,
+      title: "Vérifier la colonie faible",
+      description: "Tâche fictive urgente pour tester les priorités terrain.",
+      status: "TODO",
+      priority: "URGENT",
+      dueAt: new Date("2026-05-19T12:00:00.000Z"),
+    },
+  });
+
+  await prisma.task.upsert({
+    where: { id: ids.taskVisitFollowUp },
+    update: {
+      apiaryId: ids.apiaryHome,
+      hiveId: ids.hiveOne,
+      colonyId: ids.colonyOne,
+      visitId: ids.visitOpen,
+      createdByMembershipId: membershipId,
+      assignedToMembershipId: membershipId,
+      title: "Contrôler les réserves",
+      description: "Suite fictive créée volontairement depuis une visite.",
+      status: "IN_PROGRESS",
+      priority: "NORMAL",
+      dueAt: new Date("2026-05-21T12:00:00.000Z"),
+    },
+    create: {
+      id: ids.taskVisitFollowUp,
+      organizationId,
+      apiaryId: ids.apiaryHome,
+      hiveId: ids.hiveOne,
+      colonyId: ids.colonyOne,
+      visitId: ids.visitOpen,
+      createdByMembershipId: membershipId,
+      assignedToMembershipId: membershipId,
+      title: "Contrôler les réserves",
+      description: "Suite fictive créée volontairement depuis une visite.",
+      status: "IN_PROGRESS",
+      priority: "NORMAL",
+      dueAt: new Date("2026-05-21T12:00:00.000Z"),
+    },
+  });
+
+  await prisma.task.upsert({
+    where: { id: ids.taskEquipment },
+    update: {
+      createdByMembershipId: membershipId,
+      assignedToMembershipId: membershipId,
+      title: "Nettoyer la combinaison de visite",
+      description: "Tâche fictive liée au matériel, sans achat ni fournisseur.",
+      status: "TODO",
+      priority: "LOW",
+      dueAt: new Date("2026-05-22T12:00:00.000Z"),
+    },
+    create: {
+      id: ids.taskEquipment,
+      organizationId,
+      createdByMembershipId: membershipId,
+      assignedToMembershipId: membershipId,
+      title: "Nettoyer la combinaison de visite",
+      description: "Tâche fictive liée au matériel, sans achat ni fournisseur.",
+      status: "TODO",
+      priority: "LOW",
+      dueAt: new Date("2026-05-22T12:00:00.000Z"),
+    },
+  });
+
+  await prisma.hiveMovement.upsert({
+    where: { id: ids.movementCoteaux },
+    update: {
+      sourceApiaryId: ids.apiaryHome,
+      destinationApiaryId: ids.apiaryHill,
+      authorMembershipId: membershipId,
+      departureDate: new Date("2026-05-20T06:00:00.000Z"),
+      arrivalDate: null,
+      status: "IN_PROGRESS",
+      reason: "HONEY_FLOW",
+      notes: "Mouvement fictif manuel, sans GPS actif.",
+    },
+    create: {
+      id: ids.movementCoteaux,
+      organizationId,
+      sourceApiaryId: ids.apiaryHome,
+      destinationApiaryId: ids.apiaryHill,
+      authorMembershipId: membershipId,
+      departureDate: new Date("2026-05-20T06:00:00.000Z"),
+      status: "IN_PROGRESS",
+      reason: "HONEY_FLOW",
+      notes: "Mouvement fictif manuel, sans GPS actif.",
+    },
+  });
+
+  await prisma.hiveMovementItem.upsert({
+    where: {
+      movementId_hiveId: {
+        movementId: ids.movementCoteaux,
+        hiveId: ids.hiveOne,
+      },
+    },
+    update: {
+      notes: "Ruche fictive ajoutée au mouvement de démonstration.",
+    },
+    create: {
+      movementId: ids.movementCoteaux,
+      hiveId: ids.hiveOne,
+      notes: "Ruche fictive ajoutée au mouvement de démonstration.",
     },
   });
 }
