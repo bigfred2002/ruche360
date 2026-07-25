@@ -49,6 +49,25 @@ const localQaChecks = [
   "Les listes vides guident vers la première action utile.",
 ] as const;
 
+const visualQaChecks = [
+  {
+    scope: "Mobile 390px",
+    checks: [
+      "Navigation basse visible.",
+      "Aucune carte ne force le scroll horizontal.",
+      "Action principale visible avant les détails.",
+    ],
+  },
+  {
+    scope: "Desktop 1280px",
+    checks: [
+      "Sidebar et contenu respirent sans étirer les lignes.",
+      "Les listes restent scannables au clavier et à la souris.",
+      "Les modules optionnels ne prennent pas le dessus.",
+    ],
+  },
+] as const;
+
 const manualQaScenarios = [
   {
     expected: "Le parcours propose d'abord de créer le contexte au lieu d'afficher une impasse.",
@@ -372,7 +391,7 @@ export function ClassicJourneyPreview({
                 <div className="mt-3 space-y-2">
                   {localQaCommands.map((command) => (
                     <code
-                      className="block rounded-xl bg-slate-950 px-3 py-2 text-xs font-bold text-cream-50"
+                      className="block break-words rounded-xl bg-slate-950 px-3 py-2 text-xs font-bold leading-5 text-cream-50"
                       key={command}
                     >
                       {command}
@@ -397,6 +416,43 @@ export function ClassicJourneyPreview({
               </div>
             </div>
           </section>
+
+          <details className="surface-panel rounded-3xl">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 focus-ring sm:px-6 [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="section-kicker">QA visuelle</span>
+                <span className="mt-1 block text-base font-black text-slate-950">
+                  Contrôles mobile et desktop
+                </span>
+              </span>
+              <span className="inline-flex min-h-11 items-center rounded-full border border-cream-300 bg-white px-4 text-sm font-black text-slate-700">
+                Ouvrir
+              </span>
+            </summary>
+            <div className="grid gap-3 border-t border-cream-300 px-5 py-5 sm:px-6 lg:grid-cols-2">
+              {visualQaChecks.map((group) => (
+                <article
+                  className="rounded-2xl border border-cream-300 bg-white p-4"
+                  key={group.scope}
+                >
+                  <h3 className="text-sm font-black text-slate-950">
+                    {group.scope}
+                  </h3>
+                  <ul className="mt-3 space-y-2">
+                    {group.checks.map((check) => (
+                      <li
+                        className="flex gap-2 text-sm font-bold leading-6 text-field-muted"
+                        key={check}
+                      >
+                        <span className="mt-2 size-1.5 shrink-0 rounded-full bg-amber-500" />
+                        <span>{check}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </details>
 
           <section className="surface-panel rounded-3xl p-5 sm:p-6">
             <div className="flex flex-wrap items-start justify-between gap-3">
