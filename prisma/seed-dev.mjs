@@ -27,6 +27,9 @@ const ids = {
   visitObservationColony: "dev-visit-observation-colony-001",
   visitObservationFollowUp: "dev-visit-observation-follow-up-001",
   visitPlanned: "dev-visit-planned-001",
+  healthObservationOpen: "dev-health-observation-open-001",
+  varroaRecordOpen: "dev-varroa-record-open-001",
+  hornetRecordHill: "dev-hornet-record-hill-001",
   taskUrgent: "dev-task-urgent-001",
   taskVisitFollowUp: "dev-task-follow-up-001",
   taskEquipment: "dev-task-equipment-001",
@@ -177,6 +180,7 @@ async function main() {
   await seedApiariesAndHives(organization.id);
   await seedEquipment(organization.id);
   await seedFieldScenarios(organization.id, membership.id);
+  await seedHealthScenarios(organization.id, membership.id);
 
   console.log(
     `Seed développement OK: ${modules.length} modules, ${permissions.length} permissions, organisation ${organization.id}.`,
@@ -928,6 +932,94 @@ async function seedFieldScenarios(organizationId, membershipId) {
       movementId: ids.movementCoteaux,
       hiveId: ids.hiveOne,
       notes: "Ruche fictive ajoutée au mouvement de démonstration.",
+    },
+  });
+}
+
+async function seedHealthScenarios(organizationId, membershipId) {
+  await prisma.healthObservation.upsert({
+    where: { id: ids.healthObservationOpen },
+    update: {
+      apiaryId: ids.apiaryHome,
+      hiveId: ids.hiveOne,
+      colonyId: ids.colonyOne,
+      visitId: ids.visitOpen,
+      authorMembershipId: membershipId,
+      category: "DISEASE_SIGN",
+      severity: "WATCH",
+      observedAt: new Date("2026-05-14T08:45:00.000Z"),
+      label: "A surveiller sans diagnostic",
+      notes: "Observation fictive de developpement, sans prescription automatique.",
+    },
+    create: {
+      id: ids.healthObservationOpen,
+      organizationId,
+      apiaryId: ids.apiaryHome,
+      hiveId: ids.hiveOne,
+      colonyId: ids.colonyOne,
+      visitId: ids.visitOpen,
+      authorMembershipId: membershipId,
+      category: "DISEASE_SIGN",
+      severity: "WATCH",
+      observedAt: new Date("2026-05-14T08:45:00.000Z"),
+      label: "A surveiller sans diagnostic",
+      notes: "Observation fictive de developpement, sans prescription automatique.",
+    },
+  });
+
+  await prisma.varroaRecord.upsert({
+    where: { id: ids.varroaRecordOpen },
+    update: {
+      apiaryId: ids.apiaryHome,
+      hiveId: ids.hiveOne,
+      colonyId: ids.colonyOne,
+      visitId: ids.visitOpen,
+      authorMembershipId: membershipId,
+      method: "STICKY_BOARD",
+      observedAt: new Date("2026-05-14T08:50:00.000Z"),
+      miteCount: 3,
+      sampleSize: null,
+      infestationRate: null,
+      notes: "Releve varroa fictif manuel, sans seuil ni action automatique.",
+    },
+    create: {
+      id: ids.varroaRecordOpen,
+      organizationId,
+      apiaryId: ids.apiaryHome,
+      hiveId: ids.hiveOne,
+      colonyId: ids.colonyOne,
+      visitId: ids.visitOpen,
+      authorMembershipId: membershipId,
+      method: "STICKY_BOARD",
+      observedAt: new Date("2026-05-14T08:50:00.000Z"),
+      miteCount: 3,
+      notes: "Releve varroa fictif manuel, sans seuil ni action automatique.",
+    },
+  });
+
+  await prisma.hornetRecord.upsert({
+    where: { id: ids.hornetRecordHill },
+    update: {
+      apiaryId: ids.apiaryHill,
+      visitId: ids.visitPlanned,
+      authorMembershipId: membershipId,
+      pressure: "LOW",
+      observedAt: new Date("2026-05-18T09:15:00.000Z"),
+      hornetCount: 2,
+      trapCount: 1,
+      notes: "Signalement frelon fictif de pression faible, sans alerte automatique.",
+    },
+    create: {
+      id: ids.hornetRecordHill,
+      organizationId,
+      apiaryId: ids.apiaryHill,
+      visitId: ids.visitPlanned,
+      authorMembershipId: membershipId,
+      pressure: "LOW",
+      observedAt: new Date("2026-05-18T09:15:00.000Z"),
+      hornetCount: 2,
+      trapCount: 1,
+      notes: "Signalement frelon fictif de pression faible, sans alerte automatique.",
     },
   });
 }
