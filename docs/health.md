@@ -90,6 +90,21 @@ Elles utilisent le contrat `ApplicationSession` et le scope actif de
 l'organisation. Aucune API publique, session navigateur, authentification reelle
 ou formulaire UI n'est ajoute dans ce lot.
 
+## Interface De Developpement
+
+`HEALTH-FORMS-SHELL-01` branche `/health`, `/health/varroa` et
+`/health/hornet` sur la lecture Prisma de developpement et ajoute trois
+formulaires serveur explicites:
+
+- observation sanitaire;
+- releve varroa manuel;
+- signalement frelon.
+
+Ces formulaires utilisent uniquement la session de developpement fictive. Ils ne
+constituent pas encore une interface utilisateur finale, car l'authentification
+reelle, les retours d'erreur fins, les droits par membre et les parcours de
+validation sanitaire restent a traiter.
+
 ## Limites
 
 Le module ne fait pas:
@@ -118,7 +133,7 @@ precise ou secret.
 ## Lots Futurs
 
 - `HEALTH-FORMS-SHELL-01`: brancher une interface de developpement en lecture et
-  saisie explicite.
+  saisie explicite. Termine.
 - `HEALTH-FIELD-LINKS-01`: afficher les signaux sanitaires utiles dans visites,
   ruches et cockpit sans surcharger.
 - `HEALTH-STATUS-UX-01`: harmoniser badges, gravites et etats sans dramatiser.

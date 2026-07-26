@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-26 - HEALTH-FORMS-SHELL-01
+
+- Branchement des routes `/health`, `/health/varroa` et `/health/hornet` sur la lecture Prisma de developpement.
+- Ajout d'une interface mobile-first de developpement pour saisir explicitement observations sanitaires, releves varroa et signalements frelon.
+- Les formulaires utilisent la session de developpement fictive et les permissions `health.write`.
+- Aucun diagnostic, prescription, creation automatique de tache, authentification reelle, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-26 - HEALTH-FOUNDATION-BUNDLE-01
 
 - Ajout du socle sanitaire executable minimal avec observations sanitaires, releves varroa manuels et signalements frelon.
