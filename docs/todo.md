@@ -344,6 +344,17 @@
 - [x] Exclure les dossiers générés, caches de dépendances, exports locaux et `runner.env`.
 - [x] Ne pas ajouter de secret, dépendance npm, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
 
+## SECURITY-CONTAINER-IMAGES-01
+
+- [x] Passer les images applicatives Node sur `node:22-alpine3.23`.
+- [x] Passer PostgreSQL local sur `postgres:16-alpine3.23`.
+- [x] Mettre a jour `npm` embarque dans l'image Node vers `11.18.0`.
+- [x] Remplacer `brace-expansion` embarque dans npm par `5.0.8`.
+- [x] Reconstruire l'image Gitleaks locale sur Alpine 3.23.
+- [x] Compiler Gitleaks avec `golang.org/x/crypto@v0.52.0`.
+- [x] Conserver les scans via Docker sans installation locale.
+- [x] Ne pas ajouter de secret, dépendance npm, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
+
 ## SECURITY-RUNNER-01
 
 - [x] Confirmer que le runner local reste déclenché manuellement par `workflow_dispatch`.

@@ -1,5 +1,18 @@
 # Journal
 
+## 2026-07-25 - SECURITY-CONTAINER-IMAGES-01
+
+- Passage des images Node de `node:22-alpine` vers `node:22-alpine3.23`.
+- Passage de PostgreSQL local de `postgres:16-alpine` vers `postgres:16-alpine3.23`.
+- Mise a jour de `npm` dans l'image Node vers `11.18.0` pour corriger les dependances transitives embarquees.
+- Remplacement cible de `brace-expansion` embarque dans npm par `5.0.8`, car Docker Scout le signale encore dans l'image Node.
+- Ajout d'un `Dockerfile.gitleaks` pour reconstruire Gitleaks `v8.30.1` sur Alpine 3.23 et eviter l'image GHCR signalee par Docker Scout.
+- Compilation de Gitleaks avec `golang.org/x/crypto@v0.52.0` pour corriger les alertes Go signalees par Docker Scout.
+- `make secrets-scan` construit maintenant l'image locale Gitleaks avant le scan.
+- Docker Scout ne detecte plus de vulnerabilite haute ou critique sur `ruche360-app:latest` ni sur `rucher360-gitleaks:v8.30.1-alpine3.23`.
+- L'image officielle `postgres:16-alpine3.23` reste signalee par Docker Scout sur `golang.org/stdlib` dans sa provenance amont; Docker ne propose pas de recommandation de remplacement.
+- Aucun secret, dependance npm, schema Prisma, migration, auth reelle, API publique, IA active, IoT actif ou changement fonctionnel applicatif n'a ete ajoute.
+
 ## 2026-07-25 - FIELD-SEED-SCENARIOS-01
 
 - Enrichissement du seed de developpement avec des scenarios fictifs pour ruches actives, au stock et en maintenance.

@@ -1,9 +1,11 @@
 COMPOSE := docker compose
 APP := app
 RUNNER_COMPOSE := docker compose -f docker-compose.runner.yml
-GITLEAKS_IMAGE := ghcr.io/gitleaks/gitleaks@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f
+GITLEAKS_VERSION := v8.30.1
+GITLEAKS_GO_CRYPTO_VERSION := v0.52.0
+GITLEAKS_IMAGE := rucher360-gitleaks:$(GITLEAKS_VERSION)-alpine3.23
 
-.PHONY: help build up down logs shell pnpm lint build-app audit-prod seed-dev db psql clean install-security-hooks security-scan secrets-scan runner-config runner-build runner-up runner-down runner-logs
+.PHONY: help build up down logs shell pnpm lint build-app audit-prod seed-dev db psql clean install-security-hooks security-scan gitleaks-image secrets-scan runner-config runner-build runner-up runner-down runner-logs
 
 help:
 	@echo "Rucher360 development commands"
@@ -22,6 +24,7 @@ help:
 	@echo "  make clean      Remove containers and volumes"
 	@echo "  make install-security-hooks  Enable local pre-push confidentiality checks"
 	@echo "  make security-scan           Run the pre-push confidentiality check"
+	@echo "  make gitleaks-image          Build the local Alpine 3.23 Gitleaks image"
 	@echo "  make secrets-scan            Run Gitleaks secret scan through Docker"
 	@echo "  make runner-config           Validate local GitHub runner Compose config"
 	@echo "  make runner-build            Build the local GitHub runner image"
@@ -77,7 +80,10 @@ install-security-hooks:
 security-scan:
 	.githooks/pre-push
 
-secrets-scan:
+gitleaks-image:
+	docker build --pull --build-arg GITLEAKS_VERSION=$(GITLEAKS_VERSION) --build-arg GO_CRYPTO_VERSION=$(GITLEAKS_GO_CRYPTO_VERSION) -f Dockerfile.gitleaks -t $(GITLEAKS_IMAGE) .
+
+secrets-scan: gitleaks-image
 	docker run --rm -v "$(CURDIR):/repo" $(GITLEAKS_IMAGE) dir /repo --config=/repo/.gitleaks.toml --redact --verbose
 
 runner-config:

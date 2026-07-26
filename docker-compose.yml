@@ -18,7 +18,7 @@ services:
     command: sh -lc "if [ -f package.json ]; then pnpm install && pnpm dev --hostname 0.0.0.0; else echo 'No Next.js app yet. Container is ready for future pnpm commands.' && tail -f /dev/null; fi"
 
   db:
-    image: postgres:16-alpine
+    image: postgres:16-alpine3.23
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-rucher360}
       POSTGRES_USER: ${POSTGRES_USER:-rucher360}
