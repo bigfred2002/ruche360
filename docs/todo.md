@@ -122,7 +122,7 @@
 - [x] `HEALTH-00`: cadrer observations sanitaires, varroa et frelon comme faits terrain manuels.
 - [x] `HEALTH-01`: ajouter les modeles Prisma minimaux `HealthObservation`, `VarroaRecord` et `HornetRecord`.
 - [x] `HEALTH-ACTIONS-01`: ajouter les lectures et creations serveur explicites du sanitaire, sans API publique.
-- [ ] `HEALTH-FORMS-SHELL-01`: brancher une interface de developpement mobile-first pour saisir observations, varroa et frelon.
+- [x] `HEALTH-FORMS-SHELL-01`: brancher une interface de developpement mobile-first pour saisir observations, varroa et frelon.
 - [ ] `HEALTH-FIELD-LINKS-01`: afficher les signaux sanitaires utiles depuis visites, ruches et cockpit sans surcharger.
 - [ ] `HEALTH-STATUS-UX-01`: harmoniser les badges de gravite et statuts sanitaires sans dramatisation.
 - [ ] `VARROA-FOLLOWUP-01`: enrichir les releves varroa manuels, sans seuil automatique ni comptage IA.

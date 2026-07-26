@@ -1,12 +1,39 @@
-import { ShellRoutePage } from "@/components/ShellRoutePage";
+import { HealthFormsPreview } from "@/components/HealthFormsPreview";
+import { createDevelopmentApplicationSession } from "@/features/auth";
+import {
+  listApiariesForSessionAction,
+  listHivesForSessionAction,
+} from "@/features/apiary/actions";
+import {
+  listHealthObservationsForSessionAction,
+  listHornetRecordsForSessionAction,
+  listVarroaRecordsForSessionAction,
+} from "@/features/health/actions";
+import { listVisitsForSessionAction } from "@/features/visits/actions";
 
-export default function HornetPage() {
+export const dynamic = "force-dynamic";
+
+export default async function HornetPage() {
+  const session = createDevelopmentApplicationSession();
+  const [apiaries, hives, visits, observations, varroaRecords, hornetRecords] =
+    await Promise.all([
+      listApiariesForSessionAction(session).catch(() => null),
+      listHivesForSessionAction(session).catch(() => null),
+      listVisitsForSessionAction(session).catch(() => null),
+      listHealthObservationsForSessionAction(session).catch(() => null),
+      listVarroaRecordsForSessionAction(session).catch(() => null),
+      listHornetRecordsForSessionAction(session).catch(() => null),
+    ]);
+
   return (
-    <ShellRoutePage
-      currentPath="/health/hornet"
-      eyebrow="Sous-parcours sanitaire"
-      highlights={["Signalement", "Localisation", "Suivi visuel"]}
-      title="Frelon"
+    <HealthFormsPreview
+      apiaries={apiaries}
+      focus="hornet"
+      hives={hives}
+      hornetRecords={hornetRecords}
+      observations={observations}
+      varroaRecords={varroaRecords}
+      visits={visits}
     />
   );
 }
