@@ -51,6 +51,7 @@ Le cadrage detaille est documente dans [Modules Dynamiques](dynamic-modules.md).
 | --- | --- | --- |
 | Transhumance | Modele executable, optionnel | Mouvements de ruches entre sites, sans route active, GPS ou logistique lourde. |
 | Partage fin par rucher | Cadre, optionnel | Le partage initial passe deja par l'organisation; le module `apiary_access` ne sera utile que pour limiter certains sites a certains membres. |
+| Notes audio de visite | Cadre, optionnel | Extension future du module visites pour faciliter la saisie terrain, sans transcription ni IA active par defaut. |
 
 ## Modules connectés prévus mais désactivés
 
@@ -103,6 +104,13 @@ Le cadrage detaille est documente dans [Module Visites](visits.md).
 
 `VISITS-00` precise le modele cible, les statuts, les permissions et les limites
 du module, toujours sans schema Prisma ni formulaire actif.
+
+`VISIT-AUDIO-00` cadre une future capacite `visit_audio_notes` comme extension
+optionnelle des visites. Elle permettra plus tard une note audio local-first et
+validee humainement, sans diagnostic, prescription, tache automatique,
+transcription active ou IA active dans ce cadrage.
+
+Le cadrage detaille est documente dans [Notes Audio De Visite](visit-audio-notes.md).
 
 ## Module taches
 
