@@ -109,6 +109,30 @@ d'entree: le rucher et la colonie active sont derives. La selection explicite
 d'une colonie est reservee a de futurs cas avances (division, remplacement,
 reunion ou historique).
 
+## Notes Audio Futures
+
+`VISIT-AUDIO-00` cadre une future capacite `visit_audio_notes` pour faciliter la
+prise de note pendant une visite.
+
+Cette capacite doit rester:
+
+- optionnelle;
+- rattachee aux visites;
+- activable separement par organisation et adhesion;
+- local-first par defaut;
+- soumise a consentement explicite;
+- conservee sans suppression automatique si le module est desactive.
+
+La saisie apres coup est un cas important: l'apiculteur doit pouvoir relire
+l'audio, corriger une transcription future et transformer volontairement un
+passage en observation ou suite a prevoir.
+
+La transcription et l'aide IA sont separees du stockage audio. Elles restent
+des lots ulterieurs, desactivees par defaut et ne doivent jamais creer
+automatiquement diagnostic, prescription, tache ou observation definitive.
+
+Le cadrage detaille est documente dans [Notes Audio De Visite](visit-audio-notes.md).
+
 ## Permissions Cibles
 
 Permissions deja prevues:

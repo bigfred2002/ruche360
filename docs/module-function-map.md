@@ -60,6 +60,7 @@ L'administration doit rester une surface transverse d'organisation, pas un modul
 | Module | Statut | Responsabilite | Pourquoi differer |
 | --- | --- | --- | --- |
 | Partage fin par rucher | A cadrer | Acces a certains ruchers uniquement | Le partage organisationnel suffit d'abord. |
+| Notes audio de visite | A cadrer | Capturer une aide vocale pendant ou apres une visite | Doit rester une extension optionnelle de `visits`, sans transcription ni IA active par defaut. |
 
 ## Modules apicoles avec socle executable
 

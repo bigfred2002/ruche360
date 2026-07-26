@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-26 - VISIT-AUDIO-00
+
+- Cadrage d'une future capacite `visit_audio_notes` pour enregistrer des notes audio pendant une visite.
+- Decision local-first avec consentement explicite: l'audio sert d'aide terrain et de brouillon, pas de source automatique de verite.
+- Separation claire entre audio brut, transcription a la demande et aide IA future.
+- La saisie apres coup est retenue comme cas important: ecouter, corriger, puis transformer volontairement en observation ou suite.
+- Aucun schema Prisma, migration, route, composant, capture micro, stockage de fichier, transcription, API externe, IA active, diagnostic, prescription ou tache automatique n'a ete ajoute.
+
 ## 2026-07-25 - SECURITY-CONTAINER-IMAGES-01
 
 - Passage des images Node de `node:22-alpine` vers `node:22-alpine3.23`.

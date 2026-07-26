@@ -85,6 +85,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `SECURITY-CI-01` ajoute un audit des dépendances de production dans la CI via Docker Compose et expose la même validation avec `make audit-prod`.
 - `SECURITY-SECRETS-01` ajoute un scan Gitleaks containerisé et pinne l'image par digest pour renforcer la détection de secrets sans installation locale.
 - `SECURITY-CONTAINER-IMAGES-01` aligne les images Node, PostgreSQL et Gitleaks sur Alpine 3.23 afin de réduire les alertes Docker Scout sans modifier le comportement applicatif.
+- `VISIT-AUDIO-00` cadre les notes audio de visite comme capacite optionnelle `visit_audio_notes`, local-first, rattachee aux visites et sans transcription, IA active, diagnostic, prescription ou tache automatique.
 - `TODO-CLEANUP-01` reconcilie la todo avec les lots deja termines et remet en avant les prochains lots reels sans changer le code.
 - `SECURITY-RUNNER-01` confirme que le runner GitHub local Docker reste manuel, documente les risques du socket Docker et l'aligne avec les contrôles sécurité actuels.
 - `APIARY-ACCESS-00` cadre le partage fin par rucher comme module optionnel `apiary_access`, sans remplacer le partage organisationnel par defaut.
@@ -167,6 +168,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - Branchement futur des formulaires transhumance sur une session authentifiee.
 - Revue periodique des diagrammes Archify pour eviter la derive avec le code et les modules actifs.
 - Futur branchement lecture ou formulaires visites apres validation du modele `VISITS-01`.
+- Choix futur du stockage audio, des durees de conservation et du moteur de transcription si `visit_audio_notes` est active.
 
 ## Commandes utiles actuelles
 

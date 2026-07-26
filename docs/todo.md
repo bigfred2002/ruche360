@@ -118,6 +118,13 @@
 
 ### Backlog terrain
 
+- [x] `VISIT-AUDIO-00`: cadrer les notes audio de visite comme extension optionnelle, local-first et sans IA active.
+- [ ] `VISIT-AUDIO-01`: ajouter le modele minimal de piece audio liee a une visite, sans transcription ni capture navigateur.
+- [ ] `VISIT-AUDIO-SHELL-01`: preparer une interface statique mobile-first de capture et relecture audio, sans acces micro reel.
+- [ ] `VISIT-AUDIO-CAPTURE-01`: activer la capture audio navigateur et le stockage controle, sans IA ni transcription.
+- [ ] `VISIT-TRANSCRIPTION-00`: cadrer la transcription a la demande, les couts, langues, confidentialite et conservation.
+- [ ] `VISIT-TRANSCRIPTION-01`: ajouter une transcription en brouillon a valider, sans observation definitive automatique.
+- [ ] `VISIT-AI-ASSIST-00`: cadrer l'aide IA de structuration depuis transcription validee, sans diagnostic ni automatisme.
 - [x] `VISITS-UX-FLOW-01`: rendre la page visites plus orientee sortie terrain, sans modifier les actions ni les donnees.
 - [x] `VISITS-HIVE-FIRST-01`: simplifier la creation de visite autour d'une ruche active et deriver le rucher et la colonie active.
 - [x] `TASKS-UX-FLOW-01`: rendre la page taches plus orientee triage terrain, sans notification ni calendrier.
