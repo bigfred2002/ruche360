@@ -105,6 +105,21 @@ constituent pas encore une interface utilisateur finale, car l'authentification
 reelle, les retours d'erreur fins, les droits par membre et les parcours de
 validation sanitaire restent a traiter.
 
+## Liens Terrain
+
+`HEALTH-FIELD-LINKS-01` fait remonter une synthese sanitaire courte dans les
+surfaces terrain:
+
+- cockpit;
+- liste des visites;
+- fiche rucher;
+- fiche ruche.
+
+Ces liens affichent uniquement les observations, releves varroa et signalements
+frelon deja saisis. Le filtrage par rucher, ruche ou visite sert a reduire le
+bruit visuel. Il ne calcule pas de risque, ne declenche pas d'alerte, ne cree
+pas de tache et ne remplace pas une decision humaine.
+
 ## Limites
 
 Le module ne fait pas:
@@ -135,7 +150,7 @@ precise ou secret.
 - `HEALTH-FORMS-SHELL-01`: brancher une interface de developpement en lecture et
   saisie explicite. Termine.
 - `HEALTH-FIELD-LINKS-01`: afficher les signaux sanitaires utiles dans visites,
-  ruches et cockpit sans surcharger.
+  ruches et cockpit sans surcharger. Termine.
 - `HEALTH-STATUS-UX-01`: harmoniser badges, gravites et etats sans dramatiser.
 - `VARROA-FOLLOWUP-01`: enrichir les releves varroa manuels, sans comptage IA.
 - `HORNET-FOLLOWUP-01`: enrichir le suivi frelon, sans alerte automatique.

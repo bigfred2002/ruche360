@@ -1,18 +1,32 @@
 import Link from "next/link";
 
 import type { ApiaryDetail } from "@/features/apiary";
+import type {
+  HealthObservationSummary,
+  HornetRecordSummary,
+  VarroaRecordSummary,
+} from "@/features/health";
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { DetailCoherencePanel } from "./DetailCoherencePanel";
+import { HealthFieldSignals } from "./HealthFieldSignals";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 
 type ApiaryDetailPreviewProps = {
   apiary: ApiaryDetail;
+  hornetRecords?: HornetRecordSummary[] | null;
+  observations?: HealthObservationSummary[] | null;
+  varroaRecords?: VarroaRecordSummary[] | null;
 };
 
-export function ApiaryDetailPreview({ apiary }: ApiaryDetailPreviewProps) {
+export function ApiaryDetailPreview({
+  apiary,
+  hornetRecords = null,
+  observations = null,
+  varroaRecords = null,
+}: ApiaryDetailPreviewProps) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/apiaries");
   const activeHives = apiary.hives.filter((hive) => hive.status === "ACTIVE");
@@ -89,6 +103,14 @@ export function ApiaryDetailPreview({ apiary }: ApiaryDetailPreviewProps) {
             <MetricCard label="Au stock" value={storedHives.length} />
             <MetricCard label="Maintenance" value={maintenanceHives.length} />
           </section>
+
+          <HealthFieldSignals
+            apiaryId={apiary.id}
+            hornetRecords={hornetRecords}
+            observations={observations}
+            title="Signaux du rucher"
+            varroaRecords={varroaRecords}
+          />
 
           <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <article className="surface-panel rounded-3xl p-5 sm:p-6">

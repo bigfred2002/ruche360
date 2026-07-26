@@ -8,6 +8,7 @@ import { DashboardCard } from "@/components/DashboardCard";
 import { DecorativeImage } from "@/components/DecorativeImage";
 import { FieldEmptyStart } from "@/components/FieldEmptyStart";
 import { FirstRunGuide } from "@/components/FirstRunGuide";
+import { HealthFieldSignals } from "@/components/HealthFieldSignals";
 import { ResponsiveWorkflowsPreview } from "@/components/ResponsiveWorkflowsPreview";
 import { StatusBadge } from "@/components/StatusBadge";
 import { visualAssets } from "@/components/visualAssets";
@@ -21,6 +22,11 @@ import { listEquipmentInventoryForSessionAction } from "@/features/equipment/act
 import { shouldCleanEquipmentItem } from "@/features/equipment/status";
 import { listHiveMovementsForSessionAction } from "@/features/hive-movements/actions";
 import type { HiveMovementStatus } from "@/features/hive-movements/types";
+import {
+  listHealthObservationsForSessionAction,
+  listHornetRecordsForSessionAction,
+  listVarroaRecordsForSessionAction,
+} from "@/features/health/actions";
 
 export const dynamic = "force-dynamic";
 
@@ -143,13 +149,26 @@ function labelForMovementStatus(status: HiveMovementStatus) {
 export default async function Home() {
   const session = createDevelopmentApplicationSession();
 
-  const [apiaries, hives, visits, tasks, equipment, movements] = await Promise.all([
+  const [
+    apiaries,
+    hives,
+    visits,
+    tasks,
+    equipment,
+    movements,
+    healthObservations,
+    varroaRecords,
+    hornetRecords,
+  ] = await Promise.all([
     listApiariesForSessionAction(session),
     listHivesForSessionAction(session),
     listVisitsForSessionAction(session),
     listTasksForSessionAction(session),
     listEquipmentInventoryForSessionAction(session),
     listHiveMovementsForSessionAction(session),
+    listHealthObservationsForSessionAction(session).catch(() => []),
+    listVarroaRecordsForSessionAction(session).catch(() => []),
+    listHornetRecordsForSessionAction(session).catch(() => []),
   ]);
 
   const activeApiaries = apiaries.filter((apiary) => apiary.status === "ACTIVE");
@@ -245,6 +264,13 @@ export default async function Home() {
       label: "Déplacement",
       title: "Transhumance",
     },
+    {
+      detail: "Relire les faits sanitaires manuels.",
+      href: "/health",
+      icon: "Sa",
+      label: "Surveillance",
+      title: "Sanitaire",
+    },
   ];
 
   return (
@@ -331,7 +357,7 @@ export default async function Home() {
               title="Ouvrir les détails terrain"
             >
               <div className="space-y-5">
-                <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+                <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-6">
                   <DashboardCard
                     accent="forest"
                     detail={`${activeApiaries.length} site(s) actif(s) suivis dans l'organisation de developpement.`}
@@ -389,7 +415,28 @@ export default async function Home() {
                     statusTone={activeMovements.length > 0 ? "amber" : "muted"}
                     title="Transhumance"
                   />
+                  <DashboardCard
+                    accent={healthObservations.length > 0 ? "amber" : "sage"}
+                    detail={
+                      healthObservations[0]
+                        ? `${healthObservations[0].label} · sans diagnostic automatique.`
+                        : "Aucun signal sanitaire manuel saisi."
+                    }
+                    icon="Sa"
+                    metric={String(healthObservations.length)}
+                    status="Sanitaire"
+                    statusTone={healthObservations.length > 0 ? "amber" : "muted"}
+                    title="Signaux"
+                  />
                 </section>
+
+                <HealthFieldSignals
+                  compact
+                  hornetRecords={hornetRecords}
+                  observations={healthObservations}
+                  title="Synthèse sanitaire"
+                  varroaRecords={varroaRecords}
+                />
 
                 <section className="rounded-3xl border border-cream-300 bg-cream-50 p-4 sm:p-5">
                   <div className="flex flex-wrap items-end justify-between gap-3">
@@ -403,7 +450,7 @@ export default async function Home() {
                     </div>
                     <StatusBadge label="Liens terrain" tone="preview" />
                   </div>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-6">
                     {quickShortcuts.map((shortcut) => (
                       <QuickShortcutCard
                         key={shortcut.href}

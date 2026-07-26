@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-07-26 - HEALTH-FIELD-LINKS-01
+
+- Ajout d'une synthese sanitaire reutilisable pour afficher observations, releves varroa et signalements frelon dans les surfaces terrain.
+- Branchement dans le cockpit, la liste des visites, les fiches rucher et les fiches ruche.
+- Les signaux sont filtres par contexte quand il existe: rucher, ruche ou visite.
+- Aucun scoring, alerte automatique, diagnostic, prescription, creation automatique de tache, API publique, IA active ou IoT actif n'a ete ajoute.
+
 ## 2026-07-26 - HEALTH-FORMS-SHELL-01
 
 - Branchement des routes `/health`, `/health/varroa` et `/health/hornet` sur la lecture Prisma de developpement.

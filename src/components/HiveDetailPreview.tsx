@@ -1,18 +1,32 @@
 import Link from "next/link";
 
 import type { HiveDetail } from "@/features/apiary";
+import type {
+  HealthObservationSummary,
+  HornetRecordSummary,
+  VarroaRecordSummary,
+} from "@/features/health";
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { DetailCoherencePanel } from "./DetailCoherencePanel";
+import { HealthFieldSignals } from "./HealthFieldSignals";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 
 type HiveDetailPreviewProps = {
   hive: HiveDetail;
+  hornetRecords?: HornetRecordSummary[] | null;
+  observations?: HealthObservationSummary[] | null;
+  varroaRecords?: VarroaRecordSummary[] | null;
 };
 
-export function HiveDetailPreview({ hive }: HiveDetailPreviewProps) {
+export function HiveDetailPreview({
+  hive,
+  hornetRecords = null,
+  observations = null,
+  varroaRecords = null,
+}: HiveDetailPreviewProps) {
   const { desktopNavigationItems, mobileNavigationItems } =
     createAppNavigation("/apiaries");
   const activeColonies = hive.colonies.filter(
@@ -81,6 +95,14 @@ export function HiveDetailPreview({ hive }: HiveDetailPreviewProps) {
               label="Rucher"
             />
           </section>
+
+          <HealthFieldSignals
+            hiveId={hive.id}
+            hornetRecords={hornetRecords}
+            observations={observations}
+            title="Signaux de cette ruche"
+            varroaRecords={varroaRecords}
+          />
 
           <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <article className="surface-panel rounded-3xl p-5 sm:p-6">
