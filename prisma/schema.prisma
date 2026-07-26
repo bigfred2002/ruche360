@@ -141,6 +141,39 @@ enum TaskPriority {
   URGENT
 }
 
+enum HealthObservationCategory {
+  GENERAL
+  DISEASE_SIGN
+  QUEEN
+  BROOD
+  FOOD
+  BEHAVIOR
+  MATERIAL
+  OTHER
+}
+
+enum HealthSeverity {
+  INFO
+  WATCH
+  CONCERN
+  URGENT
+}
+
+enum VarroaCheckMethod {
+  VISUAL
+  STICKY_BOARD
+  SUGAR_ROLL
+  ALCOHOL_WASH
+  OTHER
+}
+
+enum HornetPressureLevel {
+  NONE
+  LOW
+  MEDIUM
+  HIGH
+}
+
 enum ActivityLogImportance {
   INFO
   IMPORTANT
@@ -167,6 +200,9 @@ model Organization {
   visits              Visit[]
   visitObservations   VisitObservation[]
   tasks               Task[]
+  healthObservations  HealthObservation[]
+  varroaRecords       VarroaRecord[]
+  hornetRecords       HornetRecord[]
   equipmentTypes      EquipmentType[]
   equipmentStocks     EquipmentStock[]
   equipmentItems      EquipmentItem[]
@@ -210,6 +246,9 @@ model Membership {
   modulePreferences MembershipModulePreference[]
   authoredHiveMovements HiveMovement[]
   authoredVisits       Visit[]
+  authoredHealthObservations HealthObservation[]
+  authoredVarroaRecords      VarroaRecord[]
+  authoredHornetRecords      HornetRecord[]
   createdTasks         Task[]             @relation("TaskCreatedByMembership")
   assignedTasks        Task[]             @relation("TaskAssignedToMembership")
   activityLogEntries ActivityLogEntry[]
@@ -342,6 +381,9 @@ model Apiary {
   hives        Hive[]
   visits       Visit[]
   tasks        Task[]
+  healthObservations HealthObservation[]
+  varroaRecords      VarroaRecord[]
+  hornetRecords      HornetRecord[]
   equipmentStocks EquipmentStock[]
   equipmentItems  EquipmentItem[]
   equipmentEvents EquipmentEvent[]
@@ -371,6 +413,8 @@ model Hive {
   movementItems HiveMovementItem[]
   visits       Visit[]
   tasks        Task[]
+  healthObservations HealthObservation[]
+  varroaRecords      VarroaRecord[]
 
   @@unique([organizationId, fieldIdentifier])
   @@index([apiaryId])
@@ -395,6 +439,8 @@ model Colony {
   hive         Hive?        @relation(fields: [hiveId], references: [id], onDelete: SetNull)
   visits       Visit[]
   tasks        Task[]
+  healthObservations HealthObservation[]
+  varroaRecords      VarroaRecord[]
 
   @@index([organizationId])
   @@index([hiveId])
@@ -566,6 +612,9 @@ model Visit {
   authorMembership Membership?        @relation(fields: [authorMembershipId], references: [id], onDelete: SetNull)
   observations     VisitObservation[]
   tasks            Task[]
+  healthObservations HealthObservation[]
+  varroaRecords      VarroaRecord[]
+  hornetRecords      HornetRecord[]
 
   @@index([organizationId])
   @@index([apiaryId])
@@ -631,6 +680,104 @@ model Task {
   @@index([status])
   @@index([priority])
   @@index([dueAt])
+}
+
+model HealthObservation {
+  id                 String                    @id @default(cuid())
+  organizationId     String
+  apiaryId           String?
+  hiveId             String?
+  colonyId           String?
+  visitId            String?
+  authorMembershipId String?
+  category           HealthObservationCategory @default(GENERAL)
+  severity           HealthSeverity            @default(INFO)
+  observedAt         DateTime                  @default(now())
+  label              String
+  notes              String?
+  createdAt          DateTime                  @default(now())
+  updatedAt          DateTime                  @updatedAt
+  archivedAt         DateTime?
+
+  organization     Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  apiary           Apiary?      @relation(fields: [apiaryId], references: [id], onDelete: SetNull)
+  hive             Hive?        @relation(fields: [hiveId], references: [id], onDelete: SetNull)
+  colony           Colony?      @relation(fields: [colonyId], references: [id], onDelete: SetNull)
+  visit            Visit?       @relation(fields: [visitId], references: [id], onDelete: SetNull)
+  authorMembership Membership?  @relation(fields: [authorMembershipId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([apiaryId])
+  @@index([hiveId])
+  @@index([colonyId])
+  @@index([visitId])
+  @@index([authorMembershipId])
+  @@index([category])
+  @@index([severity])
+  @@index([observedAt])
+}
+
+model VarroaRecord {
+  id                 String            @id @default(cuid())
+  organizationId     String
+  apiaryId           String?
+  hiveId             String?
+  colonyId           String?
+  visitId            String?
+  authorMembershipId String?
+  method             VarroaCheckMethod @default(VISUAL)
+  observedAt         DateTime          @default(now())
+  miteCount          Int?
+  sampleSize         Int?
+  infestationRate    Decimal?          @db.Decimal(6, 3)
+  notes              String?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  archivedAt         DateTime?
+
+  organization     Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  apiary           Apiary?      @relation(fields: [apiaryId], references: [id], onDelete: SetNull)
+  hive             Hive?        @relation(fields: [hiveId], references: [id], onDelete: SetNull)
+  colony           Colony?      @relation(fields: [colonyId], references: [id], onDelete: SetNull)
+  visit            Visit?       @relation(fields: [visitId], references: [id], onDelete: SetNull)
+  authorMembership Membership?  @relation(fields: [authorMembershipId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([apiaryId])
+  @@index([hiveId])
+  @@index([colonyId])
+  @@index([visitId])
+  @@index([authorMembershipId])
+  @@index([method])
+  @@index([observedAt])
+}
+
+model HornetRecord {
+  id                 String              @id @default(cuid())
+  organizationId     String
+  apiaryId           String?
+  visitId            String?
+  authorMembershipId String?
+  pressure           HornetPressureLevel @default(NONE)
+  observedAt         DateTime            @default(now())
+  hornetCount        Int?
+  trapCount          Int?
+  notes              String?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  archivedAt         DateTime?
+
+  organization     Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  apiary           Apiary?      @relation(fields: [apiaryId], references: [id], onDelete: SetNull)
+  visit            Visit?       @relation(fields: [visitId], references: [id], onDelete: SetNull)
+  authorMembership Membership?  @relation(fields: [authorMembershipId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([apiaryId])
+  @@index([visitId])
+  @@index([authorMembershipId])
+  @@index([pressure])
+  @@index([observedAt])
 }
 
 model ActivityLogEntry {

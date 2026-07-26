@@ -41,9 +41,9 @@ L'administration doit rester une surface transverse d'organisation, pas un modul
 | Colonies | Initial | Vivant suivi dans le temps | `Colony` | Ruche courante, visites, sanitaire. |
 | Visites | Initial | Observations et interventions | `Visit` cible | Rucher, ruche, colonie, taches, materiel. |
 | Taches | Initial | Actions a planifier et suivre | `Task` cible | Toute entite metier selon besoin. |
-| Sanitaire | Initial | Observations sanitaires simples | `HealthObservation` cible | Ruches, colonies, taches. |
-| Varroa | Initial | Suivi dedie du varroa | `VarroaRecord` cible | Sanitaire, visites, taches. |
-| Frelon | Initial | Signalements et pression frelon | `HornetRecord` cible | Ruchers, taches. |
+| Sanitaire | Initial | Observations sanitaires simples | `HealthObservation` | Ruches, colonies, visites, taches futures. |
+| Varroa | Initial | Suivi dedie du varroa | `VarroaRecord` | Sanitaire, visites, taches futures. |
+| Frelon | Initial | Signalements et pression frelon | `HornetRecord` | Ruchers, visites, taches futures. |
 | Recoltes simples | Initial | Quantites recoltees et notes | `Harvest` cible | Rucher, ruche, materiel de recolte. |
 
 ## Modules support
@@ -68,6 +68,7 @@ L'administration doit rester une surface transverse d'organisation, pas un modul
 | --- | --- | --- | --- |
 | Materiel | Initial | Inventaire leger, emplacements, statuts et evenements simples | Formulaires de developpement seulement; pas d'achats, fournisseurs, prix ou comptabilite. |
 | Transhumance | Initial | Mouvements de ruches entre sites et emplacement courant deduit | Formulaires de developpement seulement; pas de GPS actif, logistique transport ou cartographie temps reel. |
+| Sanitaire | Initial | Observations, releves varroa et signalements frelon manuels | Actions serveur minimales seulement; pas de diagnostic, prescription, IA, IoT ou alerte automatique. |
 
 ## Modules connectes desactives
 

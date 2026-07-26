@@ -16,13 +16,14 @@ Le projet est développé par micro-lots avec Codex, GitHub et Docker Compose. L
 - Module transhumance préparé pour tracer les mouvements de ruches entre ruchers, avec actions serveur et formulaires de développement sur données fictives.
 - Visites et observations terrain.
 - Tâches à planifier, réaliser ou suivre.
+- Socle sanitaire pour observations, relevés varroa et signalements frelon manuels.
 - Récoltes simples.
 
 ### Suivi sanitaire
 
-- Observations sanitaires.
-- Suivi varroa.
-- Suivi frelon.
+- Observations sanitaires manuelles, sans diagnostic automatique.
+- Suivi varroa manuel, sans seuil ni comptage IA.
+- Suivi frelon informatif, sans alerte automatique.
 - Historique des actions et notes métier.
 
 ### Travail collectif
@@ -79,8 +80,8 @@ Les lots déjà intégrés posent:
 - le contrôle de confidentialité pre-push;
 - la CI Docker-first;
 - la stratégie data et le schéma Prisma multi-organisation;
-- les modèles exécutables ruchers, ruches, colonies, matériel et transhumance;
-- les actions serveur de développement pour matériel et transhumance;
+- les modèles exécutables ruchers, ruches, colonies, matériel, transhumance, visites, tâches et sanitaire;
+- les actions serveur de développement pour matériel, transhumance, visites, tâches et sanitaire;
 - la documentation visuelle complémentaire avec prompts et SVG Archify.
 
 Le shell actuel contient des surfaces statiques et quelques formulaires de développement contrôlés par une session fictive. Il ne contient pas encore d'authentification réelle, d'API publique, d'IA active ou d'IoT actif.

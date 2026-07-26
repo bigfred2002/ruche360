@@ -1,5 +1,13 @@
 # Journal
 
+## 2026-07-26 - HEALTH-FOUNDATION-BUNDLE-01
+
+- Ajout du socle sanitaire executable minimal avec observations sanitaires, releves varroa manuels et signalements frelon.
+- Ajout des services et actions serveur minimales pour lire et creer ces donnees via le scope organisationnel et les permissions `health.read` / `health.write`.
+- Enrichissement du seed de developpement avec trois donnees fictives sans information personnelle.
+- Documentation du module sanitaire, de ses limites et des lots futurs.
+- Aucun ecran, formulaire UI, diagnostic, prescription, creation automatique de tache, API publique, authentification reelle, IA active, IoT actif ou appel externe n'a ete ajoute.
+
 ## 2026-07-26 - VISIT-AUDIO-00
 
 - Cadrage d'une future capacite `visit_audio_notes` pour enregistrer des notes audio pendant une visite.

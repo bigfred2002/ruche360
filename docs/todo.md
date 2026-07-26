@@ -118,6 +118,15 @@
 
 ### Backlog terrain
 
+- [x] `HEALTH-FOUNDATION-BUNDLE-01`: ajouter le socle sanitaire executable minimal, sans ecran ni automatisme.
+- [x] `HEALTH-00`: cadrer observations sanitaires, varroa et frelon comme faits terrain manuels.
+- [x] `HEALTH-01`: ajouter les modeles Prisma minimaux `HealthObservation`, `VarroaRecord` et `HornetRecord`.
+- [x] `HEALTH-ACTIONS-01`: ajouter les lectures et creations serveur explicites du sanitaire, sans API publique.
+- [ ] `HEALTH-FORMS-SHELL-01`: brancher une interface de developpement mobile-first pour saisir observations, varroa et frelon.
+- [ ] `HEALTH-FIELD-LINKS-01`: afficher les signaux sanitaires utiles depuis visites, ruches et cockpit sans surcharger.
+- [ ] `HEALTH-STATUS-UX-01`: harmoniser les badges de gravite et statuts sanitaires sans dramatisation.
+- [ ] `VARROA-FOLLOWUP-01`: enrichir les releves varroa manuels, sans seuil automatique ni comptage IA.
+- [ ] `HORNET-FOLLOWUP-01`: enrichir les signalements frelon, sans alerte automatique.
 - [x] `VISIT-AUDIO-00`: cadrer les notes audio de visite comme extension optionnelle, local-first et sans IA active.
 - [ ] `VISIT-AUDIO-01`: ajouter le modele minimal de piece audio liee a une visite, sans transcription ni capture navigateur.
 - [ ] `VISIT-AUDIO-SHELL-01`: preparer une interface statique mobile-first de capture et relecture audio, sans acces micro reel.

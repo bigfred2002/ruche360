@@ -1,6 +1,6 @@
 # Modèle de Données
 
-Etat courant: le schéma Prisma couvre le socle organisationnel, les modules dynamiques, ruchers, ruches, colonies, matériel et transhumance. Les visites, tâches, sanitaire détaillé, récoltes, documents et connaissances restent à modéliser dans des lots dédiés.
+Etat courant: le schéma Prisma couvre le socle organisationnel, les modules dynamiques, ruchers, ruches, colonies, matériel, transhumance, visites, tâches et sanitaire minimal. Les récoltes, documents et connaissances restent à modéliser dans des lots dédiés.
 
 Ce document décrit les entités métier et prépare leur passage progressif vers un schéma exécutable. La stratégie de cadrage est détaillée dans [Stratégie Data](data-strategy.md).
 
@@ -206,13 +206,20 @@ Observation sanitaire.
 Champs conceptuels:
 
 - organisation;
-- cible métier;
-- type;
-- gravité;
-- description;
-- action effectuée;
-- auteur;
-- date.
+- rucher optionnel;
+- ruche optionnelle;
+- colonie optionnelle;
+- visite optionnelle;
+- auteur optionnel;
+- categorie;
+- gravite;
+- date d'observation;
+- libelle;
+- notes optionnelles;
+- archivage optionnel.
+
+Le modele executable conserve uniquement les faits observes. Il ne represente pas
+un diagnostic, une prescription ou une action automatique.
 
 ### VarroaRecord
 
@@ -221,12 +228,20 @@ Suivi varroa dédié.
 Champs conceptuels:
 
 - organisation;
-- ruche ou colonie;
-- date;
-- méthode de comptage;
-- résultat;
-- traitement éventuel;
-- notes.
+- rucher optionnel;
+- ruche optionnelle;
+- colonie optionnelle;
+- visite optionnelle;
+- auteur optionnel;
+- methode de controle;
+- date d'observation;
+- nombre de varroas optionnel;
+- taille d'echantillon optionnelle;
+- taux optionnel saisi ou calcule par un futur lot explicite;
+- notes optionnelles;
+- archivage optionnel.
+
+Le modele ne contient aucun seuil, traitement automatique ou comptage IA.
 
 ### HornetRecord
 
@@ -235,11 +250,17 @@ Signalement frelon.
 Champs conceptuels:
 
 - organisation;
-- rucher;
-- date;
-- pression observée;
-- action réalisée;
-- notes.
+- rucher optionnel;
+- visite optionnelle;
+- auteur optionnel;
+- pression observee;
+- date d'observation;
+- nombre observe optionnel;
+- nombre de pieges optionnel;
+- notes optionnelles;
+- archivage optionnel.
+
+Le modele reste informatif et ne cree aucune alerte automatique.
 
 ### KnowledgeArticle
 

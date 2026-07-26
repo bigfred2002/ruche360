@@ -112,6 +112,20 @@ transcription active ou IA active dans ce cadrage.
 
 Le cadrage detaille est documente dans [Notes Audio De Visite](visit-audio-notes.md).
 
+## Module sanitaire
+
+`HEALTH-FOUNDATION-BUNDLE-01` ajoute le socle sanitaire executable minimal:
+observations sanitaires, releves varroa manuels et signalements frelon. Les liens
+vers rucher, ruche, colonie, visite et auteur restent optionnels pour ne pas
+alourdir la saisie terrain.
+
+Le module utilise les permissions `health.read` et `health.write`. Les modules
+`health`, `varroa` et `hornet` restent activables dans la registry, mais aucun
+diagnostic, prescription, tache automatique, comptage IA, alerte ou IoT actif
+n'est ajoute.
+
+Le cadrage detaille est documente dans [Module Sanitaire](health.md).
+
 ## Module taches
 
 `TASKS-01` ajoute le modele executable minimal des taches. Une tache reste une

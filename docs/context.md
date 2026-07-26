@@ -148,9 +148,10 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `FIELD-QA-SCENARIOS-BUNDLE-01` ajoute des scenarios manuels de validation terrain sur `/journey` et dans la QA operationnelle, sans automatiser le parcours.
 - `FIELD-SEED-SCENARIOS-01` enrichit le seed de developpement avec des donnees fictives couvrant visites ouvertes, taches de suivi, ruches au stock ou en maintenance, materiel a nettoyer ou reparer et transhumance manuelle.
 - `FIELD-EMPTY-STATES-01` distingue les listes vides reelles des donnees de preview sur `/visits` et `/tasks`, afin de guider l'utilisateur vers la premiere visite ou la premiere tache.
+- `HEALTH-FOUNDATION-BUNDLE-01` ajoute le socle sanitaire executable: observations sanitaires, releves varroa manuels, signalements frelon, services et actions serveur minimales. Aucun ecran, diagnostic, prescription, tache automatique, API publique, IA ou IoT actif n'est ajoute.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
-- Les visites, tâches, sanitaire, récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
+- Les récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
 - Le runner GitHub local Docker est préparé comme outil DevSecOps manuel, sans secret versionné et sans déclenchement automatique sur PR publique.
 
 ## Points ouverts
@@ -169,6 +170,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - Revue periodique des diagrammes Archify pour eviter la derive avec le code et les modules actifs.
 - Futur branchement lecture ou formulaires visites apres validation du modele `VISITS-01`.
 - Choix futur du stockage audio, des durees de conservation et du moteur de transcription si `visit_audio_notes` est active.
+- Branchement futur du sanitaire sur les ecrans visites, ruches et cockpit sans dramatiser ni automatiser les decisions.
 
 ## Commandes utiles actuelles
 
