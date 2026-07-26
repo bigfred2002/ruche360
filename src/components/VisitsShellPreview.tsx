@@ -1,12 +1,18 @@
 import Link from "next/link";
 
 import type { HiveSummary } from "@/features/apiary";
+import type {
+  HealthObservationSummary,
+  HornetRecordSummary,
+  VarroaRecordSummary,
+} from "@/features/health";
 import type { VisitStatus, VisitSummary } from "@/features/visits";
 
 import { AppShell } from "./AppShell";
 import { createAppNavigation } from "./appNavigation";
 import { DecorativeImage } from "./DecorativeImage";
 import { FieldEmptyStart } from "./FieldEmptyStart";
+import { HealthFieldSignals } from "./HealthFieldSignals";
 import { StatePanel } from "./StatePanel";
 import { StatusBadge } from "./StatusBadge";
 import { VisitsFormsPreview } from "./VisitsFormsPreview";
@@ -87,9 +93,15 @@ const previewVisits = [
 
 export function VisitsShellPreview({
   hives,
+  hornetRecords,
+  observations,
+  varroaRecords,
   visits,
 }: {
   hives?: HiveSummary[] | null;
+  hornetRecords?: HornetRecordSummary[] | null;
+  observations?: HealthObservationSummary[] | null;
+  varroaRecords?: VarroaRecordSummary[] | null;
   visits?: VisitSummary[] | null;
 }) {
   const { desktopNavigationItems, mobileNavigationItems } =
@@ -274,6 +286,16 @@ export function VisitsShellPreview({
                       <p className="mt-2 text-sm font-bold leading-6 text-slate-800">
                         {nextActionForVisit(visit)}
                       </p>
+                    </div>
+                    <div className="mt-4">
+                      <HealthFieldSignals
+                        compact
+                        hornetRecords={hornetRecords ?? null}
+                        observations={observations ?? null}
+                        title="Signaux liés"
+                        varroaRecords={varroaRecords ?? null}
+                        visitId={visit.id}
+                      />
                     </div>
                     <div className="mt-4 grid gap-2 sm:grid-cols-2">
                       <Link

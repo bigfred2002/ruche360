@@ -150,6 +150,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `FIELD-EMPTY-STATES-01` distingue les listes vides reelles des donnees de preview sur `/visits` et `/tasks`, afin de guider l'utilisateur vers la premiere visite ou la premiere tache.
 - `HEALTH-FOUNDATION-BUNDLE-01` ajoute le socle sanitaire executable: observations sanitaires, releves varroa manuels, signalements frelon, services et actions serveur minimales. Aucun ecran, diagnostic, prescription, tache automatique, API publique, IA ou IoT actif n'est ajoute.
 - `HEALTH-FORMS-SHELL-01` branche `/health`, `/health/varroa` et `/health/hornet` sur la lecture Prisma et ajoute des formulaires serveur de developpement pour observations, varroa et frelon, sans diagnostic, prescription, tache automatique, auth reelle ou API publique.
+- `HEALTH-FIELD-LINKS-01` affiche des syntheses sanitaires courtes dans cockpit, visites, fiches rucher et fiches ruche. Les signaux restent des lectures manuelles sans scoring, alerte automatique, prescription ou creation de tache.
 - L'administration cible d'abord l'organisation: membres, roles, modules, volumes de donnees, securite, archivage et journal d'activite metier.
 - L'archivage, les statuts et la conservation controlee priment sur la suppression dure des donnees metier.
 - Les récoltes, documents, IA et IoT restent conceptuels jusqu'aux lots dédiés.
