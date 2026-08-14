@@ -2,6 +2,7 @@ FROM node:22-alpine3.23 AS base
 
 ARG NPM_VERSION=11.18.0
 ARG NPM_BRACE_EXPANSION_VERSION=5.0.8
+ARG PNPM_VERSION=11.9.0
 
 WORKDIR /app
 
@@ -14,8 +15,8 @@ RUN npm install -g npm@${NPM_VERSION} \
   && rm -rf /usr/local/lib/node_modules/npm/node_modules/brace-expansion \
   && mkdir -p /usr/local/lib/node_modules/npm/node_modules/brace-expansion \
   && tar -xzf /tmp/brace-expansion-${NPM_BRACE_EXPANSION_VERSION}.tgz -C /usr/local/lib/node_modules/npm/node_modules/brace-expansion --strip-components=1 \
-  && rm /tmp/brace-expansion-${NPM_BRACE_EXPANSION_VERSION}.tgz
-RUN corepack enable
+  && rm /tmp/brace-expansion-${NPM_BRACE_EXPANSION_VERSION}.tgz \
+  && npm install -g pnpm@${PNPM_VERSION}
 
 FROM base AS build
 
