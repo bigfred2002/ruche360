@@ -48,6 +48,7 @@
 - [x] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
 - [x] `SECURITY-DEPENDENCIES-FIX-01`: corriger l'audit production bloquant avec mises a jour Next/Prisma et overrides transitifs cibles.
 - [x] `DEPENDABOT-CI-FIX-01`: corriger les echecs CI Dependabot lies a l'audit production et a la disparition possible de `corepack` dans les images Node futures.
+- [x] `DEPENDABOT-TOOLING-AUDIT-01`: corriger les alertes d'audit dev tooling restantes sans adopter TypeScript 7 tant que `typescript-eslint` ne le supporte pas.
 - [x] Durcir la CI dans `SECURITY-CI-01` si un contrôle fiable peut être ajouté sans ralentir les micro-lots.
 - [x] Évaluer un scanner de secrets dédié dans `SECURITY-SECRETS-01`.
 - [x] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
@@ -381,6 +382,15 @@
 - [x] Regenerer `pnpm-lock.yaml` via Docker Compose uniquement.
 - [x] Verifier `pnpm audit --prod`, lint et build via Docker Compose.
 - [x] Ne pas ajouter de fonctionnalite metier, auth, Prisma supplementaire, IA, IoT actif ou secret.
+
+## DEPENDABOT-TOOLING-AUDIT-01
+
+- [x] Identifier les alertes restantes dans `pnpm audit`: `brace-expansion` et `js-yaml` via la chaine ESLint.
+- [x] Ne pas reprendre la PR tooling brute tant qu'elle force `typescript@7.0.2`, incompatible avec `typescript-eslint`.
+- [x] Ajouter des overrides pnpm cibles pour `brace-expansion@1.1.18`, `brace-expansion@5.0.9` et `js-yaml@4.3.1`.
+- [x] Regenerer `pnpm-lock.yaml` via Docker Compose uniquement.
+- [x] Verifier `pnpm audit`, `pnpm audit --prod`, lint et build via Docker Compose.
+- [x] Ne pas ajouter de fonctionnalite metier, auth, schema Prisma supplementaire, IA, IoT actif ou secret.
 
 ## SECURITY-RUNNER-01
 
