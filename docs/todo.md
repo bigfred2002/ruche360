@@ -47,6 +47,7 @@
 - [x] Préparer le lot sécurité dépendances et alertes.
 - [x] Traiter les alertes Dependabot ouvertes dans `SECURITY-DEPENDENCIES-01`.
 - [x] `SECURITY-DEPENDENCIES-FIX-01`: corriger l'audit production bloquant avec mises a jour Next/Prisma et overrides transitifs cibles.
+- [x] `DEPENDABOT-CI-FIX-01`: corriger les echecs CI Dependabot lies a l'audit production et a la disparition possible de `corepack` dans les images Node futures.
 - [x] Durcir la CI dans `SECURITY-CI-01` si un contrôle fiable peut être ajouté sans ralentir les micro-lots.
 - [x] Évaluer un scanner de secrets dédié dans `SECURITY-SECRETS-01`.
 - [x] Revoir le runner local Docker dans `SECURITY-RUNNER-01`.
@@ -370,6 +371,16 @@
 - [x] Compiler Gitleaks avec `golang.org/x/crypto@v0.52.0`.
 - [x] Conserver les scans via Docker sans installation locale.
 - [x] Ne pas ajouter de secret, dépendance npm, fonctionnalité métier, auth, Prisma supplémentaire, IA ou IoT actif.
+
+## DEPENDABOT-CI-FIX-01
+
+- [x] Identifier les causes des echecs CI Dependabot: `pnpm audit --prod` sur `nanoid` et `fast-uri`, et `corepack` absent dans l'image Node 26.
+- [x] Mettre a jour Prisma, React et les types React avec les versions proposees par Dependabot.
+- [x] Ajouter les overrides pnpm cibles `nanoid@3.3.18` et `fast-uri@3.1.5` dans `pnpm-workspace.yaml`.
+- [x] Installer explicitement `pnpm@11.9.0` dans les Dockerfile pour ne pas dependre de `corepack`.
+- [x] Regenerer `pnpm-lock.yaml` via Docker Compose uniquement.
+- [x] Verifier `pnpm audit --prod`, lint et build via Docker Compose.
+- [x] Ne pas ajouter de fonctionnalite metier, auth, Prisma supplementaire, IA, IoT actif ou secret.
 
 ## SECURITY-RUNNER-01
 

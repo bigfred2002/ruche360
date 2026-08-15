@@ -85,6 +85,7 @@ Le dépôt Rucher360 dispose d'un socle Next.js Docker-first, d'un schéma Prism
 - `SECURITY-CI-01` ajoute un audit des dépendances de production dans la CI via Docker Compose et expose la même validation avec `make audit-prod`.
 - `SECURITY-SECRETS-01` ajoute un scan Gitleaks containerisé et pinne l'image par digest pour renforcer la détection de secrets sans installation locale.
 - `SECURITY-CONTAINER-IMAGES-01` aligne les images Node, PostgreSQL et Gitleaks sur Alpine 3.23 afin de réduire les alertes Docker Scout sans modifier le comportement applicatif.
+- `DEPENDABOT-CI-FIX-01` traite les echecs CI Dependabot observes apres reprise: les overrides pnpm transitifs restent dans `pnpm-workspace.yaml`, Prisma/React sont alignes avec les mises a jour mineures proposees, et les Dockerfile installent explicitement `pnpm@11.9.0` pour ne pas dependre de `corepack` dans les images Node futures.
 - `VISIT-AUDIO-00` cadre les notes audio de visite comme capacite optionnelle `visit_audio_notes`, local-first, rattachee aux visites et sans transcription, IA active, diagnostic, prescription ou tache automatique.
 - `TODO-CLEANUP-01` reconcilie la todo avec les lots deja termines et remet en avant les prochains lots reels sans changer le code.
 - `SECURITY-RUNNER-01` confirme que le runner GitHub local Docker reste manuel, documente les risques du socket Docker et l'aligne avec les contrôles sécurité actuels.

@@ -1,5 +1,14 @@
 # Journal
 
+## 2026-08-14 - DEPENDABOT-CI-FIX-01
+
+- Analyse des PR Dependabot encore ouvertes: les echecs CI venaient de `pnpm audit --prod` sur `nanoid` via Next/PostCSS et `fast-uri` via Prisma, ainsi que de l'absence de `corepack` dans l'image Node 26.
+- Mise a jour de Prisma, React et des types React avec les versions mineures proposees par Dependabot.
+- Ajout d'overrides pnpm cibles pour `nanoid@3.3.18` et `fast-uri@3.1.5` dans `pnpm-workspace.yaml`.
+- Remplacement de l'activation `corepack` par une installation explicite de `pnpm@11.9.0` dans les Dockerfile applicatifs.
+- `pnpm audit --prod`, lint et build passent via Docker Compose; la reconstruction de l'image Docker a ete bloquee localement par un timeout Docker Hub sur les metadonnees de l'image de base.
+- Aucun secret, fonctionnalite metier, auth reelle, schema Prisma supplementaire, IA active, IoT actif ou appel API externe n'a ete ajoute.
+
 ## 2026-07-26 - HEALTH-FIELD-LINKS-01
 
 - Ajout d'une synthese sanitaire reutilisable pour afficher observations, releves varroa et signalements frelon dans les surfaces terrain.
