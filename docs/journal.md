@@ -1,5 +1,12 @@
 # Journal
 
+## 2026-08-15 - DEPENDABOT-TOOLING-AUDIT-01
+
+- Analyse de la PR Dependabot tooling restante: elle echoue car `typescript@7.0.2` n'est pas supporte par `typescript-eslint` dans la pile actuelle.
+- Correction ciblee des alertes d'audit dev restantes via overrides pnpm: `brace-expansion@1.1.18`, `brace-expansion@5.0.9` et `js-yaml@4.3.1`.
+- `pnpm audit`, `pnpm audit --prod`, lint, build, controle de confidentialite et scan Gitleaks passent via Docker ou image locale existante.
+- Aucun secret, fonctionnalite metier, auth reelle, schema Prisma supplementaire, IA active, IoT actif ou appel API externe n'a ete ajoute.
+
 ## 2026-08-14 - DEPENDABOT-CI-FIX-01
 
 - Analyse des PR Dependabot encore ouvertes: les echecs CI venaient de `pnpm audit --prod` sur `nanoid` via Next/PostCSS et `fast-uri` via Prisma, ainsi que de l'absence de `corepack` dans l'image Node 26.
